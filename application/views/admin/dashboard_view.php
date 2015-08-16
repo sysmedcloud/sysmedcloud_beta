@@ -4,8 +4,7 @@
     <div class="middle-box text-center animated fadeInRightBig">
         <h3 class="font-bold">Dashboard</h3>
         <div class="error-desc">
-            You can create here any grid layout you want. And any variation layout you imagine:) Check out
-            main dashboard and other site. It use many different layout.
+            estoy cambiando el contenido del dashboard :=)
             <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
             
         </div>

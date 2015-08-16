@@ -1,0 +1,131 @@
+<?php if (!defined('BASEPATH')) exit('No permitir el acceso directo al script');
+/*
+ *
+ *   LIBRERIA FILECLASS: PERMITE CONTROLAR LOS ARCHIVOS CSS Y JS DE LAS PAGINAS
+ *   version 1.0
+ *   autor: Cristian Vidal
+ *   Fechal ULt. Act: 29-06-2015
+*/
+class Fileclass {
+    
+    var $files = array();
+    
+    function Fileclass()
+    {   
+        $this->CI =& get_instance();  
+        $this->CI->load->helper('url');
+    }
+    
+    //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS 
+    //EN LA PAGINA LOGIN
+    function files_login(){
+        
+        $this->files['style'] = array(
+
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/animate.css',
+            '3' => base_url().'css/style.css'
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js'
+        );
+
+        return $this->files;
+    }
+    
+    //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS 
+    //EN LA PAGINA DASHBOARD
+    function files_dashboard(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/animate.css',
+            '3' => base_url().'css/style.css'
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/inspinia.js',
+            '5' => base_url().'js/pace.min.js'
+        );
+
+        return $this->files;
+    }
+    
+    //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS EN LA PAGINA MI PERFIL
+    function files_miperfil(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/plugins/iCheck/custom.css',
+            '3' => base_url().'css/animate.css',
+            '4' => base_url().'css/style.css'
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/inspinia.js',
+            '5' => base_url().'js/pace.min.js',
+            '6' => base_url().'js/icheck.min.js',
+            '7' => base_url().'js/mi_perfil.js',
+            '8' => base_url().'js/jasny-bootstrap.min.js',
+            '9' => base_url().'js/mi_perfil_selects.js'
+        );
+        
+        return $this->files;
+    }
+    
+    function files_tbl(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/plugins/dataTables/dataTables.bootstrap.css',
+            '3' => base_url().'css/plugins/dataTables/dataTables.responsive.css',
+            '4' => base_url().'css/plugins/dataTables/dataTables.tableTools.min.css',
+            '5' => base_url().'css/animate.css',
+            '6' => base_url().'css/style.css',
+            '7' => base_url().'css/button_data_table.css',
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/jquery.dataTables.js',
+            '5' => base_url().'js/dataTables.bootstrap.js',
+            '6' => base_url().'js/dataTables.responsive.js',
+            '7' => base_url().'js/dataTables.tableTools.min.js',
+            '8' => base_url().'js/inspinia.js',
+            '9' => base_url().'js/pace.min.js',
+            '10' => base_url().'js/datatable_pacientes.js',
+        );
+        
+        return $this->files;
+    }
+}
+
+/* End of file Files.php */ 

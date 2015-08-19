@@ -82,9 +82,21 @@ class Paciente_admin extends CI_Controller {
         $data["menu"]   = "Listado de Pacientes";
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
-                
+        
+        $id_empresa         = $this->session->userdata('id_empresa');
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("pacientes_view",$data);
+    }
+    
+    public function pacientes_json(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        
+        $id_empresa         = $this->session->userdata('id_empresa');
+        
+        $this->paciente_model->listadoPacientes_json($id_empresa);    
     }
     
     /**************************************************************************/

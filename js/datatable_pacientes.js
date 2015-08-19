@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     var baseURL = $('body').data('baseurl');
     
-    $('.dataTables-example').dataTable({
+    $('#pacientes').dataTable({
         responsive: true,
         "dom": 'T<"clear">lfrtip',
         "tableTools": {

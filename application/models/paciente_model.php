@@ -187,4 +187,64 @@ class Paciente_model extends CI_Model
         return $insert_paciente = $DB->insert('tbl_historias_medicas',$data);
         
     }
+    /***************************************************************************
+    /** @Funtion que permite retornar un json con info de los pacientes
+    /**************************************************************************/
+    public function listadoPacientes_json($id_empresa){
+        
+        //Query para obtener listado de pacientes
+        $this->db->select("u.id_usuario,
+        du.rut,
+        du.primer_nombre,
+        du.segundo_nombre,
+        du.apellido_paterno,
+        du.apellido_materno,
+        du.telefono,
+        du.celular,
+        du.email,
+        u.fecha_creacion
+        ");
+        $this->db->from('tbl_data_usuarios du');
+        $this->db->join('tbl_usuarios u','du.id_usuario = u.id_usuario');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $datos = $this->db->get();
+        //echo $this->db->last_query();
+        $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
+        $response   = array();//CREAR ARREGLO DEL JSON
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result() as $row){
+                
+                //Creamos nuestras variables
+                $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);
+                $apellidos  = ucfirst($row->apellido_paterno)." ".ucfirst($row->apellido_materno);
+                $edad       = 22;
+                
+                $arr_paciente[] = array(
+                    "id_usuario"        => $row->id_usuario,
+                    "fecha_creacion"    => $row->fecha_creacion,
+                    "rut"               => $row->rut,
+                    "nombres"           => $nombres,
+                    "apellidos"         => $apellidos,
+                    "edad"              => $edad,
+                    "celular"           => $row->celular,
+                    "email"             => $row->email,
+                );
+            }
+            
+            //RETORNAR JSON CON LA INFORMACION DETALLE MENSUAL DE LAS TOMAS
+            $response['data'] = $arr_paciente;
+            echo json_encode($response); 
+            
+        }else{
+            
+            //RETORNAR JSON VACIO
+            $response['data'] = $arr_data;
+            echo json_encode($response);
+        }
+    }
 }	

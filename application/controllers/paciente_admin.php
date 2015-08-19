@@ -96,7 +96,7 @@ class Paciente_admin extends CI_Controller {
         
         $id_empresa         = $this->session->userdata('id_empresa');
         
-        $this->paciente_model->listadoPacientes_json($id_empresa);    
+        echo $this->paciente_model->listadoPacientes_json($id_empresa);    
     }
     
     /**************************************************************************/

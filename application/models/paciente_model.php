@@ -209,6 +209,7 @@ class Paciente_model extends CI_Model
         $this->db->where('u.id_perfil',4);
         $this->db->where('u.estado',0);
         $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
         $datos = $this->db->get();
         //echo $this->db->last_query();
         $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
@@ -223,22 +224,29 @@ class Paciente_model extends CI_Model
                 $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);
                 $apellidos  = ucfirst($row->apellido_paterno)." ".ucfirst($row->apellido_materno);
                 $edad       = 22;
+                $celular    = $row->celular == "" ? "Sin info." :  $row->celular;
+                $email      = $row->email == "" ? "Sin info." : $row->email;
+                $fecha      = explode(" ",$row->fecha_creacion);
+                $fecha_c    = strtotime($fecha[0]);
+                $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
+                $acciones   = "e - d - e"; 
                 
                 $arr_paciente[] = array(
-                    "id_usuario"        => $row->id_usuario,
-                    "fecha_creacion"    => $row->fecha_creacion,
+                    //"id_usuario"        => $row->id_usuario,
+                    "fecha_creacion"    => $fecha_c,
                     "rut"               => $row->rut,
                     "nombres"           => $nombres,
                     "apellidos"         => $apellidos,
                     "edad"              => $edad,
-                    "celular"           => $row->celular,
-                    "email"             => $row->email,
+                    "celular"           => $celular,
+                    "email"             => $email,
+                    "acciones"          => $acciones
                 );
             }
             
             //RETORNAR JSON CON LA INFORMACION DETALLE MENSUAL DE LAS TOMAS
-            $response['data'] = $arr_paciente;
-            echo json_encode($response); 
+            //$response['data'] = $arr_paciente;
+            echo json_encode($arr_paciente); 
             
         }else{
             

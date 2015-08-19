@@ -28,17 +28,29 @@
 
                 <table id="pacientes" class="table table-striped table-bordered table-hover dataTables-example" >
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Fecha Creación</th>
-                    <th>R.U.T.</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Edad</th>
-                    <th>Celular</th>
-                    <th>Email</th>
-                </tr>
+                    <tr>
+                        <th>Fecha Creación</th>
+                        <th>R.U.T.</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Celular</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Fecha Creación</th>
+                        <th>R.U.T.</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Celular</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
                 </table>
                 </div>
             </div>

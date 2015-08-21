@@ -202,7 +202,8 @@ class Paciente_model extends CI_Model
         du.telefono,
         du.celular,
         du.email,
-        u.fecha_creacion
+        u.fecha_creacion,
+        du.fecha_nac
         ");
         $this->db->from('tbl_data_usuarios du');
         $this->db->join('tbl_usuarios u','du.id_usuario = u.id_usuario');
@@ -211,7 +212,7 @@ class Paciente_model extends CI_Model
         $this->db->where('u.id_empresa',$id_empresa);
         $this->db->order_by("u.id_usuario", "asc");
         $datos = $this->db->get();
-        //echo $this->db->last_query();
+        
         $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
         $response   = array();//CREAR ARREGLO DEL JSON
         
@@ -226,13 +227,22 @@ class Paciente_model extends CI_Model
                 $edad       = 22;
                 $celular    = $row->celular == "" ? "Sin info." :  $row->celular;
                 $email      = $row->email == "" ? "Sin info." : $row->email;
+                
                 $fecha      = explode(" ",$row->fecha_creacion);
                 $fecha_c    = strtotime($fecha[0]);
                 $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
-                $acciones   = "e - d - e"; 
                 
+                $fecha_nac  = $row->fecha_nac;
+                $fecha_nac  = explode(" ",$fecha_nac);
+                $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
+                $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+                
+                $fa_editar  = '<a href="#" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información"><i class="fa fa-eye"></i></a>';
+                $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
+                
+                //Crear arreglo con los datos del paciente
                 $arr_paciente[] = array(
-                    //"id_usuario"        => $row->id_usuario,
                     "fecha_creacion"    => $fecha_c,
                     "rut"               => $row->rut,
                     "nombres"           => $nombres,
@@ -240,19 +250,22 @@ class Paciente_model extends CI_Model
                     "edad"              => $edad,
                     "celular"           => $celular,
                     "email"             => $email,
-                    "acciones"          => $acciones
+                    "editar"            => $fa_editar,
+                    "view"              => $fa_view,
+                    "delete"            => $fa_delete
                 );
             }
             
-            //RETORNAR JSON CON LA INFORMACION DETALLE MENSUAL DE LAS TOMAS
+            //RETORNAR JSON CON LA INFORMACION DEL PACIENTE
             //$response['data'] = $arr_paciente;
+            $arr_data = $arr_paciente;
             echo json_encode($arr_paciente); 
             
         }else{
             
             //RETORNAR JSON VACIO
-            $response['data'] = $arr_data;
-            echo json_encode($response);
+            //$response['data'] = $arr_data;
+            echo json_encode($arr_data);
         }
     }
 }	

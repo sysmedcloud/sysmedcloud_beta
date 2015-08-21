@@ -47,17 +47,17 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     }
 } );
 
+//al momento de cargar la pagina carga json con los datos del paciente
 $(document).ready(function() {
     
-    var baseURL = $('body').data('baseurl');
+    var baseURL = $('body').data('baseurl');//url base
     
     $('#pacientes').dataTable({
         "ajax": {
-            "url": baseURL+"paciente_admin/pacientes_json",
+            "url": baseURL+"paciente_admin/pacientes_json",//data
             "dataSrc": ""
         },
-        "columns": [
-            //{ "data": "id_usuario" },
+        "columns": [ //columnas de nuestra tabla
             { "data": "fecha_creacion" },
             { "data": "rut" },
             { "data": "nombres" },
@@ -65,18 +65,34 @@ $(document).ready(function() {
             { "data": "edad" },
             { "data": "celular" },
             { "data": "email"},
-            { "data": "acciones"},
+            { "data": "editar"},
+            { "data": "view"},
+            { "data": "delete"}
         ],
         columnDefs: [
-               { type: 'date-eu', 
-                 targets: 0
-               }
-           ],
-        order: [[ 0, "desc" ]],
-        responsive: true,
+            { type: 'date-eu', //ordena fecha
+              targets: 0
+            }
+        ],
+        order: [[ 0, "desc" ]],//orden by por fecha de creacion
+        responsive: true,//tabla responsive, agrega un boton
         "dom": 'T<"clear">lfrtip',
         "tableTools": {
-            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf"
+            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
+            "aButtons": [ //botones que sirven para exportar informacion de la tabla
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "CSV"
+                },
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Excel"
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "PDF"
+                }                
+            ]
         }
     });
 });

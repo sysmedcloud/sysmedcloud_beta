@@ -5,7 +5,8 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Listado de pacientes registrados</h5>
+                    <h5>Listado de pacientes registrados </h5>
+                    &nbsp;&nbsp;(E: editar datos, V: ver información, E: eliminar paciente)
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -36,21 +37,11 @@
                         <th>Edad</th>
                         <th>Celular</th>
                         <th>Email</th>
-                        <th>Acciones</th>
+                        <th>E</th>
+                        <th>V</th>
+                        <th>E</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Fecha Creación</th>
-                        <th>R.U.T.</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Edad</th>
-                        <th>Celular</th>
-                        <th>Email</th>
-                        <th>Acciones</th>
-                    </tr>
-                </tfoot>
                 </table>
                 </div>
             </div>

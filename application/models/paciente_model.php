@@ -238,7 +238,7 @@ class Paciente_model extends CI_Model
                 $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
                 
                 $fa_editar  = '<a href="#" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información"><i class="fa fa-eye"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente

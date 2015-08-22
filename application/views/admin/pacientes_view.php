@@ -55,10 +55,99 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title"><i class="fa fa-user"></i>&nbsp;Información del paciente</h4>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                  <a href="#" class="thumbnail">
+                    <img src="<?=base_url();?>img/sin-foto.png" alt="...">
+                  </a>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <p><strong>R.U.T:</strong> 17.484.496-8</p>
+                    <p><strong>Nombre:</strong> Cristian Alejandro Vidal Muñoz</p>    
+                    <p><strong>Genero:</strong> Masculino</p>
+                    <p><strong>Edad:</strong> 25</p>
+                </div>
+            </div>
+            <div id="accordion" class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">
+                            <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" class="collapsed">Datos de Identificación</a>
+                        </h5>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseOne" aria-expanded="false" style="height: 0px;">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="collapsed" aria-expanded="false">Datos de Residencia Actual</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseTwo" aria-expanded="false" style="height: 0px;">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="collapsed" aria-expanded="false">Gr. Sanguineo/ F. RH</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseThree" aria-expanded="false" style="height: 0px;">
+                        <div class="panel-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+            <div class="table-responsive">
+               <table class="table">
+                    <tbody>
+                        <tr>
+                          <td style="width: 50%"><strong>Fecha Nac.:</strong> 09-09-2012</td>   
+                          <td style="width: 50%"><strong>ID Paciente:</strong> 1</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Telefono fijo:</strong> 1234567867</td>
+                          <td><strong>Celular:</strong> 123456786767</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Correo:</strong> cris.vidal04@gmail.com</td>
+                          <td><strong>Estado Civil:</strong> Soltero(a)</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Lugar de Nacimiento:</strong> Hospital Clinico San Borja Arriaran</td>
+                          <td><strong>Religion:</strong> Catolico</td>
+                        </tr>
+                        <tr>
+                          <td><strong>País de Referencia:</strong> Chile</td>
+                          <td><strong>Previsión Médica:</strong> Consalud</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Ocupacion:</strong> Ingenieria en informatica mencion redes</td>
+                          <td><strong>Nivel de Estudio:</strong> Profesional</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Region:</strong> Ingenieria en informatica mencion redes</td>
+                          <td><strong>Provincia:</strong> Profesional</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Comuna:</strong> Ingenieria en informatica mencion redes</td>
+                          <td><strong>Direccion:</strong> Profesional</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -19,7 +19,22 @@ function cambiaf_a_mysql($fecha){
         $lafecha=@$fecha_mysql[2]."/".@$fecha_mysql[1]."/".@$fecha_mysql[0];
    	return $lafecha; 
 }
-
+//////////////////////////////////////////////////// 
+//FUNCION QUE PERMITE CALCULAR LA EDAD
+//////////////////////////////////////////////////// 
+function calcularEdad($fecha){ 
+    
+    list($ano,$mes,$dia)    = explode("-",$fecha);
+    $ano_diferencia         = date("Y") - $ano;
+    $mes_diferencia         = date("m") - $mes;
+    $dia_diferencia         = date("d") - $dia;
+    
+    if ($dia_diferencia < 0 || $mes_diferencia < 0){
+        $ano_diferencia--;//1890 - 1980 - 1992 - 0000
+    }
+    
+    return $ano_diferencia;
+}
 //////////////////////////////////////////////////// 
 //PERMITE CONTROLAR LAS ACTIVE DE NUESTRO MENU
 //////////////////////////////////////////////////// 

@@ -50,18 +50,18 @@
                                             <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>R.U.T</strong>
-                                                <input type="text" name="rut" placeholder="Ingrese su rut" class="form-control" value="<?php echo set_value('rut');?>">
-                                                <?php echo form_error('rut','<div class="text-danger">','</div>');?>
+                                                <input type="text" name="rut" placeholder="Ingrese su rut" class="form-control" value="<?=set_value('rut');?>">
+                                                <?=form_error('rut','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Primer nombre</strong>
-                                                <input type="text" name="p_nombre" placeholder="Ingrese su primer nombre" class="form-control " value="<?php echo set_value('p_nombre'); ?>">
-                                                <?php echo form_error('p_nombre','<div class="text-danger">','</div>');?>
+                                                <input type="text" name="p_nombre" placeholder="Ingrese su primer nombre" class="form-control " value="<?=set_value('p_nombre'); ?>">
+                                                <?=form_error('p_nombre','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Segundo nombre</strong>
                                                 <input type="text" name="s_nombre" placeholder="Ingrese su segundo nombre" class="form-control" value="<?php echo set_value('s_nombre'); ?>">
-                                                <?php echo form_error('s_nombre','<div class="text-danger">','</div>');?>
+                                                <?=form_error('s_nombre','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           &nbsp;
@@ -69,12 +69,12 @@
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Apellido paterno</strong>
                                                 <input type="text" name="a_paterno" placeholder="Ingrese su apellido paterno" class="form-control " value="<?php echo set_value('a_paterno'); ?>">
-                                                <?php echo form_error('a_paterno','<div class="text-danger">','</div>');?>
+                                                <?=form_error('a_paterno','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Apellido materno</strong>
                                                 <input type="text" name="a_materno" placeholder="Ingrese su apellido materno" class="form-control " value="<?php echo set_value('a_materno'); ?>">
-                                                <?php echo form_error('a_materno','<div class="text-danger">','</div>');?>
+                                                <?=form_error('a_materno','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <?php
@@ -93,7 +93,7 @@
                                                 <label class="radio-inline i-checks">
                                                 <?=$rd_fem;?> Femenino
                                                 </label>
-                                                <?php echo form_error('genero','<div class="text-danger">','</div>');?>
+                                                <?=form_error('genero','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           &nbsp;
@@ -101,17 +101,17 @@
                                              <div class="col-md-4">
                                                 <strong>Telefono (fijo)</strong>
                                                 <input type="text" name="telefono_f" placeholder="Ingrese su telefono (fijo)" class="form-control " value="<?php echo set_value('telefono_f'); ?>">
-                                                <?php echo form_error('telefono_f','<div class="text-danger">','</div>');?>
+                                                <?=form_error('telefono_f','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Telefono celular</strong>
                                                 <input type="text" name="celular" placeholder="Ingrese su telefono celular" class="form-control " value="<?php echo set_value('celular'); ?>">
-                                                <?php echo form_error('celular','<div class="text-danger">','</div>');?>
+                                                <?=form_error('celular','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Correo</strong>
                                                 <input type="text" name="correo" placeholder="Ingrese su correo" class="form-control " value="<?php echo set_value('correo'); ?>">
-                                                <?php echo form_error('correo','<div class="text-danger">','</div>');?>
+                                                <?=form_error('correo','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           &nbsp;
@@ -119,18 +119,18 @@
                                              <div class="col-md-4">
                                                 <strong>Estado Civil</strong>
                                                 <?=form_dropdown('estado_civil',$est_civil,set_value('estado_civil'),'class="form-control m-b "');?>
-                                                <?php echo form_error('estado_civil','<div class="text-danger">','</div>');?>
+                                                <?=form_error('estado_civil','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Fecha Nacimiento ( día / mes /año )</strong>
                                                 <input type="text" name="fecha_nac" class="form-control " data-mask="99/99/9999" placeholder="Ingrese su fecha de nacimiento" value="<?php echo set_value('fecha_nac'); ?>">
                                                 <!-- <span class="help-block">( día / mes /año )</span> -->
-                                                <?php echo form_error('fecha_nac','<div class="text-danger">','</div>');?>
+                                                <?=form_error('fecha_nac','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Lugar de Nacimiento</strong>
                                                 <input type="text" name="lugar_nac" class="form-control " placeholder="Lugar de nacimiento" value="<?php echo set_value('lugar_nac'); ?>">
-                                                <?php echo form_error('lugar_nac','<div class="text-danger">','</div>');?>
+                                                <?=form_error('lugar_nac','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           &nbsp;
@@ -138,12 +138,12 @@
                                              <div class="col-md-4">
                                                 <strong>Religión</strong>
                                                 <?=form_dropdown('religion',$religiones,set_value('religion'),'class="form-control m-b "');?>
-                                                <?php echo form_error('religion','<div class="text-danger">','</div>');?>
+                                                <?=form_error('religion','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>País de residencia</strong>
                                                 <?=form_dropdown('pais_res',$paises,set_value('pais_res'),'class="form-control m-b "');?>
-                                                <?php echo form_error('pais_res','<div class="text-danger">','</div>');?>
+                                                <?=form_error('pais_res','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                  &nbsp;
@@ -153,17 +153,17 @@
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Prev. Médica:</strong>
                                                 <?=form_dropdown('prevision',$prev_med,set_value('prevision'),'class="form-control m-b "');?>
-                                                <?php echo form_error('prevision','<div class="text-danger">','</div>');?>
+                                                <?=form_error('prevision','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Ocupación:</strong>
                                                 <?=form_dropdown('ocupacion',$ocupaciones,set_value('ocupacion'),'class="form-control m-b "');?>
-                                                <?php echo form_error('ocupacion','<div class="text-danger">','</div>');?>
+                                                <?=form_error('ocupacion','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Niv. Estudios</strong>
                                                 <?=form_dropdown('niv_estudios',$niv_estudios,set_value('niv_estudios'),'class="form-control m-b "');?>
-                                                <?php echo form_error('n_estudio','<div class="text-danger">','</div>');?>
+                                                <?=form_error('n_estudio','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           <!--<div class="hr-line-dashed"></div>-->
@@ -176,17 +176,17 @@
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Región</strong>
                                                 <?=form_dropdown('region',$regiones,set_value('region'),'id="region" class="form-control m-b "');?>
-                                                <?php echo form_error('region','<div class="text-danger">','</div>');?>
+                                                <?=form_error('region','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Provincia</strong>
                                                 <?=form_dropdown('provincia',$provincias,set_value('provincia'),'id="provincia" class="form-control m-b "');?>
-                                                <?php echo form_error('provincia','<div class="text-danger">','</div>');?>
+                                                <?=form_error('provincia','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Comuna</strong>
                                                 <?=form_dropdown('comuna',$comunas,set_value('comuna'),'id="comuna" class="form-control m-b "');?>
-                                                <?php echo form_error('comuna','<div class="text-danger">','</div>');?>
+                                                <?=form_error('comuna','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
                                           &nbsp;
@@ -194,7 +194,7 @@
                                              <div class="col-md-8">
                                                 *&nbsp;<strong>Calle / Pasaje / Villa</strong>
                                                 <input type="text" name="calle" placeholder="Nombre de la calle, pasaje o villa" class="form-control " value="<?php echo set_value('calle'); ?>">
-                                                <?php echo form_error('calle','<div class="text-danger">','</div>');?>
+                                                <?=form_error('calle','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">&nbsp;</div>
                                           </div>
@@ -204,12 +204,12 @@
                                              <div class="col-md-4">
                                                 <strong>Grupo Sanguíneo</strong>
                                                 <?=form_dropdown('grupo_sang',$gr_sang,set_value('grupo_sang'),'id="grupo_sang" class="form-control m-b "');?>
-                                                <?php echo form_error('grupo_sang','<div class="text-danger">','</div>');?>
+                                                <?=form_error('grupo_sang','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Factor RH</strong>
                                                 <?=form_dropdown('factorn_rh',$factoresRH,set_value('factor_rh'),'id="factorn_rh" class="form-control m-b "');?>
-                                                <?php echo form_error('factorn_rh','<div class="text-danger">','</div>');?>
+                                                <?=form_error('factorn_rh','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">&nbsp;</div>
                                           </div>

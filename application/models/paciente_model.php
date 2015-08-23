@@ -187,4 +187,85 @@ class Paciente_model extends CI_Model
         return $insert_paciente = $DB->insert('tbl_historias_medicas',$data);
         
     }
+    /***************************************************************************
+    /** @Funtion que permite retornar un json con info de los pacientes
+    /**************************************************************************/
+    public function listadoPacientes_json($id_empresa){
+        
+        //Query para obtener listado de pacientes
+        $this->db->select("u.id_usuario,
+        du.rut,
+        du.primer_nombre,
+        du.segundo_nombre,
+        du.apellido_paterno,
+        du.apellido_materno,
+        du.telefono,
+        du.celular,
+        du.email,
+        u.fecha_creacion,
+        du.fecha_nac
+        ");
+        $this->db->from('tbl_data_usuarios du');
+        $this->db->join('tbl_usuarios u','du.id_usuario = u.id_usuario');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
+        $datos = $this->db->get();
+        
+        $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
+        $response   = array();//CREAR ARREGLO DEL JSON
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result() as $row){
+                
+                //Creamos nuestras variables
+                $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);
+                $apellidos  = ucfirst($row->apellido_paterno)." ".ucfirst($row->apellido_materno);
+                $edad       = 22;
+                $celular    = $row->celular == "" ? "Sin info." :  $row->celular;
+                $email      = $row->email == "" ? "Sin info." : $row->email;
+                
+                $fecha      = explode(" ",$row->fecha_creacion);
+                $fecha_c    = strtotime($fecha[0]);
+                $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
+                
+                $fecha_nac  = $row->fecha_nac;
+                $fecha_nac  = explode(" ",$fecha_nac);
+                $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
+                $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+                
+                $fa_editar  = '<a href="#" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
+                $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
+                
+                //Crear arreglo con los datos del paciente
+                $arr_paciente[] = array(
+                    "fecha_creacion"    => $fecha_c,
+                    "rut"               => $row->rut,
+                    "nombres"           => $nombres,
+                    "apellidos"         => $apellidos,
+                    "edad"              => $edad,
+                    "celular"           => $celular,
+                    "email"             => $email,
+                    "editar"            => $fa_editar,
+                    "view"              => $fa_view,
+                    "delete"            => $fa_delete
+                );
+            }
+            
+            //RETORNAR JSON CON LA INFORMACION DEL PACIENTE
+            //$response['data'] = $arr_paciente;
+            $arr_data = $arr_paciente;
+            echo json_encode($arr_paciente); 
+            
+        }else{
+            
+            //RETORNAR JSON VACIO
+            //$response['data'] = $arr_data;
+            echo json_encode($arr_data);
+        }
+    }
 }	

@@ -95,7 +95,36 @@ $(document).ready(function() {
             ]
         }
     });
+    
 });
+
+function ver_paciente(id_paciente){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $.ajax({
+        data: {"id_paciente" : id_paciente},
+        type: "POST",
+        dataType: "json",
+        url: baseURL+"paciente_admin/dataPaciente",
+    })
+   .done(function(data,textStatus,jqXHR ) {         
+        
+        if(textStatus === "success"){
+
+            console.log( "La solicitud se ha completado correctamente." );
+            console.log( "ID Paciente: "+data+" "+textStatus+" "+jqXHR);
+        }
+    })
+    .fail(function( jqXHR, textStatus, errorThrown ) {
+         
+        if(textStatus === "error") {
+            
+            console.log( "La solicitud a fallado: " +  textStatus);
+            console.log(textStatus+" "+jqXHR);
+        }
+    });
+}
 
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
 function eliminar_paciente(){

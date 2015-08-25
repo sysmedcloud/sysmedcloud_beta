@@ -226,7 +226,10 @@ class Paciente_admin extends CI_Controller {
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("paciente_succes_view",$data);
     }
-    
+    public function dataPaciente(){
+        
+        echo $this->input->post('id_paciente');
+    }
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 
     /** region seleccionada

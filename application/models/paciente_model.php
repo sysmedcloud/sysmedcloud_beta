@@ -152,15 +152,25 @@ class Paciente_model extends CI_Model
     {
         //cargamos los datos del usuario
         $this->db->select('
-            u.id_usuario,du.rut,
-            du.primer_nombre,du.segundo_nombre,
-            du.apellido_paterno,du.apellido_materno,
-            du.fecha_nac,du.telefono,
-            du.celular,du.genero,
-            du.email,du.nacionalidad,
-            du.id_region,du.id_provincia,
-            du.id_comuna,du.calle,
-            du.imagen,du.fecha_nac');
+            u.id_usuario,
+            du.rut,
+            du.primer_nombre,
+            du.segundo_nombre,
+            du.apellido_paterno,
+            du.apellido_materno,
+            du.fecha_nac,
+            du.telefono,
+            du.celular,
+            du.genero,
+            du.email,
+            du.nacionalidad,
+            du.id_region,
+            du.id_provincia,
+            du.id_comuna,
+            du.calle,
+            du.imagen,
+            du.fecha_nac,
+            du.lugar_nac ');
         $this->db->from('tbl_usuarios u');
         $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');       
         $this->db->where('u.id_usuario',$id_paciente);
@@ -168,13 +178,18 @@ class Paciente_model extends CI_Model
         
         if($datos->num_rows() > 0){
             
-            //Validar genero del paciente
-            $genero = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
             //calcular edad del paciente
             $fecha_nac  = $datos->row()->fecha_nac;
             $fecha_nac  = explode(" ",$fecha_nac);
             $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
             $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+            
+            //Validar otras variables
+            $genero = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
+            $email      = $datos->row()->email == "" ? "Sin info." : $datos->row()->email;
+            $telefono   = $datos->row()->telefono == "" ? "Sin info." : $datos->row()->telefono;
+            $celular    = $datos->row()->celular == "" ? "Sin info." : $datos->row()->celular;
+            $lugar_nac  = $datos->row()->lugar_nac == "" ? "Sin info." : $datos->row()->lugar_nac;
             
             $arr_paciente = array(
                 "rut"               => $datos->row()->rut,
@@ -183,7 +198,12 @@ class Paciente_model extends CI_Model
                 "apellido_paterno"  => ucfirst($datos->row()->apellido_paterno),
                 "apellido_materno"  => ucfirst($datos->row()->apellido_materno),
                 "genero"            => $genero,
-                "edad"              => $edad
+                "edad"              => $edad,
+                "email"             => $email,
+                "telefono"          => $telefono,
+                "celular"           => $celular,
+                "fecha_nac"         => cambiaf_a_normal($fecha_nac),
+                "lugar_nac"         => $lugar_nac
             );
             
             echo json_encode($arr_paciente); 

@@ -101,6 +101,8 @@ function ver_datos_paciente(id_paciente){
     
     var baseURL = $('body').data('baseurl');//url base
     
+    $('#datos_paciente').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando...');
+    
     $.ajax({
         data: {"id_paciente" : id_paciente},
         type: "POST",
@@ -114,12 +116,154 @@ function ver_datos_paciente(id_paciente){
             var nombre  =   data.primer_nombre+' '+data.segundo_nombre+' '+
                             data.apellido_paterno+' '+data.apellido_materno;
             
-            var info_personal = '<p><strong>R.U.T:</strong> '+data.rut+'</p>'+
-                                '<p><strong>Nombre:</strong> '+nombre+'</p>'+    
-                                '<p><strong>Genero:</strong> '+data.genero+'</p>'+
-                                '<p><strong>Edad:</strong> '+data.edad+'</p>';
+            var modal = '<div class="row">'+
+                '<div class="col-xs-12 col-md-3">'+
+                  '<a href="#" class="thumbnail">'+
+                    '<img src="'+baseURL+'img/1.jpg" alt="...">'+
+                  '</a>'+
+                '</div>'+
+                '<div class="col-xs-12 col-md-9">'+
+                    '<p><strong>R.U.T:</strong> '+data.rut+'</p>'+
+                    '<p><strong>Nombre:</strong> '+nombre+'</p>'+    
+                    '<p><strong>Genero:</strong> '+data.genero+'</p>'+
+                    '<p><strong>Edad:</strong> '+data.edad+'</p>'+
+                '</div>'+
+            '</div>'+
+            '<div id="accordion" class="panel-group">'+
+                '<div class="panel panel-default">'+
+                    '<div class="panel-heading">'+
+                        '<h5 class="panel-title">'+
+                            '<a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" class="collapsed">'+
+                                '<i class="fa fa-plus-circle"></i>&nbsp;Datos de Identificación'+
+                            '</a>'+
+                        '</h5>'+
+                    '</div>'+
+                    '<div class="panel-collapse collapse" id="collapseOne" aria-expanded="false" style="height: 0px;">'+
+                        '<div class="panel-body">'+
+                            '<div class="table-responsive">'+
+                                '<table class="table table-striped">'+
+                                     '<tbody>'+
+                                        '<tr>'+
+                                           '<td><strong>Correo:</strong></td>'+
+                                           '<td>'+data.email+'</td> '+
+                                           '<td><strong>Estado Civil:</strong></td>'+
+                                           '<td>Soltero(a)</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                           '<td><strong>Telefono fijo:</strong></td>'+
+                                           '<td>'+data.telefono+'</td>'+
+                                           '<td><strong>Celular:</strong></td>'+
+                                           '<td>'+data.celular+'</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                           '<td><strong>Religión:</strong></td>'+
+                                           '<td>Catolicismo</td>'+
+                                           '<td><strong>Previsión méd.:</strong></td>'+
+                                           '<td>Consalud</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                           '<td><strong>País de res.:</strong></td>'+
+                                           '<td>Chile</td>'+
+                                           '<td><strong>N. de estudio:</strong></td>'+
+                                           '<td>Profesional</td>'+
+                                        '</tr>'+
+                                       '<tr>'+
+                                            '<td><strong>Fecha Nac.:</strong></td>'+
+                                            '<td>'+data.fecha_nac+'</td>'+
+                                            '<td><strong></strong></td>'+
+                                            '<td></td>'+
+                                        '</tr> '+
+                                        '<tr>'+
+                                            '<td><strong>Lugar de Nac.:</strong></td>'+
+                                            '<td colspan="3">'+data.lugar_nac+'</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td><strong>Ocupación:</strong></td>'+
+                                            '<td colspan="3">Ingenieria en informatica mencion redes</td>'+
+                                        '</tr>'+
+                                     '</tbody>'+
+                                 '</table>'+
+                             '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="panel panel-default">'+
+                    '<div class="panel-heading">'+
+                        '<h4 class="panel-title">'+
+                            '<a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="collapsed" aria-expanded="false">'+
+                                '<i class="fa fa-plus-circle"></i>&nbsp;Datos de Residencia Actual'+
+                            '</a>'+
+                        '</h4>'+
+                    '</div>'+
+                    '<div class="panel-collapse collapse" id="collapseTwo" aria-expanded="false" style="height: 0px;">'+
+                        '<div class="panel-body">'+
+                            '<div class="table-responsive">´'+
+                                '<table class="table table-striped">'+
+                                    '<tbody>'+
+                                        '<tr>'+
+                                            '<td><strong>Región:</strong></td>'+
+                                            '<td colspan="3">Región del libertador Gral. Bernardo Ohiggins</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td><strong>Provincia:</strong></td>'+
+                                            '<td colspan="3">cachapoal</td>'+
+                                        '</tr>'+
+                                       '<tr>'+
+                                            '<td><strong>Comuna:</strong></td>'+
+                                            '<td colspan="3">Teodoro Schmidt</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td><strong>Calle/pasaje/villa:</strong></td>'+
+                                            '<td colspan="3">Ingenieria en informatica mencion redes</td>'+
+                                        '</tr>'+
+                                    '</tbody>'+
+                                '</table>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="panel panel-default">'+
+                   '<div class="panel-heading">'+
+                        '<h4 class="panel-title">'+
+                            '<a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="collapsed" aria-expanded="false">'+
+                                '<i class="fa fa-plus-circle"></i>&nbsp;Gr. Sanguineo/ F. RH'+
+                            '</a>'+
+                        '</h4>'+
+                    '</div>'+
+                    '<div class="panel-collapse collapse" id="collapseThree" aria-expanded="false" style="height: 0px;">'+
+                        '<div class="panel-body">'+
+                                '<div class="table-responsive">'+
+                                '<table class="table table-striped">'+
+                                    '<tbody>'+
+                                        '<tr>'+
+                                           '<td><strong>Grupo Sanguíneo:</strong></td>'+
+                                           '<td>AB</td>'+
+                                           '<td><strong>Factor RH:</strong></td>'+
+                                           '<td>Positivo</td>'+
+                                        '</tr>'+
+                                    '</tbody>'+
+                                '</table>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="panel panel-default">'+
+                    '<div class="panel-heading">'+
+                        '<h4 class="panel-title">'+
+                            '<a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="collapsed" aria-expanded="false">'+
+                                '<i class="fa fa-plus-circle"></i>&nbsp;Personas de Contacto'+
+                            '</a>'+
+                        '</h4>'+
+                    '</div>'+
+                    '<div class="panel-collapse collapse" id="collapseFour" aria-expanded="false" style="height: 0px;">'+
+                        '<div class="panel-body">'+
+                            '<h1>EN CONSTRUCCION...</h1>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</div>';
                         
-            $('#datos_personales').html(info_personal);  
+            $('#datos_paciente').html(modal);  
         }
     })
     .fail(function( jqXHR, textStatus, errorThrown ) {

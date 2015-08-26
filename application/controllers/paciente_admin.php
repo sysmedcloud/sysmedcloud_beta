@@ -47,9 +47,6 @@ class Paciente_admin extends CI_Controller {
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
         
-        //Obtener informacion personal del usuario
-        $data["info"]       = $this->paciente_model->info_personal($data["session"]["db_name"],$data["session"]["id_usuario"]);
-        
         //Cargamos todos nuestros dropdown utilizados en la vista
         $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
         $data["est_civil"]      = $this->dropdown_model->cargarEstCivil();
@@ -228,7 +225,15 @@ class Paciente_admin extends CI_Controller {
     }
     public function dataPaciente(){
         
-        echo $this->input->post('id_paciente');
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        
+        $id_paciente = $this->input->post('id_paciente');
+        
+        //Obtener informacion personal del paciente
+        echo $this->paciente_model->datos_paciente($id_paciente);
+        
+        
     }
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 

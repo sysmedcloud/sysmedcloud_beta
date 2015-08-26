@@ -65,10 +65,7 @@
                   </a>
                 </div>
                 <div class="col-xs-12 col-md-9">
-                    <p><strong>R.U.T:</strong> 17.484.496-8</p>
-                    <p><strong>Nombre:</strong> Cristian Alejandro Vidal Muñoz</p>    
-                    <p><strong>Genero:</strong> Masculino</p>
-                    <p><strong>Edad:</strong> 25</p>
+                    <div id="datos_personales"></div>
                 </div>
             </div>
             <div id="accordion" class="panel-group">

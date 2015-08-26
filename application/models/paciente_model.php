@@ -5,49 +5,7 @@ class Paciente_model extends CI_Model
     function __construct() 
     {
         parent::__construct();
-    }
-    
-    /***************************************************************************
-    /** @Funtion que permite retornar los datos personales del usuario
-    /**************************************************************************/
-    function info_personal($nom_bd,$id_usuario)
-    {
-        //cargamos los datos del usuario
-        $this->db->select('
-            u.id_usuario,
-            u.username,
-            du.rut,
-            du.primer_nombre,
-            du.segundo_nombre,
-            du.apellido_paterno,
-            du.apellido_materno,
-            du.telefono,
-            du.celular,
-            du.genero,
-            du.email,
-            du.nacionalidad,
-            du.id_region,
-            du.id_provincia,
-            du.id_comuna,
-            du.calle,
-            du.imagen,
-            du.fecha_nac');
-        $this->db->from('tbl_usuarios u');
-        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
-        //$this->db->join('tbl_paises p','p.id_pais = pa.id_pais');
-        $this->db->where('u.id_usuario',$id_usuario);
-        
-        $datos = $this->db->get();
-        
-        if ($datos->num_rows() > 0)
-        {
-            return $datos->row();
-            
-        }else{
-            
-            redirect(base_url()."login_app/accion/logout");
-        }
-    }
+    }    
     /***************************************************************************
     /** @Funtion que permite validar la existencia de un usuario tipo paciente
     /**************************************************************************/
@@ -187,6 +145,55 @@ class Paciente_model extends CI_Model
         return $insert_paciente = $DB->insert('tbl_historias_medicas',$data);
         
     }
+        /***************************************************************************
+    /** @Funtion que permite retornar los datos de un paciente
+    /**************************************************************************/
+    function datos_paciente($id_paciente)
+    {
+        //cargamos los datos del usuario
+        $this->db->select('
+            u.id_usuario,du.rut,
+            du.primer_nombre,du.segundo_nombre,
+            du.apellido_paterno,du.apellido_materno,
+            du.fecha_nac,du.telefono,
+            du.celular,du.genero,
+            du.email,du.nacionalidad,
+            du.id_region,du.id_provincia,
+            du.id_comuna,du.calle,
+            du.imagen,du.fecha_nac');
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');       
+        $this->db->where('u.id_usuario',$id_paciente);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0){
+            
+            //Validar genero del paciente
+            $genero = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
+            //calcular edad del paciente
+            $fecha_nac  = $datos->row()->fecha_nac;
+            $fecha_nac  = explode(" ",$fecha_nac);
+            $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
+            $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+            
+            $arr_paciente = array(
+                "rut"               => $datos->row()->rut,
+                "primer_nombre"     => ucfirst($datos->row()->primer_nombre),
+                "segundo_nombre"    => ucfirst($datos->row()->segundo_nombre),
+                "apellido_paterno"  => ucfirst($datos->row()->apellido_paterno),
+                "apellido_materno"  => ucfirst($datos->row()->apellido_materno),
+                "genero"            => $genero,
+                "edad"              => $edad
+            );
+            
+            echo json_encode($arr_paciente); 
+            
+        }else{
+            
+            $arr_paciente = array(); 
+            echo json_encode($arr_paciente);
+        }
+    }
     /***************************************************************************
     /** @Funtion que permite retornar un json con info de los pacientes
     /**************************************************************************/
@@ -238,7 +245,7 @@ class Paciente_model extends CI_Model
                 $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
                 
                 $fa_editar  = '<a href="#" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente

@@ -147,7 +147,7 @@ function ver_datos_paciente(id_paciente){
                                            '<td><strong>Correo:</strong></td>'+
                                            '<td>'+data.email+'</td> '+
                                            '<td><strong>Estado Civil:</strong></td>'+
-                                           '<td>Soltero(a)</td>'+
+                                           '<td>'+data.estado_civil+'</td>'+
                                         '</tr>'+
                                         '<tr>'+
                                            '<td><strong>Telefono fijo:</strong></td>'+
@@ -157,15 +157,19 @@ function ver_datos_paciente(id_paciente){
                                         '</tr>'+
                                         '<tr>'+
                                            '<td><strong>Religión:</strong></td>'+
-                                           '<td>Catolicismo</td>'+
+                                           '<td>'+data.religion+'</td>'+
                                            '<td><strong>Previsión méd.:</strong></td>'+
-                                           '<td>Consalud</td>'+
+                                           '<td>'+data.prevision+'</td>'+
                                         '</tr>'+
                                         '<tr>'+
                                            '<td><strong>País de res.:</strong></td>'+
-                                           '<td>Chile</td>'+
-                                           '<td><strong>N. de estudio:</strong></td>'+
-                                           '<td>Profesional</td>'+
+                                           '<td>'+data.nacionalidad+'</td>'+
+                                           '<td></td>'+
+                                           '<td></td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td><strong>N. de estudio:</strong></td>'+
+                                            '<td colspan="3">'+data.nivel_estudio+'</td>'+
                                         '</tr>'+
                                        '<tr>'+
                                             '<td><strong>Fecha Nac.:</strong></td>'+
@@ -179,7 +183,7 @@ function ver_datos_paciente(id_paciente){
                                         '</tr>'+
                                         '<tr>'+
                                             '<td><strong>Ocupación:</strong></td>'+
-                                            '<td colspan="3">Ingenieria en informatica mencion redes</td>'+
+                                            '<td colspan="3">'+data.ocupacion+'</td>'+
                                         '</tr>'+
                                      '</tbody>'+
                                  '</table>'+
@@ -202,19 +206,19 @@ function ver_datos_paciente(id_paciente){
                                     '<tbody>'+
                                         '<tr>'+
                                             '<td><strong>Región:</strong></td>'+
-                                            '<td colspan="3">Región del libertador Gral. Bernardo Ohiggins</td>'+
+                                            '<td colspan="3">'+data.region+'</td>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<td><strong>Provincia:</strong></td>'+
-                                            '<td colspan="3">cachapoal</td>'+
+                                            '<td colspan="3">'+data.provincia+'</td>'+
                                         '</tr>'+
                                        '<tr>'+
                                             '<td><strong>Comuna:</strong></td>'+
-                                            '<td colspan="3">Teodoro Schmidt</td>'+
+                                            '<td colspan="3">'+data.comuna+'</td>'+
                                         '</tr>'+
                                         '<tr>'+
                                             '<td><strong>Calle/pasaje/villa:</strong></td>'+
-                                            '<td colspan="3">Ingenieria en informatica mencion redes</td>'+
+                                            '<td colspan="3">'+data.calle+'</td>'+
                                         '</tr>'+
                                     '</tbody>'+
                                 '</table>'+
@@ -237,9 +241,9 @@ function ver_datos_paciente(id_paciente){
                                     '<tbody>'+
                                         '<tr>'+
                                            '<td><strong>Grupo Sanguíneo:</strong></td>'+
-                                           '<td>AB</td>'+
+                                           '<td>'+data.grupo_sang+'</td>'+
                                            '<td><strong>Factor RH:</strong></td>'+
-                                           '<td>Positivo</td>'+
+                                           '<td>'+data.factor_rh+'</td>'+
                                         '</tr>'+
                                     '</tbody>'+
                                 '</table>'+

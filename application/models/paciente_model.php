@@ -170,9 +170,32 @@ class Paciente_model extends CI_Model
             du.calle,
             du.imagen,
             du.fecha_nac,
-            du.lugar_nac ');
+            du.lugar_nac,
+            p.nombre as nacionalidad,
+            r.REGION_NOMBRE as region,
+            pr.PROVINCIA_NOMBRE as provincia,
+            c.COMUNA_NOMBRE as comuna,
+            e.estado_civil,
+            rg.religion,
+            pm.prevision_medica,
+            o.descripcion as ocupacion,
+            ne.nivel_estudio,
+            gr.grupo_sanguineo,
+            rh.factor_rh
+            ');
         $this->db->from('tbl_usuarios u');
-        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');       
+        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
+        $this->db->join('tbl_paises p','p.cod_pais = du.nacionalidad','left');
+        $this->db->join('tbl_region r','r.REGION_ID = du.id_region','left');
+        $this->db->join('tbl_provincia pr','pr.PROVINCIA_ID = du.id_provincia','left');
+        $this->db->join('tbl_comuna c','c.COMUNA_ID = du.id_comuna','left');
+        $this->db->join('tbl_estado_civil e','e.id_estado_civil = du.id_estado_civil','left');
+        $this->db->join('tbl_religiones rg','rg.id_religion = du.id_religion','left');
+        $this->db->join('tbl_previsiones_medicas pm','pm.id_prevision_medica = du.id_prevision','left');
+        $this->db->join('tbl_ocupaciones o','o.cod_ocupacion = du.id_ocupacion','left');
+        $this->db->join('tbl_niveles_estudios ne','ne.id_nivel_estudio = du.id_nivel_estudio','left');
+        $this->db->join('tbl_grupos_sanguineos gr','gr.id_grupo_sanguineo = du.id_grupo_sang','left');
+        $this->db->join('tbl_factores_rh rh','rh.id_factor_rh = du.id_factorn_rh','left');
         $this->db->where('u.id_usuario',$id_paciente);
         $datos = $this->db->get();
         
@@ -183,27 +206,56 @@ class Paciente_model extends CI_Model
             $fecha_nac  = explode(" ",$fecha_nac);
             $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
             $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
-            
+
             //Validar otras variables
-            $genero = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
-            $email      = $datos->row()->email == "" ? "Sin info." : $datos->row()->email;
-            $telefono   = $datos->row()->telefono == "" ? "Sin info." : $datos->row()->telefono;
-            $celular    = $datos->row()->celular == "" ? "Sin info." : $datos->row()->celular;
-            $lugar_nac  = $datos->row()->lugar_nac == "" ? "Sin info." : $datos->row()->lugar_nac;
+            $rut            = $datos->row()->rut == "" ? "Sin info": $datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre == "" ? "Sin info." : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre == "" ? "Sin info." : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno == "" ? "Sin info." : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno == "" ? "Sin info." : $datos->row()->apellido_materno;
+            $genero         = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
+            $email          = $datos->row()->email == "" ? "Sin info." : $datos->row()->email;
+            $telefono       = $datos->row()->telefono == "" ? "Sin info." : $datos->row()->telefono;
+            $celular        = $datos->row()->celular == "" ? "Sin info." : $datos->row()->celular;
+            $lugar_nac      = $datos->row()->lugar_nac == "" ? "Sin info." : $datos->row()->lugar_nac;
+            $estado_civil   = $datos->row()->estado_civil == "" ? "Sin info." : $datos->row()->estado_civil;
+            $religion       = $datos->row()->religion == "" ? "Sin info." : $datos->row()->religion;
+            $prevision      = $datos->row()->prevision_medica == "" ? "Sin info." : $datos->row()->prevision_medica;
+            $nacionalidad   = $datos->row()->nacionalidad == "" ? "Sin info." : $datos->row()->nacionalidad;
+            $nivel_estudio  = $datos->row()->nivel_estudio == "" ? "Sin info.": $datos->row()->nivel_estudio;
+            $ocupacion      = $datos->row()->ocupacion == "" ? "Sin info." : $datos->row()->ocupacion;
+            $region         = $datos->row()->region == "" ? "Sin info." : $datos->row()->region;
+            $provincia      = $datos->row()->provincia == "" ? "Sin info." : $datos->row()->provincia;
+            $comuna         = $datos->row()->comuna == "" ? "Sin info" : $datos->row()->comuna;
+            $calle          = $datos->row()->calle  == "" ? "Sin info." : $datos->row()->calle;
+            $gr_sang        = $datos->row()->grupo_sanguineo == "" ? "Sin info." : $datos->row()->grupo_sanguineo;
+            $factor_rh      = $datos->row()->factor_rh == "" ? "Sin info." : $datos->row()->factor_rh;
             
             $arr_paciente = array(
-                "rut"               => $datos->row()->rut,
-                "primer_nombre"     => ucfirst($datos->row()->primer_nombre),
-                "segundo_nombre"    => ucfirst($datos->row()->segundo_nombre),
-                "apellido_paterno"  => ucfirst($datos->row()->apellido_paterno),
-                "apellido_materno"  => ucfirst($datos->row()->apellido_materno),
+                "rut"               => $rut,
+                "primer_nombre"     => ucfirst($p_nombre),
+                "segundo_nombre"    => ucfirst($s_nombre),
+                "apellido_paterno"  => ucfirst($a_peterno),
+                "apellido_materno"  => ucfirst($a_materno),
                 "genero"            => $genero,
                 "edad"              => $edad,
                 "email"             => $email,
+                "estado_civil"      => ucfirst($estado_civil),
                 "telefono"          => $telefono,
                 "celular"           => $celular,
-                "fecha_nac"         => cambiaf_a_normal($fecha_nac),
-                "lugar_nac"         => $lugar_nac
+                "religion"          => ucfirst($religion),
+                "prevision"         => ucfirst($prevision),
+                "nacionalidad"      => ucfirst($nacionalidad),
+                "nivel_estudio"     => ucfirst($nivel_estudio),
+                "lugar_nac"         => $lugar_nac,
+                "fecha_nac"         => cambiaf_a_normal($fecha_nac), 
+                "ocupacion"         => ucfirst($ocupacion),
+                "region"            => ucfirst($region),
+                "provincia"         => ucfirst($provincia),
+                "comuna"            => ucfirst($comuna),
+                "calle"             => ucfirst($calle),
+                "grupo_sang"        => ucfirst($gr_sang),
+                "factor_rh"         => ucfirst($factor_rh)
             );
             
             echo json_encode($arr_paciente); 

@@ -241,7 +241,7 @@
                                     <?php } ?> 
                                     
                                    <?php 
-                                      if(!empty(validation_errors())){
+                                      if(validation_errors()){
 
                                       ?>
                                     <div class="alert alert-danger alert-dismissable">

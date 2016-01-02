@@ -215,13 +215,38 @@
                                           </div>
                                        </div>
                                        <div id="tab-4" class="tab-pane">
-                                          <h1>EN CONSTRUCCION...</h1>
                                           <div class="row">
                                              <div class="col-md-4">
+                                                <strong>Nombres</strong>
+                                                <input type="text" name="pc_nombres" id="pc_nombres" class="form-control m-b " value="">
+                                                <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
+                                                <strong>Apellidos</strong>
+                                                <input type="text" name="pc_apellidos" id="pc_apellidos" class="form-control m-b " value="">
+                                                <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
                                              </div>
-                                             <div class="col-md-4">&nbsp;</div>
+                                              <div class="col-md-4">
+                                                <strong>Familiaridad</strong>
+                                                <?=form_dropdown('familiariodad',$parentescos,set_value('parentescos'),'id="factorn_rh" class="form-control m-b "');?>
+                                                <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
+                                              </div>
+                                          </div>
+                                           <div class="row">
+                                             <div class="col-md-4">
+                                                <strong>Telefono</strong>
+                                                <input type="text" name="pc_telefono" id="pc_telefono" class="form-control m-b " value="">
+                                                <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
+                                             </div>
+                                             <div class="col-md-4">
+                                                <strong>Correo</strong>
+                                                <input type="text" name="pc_correo" id="pc_correo" class="form-control m-b " value="">
+                                                <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
+                                             </div>
+                                              <div class="col-md-4">
+                                                  <br>
+                                                  <button type="button" class="btn btn-danger">Agregar Otro Contacto</button>
+                                              </div>
                                           </div>
                                        </div>
                                     </div>

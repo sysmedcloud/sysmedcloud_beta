@@ -146,6 +146,27 @@ class dropdown_model extends CI_Model
     }
     
     /***************************************************************************
+    * @Funcion que permite retornar todos los parentescos familiares
+    ***************************************************************************/
+    function cargarParentescos(){
+        
+        //creamos array para las previsiones medicas
+        $data = array();
+        //valor por defecto del select previsiones medicas
+        $data['']='Seleccione un parentesco';
+        //cargamos todas las previsiones medicas
+        $this->db->select('p.id_parentesco,p.parentesco');
+        $this->db->from('tbl_parentescos p');
+        $this->db->order_by("p.id_parentesco", "asc");
+        
+        foreach($this->db->get()->result() as $row){
+            // agregamos datos a nuestro array
+            $data[$row->id_parentesco] = ucwords(mb_strtolower($row->parentesco,'utf-8'));  
+        }       
+        return $data;
+    }
+    
+    /***************************************************************************
     * @Funcion que permite retornar todos los estados civiles
     ***************************************************************************/
     function cargarEstCivil(){

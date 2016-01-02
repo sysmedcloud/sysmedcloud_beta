@@ -38,7 +38,7 @@ class Paciente_admin extends CI_Controller {
         $data["session"]    = $this->general_sessions->validarSessionAdmin();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files']      = $this->fileclass->files_miperfil();
+        $data['files']      = $this->fileclass->files_crearpacientes();
         
         //Cargamos datos de la empresa (LIBRERIA)
         $data["empresa"]    = $this->data_empresa->info_empresa();
@@ -49,6 +49,7 @@ class Paciente_admin extends CI_Controller {
         
         //Cargamos todos nuestros dropdown utilizados en la vista
         $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
+        $data["parentescos"]    = $this->dropdown_model->cargarParentescos();
         $data["est_civil"]      = $this->dropdown_model->cargarEstCivil();
         $data["ocupaciones"]    = $this->dropdown_model->cargarOcupaciones();
         $data["religiones"]     = $this->dropdown_model->cargarReligiones();

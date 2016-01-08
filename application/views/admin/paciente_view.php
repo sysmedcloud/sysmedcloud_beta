@@ -216,6 +216,11 @@
                                        </div>
                                        <div id="tab-4" class="tab-pane">
                                           <div class="row">
+                                              <div class="col-md-12">
+                                                  <h2 style="color: red;">Modulo en construcción ( sin funcionamiento )</h2>
+                                              </div>
+                                          </div>
+                                           <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Nombres</strong>
                                                 <input type="text" name="pc_nombres" id="pc_nombres" class="form-control m-b " value="">

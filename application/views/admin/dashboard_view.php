@@ -4,7 +4,7 @@
     <div class="middle-box text-center animated fadeInRightBig">
         <h3 class="font-bold">Dashboard</h3>
         <div class="error-desc">
-            estoy cambiando el contenido del dashboard :=)
+            Un dashboard debe transformar los datos en información y esta en conocimiento para el negocio
             <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
             
         </div>

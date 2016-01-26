@@ -223,36 +223,37 @@
                                            <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Nombres</strong>
-                                                <input type="text" name="pc_nombres" id="pc_nombres" class="form-control m-b " value="">
+                                                <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">
                                                 <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Apellidos</strong>
-                                                <input type="text" name="pc_apellidos" id="pc_apellidos" class="form-control m-b " value="">
+                                                <input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">
                                                 <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
                                              </div>
                                               <div class="col-md-4">
                                                 <strong>Familiaridad</strong>
-                                                <?=form_dropdown('familiariodad',$parentescos,set_value('parentescos'),'id="factorn_rh" class="form-control m-b "');?>
+                                                <?=form_dropdown('familiariodad[]',$parentescos,set_value('parentescos'),'id="factorn_rh" class="form-control m-b "');?>
                                                 <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
                                               </div>
                                           </div>
                                            <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Telefono</strong>
-                                                <input type="text" name="pc_telefono" id="pc_telefono" class="form-control m-b " value="">
+                                                <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">
                                                 <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Correo</strong>
-                                                <input type="text" name="pc_correo" id="pc_correo" class="form-control m-b " value="">
+                                                <input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="">
                                                 <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
                                              </div>
                                               <div class="col-md-4">
                                                   <br>
-                                                  <button type="button" class="btn btn-danger">Agregar Otro Contacto</button>
+                                                  <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-danger">Agregar Otro Contacto</a>
                                               </div>
                                           </div>
+                                          <div id="inFiles"></div>
                                        </div>
                                     </div>
                                  </div>
@@ -306,3 +307,72 @@
       </div>
    </div>
 </div>
+<script>
+var cont = 1;
+//Función para añadir un nuevo input file
+function newFile(){
+    
+    var html = '<div id="group_'+cont+'"><div class="row"><hr>'+
+                '<div class="col-md-4">'+
+                   '<strong>Nombres</strong>'+
+                   '<input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">'+
+               '</div>'+
+                '<div class="col-md-4">'+
+                   '<strong>Apellidos</strong>'+
+                   '<input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">'+
+                '</div>'+
+                 '<div class="col-md-4">'+
+                   '<strong>Familiaridad</strong>'+
+                   '<select class="form-control m-b " id="factorn_rh" name="familiariodad[]">'+
+                   '<option selected="selected" value="">Seleccione un parentesco</option>'+
+                   '<option value="1">Padres</option>'+
+                   '<option value="2">Hijos</option>'+
+                   '<option value="3">Cónyuge</option>'+
+                   '<option value="4">Suegro</option>'+
+                   '<option value="5">Yerno/nuera</option>'+
+                   '<option value="6">Abuelos</option>'+
+                   '<option value="7">Nietos</option>'+
+                   '<option value="8">Hermanos</option>'+
+                   '<option value="9">Cuñados</option>'+
+                   '<option value="10">Bisabuelos Y Bisnietos</option>'+
+                   '<option value="11">Tíos Y Sobrinos</option>'+
+                   '<option value="12">Primos Y Tíos Abuelos</option>'+
+                   '</select>'+
+                '</div>'+
+             '</div>'+
+              '<div class="row">'+
+                '<div class="col-md-4">'+
+                   '<strong>Telefono</strong>'+
+                   '<input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">'+
+                '</div>'+
+                '<div class="col-md-4">'+
+                   '<strong>Correo</strong>'+
+                   '<input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="">'+
+                '</div>'+
+                 '<div class="col-md-4">'+
+                     '<br>'+
+                     '<a href="javascript:;" title="Eliminar contacto" onclick="deleteFile('+cont+');" id="delete_'+cont+'" class="delete btn btn-danger"><i class="fa fa-fw fa-times"></i></a>'+
+                 '</div>'+
+             '</div></div>';
+             
+    $("#inFiles").append(html);
+    var cont = cont+1;
+
+    //Si el contador es igual a 5 se bloquea el boton añadir nuevo input
+    if(cont == 5){
+        $("#plus").addClass("disabled");
+        $("#msj").html("&nbsp; *Maximo de archivos permitidos!.");
+    }
+
+}
+
+//Eliminar un input de archivo
+function deleteFile(num){
+    $("#group_"+num+"").remove();
+    cont = cont - 1;
+   if(cont < 5){
+        $("#plus").removeClass("disabled");
+        $("#msj").html("");
+    }
+}
+</script>

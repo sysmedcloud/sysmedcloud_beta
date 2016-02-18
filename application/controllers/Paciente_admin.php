@@ -162,7 +162,27 @@ class Paciente_admin extends CI_Controller {
             //validar id del nuevo usuario
             if($idUser > 0){
                 
-                //Crear arreglo con los datos del nuestro nuevo paciente
+                //Datos de las personas de contacto que tenga el cliente
+                $pc_nombre     = $this->input->post('pc_nombres');
+                $pc_apellidos  = $this->input->post('pc_apellidos');
+                $pc_fam        = $this->input->post('familiariodad');
+                $pc_telefono   = $this->input->post('pc_telefono');
+                $pc_correo     = $this->input->post('pc_correo');
+
+                $cant_contactos = count($pc_nombre);//cantidad de contactos
+
+                for($x = 0;$x < $cant_contactos;$x++){
+
+                    $arr_contacto[] = array(
+                        "nombre"           => $pc_nombre[$x],
+                        "apellido"         => $pc_apellidos[$x],
+                        "familiariodad"    => $pc_fam[$x],
+                        "telefono"         => $pc_telefono[$x],
+                        "correo"           => $pc_correo[$x],
+                    );
+                }
+                
+                //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
                 $dataForm = array(//Nuestro arreglo con los datos del paciente
                     "id_new_user"   => $idUser,
                     "rut"           => $this->input->post('rut'),
@@ -187,7 +207,10 @@ class Paciente_admin extends CI_Controller {
                     "comuna"        => $this->input->post('comuna'),
                     "calle"         => $this->input->post('calle'),
                     "grupo_sang"    => $this->input->post('grupo_sang'),
-                    "factorn_rh"    => $this->input->post('factorn_rh')
+                    "factorn_rh"    => $this->input->post('factorn_rh'),
+                    //informacion de las personas de contacto
+                    "p_contactos"   => $arr_contacto
+                    
                 );
                 
                 //Registrar los datos del nuevo paciente

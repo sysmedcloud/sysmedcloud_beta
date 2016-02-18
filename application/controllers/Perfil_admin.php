@@ -48,7 +48,7 @@ class Perfil_admin extends CI_Controller {
         $data["active"]     = activeMenu("perfil");//(HELPERS)marca menu (active)
         
         //Obtener informacion personal del usuario
-        $data["info"]       = $this->perfil_model->info_personal($data["session"]["db_name"],$data["session"]["id_usuario"]);
+        $data["info"]       = $this->perfil_model->info_personal($data["session"]["id_usuario"]);
         
         //Cargamos todos los paises
         $data["paises"]     = $this->dropdown_model->cargarPaises();

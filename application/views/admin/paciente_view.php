@@ -215,11 +215,6 @@
                                           </div>
                                        </div>
                                        <div id="tab-4" class="tab-pane">
-                                          <div class="row">
-                                              <div class="col-md-12">
-                                                  <h2 style="color: red;">Modulo en construcción ( sin funcionamiento )</h2>
-                                              </div>
-                                          </div>
                                            <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Nombres</strong>
@@ -250,7 +245,7 @@
                                              </div>
                                               <div class="col-md-4">
                                                   <br>
-                                                  <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-danger">Agregar Otro Contacto</a>
+                                                  <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-primary">Agregar Otro Contacto</a>
                                               </div>
                                           </div>
                                           <div id="inFiles"></div>
@@ -351,7 +346,7 @@ function newFile(){
                 '</div>'+
                  '<div class="col-md-4">'+
                      '<br>'+
-                     '<a href="javascript:;" title="Eliminar contacto" onclick="deleteFile('+cont+');" id="delete_'+cont+'" class="delete btn btn-danger"><i class="fa fa-fw fa-times"></i></a>'+
+                     '<a href="javascript:;" title="Eliminar contacto" onclick="deleteFile('+cont+');" id="delete_'+cont+'" class="delete btn btn-danger">Eliminar Contacto<i class="fa fa-fw fa-times"></i></a>'+
                  '</div>'+
              '</div></div>';
              

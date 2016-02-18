@@ -22,6 +22,7 @@ class Login_app_model extends CI_Model {
     /******************************************************************/
     public function login_user($data)
     {
+        
         $this->db->select('u.id_usuario,'
             .'u.id_empresa,'
             .'e.db_name,'
@@ -32,16 +33,17 @@ class Login_app_model extends CI_Model {
             .'u.estado,'
             //.'u.activo,'
             //.'u.last_login,'
-            .'du.primer_nombre,'
-            .'du.segundo_nombre,'
-            .'du.apellido_paterno,'
-            .'du.apellido_materno,'
-            .'du.rut,'
-            .'du.imagen');
+            //.'du.primer_nombre,'
+            //.'du.segundo_nombre,'
+            //.'du.apellido_paterno,'
+            //.'du.apellido_materno,'
+            //.'du.rut,'
+            //.'du.imagen'
+            );
         $this->db->from('tbl_usuarios u');
         $this->db->join('tbl_perfiles p','p.id_perfil = u.id_perfil');
         $this->db->join('tbl_empresas e','e.id_empresa = u.id_empresa');
-        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
+        //$this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
         $this->db->where('u.username',$data['username']);
         $this->db->where('u.password',$data['password']);
         $this->db->where('u.estado',0);

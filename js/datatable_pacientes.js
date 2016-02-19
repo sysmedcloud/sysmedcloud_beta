@@ -116,6 +116,21 @@ function ver_datos_paciente(id_paciente){
             var nombre  =   data.primer_nombre+' '+data.segundo_nombre+' '+
                             data.apellido_paterno+' '+data.apellido_materno;
             
+            var personas_contacto = Object.keys(data.personas_contacto).length;
+            
+            var html_personas_contacto = "";//personas de contacto
+            
+            //crear html de las personas de contacto
+            for (i = 0; i < personas_contacto; i++) { 
+
+               html_personas_contacto += '<tr>'+
+               '<td>'+data.personas_contacto[i].nombres+'</td>'+
+               '<td>'+data.personas_contacto[i].apellidos+'</td>'+
+               '<td>'+data.personas_contacto[i].correo+'</td>'+
+               '<td>'+data.personas_contacto[i].parentesco+'</td>'+
+               '</tr>';
+           }
+            
             var modal = '<div class="row">'+
                 '<div class="col-xs-12 col-md-3">'+
                   '<a href="#" class="thumbnail">'+
@@ -261,7 +276,19 @@ function ver_datos_paciente(id_paciente){
                     '</div>'+
                     '<div class="panel-collapse collapse" id="collapseFour" aria-expanded="false" style="height: 0px;">'+
                         '<div class="panel-body">'+
-                            '<h1>EN CONSTRUCCION...</h1>'+
+                            '<table class="table table-striped">'+
+                                '<thead>'+
+                                  '<tr>'+
+                                    '<th>Nombres</th>'+
+                                    '<th>Apellidos</th>'+
+                                    '<th>Email</th>'+
+                                    '<th>Parentesco</th>'+
+                                  '</tr>'+
+                                '</thead>'+
+                                '<tbody>'+
+                                html_personas_contacto+
+                                '</tbody>'+
+                              '</table>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+

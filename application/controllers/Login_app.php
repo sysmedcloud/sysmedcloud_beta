@@ -109,19 +109,19 @@ class Login_app extends CI_Controller {
                     
                     //Creamos un arreglo con las variables de sesion.
                     $data["is_logued_in"]   = TRUE;
-                    $data["id_usuario"]     = $check_user->id_usuario;
-                    $data["username"]       = $check_user->username;
-                    $data["id_empresa"]     = $check_user->id_empresa;
-                    $data["db_name"]        = $check_user->db_name;
-                    $data["id_perfil"]      = $check_user->id_perfil;
-                    $data["perfil"]         = $check_user->perfil;
+                    $data["id_usuario"]     = $check_user["id_usuario"];
+                    $data["username"]       = $check_user["username"];
+                    $data["id_empresa"]     = $check_user["id_empresa"];
+                    $data["db_name"]        = $check_user["db_name"];
+                    $data["id_perfil"]      = $check_user["id_perfil"];
+                    $data["perfil"]         = $check_user["perfil"];
                     //$data["last_login"]     = $check_user->last_login;
-                    $data["rut"]            = $check_user->rut;
-                    $data["primer_nom"]     = $check_user->primer_nombre;
-                    $data["segundo_nom"]    = $check_user->segundo_nombre;
-                    $data["apellido_pat"]   = $check_user->apellido_paterno;
-                    $data["apellido_mat"]   = $check_user->apellido_materno;
-                    $data["imagen"]         = $check_user->imagen;
+                    $data["rut"]            = $check_user["rut"];
+                    $data["primer_nom"]     = $check_user["primer_nombre"];
+                    $data["segundo_nom"]    = $check_user["segundo_nombre"];
+                    $data["apellido_pat"]   = $check_user["apellido_paterno"];
+                    $data["apellido_mat"]   = $check_user["apellido_materno"];
+                    $data["imagen"]         = $check_user["imagen"];
                     
                     //set_userdata() es usado para agregar información en la sesión, en este caso agregamos
                     //Nuestro arreglo recien creado con lo datos del usuario.

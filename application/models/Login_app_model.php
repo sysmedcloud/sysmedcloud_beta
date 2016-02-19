@@ -51,7 +51,37 @@ class Login_app_model extends CI_Model {
         
         if ($query->num_rows() > 0)
         {
-            return $query->row();
+            $row = $query->row();
+            
+            //Buscar informacion basica del usuario
+            $db_emp  = $this->load->database($row->db_name,TRUE);
+            $this->db->select(' du.id_usuario,du.primer_nombre,du.segundo_nombre,du.apellido_paterno,
+                                du.apellido_materno,du.rut,du.imagen');
+            
+            $db_emp->from('tbl_usuarios u');
+            $db_emp->where('u.id_usuario',$row->id_usuario);
+            $query_info = $db_emp->get();
+            $row_info   = $query_info->row();
+            
+            //Arreglo con datos de session
+            $arr_data_user = array(
+                "id_usuario"        => $row->id_usuario,
+                "id_empresa"        => $row->id_empresa,
+                "db_name"           => $row->db_name,
+                "id_perfil"         => $row->id_perfil,
+                "perfil"            => $row->perfil,
+                "username"          => $row->username,
+                "password"          => $row->password,
+                "estado"            => $row->estado,
+                "primer_nombre"     => $row_info->primer_nombre,
+                "segundo_nombre"    => $row_info->segundo_nombre,
+                "apellido_paterno"  => $row_info->apellido_paterno,
+                "apellido_materno"  => $row_info->apellido_materno,
+                "rut"               => $row_info->rut,
+                "imagen"            => $row_info->imagen
+            );
+            
+            return $arr_data_user;
 
         }else{
             

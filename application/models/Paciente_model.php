@@ -256,6 +256,13 @@ class Paciente_model extends CI_Model
             $gr_sang        = $datos->row()->grupo_sanguineo == "" ? "Sin info." : $datos->row()->grupo_sanguineo;
             $factor_rh      = $datos->row()->factor_rh == "" ? "Sin info." : $datos->row()->factor_rh;
             
+            //Buscar personas de contacto
+            $db_emp->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
+            $db_emp->from('tbl_personas_contacto pc');
+            $db_emp->join('tbl_parentescos p','p.id_parentesco = pc.id_parentesco');
+            $db_emp->where('pc.id_paciente',$datos->row()->id_usuario);
+            $personas_contacto = $db_emp->get()->result_array();
+            
             $arr_paciente = array(
                 "rut"               => $rut,
                 "primer_nombre"     => ucfirst($p_nombre),
@@ -280,7 +287,8 @@ class Paciente_model extends CI_Model
                 "comuna"            => ucfirst($comuna),
                 "calle"             => ucfirst($calle),
                 "grupo_sang"        => ucfirst($gr_sang),
-                "factor_rh"         => ucfirst($factor_rh)
+                "factor_rh"         => ucfirst($factor_rh),
+                "personas_contacto" => $personas_contacto
             );
             
             echo json_encode($arr_paciente); 

@@ -24,8 +24,8 @@ class Paciente_admin extends CI_Controller {
         $this->load->helper(array('url', 'form','html','funciones_system'));
     }
     
-    public function index()
-    {
+    public function index(){
+        
         $this->listadoPacientes();
     }
         
@@ -98,7 +98,7 @@ class Paciente_admin extends CI_Controller {
     }
     
     /**************************************************************************/
-    /** @Funcion que permite recibir los datos del form de perfil
+    /** @Funcion que permite recibir los datos del form de perfil (Ingresar)
     /**************************************************************************/
     public function  recibirDatos(){
        
@@ -225,6 +225,55 @@ class Paciente_admin extends CI_Controller {
         }       
         
     }
+    
+    /**************************************************************************/
+    /** @Funcion que permite recibir los datos del form de perfil (Edicion)
+    /**************************************************************************/
+    public function recibirDatosEdit(){
+        
+        echo "<pre>"; print_r($_POST);exit();
+        
+    }
+    
+    /**************************************************************************/
+    /** @Funcion que permite retornar vista para editar paciente
+    /**************************************************************************/
+    public function editarPaciente($id_paciente){
+               
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        
+        //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
+        $data['files'] = $this->fileclass->files_tbl();
+        
+        //Cargamos datos de la empresa (LIBRERIA)
+        $data["empresa"]    = $this->data_empresa->info_empresa();
+        
+        $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
+        
+        $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        
+        //Cargamos datos del paciente seleccionado
+        $data["paciente"]   = $this->paciente_model->info_paciente($id_paciente);    
+        
+        //Cargamos todos nuestros dropdown utilizados en la vista
+        $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
+        $data["parentescos"]    = $this->dropdown_model->cargarParentescos();
+        $data["est_civil"]      = $this->dropdown_model->cargarEstCivil();
+        $data["ocupaciones"]    = $this->dropdown_model->cargarOcupaciones();
+        $data["religiones"]     = $this->dropdown_model->cargarReligiones();
+        $data["niv_estudios"]   = $this->dropdown_model->cargarNivelesEst();
+        $data["paises"]         = $this->dropdown_model->cargarPaises();
+        $data["regiones"]       = $this->dropdown_model->cargarRegiones();
+        $data["provincias"]     = $this->dropdown_model->cargarProvincias();
+        $data["comunas"]        = $this->dropdown_model->cargarComunas();
+        $data["gr_sang"]        = $this->dropdown_model->cargarGrSanguineos();
+        $data["factoresRH"]     = $this->dropdown_model->cargarFactoresRH();
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->gestion_view->defaultAdminView("paciente_edit_view",$data);
+    }
+    
     /**************************************************************************/
     /** @Funcion que permite retornar vista de exista cambio info mi perfil
     /**************************************************************************/

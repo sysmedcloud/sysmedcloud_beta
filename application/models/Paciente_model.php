@@ -176,7 +176,7 @@ class Paciente_model extends CI_Model
         $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
                 
         //cargamos los datos del usuario
-        $db_emp->select('
+        $db_emp->select('du.id_data_usuario,
             u.id_usuario,
             du.rut,
             du.primer_nombre,
@@ -221,7 +221,7 @@ class Paciente_model extends CI_Model
         $db_emp->join('tbl_niveles_estudios ne','ne.id_nivel_estudio = du.id_nivel_estudio','left');
         $db_emp->join('tbl_grupos_sanguineos gr','gr.id_grupo_sanguineo = du.id_grupo_sang','left');
         $db_emp->join('tbl_factores_rh rh','rh.id_factor_rh = du.id_factorn_rh','left');
-        $db_emp->where('u.id_usuario',$id_paciente);
+        $db_emp->where('du.id_data_usuario',$id_paciente);
         $datos = $db_emp->get();
         
         if($datos->num_rows() > 0){
@@ -260,7 +260,7 @@ class Paciente_model extends CI_Model
             $db_emp->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
             $db_emp->from('tbl_personas_contacto pc');
             $db_emp->join('tbl_parentescos p','p.id_parentesco = pc.id_parentesco');
-            $db_emp->where('pc.id_paciente',$datos->row()->id_usuario);
+            $db_emp->where('pc.id_paciente',$datos->row()->id_data_usuario);
             $personas_contacto = $db_emp->get()->result_array();
             
             $arr_paciente = array(
@@ -307,7 +307,8 @@ class Paciente_model extends CI_Model
         $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
         
         //Query para obtener listado de pacientes
-        $db_emp->select("u.id_usuario,
+        $db_emp->select("du.id_data_usuario,
+        u.id_usuario,
         du.rut,
         du.primer_nombre,
         du.segundo_nombre,
@@ -324,7 +325,7 @@ class Paciente_model extends CI_Model
         $db_emp->where('u.id_perfil',4);
         $db_emp->where('u.estado',0);
         $db_emp->where('u.id_empresa',$id_empresa);
-        $db_emp->order_by("u.id_usuario", "asc");
+        $db_emp->order_by("du.id_data_usuario", "asc");
         $datos = $db_emp->get();
         
         $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
@@ -351,8 +352,8 @@ class Paciente_model extends CI_Model
                 $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
                 $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
                 
-                $fa_editar  = '<a href="#" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
+                $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_data_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_data_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente
@@ -380,6 +381,97 @@ class Paciente_model extends CI_Model
             //RETORNAR JSON VACIO
             //$response['data'] = $arr_data;
             echo json_encode($arr_data);
+        }
+    }
+    
+    /***************************************************************************
+    /** @Funtion que permite retornar informacion completa de un paciente
+    /**************************************************************************/
+    public function info_paciente($id_paciente){
+        
+        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
+        
+        //Query para obtener listado de pacientes
+        $db_emp->select("
+        du.id_data_usuario,
+        u.id_usuario,
+        du.rut,
+        du.primer_nombre,
+        du.segundo_nombre,
+        du.apellido_paterno,
+        du.apellido_materno,
+        du.telefono,
+        du.genero,
+        du.celular,
+        du.email,
+        du.nacionalidad,
+        du.id_region,
+        du.id_provincia,
+        du.id_comuna,
+        du.calle,
+        du.imagen,
+        du.fecha_nac,
+        du.id_estado_civil,
+        du.lugar_nac,
+        du.id_religion,
+        du.id_prevision,
+        du.id_ocupacion,
+        du.id_nivel_estudio,
+        du.id_grupo_sang,
+        du.id_factorn_rh,
+        du.fecha_mod,
+        u.fecha_creacion
+        ");
+        $db_emp->from('tbl_usuarios du');
+        $db_emp->join('smc_access_data.tbl_usuarios u','du.id_usuario = u.id_usuario');
+        $db_emp->where('u.id_perfil',4);
+        $db_emp->where('u.estado',0);
+        $db_emp->where('du.id_data_usuario',$id_paciente);
+        $datos = $db_emp->get();
+        
+        if($datos->num_rows() > 0 ){
+            
+            $row = $datos->row_array();
+            
+            //Buscar personas de contacto
+            $db_emp->select("pc.id_persona_contacto,pc.nombres,pc.apellidos,id_parentesco,pc.telefono,pc.correo");
+            $db_emp->from('tbl_personas_contacto pc');
+            $db_emp->where('pc.id_paciente',$row["id_data_usuario"]);
+            $contactos = $db_emp->get()->result_array();
+            
+            $arr_info = array(
+                "id_data_usuario"   => $row["id_data_usuario"],
+                "id_usuario"        => $row["id_usuario"],
+                "rut"               => $row["rut"],
+                "primer_nombre"     => $row["primer_nombre"],
+                "segundo_nombre"    => $row["segundo_nombre"],
+                "apellido_paterno"  => $row["apellido_paterno"],
+                "apellido_materno"  => $row["apellido_materno"],
+                "telefono"          => $row["telefono"],
+                "genero"            => $row["genero"],
+                "celular"           => $row["id_data_usuario"],
+                "email"             => $row["celular"],
+                "nacionalidad"      => $row["nacionalidad"],
+                "id_region"         => $row["id_region"],
+                "id_provincia"      => $row["id_provincia"],
+                "id_comuna"         => $row["id_comuna"],
+                "calle"             => $row["calle"],
+                "imagen"            => $row["imagen"],
+                "fecha_nac"         => $row["fecha_nac"],
+                "id_estado_civil"   => $row["id_estado_civil"],
+                "lugar_nac"         => $row["lugar_nac"],
+                "id_religion"       => $row["id_religion"],
+                "id_prevision"      => $row["id_prevision"],
+                "id_ocupacion"      => $row["id_ocupacion"],
+                "id_nivel_estudio"  => $row["id_nivel_estudio"],
+                "id_grupo_sang"     => $row["id_grupo_sang"],
+                "id_factor_rh"     => $row["id_factorn_rh"],
+                "fecha_mod"         => $row["fecha_mod"],
+                "fecha_creacion"    => $row["fecha_creacion"],
+                "personas_contacto" => $contactos,
+            );
+            
+            return $arr_info;
         }
     }
 }	

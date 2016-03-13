@@ -26,9 +26,9 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-
-                <table id="pacientes" class="table table-striped table-bordered table-hover dataTables-example" >
-                <thead>
+                <div class="table-responsive">
+                    <table id="pacientes" class="table table-striped table-hover dataTables-example" >
+                    <thead>
                     <tr>
                         <th>Fecha Creación</th>
                         <th>R.U.T.</th>
@@ -41,8 +41,9 @@
                         <th>V</th>
                         <th>E</th>
                     </tr>
-                </thead>
+                    </thead>
                 </table>
+                </div>    
                 </div>
             </div>
         </div>

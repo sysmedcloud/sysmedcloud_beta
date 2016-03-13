@@ -1,52 +1,3 @@
-$(document).ready(function() {
-    
-    var baseURL = $('body').data('baseurl');//url base
-    
-    $('#pacientes').dataTable({
-        "ajax": {
-            "url": baseURL+"paciente_admin/pacientes_json",//data
-            "dataSrc": ""
-        },
-        "columns": [ //columnas de nuestra tabla
-            { "data": "fecha_creacion" },
-            { "data": "rut" },
-            { "data": "nombres" },
-            { "data": "apellidos" },
-            { "data": "edad" },
-            { "data": "celular" },
-            { "data": "email"},
-            { "data": "editar"},
-            { "data": "view"},
-            { "data": "delete"}
-        ],
-        columnDefs: [
-            { type: 'date-eu', //ordena fecha
-              targets: 0
-            }
-        ],
-        order: [[ 0, "desc" ]],//orden by por fecha de creacion
-        responsive: true,//tabla responsive, agrega un boton
-        "dom": 'T<"clear">lfrtip',
-        "tableTools": {
-            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
-            "aButtons": [ //botones que sirven para exportar informacion de la tabla
-                {
-                    "sExtends": "csv",
-                    "sButtonText": "CSV"
-                },
-                {
-                    "sExtends": "xls",
-                    "sButtonText": "Excel"
-                },
-                {
-                    "sExtends": "pdf",
-                    "sButtonText": "PDF"
-                }                
-            ]
-        }
-    });
-    
-});
 //funcion que permiter ordenar nuestra tabla por fecha
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-pre": function ( date ) {
@@ -94,8 +45,81 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-desc": function ( a, b ) {
         return ((a < b) ? 1 : ((a > b) ? -1 : 0));
     }
-} );
+});
 
+$(document).ready(function() {
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#pacientes').dataTable({
+        "ajax": {
+            "url": baseURL+"paciente_admin/pacientes_json",//data
+            "dataSrc": ""
+        },
+        "columns": [ //columnas de nuestra tabla
+            { "data": "fecha_creacion" },
+            { "data": "rut" },
+            { "data": "nombres" },
+            { "data": "apellidos" },
+            { "data": "edad" },
+            { "data": "celular" },
+            { "data": "email"},
+            { "data": "editar"},
+            { "data": "view"},
+            { "data": "delete"}
+        ],
+        columnDefs: [
+            { type: 'date-eu', //ordena fecha
+              targets: 0
+            }
+        ],
+        order: [[ 0, "desc" ]],//orden by por fecha de creacion
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+            }
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        responsive: false,//tabla responsive, agrega un boton
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
+            "aButtons": [ //botones que sirven para exportar informacion de la tabla
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "CSV"
+                },
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Excel"
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "PDF"
+                }                
+            ]
+        }
+    });
+    
+});
 
 function ver_datos_paciente(id_paciente){
     
@@ -107,7 +131,7 @@ function ver_datos_paciente(id_paciente){
         data: {"id_paciente" : id_paciente},
         type: "POST",
         dataType: "json",
-        url: baseURL+"paciente_admin/dataPaciente",
+        url: baseURL+"paciente_admin/dataPaciente"
     })
    .done(function(data,textStatus,jqXHR ) {         
         

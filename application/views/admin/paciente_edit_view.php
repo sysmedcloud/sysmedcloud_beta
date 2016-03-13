@@ -25,7 +25,8 @@
             </div>
             <div class="ibox-content">
                <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal">
-                   <input type="hidden" id="id_paciente" name="id_paciente" value="<?=$id_paciente;?>">
+                   <input type="hidden" id="id_data_usuario" name="id_data_usuario" value="<?=$paciente["id_data_usuario"];?>">
+                   <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <div class="form-group">
                      <label class="col-sm-2 control-label">
                      <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">

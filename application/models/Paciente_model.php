@@ -147,6 +147,64 @@ class Paciente_model extends CI_Model
             redirect(base_url()."errors");
         }
     }
+    
+    /***************************************************************************
+    /** @Funtion que permite editar un paciente
+    /**************************************************************************/
+    public function editarPaciente($dataForm){ 
+        
+        //echo "<pre>";print_r($dataForm);exit();
+        
+        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
+
+        /* Datos para editar paciente */
+        $data["id_usuario"]          = $dataForm["id_usuario"];
+        $data['rut']                 = $dataForm["rut"];
+        $data['primer_nombre']       = $dataForm["p_nombre"];
+        $data['segundo_nombre']      = $dataForm["s_nombre"];
+        $data['apellido_paterno']    = $dataForm["a_paterno"];
+        $data['apellido_materno']    = $dataForm["a_materno"];
+        $data['telefono']            = $dataForm["telefono_f"];
+        $data['celular']             = $dataForm["celular"];
+        $data['genero']              = $dataForm["genero"];
+        $data['email']               = $dataForm["correo"];
+        $data['nacionalidad']        = $dataForm["pais_res"];
+        $data['id_region']           = $dataForm["region"];
+        $data['id_provincia']        = $dataForm["provincia"];
+        $data['id_comuna']           = $dataForm["comuna"];
+        $data['calle']               = $dataForm["calle"];
+        $data['imagen']              = "";//esto esta pendiente
+        $data['fecha_nac']           = $dataForm["fecha_nac"];
+        $data['id_estado_civil']     = $dataForm["estado_civil"];             
+        $data['lugar_nac']           = $dataForm["lugar_nac"];
+        $data['id_religion']         = $dataForm["religion"];
+        $data['id_prevision']        = $dataForm["prevision"];
+        $data['id_ocupacion']        = $dataForm["ocupacion"];
+        $data['id_nivel_estudio']    = $dataForm["niv_estudios"];
+        $data['id_grupo_sang']       = $dataForm["grupo_sang"];
+        $data['id_factorn_rh']       = $dataForm["factorn_rh"];
+        
+        //editar datos paciente
+        $db_emp->where('id_data_usuario',$dataForm["id_data_user"]);
+        $res = $db_emp->update('tbl_usuarios',$data);
+        
+        return $res;
+        
+        //AGREGAR PERSONAS DE CONTACTO
+        /*foreach ($dataForm['p_contactos'] as $contacto) {
+
+            $arr_contacto = array(
+                "id_paciente"   => $id_paciente,
+                "nombres"       => $contacto["nombre"],
+                "apellidos"     => $contacto["apellido"],
+                "id_parentesco" => $contacto["familiariodad"],
+                "telefono"      => $contacto["telefono"],
+                "correo"        => $contacto["correo"]
+            );
+
+            $db_emp->insert('tbl_personas_contacto',$arr_contacto);
+        }*/
+    }
     /***************************************************************************
     /** @Funtion que permite crear una nueva historia medica
     /**************************************************************************/
@@ -449,8 +507,8 @@ class Paciente_model extends CI_Model
                 "apellido_materno"  => $row["apellido_materno"],
                 "telefono"          => $row["telefono"],
                 "genero"            => $row["genero"],
-                "celular"           => $row["id_data_usuario"],
-                "email"             => $row["celular"],
+                "celular"           => $row["celular"],
+                "email"             => $row["email"],
                 "nacionalidad"      => $row["nacionalidad"],
                 "id_region"         => $row["id_region"],
                 "id_provincia"      => $row["id_provincia"],

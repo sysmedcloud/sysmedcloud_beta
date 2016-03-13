@@ -256,7 +256,7 @@ class Paciente_admin extends CI_Controller {
             //Muestra los errores en la vista
             $this->editarPaciente($this->input->post('id_paciente'));
                 
-         } else {
+        } else {
             
             //Datos de las personas de contacto que tenga el cliente
             $pc_nombre     = $this->input->post('pc_nombres');
@@ -280,7 +280,8 @@ class Paciente_admin extends CI_Controller {
             
             //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
             $dataForm = array(//Nuestro arreglo con los datos del paciente
-                "id_new_user"   => $this->input->post('id_paciente'),
+                "id_data_user"  => $this->input->post('id_data_usuario'),
+                "id_usuario"    => $this->input->post('id_usuario'),
                 "rut"           => $this->input->post('rut'),
                 "p_nombre"      => $this->input->post('p_nombre'),
                 "s_nombre"      => $this->input->post('s_nombre'),
@@ -308,13 +309,13 @@ class Paciente_admin extends CI_Controller {
                 "p_contactos"   => $arr_contacto
 
             );
-            echo "<pre>";print_r($dataForm);exit();
+            
             //Registrar los datos del nuevo paciente
             //Ademas se creara una nueva historia medica para el paciente
-            $this->paciente_model->registrarPaciente($dataForm);
-
+            $this->paciente_model->editarPaciente($dataForm);
+            
             //Muestra vista de exito
-            $this->pacienteAdd_succes();
+            $this->pacienteEdit_succes();
         }
     }
     
@@ -327,7 +328,7 @@ class Paciente_admin extends CI_Controller {
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_tbl();
+        $data['files'] = $this->fileclass->files_crearpacientes();
         
         //Cargamos datos de la empresa (LIBRERIA)
         $data["empresa"]    = $this->data_empresa->info_empresa();
@@ -372,8 +373,7 @@ class Paciente_admin extends CI_Controller {
         $data['files']      = $this->fileclass->files_dashboard();
         
         //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
+        $data["empresa"]    = $this->data_empresa->info_empresa();  
         
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         
@@ -382,6 +382,26 @@ class Paciente_admin extends CI_Controller {
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("paciente_succes_view",$data);
     }
+    
+    public function pacienteEdit_succes(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        
+        //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
+        $data['files']      = $this->fileclass->files_dashboard();
+        
+        //Cargamos datos de la empresa (LIBRERIA)
+        $data["empresa"]    = $this->data_empresa->info_empresa();
+        
+        $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
+        
+        $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->gestion_view->defaultAdminView("paciente_edit_succes_view",$data);
+    }
+    
     public function dataPaciente(){
         
         //Cargamos las variables de session (LIBRERIA)

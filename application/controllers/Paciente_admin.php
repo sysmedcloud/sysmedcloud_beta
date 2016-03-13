@@ -231,8 +231,91 @@ class Paciente_admin extends CI_Controller {
     /**************************************************************************/
     public function recibirDatosEdit(){
         
-        echo "<pre>"; print_r($_POST);exit();
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
         
+        //Datos POST formulario
+        $this->form_validation->set_rules('rut','R.U.T.','required|trim');
+        $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
+        $this->form_validation->set_rules('s_nombre','segundo nombre','required|trim');
+        $this->form_validation->set_rules('a_paterno','apellido paterno','required|trim');
+        $this->form_validation->set_rules('a_materno','apellido materno','required|trim');
+        $this->form_validation->set_rules('genero','genero','required|trim');
+        $this->form_validation->set_rules('correo','correo electronico','required|trim|valid_email');
+        $this->form_validation->set_rules('fecha_nac','fecha de nacimiento','required|trim');
+        $this->form_validation->set_rules('pais_res','pais de referencia','required|trim');
+        $this->form_validation->set_rules('prevision','previsión médica','required|trim');
+        $this->form_validation->set_rules('region','region', 'required|trim');
+        $this->form_validation->set_rules('provincia','provincia','required|trim');
+        $this->form_validation->set_rules('comuna','comuna','required|trim');
+        $this->form_validation->set_rules('calle','calle','required|trim');
+        
+        //Validar datos del formulario
+        if($this->form_validation->run() == FALSE) {
+                
+            //Muestra los errores en la vista
+            $this->editarPaciente($this->input->post('id_paciente'));
+                
+         } else {
+            
+            //Datos de las personas de contacto que tenga el cliente
+            $pc_nombre     = $this->input->post('pc_nombres');
+            $pc_apellidos  = $this->input->post('pc_apellidos');
+            $pc_fam        = $this->input->post('familiariodad');
+            $pc_telefono   = $this->input->post('pc_telefono');
+            $pc_correo     = $this->input->post('pc_correo');
+
+            $cant_contactos = count($pc_nombre);//cantidad de contactos
+
+            for($x = 0;$x < $cant_contactos;$x++){
+
+                $arr_contacto[] = array(
+                    "nombre"           => $pc_nombre[$x],
+                    "apellido"         => $pc_apellidos[$x],
+                    "familiariodad"    => $pc_fam[$x],
+                    "telefono"         => $pc_telefono[$x],
+                    "correo"           => $pc_correo[$x],
+                );
+            }
+            
+            //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
+            $dataForm = array(//Nuestro arreglo con los datos del paciente
+                "id_new_user"   => $this->input->post('id_paciente'),
+                "rut"           => $this->input->post('rut'),
+                "p_nombre"      => $this->input->post('p_nombre'),
+                "s_nombre"      => $this->input->post('s_nombre'),
+                "a_paterno"     => $this->input->post('a_paterno'),
+                "a_materno"     => $this->input->post('a_materno'),
+                "genero"        => $this->input->post('genero'),
+                "telefono_f"    => $this->input->post('telefono_f'),
+                "celular"       => $this->input->post('celular'),
+                "correo"        => $this->input->post('correo'),
+                "estado_civil"  => $this->input->post('estado_civil'),
+                "fecha_nac"     => cambiaf_a_mysql($this->input->post('fecha_nac')),
+                "lugar_nac"     => $this->input->post('lugar_nac'),
+                "religion"      => $this->input->post('religion'),
+                "pais_res"      => $this->input->post('pais_res'),
+                "prevision"     => $this->input->post('prevision'),
+                "ocupacion"     => $this->input->post('ocupacion'),
+                "niv_estudios"  => $this->input->post('niv_estudios'),
+                "region"        => $this->input->post('region'),
+                "provincia"     => $this->input->post('provincia'),
+                "comuna"        => $this->input->post('comuna'),
+                "calle"         => $this->input->post('calle'),
+                "grupo_sang"    => $this->input->post('grupo_sang'),
+                "factorn_rh"    => $this->input->post('factorn_rh'),
+                //informacion de las personas de contacto
+                "p_contactos"   => $arr_contacto
+
+            );
+            echo "<pre>";print_r($dataForm);exit();
+            //Registrar los datos del nuevo paciente
+            //Ademas se creara una nueva historia medica para el paciente
+            $this->paciente_model->registrarPaciente($dataForm);
+
+            //Muestra vista de exito
+            $this->pacienteAdd_succes();
+        }
     }
     
     /**************************************************************************/
@@ -252,6 +335,9 @@ class Paciente_admin extends CI_Controller {
         $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        
+        //Id del paciente
+        $data["id_paciente"]=$id_paciente;
         
         //Cargamos datos del paciente seleccionado
         $data["paciente"]   = $this->paciente_model->info_paciente($id_paciente);    

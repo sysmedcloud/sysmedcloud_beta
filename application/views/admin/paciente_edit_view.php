@@ -25,7 +25,8 @@
             </div>
             <div class="ibox-content">
                <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal">
-                  <div class="form-group">
+                   <input type="hidden" id="id_paciente" name="id_paciente" value="<?=$id_paciente;?>">
+                   <div class="form-group">
                      <label class="col-sm-2 control-label">
                      <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
                      </label>
@@ -233,6 +234,7 @@
                                                                 <div class="row">
                                                                 <div class="col-md-4">
                                                                     <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="<?=$p_contacto["id_persona_contacto"]?>">
                                                                     <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="<?=$p_contacto["nombres"]; ?>">
                                                                     <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
                                                                  </div>
@@ -270,6 +272,7 @@
                                                                 <div class="row">
                                                                 <div class="col-md-4">
                                                                     <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="<?=$p_contacto["id_persona_contacto"]?>">
                                                                     <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="<?=$p_contacto["nombres"]; ?>">
                                                                     <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
                                                                  </div>

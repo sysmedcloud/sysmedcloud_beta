@@ -65,6 +65,9 @@ class Paciente_admin extends CI_Controller {
         $this->gestion_view->defaultAdminView("paciente_view",$data);
     }
     
+    /**************************************************************************/
+    /** @Funcion que permite retornar listado de todos los pacientes
+    /**************************************************************************/
     public function listadoPacientes(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -87,6 +90,9 @@ class Paciente_admin extends CI_Controller {
         $this->gestion_view->defaultAdminView("pacientes_view",$data);
     }
     
+    /**************************************************************************/
+    /** @Funcion que permite retornar listado de todos los pacientes JSON
+    /**************************************************************************/
     public function pacientes_json(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -414,6 +420,7 @@ class Paciente_admin extends CI_Controller {
         
         
     }
+    
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 
     /** region seleccionada

@@ -157,7 +157,7 @@ class Paciente_model extends CI_Model
         
         $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
 
-        /* Datos para editar paciente */
+        /* Obtener datos para editar paciente */
         $data["id_usuario"]          = $dataForm["id_usuario"];
         $data['rut']                 = $dataForm["rut"];
         $data['primer_nombre']       = $dataForm["p_nombre"];
@@ -184,26 +184,36 @@ class Paciente_model extends CI_Model
         $data['id_grupo_sang']       = $dataForm["grupo_sang"];
         $data['id_factorn_rh']       = $dataForm["factorn_rh"];
         
-        //editar datos paciente
+        //Editar datos del paciente
         $db_emp->where('id_data_usuario',$dataForm["id_data_user"]);
         $res = $db_emp->update('tbl_usuarios',$data);
         
+        //Eliminar personas de contacto
+        $db_emp->where('id_paciente',$dataForm["id_data_user"]);
+        $db_emp->delete('tbl_personas_contacto');
+        
+        //Crear o editar persona de contacto segun sea el caso
+        foreach ($dataForm['p_contactos'] as $contacto) {
+            
+            //Persona de contacto debe tener como minimo nombres, apellidos y tel.
+            if($contacto["nombre"]!="" && $contacto["apellido"]!="" 
+                    && $contacto["telefono"]!=""){
+
+                $arr_contacto = array(
+                    "id_paciente"   => $dataForm["id_data_user"],
+                    "nombres"       => $contacto["nombre"],
+                    "apellidos"     => $contacto["apellido"],
+                    "id_parentesco" => $contacto["familiariodad"],
+                    "telefono"      => $contacto["telefono"],
+                    "correo"        => $contacto["correo"]
+                );
+
+                $db_emp->insert('tbl_personas_contacto',$arr_contacto);
+            }
+        }
+        
         return $res;
         
-        //AGREGAR PERSONAS DE CONTACTO
-        /*foreach ($dataForm['p_contactos'] as $contacto) {
-
-            $arr_contacto = array(
-                "id_paciente"   => $id_paciente,
-                "nombres"       => $contacto["nombre"],
-                "apellidos"     => $contacto["apellido"],
-                "id_parentesco" => $contacto["familiariodad"],
-                "telefono"      => $contacto["telefono"],
-                "correo"        => $contacto["correo"]
-            );
-
-            $db_emp->insert('tbl_personas_contacto',$arr_contacto);
-        }*/
     }
     /***************************************************************************
     /** @Funtion que permite crear una nueva historia medica

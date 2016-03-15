@@ -265,6 +265,7 @@ class Paciente_admin extends CI_Controller {
         } else {
             
             //Datos de las personas de contacto que tenga el cliente
+            $pc_ids        = $this->input->post('pc_ids');
             $pc_nombre     = $this->input->post('pc_nombres');
             $pc_apellidos  = $this->input->post('pc_apellidos');
             $pc_fam        = $this->input->post('familiariodad');
@@ -274,8 +275,9 @@ class Paciente_admin extends CI_Controller {
             $cant_contactos = count($pc_nombre);//cantidad de contactos
 
             for($x = 0;$x < $cant_contactos;$x++){
-
+                
                 $arr_contacto[] = array(
+                    "pc_ids"           => $pc_ids[$x],
                     "nombre"           => $pc_nombre[$x],
                     "apellido"         => $pc_apellidos[$x],
                     "familiariodad"    => $pc_fam[$x],

@@ -221,6 +221,17 @@
                                           </div>
                                        </div>
                                        <div id="tab-4" class="tab-pane">
+                                           <div class="alert alert-warning">
+                                               <strong>IMPORTANTE:</strong>
+                                               <br>
+                                               1-&nbsp; Para agregar o editar una persona de contacto debes ingresar sus nombres,apellidos y su teléfonoo/celular, de lo contrario no se ingresara o editara en el sistema.
+                                               <br>
+                                               2-&nbsp;Para agregar mas de una persona de contacto debes hacer click en el botón "Agregar Otro Contacto". 
+                                               <br>
+                                               3-&nbsp;Para eliminar una persona de contacto debes hacer click en el botón "Eliminar Contacto".
+                                               <br>
+                                               4-&nbsp;Si no deseas agregar personas de contacto, deja todos los campos en blanco.
+                                           </div>
                                              <?php 
                                                     //Validar que tenga personas de contacto
                                                     if(!empty($paciente["personas_contacto"])){
@@ -252,7 +263,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                  <div class="col-md-4">
-                                                                    <strong>Telefono</strong>
+                                                                    <strong>Telefono/Celular</strong>
                                                                     <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="<?=$p_contacto["telefono"]; ?>">
                                                                     <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
                                                                  </div>
@@ -290,7 +301,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                  <div class="col-md-4">
-                                                                    <strong>Telefono</strong>
+                                                                    <strong>Telefono/Celular</strong>
                                                                     <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="<?=$p_contacto["telefono"]; ?>">
                                                                     <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
                                                                  </div>
@@ -317,6 +328,7 @@
                                                                 <div class="row">
                                                                 <div class="col-md-4">
                                                                     <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="">
                                                                     <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">
                                                                     <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
                                                                  </div>
@@ -333,7 +345,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                  <div class="col-md-4">
-                                                                    <strong>Telefono</strong>
+                                                                    <strong>Telefono/Celular</strong>
                                                                     <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">
                                                                     <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
                                                                  </div>
@@ -414,6 +426,7 @@ function newFile(){
     var html = '<div id="group_'+$("#contador").val()+'"><div class="row"><hr>'+
                 '<div class="col-md-4">'+
                    '<strong>Nombres</strong>'+
+                   '<input type="hidden" name="pc_ids[]" id="pc_ids[]" value="">'+
                    '<input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">'+
                '</div>'+
                 '<div class="col-md-4">'+
@@ -441,7 +454,7 @@ function newFile(){
              '</div>'+
               '<div class="row">'+
                 '<div class="col-md-4">'+
-                   '<strong>Telefono</strong>'+
+                   '<strong>Telefono/Celular</strong>'+
                    '<input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">'+
                 '</div>'+
                 '<div class="col-md-4">'+

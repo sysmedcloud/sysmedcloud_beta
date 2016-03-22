@@ -139,27 +139,7 @@ class Paciente_admin extends CI_Controller {
             //El password es el rut sin guiones ni puntos
             $password   = str_replace($caracteres,"",$this->input->post('rut'));
             
-            //Arreglo con los dato de acceso del nuevo paciente 
-            $dataUser = array(
-                //datos para ingresar un nuevo usuario
-                "id_empresa"    => $data["session"]["id_empresa"],
-                "id_perfil"     => 4,
-                "rut"           => $this->input->post('rut'),
-                "username"      => $username,
-                "password"      => md5($password),
-                "estado"        => false,
-                "creado_por"    => $data["session"]["id_usuario"]
-            );
-            
-            //Registrar nuevo usuario tipo paciente, esta funcion 
-            //nos retornara el ultimo id recientemente ingresado
-            //es decir el id del usuario que recien creamos
-            $idUser = $this->paciente_model->anadirUsuario($dataUser);
-            
-            //validar id del nuevo usuario
-            if($idUser > 0){
-                
-                //Datos de las personas de contacto que tenga el cliente
+            //Datos de las personas de contacto que tenga el cliente
                 $pc_nombre     = $this->input->post('pc_nombres');
                 $pc_apellidos  = $this->input->post('pc_apellidos');
                 $pc_fam        = $this->input->post('familiariodad');
@@ -181,7 +161,14 @@ class Paciente_admin extends CI_Controller {
                 
                 //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
                 $dataForm = array(//Nuestro arreglo con los datos del paciente
-                    "id_new_user"   => $idUser,
+                    //datos para ingresar un nuevo usuario
+                    "id_empresa"    => $data["session"]["id_empresa"],
+                    "id_perfil"     => 4,
+                    "rut"           => $this->input->post('rut'),
+                    "username"      => $username,
+                    "password"      => md5($password),
+                    "estado"        => false,
+                    "creado_por"    => $data["session"]["id_usuario"],
                     "rut"           => $this->input->post('rut'),
                     "p_nombre"      => $this->input->post('p_nombre'),
                     "s_nombre"      => $this->input->post('s_nombre'),
@@ -216,7 +203,6 @@ class Paciente_admin extends CI_Controller {
                 
                 //Muestra vista de exito
                 $this->pacienteAdd_succes();
-            }
             
             return false;
         }       
@@ -279,7 +265,6 @@ class Paciente_admin extends CI_Controller {
             
             //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
             $dataForm = array(//Nuestro arreglo con los datos del paciente
-                "id_data_user"  => $this->input->post('id_data_usuario'),
                 "id_usuario"    => $this->input->post('id_usuario'),
                 "rut"           => $this->input->post('rut'),
                 "p_nombre"      => $this->input->post('p_nombre'),
@@ -368,9 +353,6 @@ class Paciente_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();  
-        
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
@@ -386,9 +368,6 @@ class Paciente_admin extends CI_Controller {
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
-        
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
         
         $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
         

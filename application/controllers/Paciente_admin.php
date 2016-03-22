@@ -40,9 +40,6 @@ class Paciente_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_crearpacientes();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        
         $data["menu"]       = "Registrar Paciente";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
@@ -76,15 +73,9 @@ class Paciente_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_tbl();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
-        
         $data["menu"]   = "Listado de Pacientes";
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
-        
-        $id_empresa         = $this->session->userdata('id_empresa');
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("pacientes_view",$data);
@@ -337,9 +328,6 @@ class Paciente_admin extends CI_Controller {
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_crearpacientes();
-        
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
         
         $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
         

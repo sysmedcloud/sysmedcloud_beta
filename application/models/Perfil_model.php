@@ -13,8 +13,6 @@ class Perfil_model extends CI_Model
     function info_personal($id_usuario)
     {
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-        
         //cargamos los datos del usuario
         $this->db->select('
             u.id_usuario,
@@ -35,12 +33,12 @@ class Perfil_model extends CI_Model
             du.calle,
             du.imagen,
             du.fecha_nac');
-        $db_emp->from('smc_access_data.tbl_usuarios u');
-        $db_emp->join('tbl_usuarios du','du.id_usuario = u.id_usuario');
+        $this->db->from('smc_access_data.tbl_usuarios u');
+        $this->db->join('tbl_usuarios du','du.id_usuario = u.id_usuario');
         //$this->db->join('tbl_paises p','p.id_pais = pa.id_pais');
-        $db_emp->where('u.id_usuario',$id_usuario);
+        $this->db->where('u.id_usuario',$id_usuario);
         
-        $datos = $db_emp->get();
+        $datos = $this->db->get();
         
         if ($datos->num_rows() > 0)
         {
@@ -56,8 +54,6 @@ class Perfil_model extends CI_Model
     /** @Funtion que permite modificar los datos personales del usuario
     /**************************************************************************/
     public function editarPerfil($data){
-        
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
         
         $dataMod["rut"]                 = $data["rut"];
         $dataMod['primer_nombre']       = $data["p_nombre"];
@@ -75,8 +71,8 @@ class Perfil_model extends CI_Model
         $dataMod['calle']               = $data["calle"];
         $dataMod['fecha_nac']           = $data["fecha_nac"];
         
-        $db_emp->where('id_usuario',$data["id_usuario"]);
-        $perfil_editado = $db_emp->update('tbl_usuarios',$dataMod);
+        $this->db->where('id_usuario',$data["id_usuario"]);
+        $perfil_editado = $this->db->update('tbl_usuarios',$dataMod);
                     
         //MODIFICAR USERNAME Y PASSWORD
         $dataUser["username"] = $data["username"];
@@ -87,8 +83,8 @@ class Perfil_model extends CI_Model
             $dataUser["password"] = md5($data["password"]);
         }
         
-        $db_emp->where('id_usuario',$data["id_usuario"]);
-        $UsernameModificado = $db_emp->update('smc_access_data.tbl_usuarios',$dataUser);
+        $this->db->where('id_usuario',$data["id_usuario"]);
+        $UsernameModificado = $this->db->update('smc_access_data.tbl_usuarios',$dataUser);
         
         //Validar cambio de informacion
         $res = $UsernameModificado == true ? true : redirect(base_url()."errors");

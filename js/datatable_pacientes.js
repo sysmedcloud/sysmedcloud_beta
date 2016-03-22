@@ -332,8 +332,8 @@ function ver_datos_paciente(id_paciente){
 }
 
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
-function eliminar_paciente(){
+function eliminar_paciente(id_paciente){
 
-    
+    alert(id_paciente);
 }
 

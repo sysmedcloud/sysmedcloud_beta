@@ -40,8 +40,6 @@ class Perfil_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_miperfil();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
         
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         

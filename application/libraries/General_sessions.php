@@ -31,7 +31,7 @@ class General_sessions {
                     "perfil"        => $this->CI->session->userdata('perfil'),
                     "username"      => $this->CI->session->userdata('username'),
                     "id_empresa"    => $this->CI->session->userdata('id_empresa'),
-                    "db_name"       => $this->CI->session->userdata('db_name'),
+                    "empresa"       => $this->CI->session->userdata('empresa'),
                     "rut"           => $this->CI->session->userdata('rut'),
                     "primer_nom"    => $this->CI->session->userdata('primer_nom'),
                     "segundo_nom"   => $this->CI->session->userdata('segundo_nom'),

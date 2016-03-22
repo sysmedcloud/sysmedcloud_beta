@@ -6,14 +6,8 @@
                             <?=$menu;?>
                         </li>
                         <li class="active">
-                            <strong><?=ucfirst($empresa->nombre);?></strong>
+                            <strong><?=ucfirst($session["empresa"]);?></strong>
                         </li>
-                        <!--<li>
-                           <?=ucfirst($session["perfil"]);?>
-                        </li>
-                        <li>
-                            <?=ucfirst($session["primer_nom"]);?> <?=ucfirst($session["apellido_pat"]);?> <?=ucfirst($session["apellido_mat"]);?>
-                        </li>-->
                     </ol>
                 </div>
             </div>

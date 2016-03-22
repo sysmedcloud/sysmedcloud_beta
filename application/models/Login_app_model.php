@@ -13,8 +13,6 @@ class Login_app_model extends CI_Model {
     public function __construct() {
         
         parent::__construct();
-        //Cargar base de datos
-        $this->load->database("smc_access_data");
     }
     
     /******************************************************************/
@@ -22,63 +20,50 @@ class Login_app_model extends CI_Model {
     /******************************************************************/
     public function login_user($data)
     {
-        
         $this->db->select('u.id_usuario,'
             .'u.id_empresa,'
-            .'e.db_name,'
+            .'e.nombre as empresa,'
             .'u.id_perfil,'
             .'p.perfil,'
             .'u.username,'
             .'u.password,'
+            .'u.primer_nombre,'
+            .'u.segundo_nombre,'
+            .'u.apellido_paterno,'
+            .'u.apellido_materno,'
+            .'u.rut,'
+            .'u.imagen,'
             .'u.estado,'
-            //.'u.activo,'
-            //.'u.last_login,'
-            //.'du.primer_nombre,'
-            //.'du.segundo_nombre,'
-            //.'du.apellido_paterno,'
-            //.'du.apellido_materno,'
-            //.'du.rut,'
-            //.'du.imagen'
-            );
+            .'u.eliminado');
         $this->db->from('tbl_usuarios u');
         $this->db->join('tbl_perfiles p','p.id_perfil = u.id_perfil');
         $this->db->join('tbl_empresas e','e.id_empresa = u.id_empresa');
-        //$this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
         $this->db->where('u.username',$data['username']);
         $this->db->where('u.password',$data['password']);
         $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',false);
         $query = $this->db->get();
         
         if ($query->num_rows() > 0)
         {
             $row = $query->row();
             
-            //Buscar informacion basica del usuario
-            $db_emp  = $this->load->database($row->db_name,TRUE);
-            $this->db->select(' du.id_usuario,du.primer_nombre,du.segundo_nombre,du.apellido_paterno,
-                                du.apellido_materno,du.rut,du.imagen');
-            
-            $db_emp->from('tbl_usuarios u');
-            $db_emp->where('u.id_usuario',$row->id_usuario);
-            $query_info = $db_emp->get();
-            $row_info   = $query_info->row();
-            
             //Arreglo con datos de session
             $arr_data_user = array(
                 "id_usuario"        => $row->id_usuario,
                 "id_empresa"        => $row->id_empresa,
-                "db_name"           => $row->db_name,
+                "empresa"           => ucfirst($row->empresa),
                 "id_perfil"         => $row->id_perfil,
-                "perfil"            => $row->perfil,
+                "perfil"            => ucfirst($row->perfil),
                 "username"          => $row->username,
                 "password"          => $row->password,
                 "estado"            => $row->estado,
-                "primer_nombre"     => $row_info->primer_nombre,
-                "segundo_nombre"    => $row_info->segundo_nombre,
-                "apellido_paterno"  => $row_info->apellido_paterno,
-                "apellido_materno"  => $row_info->apellido_materno,
-                "rut"               => $row_info->rut,
-                "imagen"            => $row_info->imagen
+                "primer_nombre"     => ucfirst($row->primer_nombre),
+                "segundo_nombre"    => ucfirst($row->segundo_nombre),
+                "apellido_paterno"  => ucfirst($row->apellido_paterno),
+                "apellido_materno"  => ucfirst($row->apellido_materno),
+                "rut"               => $row->rut,
+                "imagen"            => $row->imagen
             );
             
             return $arr_data_user;

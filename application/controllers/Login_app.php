@@ -112,7 +112,7 @@ class Login_app extends CI_Controller {
                     $data["id_usuario"]     = $check_user["id_usuario"];
                     $data["username"]       = $check_user["username"];
                     $data["id_empresa"]     = $check_user["id_empresa"];
-                    $data["db_name"]        = $check_user["db_name"];
+                    $data["empresa"]        = $check_user["empresa"];
                     $data["id_perfil"]      = $check_user["id_perfil"];
                     $data["perfil"]         = $check_user["perfil"];
                     //$data["last_login"]     = $check_user->last_login;

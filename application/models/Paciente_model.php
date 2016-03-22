@@ -11,16 +11,13 @@ class Paciente_model extends CI_Model
     /**************************************************************************/
     public function validarUsuario($id_empresa,$rut){
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-        
         //Query para validar existencia del usuario perfil paciente
-        $db_emp->select("u.id_usuario");
-        $db_emp->from('tbl_usuarios du');
-        $db_emp->join('smc_access_data.tbl_usuarios u','du.id_usuario = u.id_usuario');
-        $db_emp->where('u.id_perfil',4);
-        $db_emp->where('u.id_empresa',$id_empresa);
-        $db_emp->where('du.rut',$rut);
-        $datos = $db_emp->get();
+        $this->db->select("u.id_usuario");
+        $this->db->from('tbl_usuarios du');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->where('u.rut',$rut);
+        $datos = $this->db->get();
         
         return $datos->num_rows();
     }
@@ -80,8 +77,6 @@ class Paciente_model extends CI_Model
     /**************************************************************************/
     public function registrarPaciente($dataForm){
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-
         /*antes de registrar un paciente en la base de datos se debe crear
         * un nuevos usuario tipo paciente en la base de datos de acceso */
         $data["id_usuario"]          = $dataForm["id_new_user"];
@@ -111,10 +106,10 @@ class Paciente_model extends CI_Model
         $data['id_factorn_rh']       = $dataForm["factorn_rh"];
         
         //registrar nuevo paciente
-        $insert_paciente = $db_emp->insert('tbl_usuarios',$data);
+        $insert_paciente = $this->db->insert('tbl_usuarios',$data);
         
         //ultimo id ingresado
-        $id_paciente = $db_emp->insert_id();
+        $id_paciente = $this->db->insert_id();
         
         //Validar ingreso de nuevo paciente
         $res = $insert_paciente == true ? true : redirect(base_url()."errors");
@@ -125,16 +120,21 @@ class Paciente_model extends CI_Model
             //AGREGAR PERSONAS DE CONTACTO
             foreach ($dataForm['p_contactos'] as $contacto) {
                 
-                $arr_contacto = array(
-                    "id_paciente"   => $id_paciente,
-                    "nombres"       => $contacto["nombre"],
-                    "apellidos"     => $contacto["apellido"],
-                    "id_parentesco" => $contacto["familiariodad"],
-                    "telefono"      => $contacto["telefono"],
-                    "correo"        => $contacto["correo"]
-                );
-                
-                $db_emp->insert('tbl_personas_contacto',$arr_contacto);
+                //Persona de contacto debe tener como minimo nombres, apellidos y tel.
+                if($contacto["nombre"]!="" && $contacto["apellido"]!="" 
+                        && $contacto["telefono"]!=""){
+                    
+                    $arr_contacto = array(
+                        "id_paciente"   => $id_paciente,
+                        "nombres"       => $contacto["nombre"],
+                        "apellidos"     => $contacto["apellido"],
+                        "id_parentesco" => $contacto["familiariodad"],
+                        "telefono"      => $contacto["telefono"],
+                        "correo"        => $contacto["correo"]
+                    );
+
+                    $this->db->insert('tbl_personas_contacto',$arr_contacto);
+                }
             }
             
             //CREAR  NUEVA HISTORIA MEDICA PARA EL NUEVO PACIENTE
@@ -152,10 +152,6 @@ class Paciente_model extends CI_Model
     /** @Funtion que permite editar un paciente
     /**************************************************************************/
     public function editarPaciente($dataForm){ 
-        
-        //echo "<pre>";print_r($dataForm);exit();
-        
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
 
         /* Obtener datos para editar paciente */
         $data["id_usuario"]          = $dataForm["id_usuario"];
@@ -185,12 +181,12 @@ class Paciente_model extends CI_Model
         $data['id_factorn_rh']       = $dataForm["factorn_rh"];
         
         //Editar datos del paciente
-        $db_emp->where('id_data_usuario',$dataForm["id_data_user"]);
-        $res = $db_emp->update('tbl_usuarios',$data);
+        $this->db->where('id_data_usuario',$dataForm["id_data_user"]);
+        $res = $this->db->update('tbl_usuarios',$data);
         
         //Eliminar personas de contacto
-        $db_emp->where('id_paciente',$dataForm["id_data_user"]);
-        $db_emp->delete('tbl_personas_contacto');
+        $this->db->where('id_paciente',$dataForm["id_data_user"]);
+        $this->db->delete('tbl_personas_contacto');
         
         //Crear o editar persona de contacto segun sea el caso
         foreach ($dataForm['p_contactos'] as $contacto) {
@@ -208,7 +204,7 @@ class Paciente_model extends CI_Model
                     "correo"        => $contacto["correo"]
                 );
 
-                $db_emp->insert('tbl_personas_contacto',$arr_contacto);
+                $this->db->insert('tbl_personas_contacto',$arr_contacto);
             }
         }
         
@@ -219,9 +215,6 @@ class Paciente_model extends CI_Model
     /** @Funtion que permite crear una nueva historia medica
     /**************************************************************************/
     public function anadirHistoriaClinica($id_paciente){
-        
-        //Coneccion con base de datos de la empresa
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
                 
         //obtiene fecha y hora segun zona horaria
         @date_default_timezone_set("America/Santiago");
@@ -232,7 +225,7 @@ class Paciente_model extends CI_Model
         $data["fecha_creacion"]     = $fecha;
         
         //registrar nueva historia medica
-        return $insert_paciente = $db_emp->insert('tbl_historias_medicas',$data);
+        return $insert_paciente = $this->db->insert('tbl_historias_medicas',$data);
         
     }
         /***************************************************************************
@@ -241,11 +234,8 @@ class Paciente_model extends CI_Model
     function datos_paciente($id_paciente)
     {
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-                
         //cargamos los datos del usuario
-        $db_emp->select('du.id_data_usuario,
-            u.id_usuario,
+        $this->db->select('du.id_usuario,
             du.rut,
             du.primer_nombre,
             du.segundo_nombre,
@@ -276,21 +266,20 @@ class Paciente_model extends CI_Model
             gr.grupo_sanguineo,
             rh.factor_rh
             ');
-        $db_emp->from('smc_access_data.tbl_usuarios u');
-        $db_emp->join('tbl_usuarios du','du.id_usuario = u.id_usuario');
-        $db_emp->join('tbl_paises p','p.cod_pais = du.nacionalidad','left');
-        $db_emp->join('tbl_region r','r.REGION_ID = du.id_region','left');
-        $db_emp->join('tbl_provincia pr','pr.PROVINCIA_ID = du.id_provincia','left');
-        $db_emp->join('tbl_comuna c','c.COMUNA_ID = du.id_comuna','left');
-        $db_emp->join('tbl_estado_civil e','e.id_estado_civil = du.id_estado_civil','left');
-        $db_emp->join('tbl_religiones rg','rg.id_religion = du.id_religion','left');
-        $db_emp->join('tbl_previsiones_medicas pm','pm.id_prevision_medica = du.id_prevision','left');
-        $db_emp->join('tbl_ocupaciones o','o.cod_ocupacion = du.id_ocupacion','left');
-        $db_emp->join('tbl_niveles_estudios ne','ne.id_nivel_estudio = du.id_nivel_estudio','left');
-        $db_emp->join('tbl_grupos_sanguineos gr','gr.id_grupo_sanguineo = du.id_grupo_sang','left');
-        $db_emp->join('tbl_factores_rh rh','rh.id_factor_rh = du.id_factorn_rh','left');
-        $db_emp->where('du.id_data_usuario',$id_paciente);
-        $datos = $db_emp->get();
+        $this->db->from('tbl_usuarios du');
+        $this->db->join('tbl_paises p','p.cod_pais = du.nacionalidad','left');
+        $this->db->join('tbl_region r','r.REGION_ID = du.id_region','left');
+        $this->db->join('tbl_provincia pr','pr.PROVINCIA_ID = du.id_provincia','left');
+        $this->db->join('tbl_comuna c','c.COMUNA_ID = du.id_comuna','left');
+        $this->db->join('tbl_estado_civil e','e.id_estado_civil = du.id_estado_civil','left');
+        $this->db->join('tbl_religiones rg','rg.id_religion = du.id_religion','left');
+        $this->db->join('tbl_previsiones_medicas pm','pm.id_prevision_medica = du.id_prevision','left');
+        $this->db->join('tbl_ocupaciones o','o.cod_ocupacion = du.id_ocupacion','left');
+        $this->db->join('tbl_niveles_estudios ne','ne.id_nivel_estudio = du.id_nivel_estudio','left');
+        $this->db->join('tbl_grupos_sanguineos gr','gr.id_grupo_sanguineo = du.id_grupo_sang','left');
+        $this->db->join('tbl_factores_rh rh','rh.id_factor_rh = du.id_factorn_rh','left');
+        $this->db->where('du.id_usuario',$id_paciente);
+        $datos = $this->db->get();
         
         if($datos->num_rows() > 0){
             
@@ -325,11 +314,11 @@ class Paciente_model extends CI_Model
             $factor_rh      = $datos->row()->factor_rh == "" ? "Sin info." : $datos->row()->factor_rh;
             
             //Buscar personas de contacto
-            $db_emp->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
-            $db_emp->from('tbl_personas_contacto pc');
-            $db_emp->join('tbl_parentescos p','p.id_parentesco = pc.id_parentesco');
-            $db_emp->where('pc.id_paciente',$datos->row()->id_data_usuario);
-            $personas_contacto = $db_emp->get()->result_array();
+            $this->db->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
+            $this->db->from('tbl_personas_contacto pc');
+            $this->db->join('tbl_parentescos p','p.id_parentesco = pc.id_parentesco');
+            $this->db->where('pc.id_paciente',$datos->row()->id_usuario);
+            $personas_contacto = $this->db->get()->result_array();
             
             $arr_paciente = array(
                 "rut"               => $rut,
@@ -372,11 +361,8 @@ class Paciente_model extends CI_Model
     /**************************************************************************/
     public function listadoPacientes_json($id_empresa){
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-        
         //Query para obtener listado de pacientes
-        $db_emp->select("du.id_data_usuario,
-        u.id_usuario,
+        $this->db->select("du.id_usuario,
         du.rut,
         du.primer_nombre,
         du.segundo_nombre,
@@ -385,16 +371,16 @@ class Paciente_model extends CI_Model
         du.telefono,
         du.celular,
         du.email,
-        u.fecha_creacion,
+        du.fecha_creacion,
         du.fecha_nac
         ");
-        $db_emp->from('tbl_usuarios du');
-        $db_emp->join('smc_access_data.tbl_usuarios u','du.id_usuario = u.id_usuario');
-        $db_emp->where('u.id_perfil',4);
-        $db_emp->where('u.estado',0);
-        $db_emp->where('u.id_empresa',$id_empresa);
-        $db_emp->order_by("du.id_data_usuario", "asc");
-        $datos = $db_emp->get();
+        $this->db->from('tbl_usuarios du');
+        $this->db->where('du.id_perfil',4);
+        $this->db->where('du.estado',0);
+        $this->db->where('du.eliminado',0);
+        $this->db->where('du.id_empresa',$id_empresa);
+        $this->db->order_by("du.id_usuario", "asc");
+        $datos = $this->db->get();
         
         $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
         $response   = array();//CREAR ARREGLO DEL JSON
@@ -420,9 +406,9 @@ class Paciente_model extends CI_Model
                 $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
                 $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
                 
-                $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_data_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_data_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
-                $fa_delete  = '<a href="#" title="Eliminar Paciente"><i class="fa fa-times"></i></a>';
+                $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
+                $fa_delete  = '<a href="#" title="Eliminar Paciente" onclick="eliminar_paciente('.$row->id_usuario.');"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente
                 $arr_paciente[] = array(
@@ -457,12 +443,9 @@ class Paciente_model extends CI_Model
     /**************************************************************************/
     public function info_paciente($id_paciente){
         
-        $db_emp  = $this->load->database($this->session->userdata('db_name'),TRUE);
-        
         //Query para obtener listado de pacientes
-        $db_emp->select("
-        du.id_data_usuario,
-        u.id_usuario,
+        $this->db->select("
+        du.id_usuario,
         du.rut,
         du.primer_nombre,
         du.segundo_nombre,
@@ -488,27 +471,25 @@ class Paciente_model extends CI_Model
         du.id_grupo_sang,
         du.id_factorn_rh,
         du.fecha_mod,
-        u.fecha_creacion
+        du.fecha_creacion
         ");
-        $db_emp->from('tbl_usuarios du');
-        $db_emp->join('smc_access_data.tbl_usuarios u','du.id_usuario = u.id_usuario');
-        $db_emp->where('u.id_perfil',4);
-        $db_emp->where('u.estado',0);
-        $db_emp->where('du.id_data_usuario',$id_paciente);
-        $datos = $db_emp->get();
+        $this->db->from('tbl_usuarios du');
+        $this->db->where('du.id_perfil',4);
+        $this->db->where('du.estado',0);
+        $this->db->where('du.id_data_usuario',$id_paciente);
+        $datos = $this->db->get();
         
         if($datos->num_rows() > 0 ){
             
             $row = $datos->row_array();
             
             //Buscar personas de contacto
-            $db_emp->select("pc.id_persona_contacto,pc.nombres,pc.apellidos,id_parentesco,pc.telefono,pc.correo");
-            $db_emp->from('tbl_personas_contacto pc');
-            $db_emp->where('pc.id_paciente',$row["id_data_usuario"]);
-            $contactos = $db_emp->get()->result_array();
+            $this->db->select("pc.id_persona_contacto,pc.nombres,pc.apellidos,id_parentesco,pc.telefono,pc.correo");
+            $this->db->from('tbl_personas_contacto pc');
+            $this->db->where('pc.id_paciente',$row["id_usuario"]);
+            $contactos = $this->db->get()->result_array();
             
             $arr_info = array(
-                "id_data_usuario"   => $row["id_data_usuario"],
                 "id_usuario"        => $row["id_usuario"],
                 "rut"               => $row["rut"],
                 "primer_nombre"     => $row["primer_nombre"],

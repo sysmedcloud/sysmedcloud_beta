@@ -52,6 +52,7 @@ $(document).ready(function() {
     var baseURL = $('body').data('baseurl');//url base
     
     $('#pacientes').dataTable({
+        //"destroy": true,//Variable que permite volver a cargar el ajax (tabla)
         "ajax": {
             "url": baseURL+"paciente_admin/pacientes_json",//data
             "dataSrc": ""
@@ -332,8 +333,35 @@ function ver_datos_paciente(id_paciente){
 }
 
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
-function eliminar_paciente(id_paciente){
-
+function eliminar_paciente(id_paciente,nombre,rut){
+    
+    swal({   
+        title: "¿Estas seguro de eliminar al paciente "+nombre+" R.U.T. "+rut+"?",   
+        text: "Recuerda que todo su historial médico sera eliminado!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, eliminalo!",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false 
+    }, 
+    function(){
+        
+        swal({ 
+            title: "Paciente eliminado!",
+            text:  "Historia medica del paciente fue eliminada correctamente.",
+            type:  "success" 
+        },
+        function(){
+            
+            alert("recargamos la tabla de paciente");return false;
+            //recargaTabla(v_id_modelo);
+        });
+        
+    });
+    
+    return false;
+    
     //alert(id_paciente);
     var baseURL = $('body').data('baseurl');//url base
     

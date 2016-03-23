@@ -193,10 +193,6 @@ class Perfil_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
-        
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("perfil");//(HELPERS)marca menu (active)

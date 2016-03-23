@@ -71,23 +71,20 @@ class Perfil_model extends CI_Model
         $dataMod['calle']               = $data["calle"];
         $dataMod['fecha_nac']           = $data["fecha_nac"];
         
-        $this->db->where('id_usuario',$data["id_usuario"]);
-        $perfil_editado = $this->db->update('tbl_usuarios',$dataMod);
-                    
         //MODIFICAR USERNAME Y PASSWORD
-        $dataUser["username"] = $data["username"];
+        $dataMod["username"] = $data["username"];
         
         //validar nueva password
         if($data["password"] != ""){//Cambiar contraseña
 
-            $dataUser["password"] = md5($data["password"]);
+            $dataMod["password"] = md5($data["password"]);
         }
         
         $this->db->where('id_usuario',$data["id_usuario"]);
-        $UsernameModificado = $this->db->update('smc_access_data.tbl_usuarios',$dataUser);
+        $perfil_editado = $this->db->update('tbl_usuarios',$dataMod);
         
         //Validar cambio de informacion
-        $res = $UsernameModificado == true ? true : redirect(base_url()."errors");
+        $res = $perfil_editado == true ? true : redirect(base_url()."errors");
         
         return $res;
         

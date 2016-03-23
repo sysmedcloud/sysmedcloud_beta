@@ -390,6 +390,11 @@ class Paciente_admin extends CI_Controller {
         
     }
     
+    public function eliminarPaciente($id_paciente){
+        
+        $id_paciente = $this->input->post("id_paciente");
+        
+    } 
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 
     /** region seleccionada

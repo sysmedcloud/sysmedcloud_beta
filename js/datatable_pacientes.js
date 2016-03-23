@@ -334,6 +334,29 @@ function ver_datos_paciente(id_paciente){
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
 function eliminar_paciente(id_paciente){
 
-    alert(id_paciente);
+    //alert(id_paciente);
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $.ajax({
+        data: {"id_paciente" : id_paciente},
+        type: "POST",
+        dataType: "json",
+        url: baseURL+"paciente_admin/eliminarPaciente"
+    })
+   .done(function(data,textStatus,jqXHR ) {         
+        
+        if(textStatus === "success"){//La solicitud se realizo correctamente
+            
+           console.log("correcto");
+        }
+    })
+    .fail(function( jqXHR, textStatus, errorThrown ) {
+         
+        if(textStatus === "error") {//La solicitud a fallado
+            
+            console.log( "La solicitud a fallado: " +  textStatus);
+            console.log(textStatus+" "+jqXHR);
+        }
+    });
 }
 

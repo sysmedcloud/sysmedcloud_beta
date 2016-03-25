@@ -33,7 +33,7 @@ class Perfil_model extends CI_Model
             du.calle,
             du.imagen,
             du.fecha_nac');
-        $this->db->from('smc_access_data.tbl_usuarios u');
+        $this->db->from('tbl_usuarios u');
         $this->db->join('tbl_usuarios du','du.id_usuario = u.id_usuario');
         //$this->db->join('tbl_paises p','p.id_pais = pa.id_pais');
         $this->db->where('u.id_usuario',$id_usuario);

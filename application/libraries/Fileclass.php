@@ -134,6 +134,7 @@ class Fileclass {
             '5' => base_url().'css/animate.css',
             '6' => base_url().'css/style.css',
             '7' => base_url().'css/button_data_table.css',
+            '8' => base_url().'css/sweetalert.css',
         );
         
         $this->files['script'] = array(
@@ -149,6 +150,7 @@ class Fileclass {
             '8' => base_url().'js/inspinia.js',
             '9' => base_url().'js/pace.min.js',
             '10' => base_url().'js/datatable_pacientes.js',
+            '11' => base_url().'js/sweetalert.min.js',
         );
         
         return $this->files;

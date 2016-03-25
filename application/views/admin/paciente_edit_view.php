@@ -4,7 +4,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Registro De Paciente <small>todos los campos obligatorios tienen la etiqueta (*).</small></h5>
+               <h5>Edición De Paciente <small>todos los campos obligatorios tienen la etiqueta (*).</small></h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -24,8 +24,10 @@
                </div>
             </div>
             <div class="ibox-content">
-               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatos" class="form-horizontal">
-                  <div class="form-group">
+               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal">
+                   <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
+                   <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
+                   <div class="form-group">
                      <label class="col-sm-2 control-label">
                      <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
                      </label>
@@ -50,17 +52,17 @@
                                             <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>R.U.T</strong>
-                                                <input type="text" name="rut" placeholder="Ingrese su rut" class="form-control" value="<?=set_value('rut');?>">
+                                                <input type="text" name="rut" placeholder="Ingrese su rut" class="form-control" value="<?=$paciente["rut"];?>">
                                                 <?=form_error('rut','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Primer nombre</strong>
-                                                <input type="text" name="p_nombre" placeholder="Ingrese su primer nombre" class="form-control " value="<?=set_value('p_nombre'); ?>">
+                                                <input type="text" name="p_nombre" placeholder="Ingrese su primer nombre" class="form-control " value="<?=$paciente["primer_nombre"];?>">
                                                 <?=form_error('p_nombre','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Segundo nombre</strong>
-                                                <input type="text" name="s_nombre" placeholder="Ingrese su segundo nombre" class="form-control" value="<?php echo set_value('s_nombre'); ?>">
+                                                <input type="text" name="s_nombre" placeholder="Ingrese su segundo nombre" class="form-control" value="<?=$paciente["segundo_nombre"];?>">
                                                 <?=form_error('s_nombre','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
@@ -68,22 +70,26 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Apellido paterno</strong>
-                                                <input type="text" name="a_paterno" placeholder="Ingrese su apellido paterno" class="form-control " value="<?php echo set_value('a_paterno'); ?>">
+                                                <input type="text" name="a_paterno" placeholder="Ingrese su apellido paterno" class="form-control " value="<?=$paciente["apellido_paterno"];?>">
                                                 <?=form_error('a_paterno','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Apellido materno</strong>
-                                                <input type="text" name="a_materno" placeholder="Ingrese su apellido materno" class="form-control " value="<?php echo set_value('a_materno'); ?>">
+                                                <input type="text" name="a_materno" placeholder="Ingrese su apellido materno" class="form-control " value="<?=$paciente["apellido_materno"];?>">
                                                 <?=form_error('a_materno','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <?php
                                                    
+                                                   //Validar genero
+                                                   $v_masculino = $paciente["genero"] == "M" ?  true : false;
+                                                   $v_femenino  = $paciente["genero"] == "F" ? true : false;
+                                                
                                                    $js     = 'id="genero"';
-                                                   $rd_mas =  form_radio('genero', 'M',FALSE,$js);
+                                                   $rd_mas =  form_radio('genero', 'M',$v_masculino,$js);
                                                    
                                                    $js2    = 'id="genero"';
-                                                   $rd_fem =  form_radio('genero', 'F',FALSE,$js);
+                                                   $rd_fem =  form_radio('genero', 'F',$v_femenino,$js);
                                                    
                                                 ?>
                                                 *&nbsp;<strong>Genero</strong><br>
@@ -100,17 +106,17 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Telefono (fijo)</strong>
-                                                <input type="text" name="telefono_f" placeholder="Ingrese su telefono (fijo)" class="form-control " value="<?php echo set_value('telefono_f'); ?>">
+                                                <input type="text" name="telefono_f" placeholder="Ingrese su telefono (fijo)" class="form-control " value="<?=$paciente["telefono"];?>">
                                                 <?=form_error('telefono_f','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Telefono celular</strong>
-                                                <input type="text" name="celular" placeholder="Ingrese su telefono celular" class="form-control " value="<?php echo set_value('celular'); ?>">
+                                                <input type="text" name="celular" placeholder="Ingrese su telefono celular" class="form-control " value="<?=$paciente["celular"];?>">
                                                 <?=form_error('celular','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Correo</strong>
-                                                <input type="text" name="correo" placeholder="Ingrese su correo" class="form-control " value="<?php echo set_value('correo'); ?>">
+                                                <input type="text" name="correo" placeholder="Ingrese su correo" class="form-control " value="<?=$paciente["email"];?>">
                                                 <?=form_error('correo','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
@@ -118,18 +124,18 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Estado Civil</strong>
-                                                <?=form_dropdown('estado_civil',$est_civil,set_value('estado_civil'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('estado_civil',$est_civil,$paciente["id_estado_civil"],'class="form-control m-b "');?>
                                                 <?=form_error('estado_civil','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Fecha Nacimiento ( día / mes /año )</strong>
-                                                <input type="text" name="fecha_nac" class="form-control " data-mask="99/99/9999" placeholder="Ingrese su fecha de nacimiento" value="<?php echo set_value('fecha_nac'); ?>">
+                                                <input type="text" name="fecha_nac" class="form-control " data-mask="99/99/9999" placeholder="Ingrese su fecha de nacimiento" value="<?=$paciente["fecha_nac"];?>">
                                                 <!-- <span class="help-block">( día / mes /año )</span> -->
                                                 <?=form_error('fecha_nac','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Lugar de Nacimiento</strong>
-                                                <input type="text" name="lugar_nac" class="form-control " placeholder="Lugar de nacimiento" value="<?php echo set_value('lugar_nac'); ?>">
+                                                <input type="text" name="lugar_nac" class="form-control " placeholder="Lugar de nacimiento" value="<?=$paciente["lugar_nac"];?>">
                                                 <?=form_error('lugar_nac','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
@@ -137,12 +143,12 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Religión</strong>
-                                                <?=form_dropdown('religion',$religiones,set_value('religion'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('religion',$religiones,$paciente["id_religion"],'class="form-control m-b "');?>
                                                 <?=form_error('religion','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>País de residencia</strong>
-                                                <?=form_dropdown('pais_res',$paises,set_value('pais_res'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('pais_res',$paises,$paciente["nacionalidad"],'class="form-control m-b "');?>
                                                 <?=form_error('pais_res','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
@@ -152,17 +158,17 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Prev. Médica:</strong>
-                                                <?=form_dropdown('prevision',$prev_med,set_value('prevision'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('prevision',$prev_med,$paciente["id_prevision"],'class="form-control m-b "');?>
                                                 <?=form_error('prevision','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Ocupación:</strong>
-                                                <?=form_dropdown('ocupacion',$ocupaciones,set_value('ocupacion'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('ocupacion',$ocupaciones,$paciente["id_ocupacion"],'class="form-control m-b "');?>
                                                 <?=form_error('ocupacion','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Niv. Estudios</strong>
-                                                <?=form_dropdown('niv_estudios',$niv_estudios,set_value('niv_estudios'),'class="form-control m-b "');?>
+                                                <?=form_dropdown('niv_estudios',$niv_estudios,$paciente["id_nivel_estudio"],'class="form-control m-b "');?>
                                                 <?=form_error('n_estudio','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
@@ -175,17 +181,17 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Región</strong>
-                                                <?=form_dropdown('region',$regiones,set_value('region'),'id="region" class="form-control m-b "');?>
+                                                <?=form_dropdown('region',$regiones,$paciente["id_region"],'id="region" class="form-control m-b "');?>
                                                 <?=form_error('region','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Provincia</strong>
-                                                <?=form_dropdown('provincia',$provincias,set_value('provincia'),'id="provincia" class="form-control m-b "');?>
+                                                <?=form_dropdown('provincia',$provincias,$paciente["id_provincia"],'id="provincia" class="form-control m-b "');?>
                                                 <?=form_error('provincia','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Comuna</strong>
-                                                <?=form_dropdown('comuna',$comunas,set_value('comuna'),'id="comuna" class="form-control m-b "');?>
+                                                <?=form_dropdown('comuna',$comunas,$paciente["id_comuna"],'id="comuna" class="form-control m-b "');?>
                                                 <?=form_error('comuna','<div class="text-danger">','</div>');?>
                                              </div>
                                           </div>
@@ -193,7 +199,7 @@
                                           <div class="row">
                                              <div class="col-md-8">
                                                 *&nbsp;<strong>Calle / Pasaje / Villa</strong>
-                                                <input type="text" name="calle" placeholder="Nombre de la calle, pasaje o villa" class="form-control " value="<?php echo set_value('calle'); ?>">
+                                                <input type="text" name="calle" placeholder="Nombre de la calle, pasaje o villa" class="form-control " value="<?=$paciente["calle"];?>">
                                                 <?=form_error('calle','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">&nbsp;</div>
@@ -203,12 +209,12 @@
                                           <div class="row">
                                              <div class="col-md-4">
                                                 <strong>Grupo Sanguíneo</strong>
-                                                <?=form_dropdown('grupo_sang',$gr_sang,set_value('grupo_sang'),'id="grupo_sang" class="form-control m-b "');?>
+                                                <?=form_dropdown('grupo_sang',$gr_sang,$paciente["id_grupo_sang"],'id="grupo_sang" class="form-control m-b "');?>
                                                 <?=form_error('grupo_sang','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">
                                                 <strong>Factor RH</strong>
-                                                <?=form_dropdown('factorn_rh',$factoresRH,set_value('factor_rh'),'id="factorn_rh" class="form-control m-b "');?>
+                                                <?=form_dropdown('factorn_rh',$factoresRH,$paciente["id_factor_rh"],'id="factorn_rh" class="form-control m-b "');?>
                                                 <?=form_error('factorn_rh','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">&nbsp;</div>
@@ -218,7 +224,7 @@
                                            <div class="alert alert-warning">
                                                <strong>IMPORTANTE:</strong>
                                                <br>
-                                               1-&nbsp; Para agregar una persona de contacto debes ingresar sus nombres,apellidos y su teléfonoo/celular, de lo contrario no se ingresara al sistema.
+                                               1-&nbsp; Para agregar o editar una persona de contacto debes ingresar sus nombres,apellidos y su teléfonoo/celular, de lo contrario no se ingresara o editara en el sistema.
                                                <br>
                                                2-&nbsp;Para agregar mas de una persona de contacto debes hacer click en el botón "Agregar Otro Contacto". 
                                                <br>
@@ -226,39 +232,137 @@
                                                <br>
                                                4-&nbsp;Si no deseas agregar personas de contacto, deja todos los campos en blanco.
                                            </div>
-                                           <div class="row">
-                                             <div class="col-md-4">
-                                                <strong>*Nombres</strong>
-                                                <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">
-                                                <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
-                                             </div>
-                                             <div class="col-md-4">
-                                                <strong>*Apellidos</strong>
-                                                <input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">
-                                                <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
-                                             </div>
-                                              <div class="col-md-4">
-                                                <strong>Familiaridad</strong>
-                                                <?=form_dropdown('familiariodad[]',$parentescos,set_value('parentescos'),'id="factorn_rh" class="form-control m-b "');?>
-                                                <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
-                                              </div>
-                                          </div>
-                                           <div class="row">
-                                             <div class="col-md-4">
-                                                <strong>*Telefono/Celular</strong>
-                                                <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">
-                                                <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
-                                             </div>
-                                             <div class="col-md-4">
-                                                <strong>Correo</strong>
-                                                <input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="">
-                                                <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
-                                             </div>
-                                              <div class="col-md-4">
-                                                  <br>
-                                                  <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-primary">Agregar Otro Contacto</a>
-                                              </div>
-                                          </div>
+                                             <?php 
+                                                    //Validar que tenga personas de contacto
+                                                    if(!empty($paciente["personas_contacto"])){
+                                                        
+                                                        $cont = 1;//Contador
+                                                        //Recorrer arreglo con las personas de contacto
+                                                        foreach ($paciente["personas_contacto"] as $p_contacto){ 
+                                                            
+                                                            //Solo primer registro tendra boton para agregar mas contactos
+                                                            if($cont == 1){ ?>
+                                                                
+                                                                <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="<?=$p_contacto["id_persona_contacto"]?>">
+                                                                    <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="<?=$p_contacto["nombres"]; ?>">
+                                                                    <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Apellidos</strong>
+                                                                    <input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="<?=$p_contacto["apellidos"]; ?>">
+                                                                    <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                  <div class="col-md-4">
+                                                                    <strong>Familiaridad</strong>
+                                                                    <?=form_dropdown('familiariodad[]',$parentescos,$p_contacto["id_parentesco"],'id="factorn_rh" class="form-control m-b "');?>
+                                                                    <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                 <div class="col-md-4">
+                                                                    <strong>Telefono/Celular</strong>
+                                                                    <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="<?=$p_contacto["telefono"]; ?>">
+                                                                    <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Correo</strong>
+                                                                    <input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="<?=$p_contacto["correo"];  ?>">
+                                                                    <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                     <br>
+                                                                     <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-primary">Agregar Otro Contacto</a>
+                                                                 </div>
+                                                                </div>
+                                                                
+                                                            <?php }else{ ?>
+                                                                
+                                                                <div id="group_<?=$cont;?>">
+                                                                <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="<?=$p_contacto["id_persona_contacto"]?>">
+                                                                    <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="<?=$p_contacto["nombres"]; ?>">
+                                                                    <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Apellidos</strong>
+                                                                    <input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="<?=$p_contacto["apellidos"]; ?>">
+                                                                    <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                  <div class="col-md-4">
+                                                                    <strong>Familiaridad</strong>
+                                                                    <?=form_dropdown('familiariodad[]',$parentescos,$p_contacto["id_parentesco"],'id="factorn_rh" class="form-control m-b "');?>
+                                                                    <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                 <div class="col-md-4">
+                                                                    <strong>Telefono/Celular</strong>
+                                                                    <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="<?=$p_contacto["telefono"]; ?>">
+                                                                    <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Correo</strong>
+                                                                    <input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="<?=$p_contacto["correo"];  ?>">
+                                                                    <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                     <br>
+                                                                     <a href="javascript:;" title="Eliminar contacto" onclick="deleteFile(<?=$cont;?>);" id="delete_<?=$cont;?>" class="delete btn btn-danger">Eliminar Contacto<i class="fa fa-fw fa-times"></i></a>
+                                                                 </div>
+                                                                </div>
+                                                                </div>
+                                                                
+                                                            <?php }
+                                                        
+                                                    ?>
+                                                    
+                                                    <?php $cont++; }
+                                                        
+                                                    }else{ ?>
+                                                            
+                                                                <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <strong>Nombres</strong>
+                                                                    <input type="hidden" name="pc_ids[]" id="pc_ids[]" value="">
+                                                                    <input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">
+                                                                    <?=form_error('pc_nombres','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Apellidos</strong>
+                                                                    <input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">
+                                                                    <?=form_error('pc_apellidos','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                  <div class="col-md-4">
+                                                                    <strong>Familiaridad</strong>
+                                                                    <?=form_dropdown('familiariodad[]',$parentescos,"",'id="factorn_rh" class="form-control m-b "');?>
+                                                                    <?=form_error('familiariodad','<div class="text-danger">','</div>');?>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                 <div class="col-md-4">
+                                                                    <strong>Telefono/Celular</strong>
+                                                                    <input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">
+                                                                    <?=form_error('pc_telefono','<div class="text-danger">','</div>');?>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                    <strong>Correo</strong>
+                                                                    <input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="">
+                                                                    <?=form_error('pc_correo','<div class="text-danger">','</div>');?>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                     <br>
+                                                                     <a href="javascript:;" onclick="newFile();" id="plus" class="btn btn-primary">Agregar Otro Contacto</a>
+                                                                 </div>
+                                                                </div>
+                                                       
+                                                    <?php }
+                                                    
+                                             ?>
                                            <div id="inFiles">
                                                <input type="hidden" id="contador" name="contador"  value="1">
                                            </div>
@@ -300,7 +404,7 @@
                                     <div class="col-md-6">
                                        <button class="btn btn-white" type="button">Cancelar</button>
                                        &nbsp;&nbsp;
-                                       <button class="btn btn-primary" type="submit">Crear Paciente</button>
+                                       <button class="btn btn-primary" type="submit">Editar Paciente</button>
                                     </div>
                                     <div class="col-md-6">&nbsp;</div>
                                  </div>
@@ -316,17 +420,17 @@
    </div>
 </div>
 <script>
-
 //Función para añadir un nuevo input file
 function newFile(){
     
     var html = '<div id="group_'+$("#contador").val()+'"><div class="row"><hr>'+
                 '<div class="col-md-4">'+
-                   '<strong>*Nombres</strong>'+
+                   '<strong>Nombres</strong>'+
+                   '<input type="hidden" name="pc_ids[]" id="pc_ids[]" value="">'+
                    '<input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">'+
                '</div>'+
                 '<div class="col-md-4">'+
-                   '<strong>*Apellidos</strong>'+
+                   '<strong>Apellidos</strong>'+
                    '<input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">'+
                 '</div>'+
                  '<div class="col-md-4">'+
@@ -350,7 +454,7 @@ function newFile(){
              '</div>'+
               '<div class="row">'+
                 '<div class="col-md-4">'+
-                   '<strong>*Telefono/Celular</strong>'+
+                   '<strong>Telefono/Celular</strong>'+
                    '<input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">'+
                 '</div>'+
                 '<div class="col-md-4">'+
@@ -366,7 +470,6 @@ function newFile(){
     $("#inFiles").append(html);
     var cont = $("#contador").val()+1;
     $("#contador").val(cont);
-    
     //Si el contador es igual a 5 se bloquea el boton añadir nuevo input
     if(cont == 5){
         $("#plus").addClass("disabled");

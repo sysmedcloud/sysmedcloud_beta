@@ -39,10 +39,6 @@ class Dashboard_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_dashboard();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
-        
         $data["menu"]   = "Dashboard";
         
         $data["active"]     = activeMenu("inicio");//(HELPERS)marca menu (active)

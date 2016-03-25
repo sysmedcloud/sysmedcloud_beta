@@ -10,8 +10,9 @@ class Perfil_model extends CI_Model
     /***************************************************************************
     /** @Funtion que permite retornar los datos personales del usuario
     /**************************************************************************/
-    function info_personal($nom_bd,$id_usuario)
+    function info_personal($id_usuario)
     {
+        
         //cargamos los datos del usuario
         $this->db->select('
             u.id_usuario,
@@ -32,8 +33,8 @@ class Perfil_model extends CI_Model
             du.calle,
             du.imagen,
             du.fecha_nac');
-        $this->db->from('tbl_usuarios u');
-        $this->db->join('tbl_data_usuarios du','du.id_usuario = u.id_usuario');
+        $this->db->from('smc_access_data.tbl_usuarios u');
+        $this->db->join('tbl_usuarios du','du.id_usuario = u.id_usuario');
         //$this->db->join('tbl_paises p','p.id_pais = pa.id_pais');
         $this->db->where('u.id_usuario',$id_usuario);
         
@@ -70,23 +71,20 @@ class Perfil_model extends CI_Model
         $dataMod['calle']               = $data["calle"];
         $dataMod['fecha_nac']           = $data["fecha_nac"];
         
-        $this->db->where('id_usuario',$data["id_usuario"]);
-        $perfil_editado = $this->db->update('tbl_data_usuarios',$dataMod);
-                    
         //MODIFICAR USERNAME Y PASSWORD
-        $dataUser["username"] = $data["username"];
+        $dataMod["username"] = $data["username"];
         
         //validar nueva password
         if($data["password"] != ""){//Cambiar contraseña
 
-            $dataUser["password"] = md5($data["password"]);
+            $dataMod["password"] = md5($data["password"]);
         }
         
         $this->db->where('id_usuario',$data["id_usuario"]);
-        $UsernameModificado = $this->db->update('tbl_usuarios',$dataUser);
+        $perfil_editado = $this->db->update('tbl_usuarios',$dataMod);
         
         //Validar cambio de informacion
-        $res = $UsernameModificado == true ? true : redirect(base_url()."errors");
+        $res = $perfil_editado == true ? true : redirect(base_url()."errors");
         
         return $res;
         

@@ -40,15 +40,13 @@ class Perfil_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_miperfil();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
         
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("perfil");//(HELPERS)marca menu (active)
         
         //Obtener informacion personal del usuario
-        $data["info"]       = $this->perfil_model->info_personal($data["session"]["db_name"],$data["session"]["id_usuario"]);
+        $data["info"]       = $this->perfil_model->info_personal($data["session"]["id_usuario"]);
         
         //Cargamos todos los paises
         $data["paises"]     = $this->dropdown_model->cargarPaises();
@@ -194,10 +192,6 @@ class Perfil_admin extends CI_Controller {
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
-        
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
         
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         

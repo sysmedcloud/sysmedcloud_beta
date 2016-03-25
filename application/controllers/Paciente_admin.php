@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Paciente_admin extends CI_Controller {
-
+    
+    /**************************************************************************/
+    /** CONSTRUCTOR DE LA CLASE
+    /**************************************************************************/
     public function __construct() {
 
         parent::__construct();
@@ -24,8 +27,8 @@ class Paciente_admin extends CI_Controller {
         $this->load->helper(array('url', 'form','html','funciones_system'));
     }
     
-    public function index()
-    {
+    public function index(){
+        
         $this->listadoPacientes();
     }
         
@@ -39,9 +42,6 @@ class Paciente_admin extends CI_Controller {
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_crearpacientes();
-        
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
         
         $data["menu"]       = "Registrar Paciente";//muestra opcion seleccionada top
         
@@ -65,6 +65,9 @@ class Paciente_admin extends CI_Controller {
         $this->gestion_view->defaultAdminView("paciente_view",$data);
     }
     
+    /**************************************************************************/
+    /** @Funcion que permite retornar listado de todos los pacientes
+    /**************************************************************************/
     public function listadoPacientes(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -73,20 +76,17 @@ class Paciente_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_tbl();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
-        
         $data["menu"]   = "Listado de Pacientes";
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
-        
-        $id_empresa         = $this->session->userdata('id_empresa');
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("pacientes_view",$data);
     }
     
+    /**************************************************************************/
+    /** @Funcion que permite retornar listado de todos los pacientes JSON
+    /**************************************************************************/
     public function pacientes_json(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -98,7 +98,7 @@ class Paciente_admin extends CI_Controller {
     }
     
     /**************************************************************************/
-    /** @Funcion que permite recibir los datos del form de perfil
+    /** @Funcion que permite recibir los datos del form de perfil (Ingresar)
     /**************************************************************************/
     public function  recibirDatos(){
        
@@ -142,29 +142,36 @@ class Paciente_admin extends CI_Controller {
             //El password es el rut sin guiones ni puntos
             $password   = str_replace($caracteres,"",$this->input->post('rut'));
             
-            //Arreglo con los dato de acceso del nuevo paciente 
-            $dataUser = array(
-                //datos para ingresar un nuevo usuario
-                "id_empresa"    => $data["session"]["id_empresa"],
-                "id_perfil"     => 4,
-                "rut"           => $this->input->post('rut'),
-                "username"      => $username,
-                "password"      => md5($password),
-                "estado"        => false,
-                "creado_por"    => $data["session"]["id_usuario"]
-            );
-            
-            //Registrar nuevo usuario tipo paciente, esta funcion 
-            //nos retornara el ultimo id recientemente ingresado
-            //es decir el id del usuario que recien creamos
-            $idUser = $this->paciente_model->anadirUsuario($dataUser);
-            
-            //validar id del nuevo usuario
-            if($idUser > 0){
+            //Datos de las personas de contacto que tenga el cliente
+                $pc_nombre     = $this->input->post('pc_nombres');
+                $pc_apellidos  = $this->input->post('pc_apellidos');
+                $pc_fam        = $this->input->post('familiariodad');
+                $pc_telefono   = $this->input->post('pc_telefono');
+                $pc_correo     = $this->input->post('pc_correo');
+
+                $cant_contactos = count($pc_nombre);//cantidad de contactos
+
+                for($x = 0;$x < $cant_contactos;$x++){
+
+                    $arr_contacto[] = array(
+                        "nombre"           => $pc_nombre[$x],
+                        "apellido"         => $pc_apellidos[$x],
+                        "familiariodad"    => $pc_fam[$x],
+                        "telefono"         => $pc_telefono[$x],
+                        "correo"           => $pc_correo[$x],
+                    );
+                }
                 
-                //Crear arreglo con los datos del nuestro nuevo paciente
+                //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
                 $dataForm = array(//Nuestro arreglo con los datos del paciente
-                    "id_new_user"   => $idUser,
+                    //datos para ingresar un nuevo usuario
+                    "id_empresa"    => $data["session"]["id_empresa"],
+                    "id_perfil"     => 4,
+                    "rut"           => $this->input->post('rut'),
+                    "username"      => $username,
+                    "password"      => md5($password),
+                    "estado"        => false,
+                    "creado_por"    => $data["session"]["id_usuario"],
                     "rut"           => $this->input->post('rut'),
                     "p_nombre"      => $this->input->post('p_nombre'),
                     "s_nombre"      => $this->input->post('s_nombre'),
@@ -187,7 +194,10 @@ class Paciente_admin extends CI_Controller {
                     "comuna"        => $this->input->post('comuna'),
                     "calle"         => $this->input->post('calle'),
                     "grupo_sang"    => $this->input->post('grupo_sang'),
-                    "factorn_rh"    => $this->input->post('factorn_rh')
+                    "factorn_rh"    => $this->input->post('factorn_rh'),
+                    //informacion de las personas de contacto
+                    "p_contactos"   => $arr_contacto
+                    
                 );
                 
                 //Registrar los datos del nuevo paciente
@@ -196,12 +206,145 @@ class Paciente_admin extends CI_Controller {
                 
                 //Muestra vista de exito
                 $this->pacienteAdd_succes();
-            }
             
             return false;
         }       
         
     }
+    
+    /**************************************************************************/
+    /** @Funcion que permite recibir los datos del form de perfil (Edicion)
+    /**************************************************************************/
+    public function recibirDatosEdit(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        
+        //Datos POST formulario
+        $this->form_validation->set_rules('rut','R.U.T.','required|trim');
+        $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
+        $this->form_validation->set_rules('s_nombre','segundo nombre','required|trim');
+        $this->form_validation->set_rules('a_paterno','apellido paterno','required|trim');
+        $this->form_validation->set_rules('a_materno','apellido materno','required|trim');
+        $this->form_validation->set_rules('genero','genero','required|trim');
+        $this->form_validation->set_rules('correo','correo electronico','required|trim|valid_email');
+        $this->form_validation->set_rules('fecha_nac','fecha de nacimiento','required|trim');
+        $this->form_validation->set_rules('pais_res','pais de referencia','required|trim');
+        $this->form_validation->set_rules('prevision','previsión médica','required|trim');
+        $this->form_validation->set_rules('region','region', 'required|trim');
+        $this->form_validation->set_rules('provincia','provincia','required|trim');
+        $this->form_validation->set_rules('comuna','comuna','required|trim');
+        $this->form_validation->set_rules('calle','calle','required|trim');
+        
+        //Validar datos del formulario
+        if($this->form_validation->run() == FALSE) {
+                
+            //Muestra los errores en la vista
+            $this->editarPaciente($this->input->post('id_paciente'));
+                
+        } else {
+            
+            //Datos de las personas de contacto que tenga el cliente
+            $pc_ids        = $this->input->post('pc_ids');
+            $pc_nombre     = $this->input->post('pc_nombres');
+            $pc_apellidos  = $this->input->post('pc_apellidos');
+            $pc_fam        = $this->input->post('familiariodad');
+            $pc_telefono   = $this->input->post('pc_telefono');
+            $pc_correo     = $this->input->post('pc_correo');
+
+            $cant_contactos = count($pc_nombre);//cantidad de contactos
+
+            for($x = 0;$x < $cant_contactos;$x++){
+                
+                $arr_contacto[] = array(
+                    "pc_ids"           => $pc_ids[$x],
+                    "nombre"           => $pc_nombre[$x],
+                    "apellido"         => $pc_apellidos[$x],
+                    "familiariodad"    => $pc_fam[$x],
+                    "telefono"         => $pc_telefono[$x],
+                    "correo"           => $pc_correo[$x],
+                );
+            }
+            
+            //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
+            $dataForm = array(//Nuestro arreglo con los datos del paciente
+                "id_usuario"    => $this->input->post('id_usuario'),
+                "rut"           => $this->input->post('rut'),
+                "p_nombre"      => $this->input->post('p_nombre'),
+                "s_nombre"      => $this->input->post('s_nombre'),
+                "a_paterno"     => $this->input->post('a_paterno'),
+                "a_materno"     => $this->input->post('a_materno'),
+                "genero"        => $this->input->post('genero'),
+                "telefono_f"    => $this->input->post('telefono_f'),
+                "celular"       => $this->input->post('celular'),
+                "correo"        => $this->input->post('correo'),
+                "estado_civil"  => $this->input->post('estado_civil'),
+                "fecha_nac"     => cambiaf_a_mysql($this->input->post('fecha_nac')),
+                "lugar_nac"     => $this->input->post('lugar_nac'),
+                "religion"      => $this->input->post('religion'),
+                "pais_res"      => $this->input->post('pais_res'),
+                "prevision"     => $this->input->post('prevision'),
+                "ocupacion"     => $this->input->post('ocupacion'),
+                "niv_estudios"  => $this->input->post('niv_estudios'),
+                "region"        => $this->input->post('region'),
+                "provincia"     => $this->input->post('provincia'),
+                "comuna"        => $this->input->post('comuna'),
+                "calle"         => $this->input->post('calle'),
+                "grupo_sang"    => $this->input->post('grupo_sang'),
+                "factorn_rh"    => $this->input->post('factorn_rh'),
+                //informacion de las personas de contacto
+                "p_contactos"   => $arr_contacto
+
+            );
+            
+            //Registrar los datos del nuevo paciente
+            //Ademas se creara una nueva historia medica para el paciente
+            $this->paciente_model->editarPaciente($dataForm);
+            
+            //Muestra vista de exito
+            $this->pacienteEdit_succes();
+        }
+    }
+    
+    /**************************************************************************/
+    /** @Funcion que permite retornar vista para editar paciente
+    /**************************************************************************/
+    public function editarPaciente($id_paciente){
+               
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        
+        //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
+        $data['files'] = $this->fileclass->files_crearpacientes();
+        
+        $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
+        
+        $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        
+        //Id del paciente
+        $data["id_paciente"]=$id_paciente;
+        
+        //Cargamos datos del paciente seleccionado
+        $data["paciente"]   = $this->paciente_model->info_paciente($id_paciente);    
+        
+        //Cargamos todos nuestros dropdown utilizados en la vista
+        $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
+        $data["parentescos"]    = $this->dropdown_model->cargarParentescos();
+        $data["est_civil"]      = $this->dropdown_model->cargarEstCivil();
+        $data["ocupaciones"]    = $this->dropdown_model->cargarOcupaciones();
+        $data["religiones"]     = $this->dropdown_model->cargarReligiones();
+        $data["niv_estudios"]   = $this->dropdown_model->cargarNivelesEst();
+        $data["paises"]         = $this->dropdown_model->cargarPaises();
+        $data["regiones"]       = $this->dropdown_model->cargarRegiones();
+        $data["provincias"]     = $this->dropdown_model->cargarProvincias();
+        $data["comunas"]        = $this->dropdown_model->cargarComunas();
+        $data["gr_sang"]        = $this->dropdown_model->cargarGrSanguineos();
+        $data["factoresRH"]     = $this->dropdown_model->cargarFactoresRH();
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->gestion_view->defaultAdminView("paciente_edit_view",$data);
+    }
+    
     /**************************************************************************/
     /** @Funcion que permite retornar vista de exista cambio info mi perfil
     /**************************************************************************/
@@ -213,10 +356,6 @@ class Paciente_admin extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
         
-        //Cargamos datos de la empresa (LIBRERIA)
-        $data["empresa"]    = $this->data_empresa->info_empresa();
-        //echo "<pre>";print_r($data);exit();//VISUALIZAR ARRAY DE DATOS
-        
         $data["menu"]       = "Mi Perfil";//muestra opcion seleccionada top
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
@@ -224,6 +363,23 @@ class Paciente_admin extends CI_Controller {
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("paciente_succes_view",$data);
     }
+    
+    public function pacienteEdit_succes(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        
+        //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
+        $data['files']      = $this->fileclass->files_dashboard();
+        
+        $data["menu"]       = "Editar Paciente";//muestra opcion seleccionada top
+        
+        $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->gestion_view->defaultAdminView("paciente_edit_succes_view",$data);
+    }
+    
     public function dataPaciente(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -236,6 +392,16 @@ class Paciente_admin extends CI_Controller {
         
         
     }
+    
+    /**************************************************************************/
+    /** @Funcion que permite eliminar un paciente
+    /**************************************************************************/
+    public function eliminarPaciente(){
+        
+        $id_paciente = $this->input->post("id_paciente");
+        //Eliminamos al paciente
+        echo $this->paciente_model->removePaciente($id_paciente);
+    } 
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 
     /** region seleccionada

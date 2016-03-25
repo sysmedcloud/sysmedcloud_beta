@@ -4,7 +4,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Registrar Paciente<small></small></h5>
+               <h5>Editar Paciente<small></small></h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -28,7 +28,7 @@
                  
                  <div class="alert alert-success alert-dismissable">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                    <h2>Paciente Ingresado Correctamente.</h2>
+                    <h2>Paciente Editado Correctamente.</h2>
                 </div>
                 <h1 class="logo-name">
                     <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">

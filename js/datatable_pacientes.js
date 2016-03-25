@@ -1,53 +1,4 @@
-$(document).ready(function() {
-    
-    var baseURL = $('body').data('baseurl');//url base
-    
-    $('#pacientes').dataTable({
-        "ajax": {
-            "url": baseURL+"paciente_admin/pacientes_json",//data
-            "dataSrc": ""
-        },
-        "columns": [ //columnas de nuestra tabla
-            { "data": "fecha_creacion" },
-            { "data": "rut" },
-            { "data": "nombres" },
-            { "data": "apellidos" },
-            { "data": "edad" },
-            { "data": "celular" },
-            { "data": "email"},
-            { "data": "editar"},
-            { "data": "view"},
-            { "data": "delete"}
-        ],
-        columnDefs: [
-            { type: 'date-eu', //ordena fecha
-              targets: 0
-            }
-        ],
-        order: [[ 0, "desc" ]],//orden by por fecha de creacion
-        responsive: true,//tabla responsive, agrega un boton
-        "dom": 'T<"clear">lfrtip',
-        "tableTools": {
-            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
-            "aButtons": [ //botones que sirven para exportar informacion de la tabla
-                {
-                    "sExtends": "csv",
-                    "sButtonText": "CSV"
-                },
-                {
-                    "sExtends": "xls",
-                    "sButtonText": "Excel"
-                },
-                {
-                    "sExtends": "pdf",
-                    "sButtonText": "PDF"
-                }                
-            ]
-        }
-    });
-    
-});
-//funcion que permiter ordenar nuestra tabla por fecha
+//SCRIPT QUE PERMITE ORDENAR TABLA DE PACIENTES POR FECHA
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-pre": function ( date ) {
         date = date.replace(" ", "");
@@ -94,9 +45,92 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-desc": function ( a, b ) {
         return ((a < b) ? 1 : ((a > b) ? -1 : 0));
     }
-} );
+});
 
+//AL MOMENTO DE CARGAR LA PAGINA CARGA ESTO
+$(document).ready(function() {
+    
+    //CARGA TABLA DE PACIENTES
+    listado_pacientes();
+    
+});
 
+//FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
+function listado_pacientes(){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#pacientes').dataTable({
+        "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
+        "ajax": {
+            "url": baseURL+"paciente_admin/pacientes_json",//data
+            "dataSrc": ""
+        },
+        "columns": [ //columnas de nuestra tabla
+            { "data": "fecha_creacion" },
+            { "data": "rut" },
+            { "data": "nombres" },
+            { "data": "apellidos" },
+            { "data": "edad" },
+            { "data": "celular" },
+            { "data": "email"},
+            { "data": "editar"},
+            { "data": "view"},
+            { "data": "delete"}
+        ],
+        columnDefs: [
+            { type: 'date-eu', //ordena fecha
+              targets: 0
+            }
+        ],
+        order: [[ 0, "desc" ]],//orden by por fecha de creacion
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+            }
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        responsive: false,//tabla responsive, agrega un boton
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
+            "aButtons": [ //botones que sirven para exportar informacion de la tabla
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "CSV"
+                },
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Excel"
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "PDF"
+                }                
+            ]
+        }
+    });
+}
+
+//FUNCION QUE PERMITE MOSTRAR UN MODAL CON LA INFORMACION DE UN PACIENTE
 function ver_datos_paciente(id_paciente){
     
     var baseURL = $('body').data('baseurl');//url base
@@ -107,7 +141,7 @@ function ver_datos_paciente(id_paciente){
         data: {"id_paciente" : id_paciente},
         type: "POST",
         dataType: "json",
-        url: baseURL+"paciente_admin/dataPaciente",
+        url: baseURL+"paciente_admin/dataPaciente"
     })
    .done(function(data,textStatus,jqXHR ) {         
         
@@ -115,6 +149,21 @@ function ver_datos_paciente(id_paciente){
             
             var nombre  =   data.primer_nombre+' '+data.segundo_nombre+' '+
                             data.apellido_paterno+' '+data.apellido_materno;
+            
+            var personas_contacto = Object.keys(data.personas_contacto).length;
+            
+            var html_personas_contacto = "";//personas de contacto
+            
+            //crear html de las personas de contacto
+            for (i = 0; i < personas_contacto; i++) { 
+
+               html_personas_contacto += '<tr>'+
+               '<td>'+data.personas_contacto[i].nombres+'</td>'+
+               '<td>'+data.personas_contacto[i].apellidos+'</td>'+
+               '<td>'+data.personas_contacto[i].correo+'</td>'+
+               '<td>'+data.personas_contacto[i].parentesco+'</td>'+
+               '</tr>';
+           }
             
             var modal = '<div class="row">'+
                 '<div class="col-xs-12 col-md-3">'+
@@ -261,7 +310,19 @@ function ver_datos_paciente(id_paciente){
                     '</div>'+
                     '<div class="panel-collapse collapse" id="collapseFour" aria-expanded="false" style="height: 0px;">'+
                         '<div class="panel-body">'+
-                            '<h1>EN CONSTRUCCION...</h1>'+
+                            '<table class="table table-striped">'+
+                                '<thead>'+
+                                  '<tr>'+
+                                    '<th>Nombres</th>'+
+                                    '<th>Apellidos</th>'+
+                                    '<th>Email</th>'+
+                                    '<th>Parentesco</th>'+
+                                  '</tr>'+
+                                '</thead>'+
+                                '<tbody>'+
+                                html_personas_contacto+
+                                '</tbody>'+
+                              '</table>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -281,8 +342,56 @@ function ver_datos_paciente(id_paciente){
 }
 
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
-function eliminar_paciente(){
+function eliminar_paciente(id_paciente,nombre,rut){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    swal({   
+        title: "¿Estas seguro de eliminar al paciente "+nombre+" R.U.T. "+rut+"?",   
+        text: "Recuerda que todo su historial médico sera eliminado!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, eliminalo!",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false 
+    }, 
+    function(){
+        
+        //Iniciar peticion con ajax
+        $.ajax({
+            data: {"id_paciente" : id_paciente},
+            type: "POST",
+            dataType: "json",
+            url: baseURL+"paciente_admin/eliminarPaciente"
+        })
+       .done(function(data,textStatus,jqXHR ) {         
 
+            if(textStatus === "success"){//La solicitud se realizo correctamente
+                
+               //Paciente eliminado correctamente 
+               swal({ 
+                    title: "Paciente eliminado!",
+                    text:  "Historia medica del paciente fue eliminada correctamente.",
+                    type:  "success" 
+                },
+                function(){
+                    //recargar tabla de pacientes
+                    listado_pacientes();
+                });
+            }
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+
+            if(textStatus === "error") {//La solicitud a fallado
+                alert("Error: "+textStatus+" "+jqXHR);
+                console.log("La solicitud a fallado: " +  textStatus);
+                console.log(textStatus+" "+jqXHR);
+            }
+        });
+    });
+    
+    return false;
     
 }
 

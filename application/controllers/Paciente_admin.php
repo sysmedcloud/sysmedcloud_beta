@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Paciente_admin extends CI_Controller {
-
+    
+    /**************************************************************************/
+    /** CONSTRUCTOR DE LA CLASE
+    /**************************************************************************/
     public function __construct() {
 
         parent::__construct();

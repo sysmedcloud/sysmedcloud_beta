@@ -390,9 +390,15 @@ class Paciente_admin extends CI_Controller {
         
     }
     
-    public function eliminarPaciente($id_paciente){
+    public function eliminarPaciente(){
         
         $id_paciente = $this->input->post("id_paciente");
+        
+        //Eliminamos al paciente
+        echo $this->paciente_model->removePaciente($id_paciente);
+        
+        //if($res){ echo "ok"; }else{ echo "error"; }
+        
         
     } 
     /**************************************************************************/

@@ -219,8 +219,7 @@ class Paciente_model extends CI_Model
         /***************************************************************************
     /** @Funtion que permite retornar los datos de un paciente
     /**************************************************************************/
-    function datos_paciente($id_paciente)
-    {
+    function datos_paciente($id_paciente){
         
         //cargamos los datos del usuario
         $this->db->select('du.id_usuario,
@@ -510,5 +509,18 @@ class Paciente_model extends CI_Model
             
             return $arr_info;
         }
+    }
+    
+    /***************************************************************************
+    /** @Funtion que permite eliminar un paciente (por seguridad solo 
+     * cambiaremos su estado de eliminado a true
+    /**************************************************************************/
+    public function removePaciente($id_paciente){
+        
+        //Editar estado eliminado del paciente
+        $this->db->where('id_usuario',$id_paciente);
+        $res = $this->db->update('tbl_usuarios',array("eliminado" => true));
+        
+        return $res;
     }
 }	

@@ -49,10 +49,16 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 
 $(document).ready(function() {
     
+    listado_pacientes();
+    
+});
+
+function listado_pacientes(){
+    
     var baseURL = $('body').data('baseurl');//url base
     
     $('#pacientes').dataTable({
-        //"destroy": true,//Variable que permite volver a cargar el ajax (tabla)
+        "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
         "ajax": {
             "url": baseURL+"paciente_admin/pacientes_json",//data
             "dataSrc": ""
@@ -119,8 +125,7 @@ $(document).ready(function() {
             ]
         }
     });
-    
-});
+}
 
 function ver_datos_paciente(id_paciente){
     
@@ -335,6 +340,8 @@ function ver_datos_paciente(id_paciente){
 //FUNCION QUE PERMITE ELIMINAR UN PACIENTE
 function eliminar_paciente(id_paciente,nombre,rut){
     
+    var baseURL = $('body').data('baseurl');//url base
+    
     swal({   
         title: "¿Estas seguro de eliminar al paciente "+nombre+" R.U.T. "+rut+"?",   
         text: "Recuerda que todo su historial médico sera eliminado!",   
@@ -347,44 +354,40 @@ function eliminar_paciente(id_paciente,nombre,rut){
     }, 
     function(){
         
-        swal({ 
-            title: "Paciente eliminado!",
-            text:  "Historia medica del paciente fue eliminada correctamente.",
-            type:  "success" 
-        },
-        function(){
-            
-            alert("recargamos la tabla de paciente");return false;
-            //recargaTabla(v_id_modelo);
+        //Iniciar peticion con ajax
+        $.ajax({
+            data: {"id_paciente" : id_paciente},
+            type: "POST",
+            dataType: "json",
+            url: baseURL+"paciente_admin/eliminarPaciente"
+        })
+       .done(function(data,textStatus,jqXHR ) {         
+
+            if(textStatus === "success"){//La solicitud se realizo correctamente
+                
+               //Paciente eliminado correctamente 
+               swal({ 
+                    title: "Paciente eliminado!",
+                    text:  "Historia medica del paciente fue eliminada correctamente.",
+                    type:  "success" 
+                },
+                function(){
+                    //recargar tabla de pacientes
+                    listado_pacientes();
+                });
+            }
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+
+            if(textStatus === "error") {//La solicitud a fallado
+                alert("Error: "+textStatus+" "+jqXHR);
+                console.log("La solicitud a fallado: " +  textStatus);
+                console.log(textStatus+" "+jqXHR);
+            }
         });
-        
     });
     
     return false;
     
-    //alert(id_paciente);
-    var baseURL = $('body').data('baseurl');//url base
-    
-    $.ajax({
-        data: {"id_paciente" : id_paciente},
-        type: "POST",
-        dataType: "json",
-        url: baseURL+"paciente_admin/eliminarPaciente"
-    })
-   .done(function(data,textStatus,jqXHR ) {         
-        
-        if(textStatus === "success"){//La solicitud se realizo correctamente
-            
-           console.log("correcto");
-        }
-    })
-    .fail(function( jqXHR, textStatus, errorThrown ) {
-         
-        if(textStatus === "error") {//La solicitud a fallado
-            
-            console.log( "La solicitud a fallado: " +  textStatus);
-            console.log(textStatus+" "+jqXHR);
-        }
-    });
 }
 

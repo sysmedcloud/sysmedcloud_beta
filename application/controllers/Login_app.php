@@ -89,7 +89,7 @@ class Login_app extends CI_Controller {
             
             //Validar los datos del formularios username -  password
             $this->form_validation->set_rules('username', 'nombre de usuario','required|trim');
-            $this->form_validation->set_rules('password','password','required|trim|min_length[4]|max_length[150]');
+            $this->form_validation->set_rules('password','password','required|trim|min_length[3]|max_length[150]');
             
             //Validar Formulario
             if ($this->form_validation->run() == FALSE) {

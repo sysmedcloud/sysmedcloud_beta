@@ -1,4 +1,4 @@
-//funcion que permiter ordenar nuestra tabla por fecha
+//SCRIPT QUE PERMITE ORDENAR TABLA DE PACIENTES POR FECHA
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-pre": function ( date ) {
         date = date.replace(" ", "");
@@ -47,12 +47,15 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     }
 });
 
+//AL MOMENTO DE CARGAR LA PAGINA CARGA ESTO
 $(document).ready(function() {
     
+    //CARGA TABLA DE PACIENTES
     listado_pacientes();
     
 });
 
+//FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
 function listado_pacientes(){
     
     var baseURL = $('body').data('baseurl');//url base
@@ -127,6 +130,7 @@ function listado_pacientes(){
     });
 }
 
+//FUNCION QUE PERMITE MOSTRAR UN MODAL CON LA INFORMACION DE UN PACIENTE
 function ver_datos_paciente(id_paciente){
     
     var baseURL = $('body').data('baseurl');//url base

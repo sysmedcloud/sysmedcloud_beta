@@ -64,6 +64,37 @@ class Fileclass {
         return $this->files;
     }
     
+    //ARCHIVOS NECESARIOS PARA VISTA AGENDA CALENDARIO
+    function files_agenda(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/animate.css',
+            '3' => base_url().'css/style.css',
+            '4' => base_url().'css/bootstrap-datetimepicker.min.css',
+            '5' => base_url().'css/calendar.css',
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/inspinia.js',
+            '5' => base_url().'js/pace.min.js',
+            '6' => base_url().'js/es-ES.js',
+            '7' => base_url().'js/moment.js',
+            '8' => base_url().'js/bootstrap-datetimepicker.js',
+            '9' => base_url().'js/bootstrap-datetimepicker.es.js',
+        );
+
+        return $this->files;
+    }
+    
     //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS EN LA PAGINA MI PERFIL
     function files_miperfil(){
         

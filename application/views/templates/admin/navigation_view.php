@@ -40,7 +40,7 @@
                     <a href="<?=base_url();?>perfil_admin"><i class="fa fa-user-md"></i> <span class="nav-label">Perfil</span></a>
                 </li>   
                 <li class="<?=$active["calendario"];?>">
-                    <a href="<?=base_url();?>"><i class="fa fa-calendar"></i> <span class="nav-label">Calendario</span></a>
+                    <a href="<?=base_url();?>agenda"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span></a>
                 </li>
                 <li class="<?=$active["pacientes"];?>">
                     <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Pacientes</span> <span class="fa arrow"></span></a>

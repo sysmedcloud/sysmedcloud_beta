@@ -23,16 +23,19 @@ class Login_app extends CI_Controller {
         //Validar inicio de session -  redireccionamiento usuario
         switch ((int)$this->session->userdata('id_perfil')) {
             
-            //Usuario tipo administrador
+            //Usuario tipo administrador (dueño de la cuenta o clinica)
             case 1: redirect(base_url().'dashboard_admin');break;
             
-            //Usuario tipo asistente
-            case 2: redirect(base_url().'asistente');break;
+            //Usuario tipo profesional (no puede ver panel de administracion)
+            case 5: redirect(base_url().'dashboard_admin');break;
             
-            //Usuario tipo solo de lectura
-            case 3: redirect(base_url().'profesional');break;
+            //Usuario tipo asistente (Secretaria o ayudantes (Agenda - citas))
+            case 2: redirect(base_url().'dashboard_admin');break;
             
-            //Usuario tipo paciente
+            //Usuario tipo solo de lectura (solo puede ver informacion)
+            case 3: redirect(base_url().'dashboard_admin');break;
+            
+            //Usuario tipo paciente (paciente de alguna clinica)
             case 4: redirect(base_url().'paciente');break;
             
             //Mostrar por defecto pagina de inicio de sesion

@@ -1,5 +1,13 @@
-        <div id="page-wrapper" class="gray-bg">
-            
+        <!--<div id="page-wrapper" class="white-bg">-->
+        <?php
+            //Validacion para controlar error de visualizacion modulo agenda
+            if(isset($gray_bg) && $gray_bg == "agenda"){
+                $class = "";//no agregamos la clase
+            }else{
+                $class = "gray-bg";
+            }
+        ?>
+        <div id="page-wrapper" class="<?php echo $class; ?>">    
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">

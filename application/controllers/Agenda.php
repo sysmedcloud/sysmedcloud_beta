@@ -38,12 +38,27 @@ class Agenda extends CI_Controller {
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_agenda();
         
+        //Crear titulo
         $data["menu"]   = "Agenda / Calendario";
         
+        //Activar modulo menu
         $data["active"]     = activeMenu("calendario");//(HELPERS)marca menu (active)
-                
+        
+        //Quitar clase gray-bg crea error con visualizacion de la agenda 
+        $data["gray_bg"]  = "agenda";
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
-        $this->gestion_view->defaultAdminView("agenda_view",$data);
+        $this->gestion_view->viewsAgenda("agenda_view",$data);
+    }
+    
+    public function obtener_eventos(){
+        
+        echo json_encode(
+                        array(
+                            "success" => 1,
+                            "result" => array()
+                        )
+                    );
     }
     
 }

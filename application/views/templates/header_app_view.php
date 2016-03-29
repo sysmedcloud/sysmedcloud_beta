@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="<?=$file_css?>" />
         
     <?php } ?>
-    
 </head>
 
 <body data-baseurl="<?=base_url()?>">

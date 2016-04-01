@@ -19,6 +19,7 @@ function cambiaf_a_mysql($fecha){
         $lafecha=@$fecha_mysql[2]."/".@$fecha_mysql[1]."/".@$fecha_mysql[0];
    	return $lafecha; 
 }
+
 //////////////////////////////////////////////////// 
 //FUNCION QUE PERMITE CALCULAR LA EDAD
 //////////////////////////////////////////////////// 
@@ -35,6 +36,7 @@ function calcularEdad($fecha){
     
     return $ano_diferencia;
 }
+
 //////////////////////////////////////////////////// 
 //PERMITE CONTROLAR LAS ACTIVE DE NUESTRO MENU
 //////////////////////////////////////////////////// 
@@ -73,4 +75,25 @@ function activeMenu($nom_menu){
 
     return $arr_menu;//retonar nuestro arreglo menu
 }
+
+//////////////////////////////////////////////////// 
+//Formatear una fecha a microtime para añadir al 
+//evento, tipo 1401517498985
+//////////////////////////////////////////////////// 
+function _formatear($fecha){
+    
+    return strtotime(substr($fecha, 6, 4)."-".substr($fecha, 3, 2)."-".substr($fecha, 0, 2)." " .substr($fecha, 10, 6)) * 1000;
+}
+
+//////////////////////////////////////////////////// 
+//Evaluar los datos que ingresa el usuario y 
+//eliminamos caracteres no deseados
+////////////////////////////////////////////////////
+function evaluar($valor){
+    
+    $nopermitido = array("'",'\\','<','>',"\"");
+    $valor = str_replace($nopermitido, "", $valor);
+    return $valor;
+}
+
 //end application/helpers/funciones.php

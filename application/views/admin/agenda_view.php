@@ -15,7 +15,7 @@
 
     </div>
     <div class="pull-right form-inline"><br>
-        <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
+        <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Agendar Cita</button>
     </div>
 </div>
 <div class="row">
@@ -29,7 +29,7 @@
                         <p>One fine body&hellip;</p>
                     </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar :)</button>
+                    <button type="button" onclick="cerrar_modal_cita();" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -48,14 +48,14 @@
             //establecemos los valores del calendario
             var options = {
 
-                // definimos que los eventos se mostraran en ventana modal
+                    //definimos que los eventos se mostraran en ventana modal
                     modal: '#events-modal', 
 
                     // dentro de un iframe
                     modal_type:'iframe',    
 
-                    //obtenemos los eventos de la base de datos
-                    events_source: '<?=  base_url()?>agenda/obtener_eventos', 
+                    //obtenemos citas medicas registradas
+                    events_source: '<?=  base_url()?>agenda/obtener_citas_medicas', 
 
                     // mostramos el calendario en el mes
                     view: 'month',             
@@ -63,14 +63,12 @@
                     // y dia actual
                     day: yyyy+"-"+mm+"-"+dd,   
 
-
                     // definimos el idioma por defecto
                     language: 'es-ES', 
-
+                            
                     //Template de nuestro calendario
                     tmpl_path: '<?=base_url()?>tmpls/', 
                     tmpl_cache: false,
-
 
                     // Hora de inicio
                     time_start: '08:00', 
@@ -113,7 +111,6 @@
                     }
             };
 
-
             // id del div donde se mostrara el calendario
             var calendar = $('#calendar').calendar(options); 
 
@@ -149,10 +146,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
+        <h4 class="modal-title" id="myModalLabel">Crear nueva cita</h4>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
+          <form id="form_crear_cita" action="<?php echo base_url(); ?>agenda/crear_cita" method="post">
                     <label for="from">Inicio</label>
                     <div class='input-group date' id='from'>
                         <input type='text' id="from" name="from" class="form-control" readonly />
@@ -166,29 +163,25 @@
                         <input type='text' name="to" id="to" class="form-control" readonly />
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </div>
-
+                    
                     <br>
-
-                    <label for="tipo">Tipo de evento</label>
-                    <select class="form-control" name="class" id="tipo">
-                        <option value="event-info">Informacion</option>
-                        <option value="event-success">Exito</option>
+                    <label for="tipo">Estado Cita</label>
+                    <select class="form-control" name="estado" id="tipo">
+                        <option style="background-color:#D9EDF7;color:#000;" value="event-info">Informacion</option>
+                        <option style="background-color: #DFF0D8;color: #000;" value="event-success">Exito</option>
                         <option value="event-important">Importantante</option>
-                        <option value="event-warning">Advertencia</option>
-                        <option value="event-special">Especial</option>
+                        <option style="background-color: #FCF8E3;color: #000;" value="event-warning">Advertencia</option>
+                        <option style="background-color: #F2DEDE;color:#000;" value="event-special">Especial</option>
                     </select>
+                    <br>
+
+                    <label for="title">Paciente</label>
+                    <input type="text" required autocomplete="off" name="paciente" class="form-control" id="paciente" placeholder="Introduce rut del paciente">
 
                     <br>
 
-
-                    <label for="title">Título</label>
-                    <input type="text" required autocomplete="off" name="title" class="form-control" id="title" placeholder="Introduce un título">
-
-                    <br>
-
-
-                    <label for="body">Evento</label>
-                    <textarea id="body" name="event" required class="form-control" rows="3"></textarea>
+                    <label for="body">Notas</label>
+                    <textarea id="body" name="nota" required class="form-control" rows="3"></textarea>
         <script type="text/javascript">
             $(function () {
 
@@ -212,11 +205,16 @@
                 });
 
             });
+            
+            function cerrar_modal_cita(){
+                
+                $(location).attr('href','<?=  base_url()?>agenda');
+            }
         </script>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-              <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
+              <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar Cita</button>
             </form>
         </div>
     </div>

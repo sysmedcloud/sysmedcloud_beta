@@ -12,6 +12,7 @@ class Agenda extends CI_Controller {
         
         //cargamos modelo para CI perfil
         $this->load->model('agenda_model');
+        $this->load->model('dropdown_model');
         
         //Cargamos todas las librerias utilizadas en es CI
         $this->load->library(array(
@@ -45,6 +46,8 @@ class Agenda extends CI_Controller {
         
         //Activar modulo menu
         $data["active"]     = activeMenu("calendario");//(HELPERS)marca menu (active)
+        
+        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed();
         
         //Quitar clase gray-bg crea error con visualizacion de la agenda 
         $data["gray_bg"]  = "agenda";

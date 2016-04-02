@@ -167,12 +167,16 @@
                     <br>
                     <label for="tipo">Estado Cita</label>
                     <select class="form-control" name="estado" id="tipo">
+                        <option value="">-- Seleccione estado cita --</option>
+                        <?php echo $estadosCitas; ?>
+                    </select>
+                   <!--<select class="form-control" name="estado" id="tipo">
                         <option style="background-color:#D9EDF7;color:#000;" value="event-info">Informacion</option>
                         <option style="background-color: #DFF0D8;color: #000;" value="event-success">Exito</option>
                         <option value="event-important">Importantante</option>
                         <option style="background-color: #FCF8E3;color: #000;" value="event-warning">Advertencia</option>
                         <option style="background-color: #F2DEDE;color:#000;" value="event-special">Especial</option>
-                    </select>
+                    </select>-->
                     <br>
 
                     <label for="title">Paciente</label>

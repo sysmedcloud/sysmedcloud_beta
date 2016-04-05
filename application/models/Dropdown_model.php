@@ -300,9 +300,15 @@ class dropdown_model extends CI_Model
         $this->db->from('tbl_estados_citas_medicas');
         $this->db->order_by("id_estado_cita_medica","asc");
         $option = "";
-        
+        $cont = 1;
         foreach ($this->db->get()->result() as $row){
-            $option .= "<option value='".$row->id_estado_cita_medica."' style='background-color:".$row->color.";color:#000;font-weight:bold;' >&nbsp;&nbsp;".ucfirst(mb_strtolower($row->estado,'utf-8'))."</option>";
+            
+            if($cont == 1){
+                $option .= "<option selected='selected' value='".$row->id_estado_cita_medica."' style='background-color:".$row->color.";color:#000;font-weight:bold;' >&nbsp;&nbsp;".ucfirst(mb_strtolower($row->estado,'utf-8'))."</option>"; 
+            }else{
+                $option .= "<option value='".$row->id_estado_cita_medica."' style='background-color:".$row->color.";color:#000;font-weight:bold;' >&nbsp;&nbsp;".ucfirst(mb_strtolower($row->estado,'utf-8'))."</option>";
+            }
+            $cont++;
         }
                             
         return $option;

@@ -150,75 +150,95 @@
       </div>
       <div class="modal-body">
           <form id="form_crear_cita" action="<?php echo base_url(); ?>agenda/crear_cita" method="post">
-                    <label for="from">Inicio</label>
-                    <div class='input-group date' id='from'>
-                        <input type='text' id="from" name="from" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+                <div class="row">
+                  <div class="form-group">
+                      <label class="control-label col-sm-3"  for="title">Rut Paciente</label>
+                      <div class="col-sm-9">
+                        <input type="text" required autocomplete="off" name="rut_paciente" class="form-control" id="rut_paciente" placeholder="Introduce rut del paciente">
+                      </div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="form-group">
+                      <label class="control-label col-sm-3"  for="title">Paciente</label>
+                      <div class="col-sm-9">
+                        <input type="text" required autocomplete="off" name="paciente" class="form-control" id="paciente" readonly="true"  placeholder="">
+                      </div>
+                  </div>
+                </div> 
+                <br>
+                <div class="row">
+                  <div class="form-group">
+                      <label class="control-label col-sm-3"  for="title">Inicio</label>
+                      <div class="col-sm-9">
+                          <div class='input-group date' id='from'>
+                              <input type='text' id="from" name="from" class="form-control" readonly />
+                              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                          </div>
+                      </div>
+                  </div>
+                </div> 
+                <br>
+                <div class="row">
+                  <div class="form-group">
+                      <label class="control-label col-sm-3"  for="title">Final</label>
+                      <div class="col-sm-9">
+                          <div class='input-group date' id='to'>
+                              <input type='text' name="to" id="to" class="form-control" readonly />
+                              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                          </div>
+                      </div>
+                  </div>
+                </div> 
+                <br>
+                <div class="row">
+                  <div class="form-group">
+                      <label class="control-label col-sm-3"  for="title">Estado Cita</label>
+                      <div class="col-sm-9">
+                          <select class="form-control" name="estado" id="tipo">
+                              <option value="">-- Seleccione estado cita --</option>
+                              <?php echo $estadosCitas; ?>
+                          </select>
+                      </div>
+                  </div>
+                </div> 
+                <br>
+                <label for="body">Nota</label>
+                <textarea id="body" name="nota" required class="form-control" rows="3"></textarea>
+                <script type="text/javascript">
+                $(function () {
 
-                    <br>
+                    //creamos la fecha actual
+                    var date = new Date();
+                    var yyyy = date.getFullYear().toString();
+                    var mm   = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
+                    var dd   = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
+                    var hora = date.getHours();
+                    var min  = date.getMinutes();
 
-                    <label for="to">Final</label>
-                    <div class='input-group date' id='to'>
-                        <input type='text' name="to" id="to" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
-                    
-                    <br>
-                    <label for="tipo">Estado Cita</label>
-                    <select class="form-control" name="estado" id="tipo">
-                        <option value="">-- Seleccione estado cita --</option>
-                        <?php echo $estadosCitas; ?>
-                    </select>
-                   <!--<select class="form-control" name="estado" id="tipo">
-                        <option style="background-color:#D9EDF7;color:#000;" value="event-info">Informacion</option>
-                        <option style="background-color: #DFF0D8;color: #000;" value="event-success">Exito</option>
-                        <option value="event-important">Importantante</option>
-                        <option style="background-color: #FCF8E3;color: #000;" value="event-warning">Advertencia</option>
-                        <option style="background-color: #F2DEDE;color:#000;" value="event-special">Especial</option>
-                    </select>-->
-                    <br>
+                    $('#from').datetimepicker({
+                        defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
+                        language: 'es',
+                        minDate: new Date()
+                    });
+                    $('#to').datetimepicker({
+                        defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
+                        language: 'es',
+                        minDate: new Date()
+                    });
 
-                    <label for="title">Paciente</label>
-                    <input type="text" required autocomplete="off" name="paciente" class="form-control" id="paciente" placeholder="Introduce rut del paciente">
-
-                    <br>
-
-                    <label for="body">Notas</label>
-                    <textarea id="body" name="nota" required class="form-control" rows="3"></textarea>
-        <script type="text/javascript">
-            $(function () {
-
-                //creamos la fecha actual
-                var date = new Date();
-                var yyyy = date.getFullYear().toString();
-                var mm   = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
-                var dd   = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
-                var hora = date.getHours();
-                var min  = date.getMinutes();
-
-                $('#from').datetimepicker({
-                    defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
-                    language: 'es',
-                    minDate: new Date()
                 });
-                $('#to').datetimepicker({
-                    defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
-                    language: 'es',
-                    minDate: new Date()
-                });
 
-            });
-            
-            function cerrar_modal_cita(){
-                
-                $(location).attr('href','<?=  base_url()?>agenda');
-            }
-        </script>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-              <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar Cita</button>
+                function cerrar_modal_cita(){
+
+                    $(location).attr('href','<?=  base_url()?>agenda');
+                }
+            </script>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar Cita</button>
             </form>
         </div>
     </div>

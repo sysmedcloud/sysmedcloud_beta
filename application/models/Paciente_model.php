@@ -216,7 +216,8 @@ class Paciente_model extends CI_Model
         return $insert_paciente = $this->db->insert('tbl_historias_medicas',$data);
         
     }
-        /***************************************************************************
+    
+    /***************************************************************************
     /** @Funtion que permite retornar los datos de un paciente
     /**************************************************************************/
     function datos_paciente($id_paciente){
@@ -343,6 +344,7 @@ class Paciente_model extends CI_Model
             echo json_encode($arr_paciente);
         }
     }
+    
     /***************************************************************************
     /** @Funtion que permite retornar un json con info de los pacientes
     /**************************************************************************/
@@ -522,5 +524,54 @@ class Paciente_model extends CI_Model
         $res = $this->db->update('tbl_usuarios',array("eliminado" => true));
         
         return $res;
+    }
+    
+    /***************************************************************************
+    /** @Funtion que permite retornar nombre y id de un paciente
+    /**************************************************************************/
+    function datos_agenda_paciente($rut_paciente,$id_empresa){
+        
+        //cargamos los datos del usuario
+        $this->db->select('
+            u.id_usuario,
+            u.rut,
+            u.primer_nombre,
+            u.segundo_nombre,
+            u.apellido_paterno,
+            u.apellido_materno,'
+        );
+        $this->db->from('tbl_usuarios u');
+        $this->db->where('u.rut',$rut_paciente);
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0){
+            
+            //Validar otras variables
+            $id_paciente    = $datos->row()->id_usuario;
+            $rut            = $datos->row()->rut                == "" ? "Sin info"  : $datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre      == "" ? "Sin info." : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre     == "" ? "Sin info." : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno   == "" ? "Sin info." : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno   == "" ? "Sin info." : $datos->row()->apellido_materno;
+            
+            $arr_paciente = array(
+                "id_paciente"       => $id_paciente,
+                "rut"               => $rut,
+                "primer_nombre"     => ucfirst($p_nombre),
+                "segundo_nombre"    => ucfirst($s_nombre),
+                "apellido_paterno"  => ucfirst($a_peterno),
+                "apellido_materno"  => ucfirst($a_materno),
+            );
+            
+            echo json_encode($arr_paciente); 
+            
+        }else{
+            
+            $arr_paciente = array(); 
+            echo json_encode($arr_paciente);
+        }
     }
 }	

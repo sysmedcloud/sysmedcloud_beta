@@ -143,7 +143,7 @@ function ver_datos_paciente(id_paciente){
         dataType: "json",
         url: baseURL+"paciente_admin/dataPaciente"
     })
-   .done(function(data,textStatus,jqXHR ) {         
+    .done(function(data,textStatus,jqXHR ) {         
         
         if(textStatus === "success"){//La solicitud se realizo correctamente
             

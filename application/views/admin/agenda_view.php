@@ -154,7 +154,7 @@
                   <div class="form-group">
                       <label class="control-label col-sm-3"  for="title">Rut Paciente</label>
                       <div class="col-sm-9">
-                        <input type="text" required autocomplete="off" name="rut_paciente" class="form-control" id="rut_paciente" placeholder="Introduce rut del paciente">
+                          <input type="text" onblur="buscar_paciente(this.value);" required autocomplete="off" name="rut_paciente" class="form-control" id="rut_paciente" placeholder="Introduce rut del paciente ejm: 11.111.111-1">
                       </div>
                   </div>
                 </div>
@@ -163,6 +163,7 @@
                   <div class="form-group">
                       <label class="control-label col-sm-3"  for="title">Paciente</label>
                       <div class="col-sm-9">
+                        <input type="text" required autocomplete="off" name="id_paciente" class="form-control" id="id_paciente" readonly="true"  placeholder="">
                         <input type="text" required autocomplete="off" name="paciente" class="form-control" id="paciente" readonly="true"  placeholder="">
                       </div>
                   </div>
@@ -205,8 +206,61 @@
                 </div> 
                 <br>
                 <label for="body">Nota</label>
-                <textarea id="body" name="nota" required class="form-control" rows="3"></textarea>
+                <textarea id="nota" name="nota" required class="form-control" rows="3"></textarea>
                 <script type="text/javascript">
+                
+                //Funcion que permite limpiar campos del modal crear cita
+                function limpiar_campos(){
+                    
+                    $("#rut_paciente").val("");
+                    $("#id_paciente").val("");
+                    $("#paciente").val("");
+                    $("#nota").val("");
+                }
+                
+                //Buscar nombre y id de un paciente
+                function buscar_paciente(rut){
+                    
+                    var rut_paciente = rut;
+                    
+                    $.ajax({
+                        data        : {"rut" : rut_paciente},
+                        type        : "POST",
+                        dataType    : "json",
+                        url         : "<?php echo base_url(); ?>paciente_admin/nombre_y_id_del_paciente"
+                    })
+                    .done(function(data,textStatus,jqXHR ) {         
+                        
+                        if(textStatus === "success"){//La solicitud se realizo correctamente
+                            
+                            var id_paciente = data.id_paciente;
+                            
+                            if(id_paciente !== "" && id_paciente > 0){   
+                                
+                                //Cambiamos valores a nuestros input
+                                $("#id_paciente").val(id_paciente);
+                                var nombres     = data.primer_nombre+" "+data.segundo_nombre;
+                                var apellidos   = data.apellido_paterno+" "+data.apellido_materno;
+                                $("#paciente").val(nombres+" "+apellidos);
+                                
+                            }else{
+                                
+                                alert("Paciente con rut "+data.rut+" no existe en el sistema.");
+                                $("#paciente").val("Paciente no existe en el sistema");    
+                                return false;
+                            }
+                        }
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        
+                        if(textStatus === "error") {//La solicitud a fallado
+                        
+                            console.log( "La solicitud a fallado: " +  textStatus);
+                            console.log(textStatus+" "+jqXHR);
+                        }
+                    });
+                }
+                    
                 $(function () {
 
                     //creamos la fecha actual
@@ -237,7 +291,7 @@
             </script>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" onclick="limpiar_campos();" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar Cita</button>
             </form>
         </div>

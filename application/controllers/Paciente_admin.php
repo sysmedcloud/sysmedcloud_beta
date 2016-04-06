@@ -402,6 +402,7 @@ class Paciente_admin extends CI_Controller {
         //Eliminamos al paciente
         echo $this->paciente_model->removePaciente($id_paciente);
     } 
+    
     /**************************************************************************/
     /** @Funcion que permite cargar las provincias segun 
     /** region seleccionada
@@ -450,5 +451,19 @@ class Paciente_admin extends CI_Controller {
             <?php
             }
         }
+    }
+    
+    /**************************************************************************/
+    /** @Funcion que permite buscar nombre y id de un paciente
+    /**************************************************************************/
+    public function nombre_y_id_del_paciente(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $session        = $this->general_sessions->validarSessionAdmin();
+        $id_empresa     = $session["id_empresa"];
+        $rut_paciente   = $this->input->post("rut");
+        
+        //Retornar id y nombre del paciente
+        echo $this->paciente_model->datos_agenda_paciente($rut_paciente,$id_empresa);
     }
 }

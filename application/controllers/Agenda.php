@@ -61,6 +61,9 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function crear_cita(){
         
+        //Cargamos las variables de session (LIBRERIA)
+        $session        = $this->general_sessions->validarSessionAdmin();
+        
         // Definimos nuestra zona horaria
         date_default_timezone_set("America/Santiago");
         $from   = $this->input->post('from');
@@ -81,6 +84,10 @@ class Agenda extends CI_Controller {
                 
                 //Creamos arreglo con los datos de la cita
                 $arr_data_cita = array(
+                    "id_empresa"    => $session["id_empresa"],
+                    "id_profesional"=> $session["id_usuario"],
+                    "id_paciente"   => $this->input->post("id_paciente"),
+                    "rut_paciente"  => $this->input->post("rut_paciente"),
                     "inicio"        => _formatear($from),
                     "final"         => _formatear($to),
                     "inicio_normal" => $from,
@@ -152,7 +159,7 @@ class Agenda extends CI_Controller {
         $row = $this->agenda_model->info_cita_medica($id_cita_medica);
         
         $data["id_cita_medica"] = $id_cita_medica;
-        $data["titulo"] = $row['title'];
+        $data["titulo"] = $row['nom_paciente'];
         $data["evento"] = $row['body'];
         $data["inicio"] = $row['inicio_normal'];
         $data["final"] = $row['final_normal'];

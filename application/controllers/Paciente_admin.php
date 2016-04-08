@@ -461,7 +461,7 @@ class Paciente_admin extends CI_Controller {
         //Cargamos las variables de session (LIBRERIA)
         $session        = $this->general_sessions->validarSessionAdmin();
         $id_empresa     = $session["id_empresa"];
-        $rut_paciente   = $this->input->post("rut");
+        $rut_paciente   = trim($this->input->post("rut"));
         
         //Retornar id y nombre del paciente
         echo $this->paciente_model->datos_agenda_paciente($rut_paciente,$id_empresa);

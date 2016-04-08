@@ -14,15 +14,28 @@ class Agenda_model extends CI_Model
         
         // Definimos nuestra zona horaria
         date_default_timezone_set("America/Santiago");
-             
-        $data["title"]          = $dataCita["paciente"];
-        $data["body"]           = $dataCita["nota"];
-        $data["url"]            = '';
-        $data["class"]          = $dataCita["estado"];
-        $data["start"]          = $dataCita["inicio"];
-        $data["end"]            = $dataCita["final"];
-        $data["inicio_normal"]  = $dataCita["inicio_normal"];
-        $data["final_normal"]   = $dataCita["final_normal"];
+        
+        $data["id_empresa"]             = $dataCita["id_empresa"];
+        $data["id_profesional"]         = $dataCita["id_profesional"];
+        $data["id_paciente"]            = $dataCita["id_paciente"];
+        $data["rut_paciente"]           = $dataCita["rut_paciente"];
+        $data["id_estado_cita_medica"]  = $dataCita["estado"];
+        
+        //Buscar color del estado de la cita
+        $this->db->select("color");
+        $this->db->from('tbl_estados_citas_medicas');
+        $this->db->where('id_estado_cita_medica',$dataCita["estado"]);
+        $datos_cita = $this->db->get();
+        $row_color_est = $datos_cita->row_array();
+        
+        $data["class"]                  = $row_color_est["color"];
+        $data["nom_paciente"]           = $dataCita["paciente"];
+        $data["body"]                   = $dataCita["nota"];
+        $data["url"]                    = '';
+        $data["start"]                  = $dataCita["inicio"];
+        $data["end"]                    = $dataCita["final"];
+        $data["inicio_normal"]          = $dataCita["inicio_normal"];
+        $data["final_normal"]           = $dataCita["final_normal"];
         
         //registrar nueva cita medica
         $this->db->insert('tbl_citas_medicas',$data);

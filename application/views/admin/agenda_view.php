@@ -163,7 +163,7 @@
                   <div class="form-group">
                       <label class="control-label col-sm-3"  for="title">Paciente</label>
                       <div class="col-sm-9">
-                        <input type="text" required autocomplete="off" name="id_paciente" class="form-control" id="id_paciente" readonly="true"  placeholder="">
+                        <input type="hidden" required autocomplete="off" name="id_paciente" class="form-control" id="id_paciente" readonly="true"  placeholder="">
                         <input type="text" required autocomplete="off" name="paciente" class="form-control" id="paciente" readonly="true"  placeholder="">
                       </div>
                   </div>
@@ -245,7 +245,7 @@
                                 
                             }else{
                                 
-                                alert("Paciente con rut "+data.rut+" no existe en el sistema.");
+                                alert("Paciente con rut "+rut_paciente+" no existe en el sistema.");
                                 $("#paciente").val("Paciente no existe en el sistema");    
                                 return false;
                             }

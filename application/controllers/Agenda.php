@@ -113,38 +113,20 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function obtener_citas_medicas(){
         
-        //Query para obtener listado de pacientes
-        $this->db->select("*");
-        $this->db->from('tbl_citas_medicas');
-        //$this->db->where('du.id_perfil',4);
-        $citas_medicas = $this->db->get();
+        $session        = $this->general_sessions->validarSessionAdmin();
+        $id_profesional = $session["id_usuario"];
+        $id_perfil      = $session["id_perfil"];
+        $id_empresa     = $session["id_empresa"];
+        //Parametros necesarios
+        $data           = array(
+            "id_profesional" => $id_profesional,
+            "id_perfil"      => $id_perfil,
+            "id_empresa"     => $id_empresa,
+        );
+        //Obtener citas medicas
+        $res = $this->agenda_model->citas_medicas($data);
         
-        if($citas_medicas->num_rows() > 0 ){
-                    
-            //creamos un array
-            $datos = array(); 
-            //guardamos en un array multidimensional todos los datos de la consulta
-            $i=0;
-            
-            foreach ($citas_medicas->result_array() as $row){
-                
-                // Alimentamos el array con los datos de los eventos
-                $datos[$i] = $row;
-                $i++;
-            }
-            
-            //Transformamos los datos encontrado en la BD al formato JSON
-            echo json_encode(       
-                array(
-                    "success" => 1,
-                    "result" => $datos
-                )
-            );
-            
-        }else{
-            // Si no existen eventos mostramos este mensaje.
-            echo "No hay datos"; 
-        }
+        echo $res; 
     }
     
     /**************************************************************************/

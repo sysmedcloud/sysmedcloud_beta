@@ -55,6 +55,48 @@ class Agenda_model extends CI_Model
     }
     
     /***************************************************************************
+    /** @Funtion que permite retornar todas las citas medicas disponibles 
+    *   de un profesional
+    */
+    /**************************************************************************/
+    public function citas_medicas($data){
+        
+        //Query para obtener listado de pacientes
+        $this->db->select("*");
+        $this->db->from('tbl_citas_medicas');
+        $this->db->where('id_empresa',$data["id_empresa"]);
+        $this->db->where('id_profesional',$data["id_profesional"]);
+        $citas_medicas = $this->db->get();
+        
+        if($citas_medicas->num_rows() > 0 ){
+                    
+            //creamos un array
+            $datos = array(); 
+            //guardamos en un array multidimensional todos los datos de la consulta
+            $i=0;
+            
+            foreach ($citas_medicas->result_array() as $row){
+                
+                // Alimentamos el array con los datos de los eventos
+                $datos[$i] = $row;
+                $i++;
+            }
+            
+            //Transformamos los datos encontrado en la BD al formato JSON
+            return json_encode(       
+                array(
+                    "success" => 1,
+                    "result" => $datos
+                )
+            );
+            
+        }else{
+            // Si no existen eventos mostramos este mensaje.
+            return "No hay datos"; 
+        }
+    }
+    
+    /***************************************************************************
     /** @Funtion que permite buscar informacion de una cita medica en la db
     /**************************************************************************/
     public function info_cita_medica($id_cita_medica){

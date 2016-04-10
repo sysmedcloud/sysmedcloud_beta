@@ -11,6 +11,7 @@
     <!--<link rel="stylesheet" href="<?php echo base_url();?>css/animate.css">-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/calendar.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/sweetalert.css">
     
     <script type="text/javascript" src="<?php echo base_url();?>js/es-ES.js"></script>
     <script src="<?php echo base_url();?>js/jquery.min.js"></script>
@@ -24,6 +25,7 @@
     <script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>
     <script src="<?php echo base_url();?>js/inspinia.js"></script>
     
+    <script src="<?php echo base_url();?>js/sweetalert.min.js"></script>
     
 </head>
 

@@ -223,6 +223,23 @@
                     
                     var rut_paciente = rut;
                     
+                    if(rut_paciente === ""){
+                        
+                        swal({   
+                            title:"Ingresa rut del paciente",   
+                            text:"",   
+                            type: "info",   
+                            showCancelButton: true,  
+                            confirmButtonColor: "#DD6B55",   
+                            confirmButtonText: "Ok",   
+                            cancelButtonText: "Cerrar",   
+                            closeOnConfirm: true,   
+                            closeOnCancel: true 
+                        });
+                        
+                        limpiar_campos();
+                    }
+                    
                     $.ajax({
                         data        : {"rut" : rut_paciente},
                         type        : "POST",
@@ -245,8 +262,29 @@
                                 
                             }else{
                                 
-                                alert("Paciente con rut "+rut_paciente+" no existe en el sistema.");
-                                $("#paciente").val("Paciente no existe en el sistema");    
+                                
+                                //alert("Paciente con rut "+rut_paciente+" no existe en el sistema.");
+                                swal({   
+                                    title:"Paciente con rut "+rut_paciente+" no existe en el sistema",   
+                                    text:"Puedes crear un nuevo paciente desde el modulo pacientes/crear paciente",   
+                                    type: "warning",   
+                                    showCancelButton: true,  
+                                    confirmButtonColor: "#DD6B55",   
+                                    confirmButtonText: "Crear nuevo paciente",   
+                                    cancelButtonText: "Cerrar",   
+                                    closeOnConfirm: false,   
+                                    closeOnCancel: true 
+                                }, 
+                                function(isConfirm){   
+                                    if (isConfirm) {     
+                                        //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                                        var url = "<?php echo base_url(); ?>paciente_admin/RegistrarPaciente";    
+                                        $(location).attr('href',url);
+                                    }
+                                });
+                                
+                                //$("#paciente").val("Paciente no existe en el sistema"); 
+                                limpiar_campos();
                                 return false;
                             }
                         }

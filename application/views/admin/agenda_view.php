@@ -223,7 +223,7 @@
                     
                     var rut_paciente = rut;
                     
-                    if(rut_paciente === ""){
+                    /*if(rut_paciente === ""){
                         
                         swal({   
                             title:"Ingresa rut del paciente",   
@@ -238,7 +238,7 @@
                         });
                         
                         limpiar_campos();
-                    }
+                    }*/
                     
                     $.ajax({
                         data        : {"rut" : rut_paciente},
@@ -256,8 +256,15 @@
                                 
                                 //Cambiamos valores a nuestros input
                                 $("#id_paciente").val(id_paciente);
-                                var nombres     = data.primer_nombre+" "+data.segundo_nombre;
-                                var apellidos   = data.apellido_paterno+" "+data.apellido_materno;
+                                
+                                if(data.primer_nombre === "Sin info."){
+                                    var nombres = "";
+                                    var apellidos = "";
+                                }else{
+                                    var nombres     = data.primer_nombre+" "+data.segundo_nombre;
+                                    var apellidos   = data.apellido_paterno+" "+data.apellido_materno;
+                                }
+                                
                                 $("#paciente").val(nombres+" "+apellidos);
                                 
                             }else{

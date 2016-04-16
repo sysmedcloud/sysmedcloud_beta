@@ -22,10 +22,10 @@
     <div id="calendar"></div> <!-- Aqui se mostrara nuestro calendario -->
 </div>
 <!--ventana modal para el calendario-->
-<div class="modal fade" id="events-modal">
+<div class="modal" id="events-modal">
     <div class="modal-dialog">
             <div class="modal-content">
-                    <div class="modal-body" style="height: 400px">
+                    <div class="modal-body" style="height: 515px;">
                         <p>One fine body&hellip;</p>
                     </div>
                 <div class="modal-footer">
@@ -146,7 +146,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Crear nueva cita</h4>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-calendar-o"></i>&nbsp;&nbsp;&nbsp;Crear nueva cita</h4>
       </div>
       <div class="modal-body">
           <form id="form_crear_cita" action="<?php echo base_url(); ?>agenda/crear_cita" method="post">

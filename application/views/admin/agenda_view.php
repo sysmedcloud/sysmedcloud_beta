@@ -25,7 +25,7 @@
 <div class="modal" id="events-modal">
     <div class="modal-dialog">
             <div class="modal-content">
-                    <div class="modal-body" style="height: 525px;">
+                    <div class="modal-body" style="height: 500px;">
                         <p>One fine body&hellip;</p>
                     </div>
                 <div class="modal-footer">

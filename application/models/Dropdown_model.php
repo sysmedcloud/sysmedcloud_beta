@@ -293,22 +293,21 @@ class dropdown_model extends CI_Model
     /***************************************************************************
     * @Funcion que permite retornar todos los estados de citas medicas
     ***************************************************************************/
-    function cargarEstadosCitasMed(){
+    function cargarEstadosCitasMed($id_estado){
         
         //cargamos todas los estados medicos
         $this->db->select('id_estado_cita_medica,estado,color');
         $this->db->from('tbl_estados_citas_medicas');
         $this->db->order_by("id_estado_cita_medica","asc");
         $option = "";
-        $cont = 1;
+        
         foreach ($this->db->get()->result() as $row){
             
-            if($cont == 1){
+            if($row->id_estado_cita_medica == $id_estado){
                 $option .= "<option selected='selected' value='".$row->id_estado_cita_medica."' style='background-color:".$row->color.";color:#000;font-weight:bold;' >&nbsp;&nbsp;".ucfirst(mb_strtolower($row->estado,'utf-8'))."</option>"; 
             }else{
                 $option .= "<option value='".$row->id_estado_cita_medica."' style='background-color:".$row->color.";color:#000;font-weight:bold;' >&nbsp;&nbsp;".ucfirst(mb_strtolower($row->estado,'utf-8'))."</option>";
             }
-            $cont++;
         }
                             
         return $option;

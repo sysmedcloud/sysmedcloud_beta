@@ -47,7 +47,7 @@ class Agenda extends CI_Controller {
         //Activar modulo menu
         $data["active"]     = activeMenu("calendario");//(HELPERS)marca menu (active)
         
-        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed();
+        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed(1);
         
         //Quitar clase gray-bg crea error con visualizacion de la agenda 
         $data["gray_bg"]  = "agenda";
@@ -139,10 +139,10 @@ class Agenda extends CI_Controller {
         //Obtenemos el id del evento
         $id_cita_medica = evaluar($id);
         
-        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed();
-        
         //Obtener datos de la cita medica
         $row = $this->agenda_model->info_cita_medica($id_cita_medica,$session["id_empresa"]);
+        
+        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed($row["id_estado_cita_medica"]);
         
         //Obtener datos de contacto del usuario
         $row_c = $this->agenda_model->datos_contacto($row['id_paciente']);

@@ -109,6 +109,19 @@ class Agenda_model extends CI_Model
         $datos_cita = $this->db->get();
         return $datos_cita->row_array();
     }
+
+    /***************************************************************************
+    /** @Funtion que permite buscar datos de contacto de un paciente
+    /**************************************************************************/
+    public function datos_contacto($id_paciente){
+        
+        //Query para validar existencia del usuario perfil paciente
+        $this->db->select("email,telefono,celular");
+        $this->db->from('tbl_usuarios');
+        $this->db->where('id_usuario',$id_paciente);
+        $datos_cita = $this->db->get();
+        return $datos_cita->row_array();
+    }
     
     /***************************************************************************
     /** @Funtion que permite eliminar una cita medica de la db

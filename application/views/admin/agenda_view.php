@@ -25,7 +25,7 @@
 <div class="modal" id="events-modal">
     <div class="modal-dialog">
             <div class="modal-content">
-                    <div class="modal-body" style="height: 515px;">
+                    <div class="modal-body" style="height: 525px;">
                         <p>One fine body&hellip;</p>
                     </div>
                 <div class="modal-footer">
@@ -257,7 +257,7 @@
                                 //Cambiamos valores a nuestros input
                                 $("#id_paciente").val(id_paciente);
                                 
-                                if(data.primer_nombre === "Sin info."){
+                                if(data.primer_nombre === "no informado"){
                                     var nombres = "";
                                     var apellidos = "";
                                 }else{

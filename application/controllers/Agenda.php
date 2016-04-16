@@ -134,17 +134,26 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function descripcion_evento($id){
         
+        $session        = $this->general_sessions->validarSessionAdmin();
+        
         //Obtenemos el id del evento
         $id_cita_medica = evaluar($id);
         
-        //Obtener datos de la cita medica
-        $row = $this->agenda_model->info_cita_medica($id_cita_medica);
+        $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed();
         
+        //Obtener datos de la cita medica
+        $row = $this->agenda_model->info_cita_medica($id_cita_medica,$session["id_empresa"]);
+        
+        //Creamos variables para nuestra vista
         $data["id_cita_medica"] = $id_cita_medica;
-        $data["titulo"] = $row['nom_paciente'];
-        $data["evento"] = $row['body'];
-        $data["inicio"] = $row['inicio_normal'];
-        $data["final"] = $row['final_normal'];
+        $data["id_paciente"]    = $row['id_paciente'];
+        $data["paciente"]       = $row['nom_paciente'];
+        $data["correo"]         = $row['correo']    != "" ? $row['correo']  : "no informado";
+        $data["celular"]        = $row['celular']   != "" ? $row['celular'] : "no informado";
+        $data["tel_fijo"]       = $row['tel_fijo']  != "" ? $row['tel_fijo']: "no informado";
+        $data["nota"]           = $row['body']      != "" ? $row['body']    : "Sin comentarios";
+        $data["inicio"]         = $row['inicio_normal'];
+        $data["final"]          = $row['final_normal'];
         
         $this->load->view('admin/descripcion_cita_view',$data);
     }

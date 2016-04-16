@@ -99,12 +99,13 @@ class Agenda_model extends CI_Model
     /***************************************************************************
     /** @Funtion que permite buscar informacion de una cita medica en la db
     /**************************************************************************/
-    public function info_cita_medica($id_cita_medica){
+    public function info_cita_medica($id_cita_medica,$id_empresa){
         
         //Query para validar existencia del usuario perfil paciente
         $this->db->select("*");
         $this->db->from('tbl_citas_medicas');
         $this->db->where('id',$id_cita_medica);
+        $this->db->where('id_empresa',$id_empresa);
         $datos_cita = $this->db->get();
         return $datos_cita->row_array();
     }

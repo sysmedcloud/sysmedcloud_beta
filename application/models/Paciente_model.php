@@ -275,31 +275,31 @@ class Paciente_model extends CI_Model
             $fecha_nac  = $datos->row()->fecha_nac;
             $fecha_nac  = explode(" ",$fecha_nac);
             $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
-            $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+            $edad       = calcularEdad($fecha_nac) == "2015" ? "no informado" : calcularEdad($fecha_nac); 
 
             //Validar otras variables
-            $rut            = $datos->row()->rut == "" ? "Sin info": $datos->row()->rut;
-            $p_nombre       = $datos->row()->primer_nombre == "" ? "Sin info." : $datos->row()->primer_nombre;
-            $s_nombre       = $datos->row()->segundo_nombre == "" ? "Sin info." : $datos->row()->segundo_nombre;
-            $a_peterno      = $datos->row()->apellido_paterno == "" ? "Sin info." : $datos->row()->apellido_paterno;
-            $a_materno      = $datos->row()->apellido_materno == "" ? "Sin info." : $datos->row()->apellido_materno;
+            $rut            = $datos->row()->rut == "" ? "no informado": $datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre == "" ? "no informado" : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre == "" ? "no informado" : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno == "" ? "no informado" : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno == "" ? "no informado" : $datos->row()->apellido_materno;
             $genero         = $datos->row()->genero == "M" ? "Masculino" : "Femenino";
-            $email          = $datos->row()->email == "" ? "Sin info." : $datos->row()->email;
-            $telefono       = $datos->row()->telefono == "" ? "Sin info." : $datos->row()->telefono;
-            $celular        = $datos->row()->celular == "" ? "Sin info." : $datos->row()->celular;
-            $lugar_nac      = $datos->row()->lugar_nac == "" ? "Sin info." : $datos->row()->lugar_nac;
-            $estado_civil   = $datos->row()->estado_civil == "" ? "Sin info." : $datos->row()->estado_civil;
-            $religion       = $datos->row()->religion == "" ? "Sin info." : $datos->row()->religion;
-            $prevision      = $datos->row()->prevision_medica == "" ? "Sin info." : $datos->row()->prevision_medica;
-            $nacionalidad   = $datos->row()->nacionalidad == "" ? "Sin info." : $datos->row()->nacionalidad;
-            $nivel_estudio  = $datos->row()->nivel_estudio == "" ? "Sin info.": $datos->row()->nivel_estudio;
-            $ocupacion      = $datos->row()->ocupacion == "" ? "Sin info." : $datos->row()->ocupacion;
-            $region         = $datos->row()->region == "" ? "Sin info." : $datos->row()->region;
-            $provincia      = $datos->row()->provincia == "" ? "Sin info." : $datos->row()->provincia;
-            $comuna         = $datos->row()->comuna == "" ? "Sin info" : $datos->row()->comuna;
-            $calle          = $datos->row()->calle  == "" ? "Sin info." : $datos->row()->calle;
-            $gr_sang        = $datos->row()->grupo_sanguineo == "" ? "Sin info." : $datos->row()->grupo_sanguineo;
-            $factor_rh      = $datos->row()->factor_rh == "" ? "Sin info." : $datos->row()->factor_rh;
+            $email          = $datos->row()->email == "" ? "no informado" : $datos->row()->email;
+            $telefono       = $datos->row()->telefono == "" ? "no informado" : $datos->row()->telefono;
+            $celular        = $datos->row()->celular == "" ? "no informado" : $datos->row()->celular;
+            $lugar_nac      = $datos->row()->lugar_nac == "" ? "no informado" : $datos->row()->lugar_nac;
+            $estado_civil   = $datos->row()->estado_civil == "" ? "no informado" : $datos->row()->estado_civil;
+            $religion       = $datos->row()->religion == "" ? "no informado" : $datos->row()->religion;
+            $prevision      = $datos->row()->prevision_medica == "" ? "no informado" : $datos->row()->prevision_medica;
+            $nacionalidad   = $datos->row()->nacionalidad == "" ? "no informado" : $datos->row()->nacionalidad;
+            $nivel_estudio  = $datos->row()->nivel_estudio == "" ? "no informado": $datos->row()->nivel_estudio;
+            $ocupacion      = $datos->row()->ocupacion == "" ? "no informado" : $datos->row()->ocupacion;
+            $region         = $datos->row()->region == "" ? "no informado" : $datos->row()->region;
+            $provincia      = $datos->row()->provincia == "" ? "no informado" : $datos->row()->provincia;
+            $comuna         = $datos->row()->comuna == "" ? "no informado" : $datos->row()->comuna;
+            $calle          = $datos->row()->calle  == "" ? "no informado" : $datos->row()->calle;
+            $gr_sang        = $datos->row()->grupo_sanguineo == "" ? "no informado" : $datos->row()->grupo_sanguineo;
+            $factor_rh      = $datos->row()->factor_rh == "" ? "no informado" : $datos->row()->factor_rh;
             
             //Buscar personas de contacto
             $this->db->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
@@ -383,8 +383,8 @@ class Paciente_model extends CI_Model
                 $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);
                 $apellidos  = ucfirst($row->apellido_paterno)." ".ucfirst($row->apellido_materno);
                 $edad       = 22;
-                $celular    = $row->celular == "" ? "Sin info." :  $row->celular;
-                $email      = $row->email == "" ? "Sin info." : $row->email;
+                $celular    = $row->celular == "" ? "no informado" :  $row->celular;
+                $email      = $row->email == "" ? "no informado" : $row->email;
                 
                 $fecha      = explode(" ",$row->fecha_creacion);
                 $fecha_c    = strtotime($fecha[0]);
@@ -393,7 +393,7 @@ class Paciente_model extends CI_Model
                 $fecha_nac  = $row->fecha_nac;
                 $fecha_nac  = explode(" ",$fecha_nac);
                 $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
-                $edad       = calcularEdad($fecha_nac) == "2015" ? "Sin info." : calcularEdad($fecha_nac); 
+                $edad       = calcularEdad($fecha_nac) == "2015" ? "no informado" : calcularEdad($fecha_nac); 
                 
                 $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
                 $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
@@ -538,7 +538,10 @@ class Paciente_model extends CI_Model
             u.primer_nombre,
             u.segundo_nombre,
             u.apellido_paterno,
-            u.apellido_materno,'
+            u.apellido_materno,
+            u.celular,
+            u.telefono,
+            u.email'
         );
         $this->db->from('tbl_usuarios u');
         $this->db->where('u.rut',$rut_paciente);
@@ -551,11 +554,15 @@ class Paciente_model extends CI_Model
             
             //Validar otras variables
             $id_paciente    = $datos->row()->id_usuario;
-            $rut            = $datos->row()->rut                == "" ? "Sin info"  : $datos->row()->rut;
-            $p_nombre       = $datos->row()->primer_nombre      == "" ? "Sin info." : $datos->row()->primer_nombre;
-            $s_nombre       = $datos->row()->segundo_nombre     == "" ? "Sin info." : $datos->row()->segundo_nombre;
-            $a_peterno      = $datos->row()->apellido_paterno   == "" ? "Sin info." : $datos->row()->apellido_paterno;
-            $a_materno      = $datos->row()->apellido_materno   == "" ? "Sin info." : $datos->row()->apellido_materno;
+            $rut            = $datos->row()->rut                == "" ? "no informado"  : $datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre      == "" ? "no informado" : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre     == "" ? "no informado" : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno   == "" ? "no informado" : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno   == "" ? "no informado" : $datos->row()->apellido_materno;
+            
+            $celular        = $datos->row()->celular    == "" ? "no informado" : $datos->row()->celular;
+            $tel_fijo       = $datos->row()->telefono   == "" ? "no informado" : $datos->row()->telefono;
+            $correo         = $datos->row()->email      == "" ? "no informado" : $datos->row()->email;
             
             $arr_paciente = array(
                 "id_paciente"       => $id_paciente,
@@ -564,6 +571,9 @@ class Paciente_model extends CI_Model
                 "segundo_nombre"    => ucfirst($s_nombre),
                 "apellido_paterno"  => ucfirst($a_peterno),
                 "apellido_materno"  => ucfirst($a_materno),
+                "celular"           => $celular,
+                "tel_fijo"          => $tel_fijo,
+                "correo"            => $correo,
             );
             
             echo json_encode($arr_paciente); 

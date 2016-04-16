@@ -64,6 +64,19 @@ class Fileclass {
         return $this->files;
     }
     
+    //ARCHIVOS NECESARIOS PARA VISTA AGENDA CALENDARIO
+    function files_agenda(){
+        
+        $this->files['style'] = array();
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+        );
+
+        return $this->files;
+    }
+    
     //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS EN LA PAGINA MI PERFIL
     function files_miperfil(){
         

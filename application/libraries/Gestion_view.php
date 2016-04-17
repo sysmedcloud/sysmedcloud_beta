@@ -28,7 +28,6 @@ class Gestion_View{
         $this->CI->load->view('templates/admin/footer_app_view',$data);
     }
     
-    
     public function viewsAgenda($view,$data){
         
         $this->CI->load->view('templates/admin/header_agenda_view',$data);

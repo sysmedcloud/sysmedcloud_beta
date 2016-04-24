@@ -19,7 +19,10 @@
 <body>
 <div class="container">
 <form action="<?php echo base_url(); ?>agenda/accion_agenda" method="post">    
-<input type="hidden" id="id_cita_med" name="id_cita_medica" value="<?=$id_cita_medica?>">
+<input type="hidden" id="id_cita_med"   name="id_cita_medica"   value="<?=$id_cita_medica;?>">
+<input type="hidden" id="id_paciente"   name="id_paciente"      value="<?=$id_paciente;?>">
+<input type="hidden" id="paciente"      name="paciente"         value="<?=$paciente;?>">
+<input type="hidden" id="rut_paciente"  name="rut_paciente"     value="<?=$rut;?>">
 <script src="<?=base_url();?>js/underscore-min.js"></script>
 <script src="<?=base_url();?>js/calendar.js"></script>
     <div class="row">

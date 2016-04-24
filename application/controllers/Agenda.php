@@ -167,6 +167,10 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function accion_agenda(){
         
+        //CARGAMOS DATOS DE SESSION
+        $session        = $this->general_sessions->validarSessionAdmin();
+         
+        //BOTON DE ACCION
         $btn_accion = $this->input->post("btn_accion");
         
         //verificamos que accion seguir
@@ -174,27 +178,62 @@ class Agenda extends CI_Controller {
             
             switch ($btn_accion) {
                 
+                //ACCION ELIMINAR CITA MÉDICA
                 case "eliminar":
                     
-                    $id = $this->input->post("id_cita_medica");
-                    $id_cita_medica  = evaluar($id);
-                    $resp = $this->agenda_model->remove_cita_medica($id_cita_medica);
-
+                    $id             = $this->input->post("id_cita_medica");
+                    $id_cita_medica = evaluar($id);
+                    $resp           = $this->agenda_model->remove_cita_medica($id_cita_medica);
+                    
                     if($resp){ 
                         $data["titulo"]     = "Cita médica eliminada Correctamente.";
                         $data["btn_type"]   = "alert-success";
                     }else{
-                        $data["titulo"]     = "Error al eliminar Cita médica, porfavor intentelo nuevamente.";
+                        $data["titulo"]     = "Error no fue posible eliminar cita médica.";
                         $data["btn_type"]   = "alert-danger";
                     }
+                    
                     $this->load->view('admin/result_accion_cita_view',$data);
-                    break;
+                    
+                break;
                     
                 case "modificar":
-                    //$data["titulo"]     = "Cita médica Modificada Correctamente.";
-                    //$data["btn_type"]   = "alert-success";
-                    //$this->load->view('admin/result_accion_cita_view',$data);
-                    echo "funcionalidad en construccion...s";
+                    
+                    //Definimos nuestra zona horaria
+                    date_default_timezone_set("America/Santiago");
+                    $from   = $this->input->post('from');
+                    $to     = $this->input->post('to');
+                    $id_cita_medica = $this->input->post('id_cita_medica');
+                    
+                    //Creamos arreglo con los datos de la cita
+                    $arr_data_cita = array(
+                        "id_cita_medica"=> $id_cita_medica,
+                        "id_empresa"    => $session["id_empresa"],
+                        "id_profesional"=> $session["id_usuario"],
+                        "id_paciente"   => $this->input->post("id_paciente"),
+                        "rut_paciente"  => $this->input->post("rut_paciente"),
+                        "inicio"        => _formatear($from),
+                        "final"         => _formatear($to),
+                        "inicio_normal" => $from,
+                        "final_normal"  => $to,
+                        "paciente"      => evaluar($this->input->post('paciente')),
+                        "nota"          => evaluar($this->input->post('nota')),
+                        "estado"        => evaluar($this->input->post('estado')),
+                    );
+                    
+                    //Enviar datos a nuestro modelo para el ingreso de la cita medica
+                    $resp = $this->agenda_model->edit_cita_medica($arr_data_cita);
+                    
+                    if($resp){
+                        $data["titulo"]     = "Cita médica Modificada Correctamente.";
+                        $data["btn_type"]   = "alert-success";
+                        $this->load->view('admin/result_accion_cita_view',$data);
+                    }else{
+                        $data["titulo"]     = "Error no fue posible modificar cita médica.";
+                        $data["btn_type"]   = "alert-danger";
+                        $this->load->view('admin/result_accion_cita_view',$data);
+                    }
+                    
                     break;
                 
                 default : echo "Sin accion";

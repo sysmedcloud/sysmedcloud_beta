@@ -17,7 +17,7 @@
            <h2><?php echo $titulo; ?></h2>
         </div>
         <h1 class="logo-name">
-           <!--<img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">-->
+           <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">
         </h1>
         <div class="hr-line-dashed"></div>
         <div class="row">

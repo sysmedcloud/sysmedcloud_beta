@@ -55,6 +55,44 @@ class Agenda_model extends CI_Model
     }
     
     /***************************************************************************
+    /** @Funtion que permite editar una cita a la db tabla tbl_citas_medicas
+    /**************************************************************************/
+    public function edit_cita_medica($dataCita){
+        
+        //Definimos nuestra zona horaria
+        date_default_timezone_set("America/Santiago");
+        
+        $id_cita_medica                 = $dataCita["id_cita_medica"];
+        $data["id_empresa"]             = $dataCita["id_empresa"];
+        $data["id_profesional"]         = $dataCita["id_profesional"];
+        $data["id_paciente"]            = $dataCita["id_paciente"];
+        $data["rut_paciente"]           = $dataCita["rut_paciente"];
+        $data["id_estado_cita_medica"]  = $dataCita["estado"];
+        
+        //Buscar color del estado de la cita
+        $this->db->select("color");
+        $this->db->from('tbl_estados_citas_medicas');
+        $this->db->where('id_estado_cita_medica',$dataCita["estado"]);
+        $datos_cita = $this->db->get();
+        $row_color_est = $datos_cita->row_array();
+        
+        $link = base_url()."agenda/descripcion_evento/".$id_cita_medica;
+        
+        $data["class"]                  = $row_color_est["color"];
+        $data["nom_paciente"]           = $dataCita["paciente"];
+        $data["body"]                   = $dataCita["nota"];
+        $data["url"]                    = $link;
+        $data["start"]                  = $dataCita["inicio"];
+        $data["end"]                    = $dataCita["final"];
+        $data["inicio_normal"]          = $dataCita["inicio_normal"];
+        $data["final_normal"]           = $dataCita["final_normal"];
+        
+        $this->db->where('id',$id_cita_medica);
+        return $this->db->update('tbl_citas_medicas',$data);
+        
+    }
+    
+    /***************************************************************************
     /** @Funtion que permite retornar todas las citas medicas disponibles 
     *   de un profesional
     */

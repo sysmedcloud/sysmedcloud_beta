@@ -116,7 +116,7 @@ class Agenda_model extends CI_Model
     public function datos_contacto($id_paciente){
         
         //Query para validar existencia del usuario perfil paciente
-        $this->db->select("email,telefono,celular");
+        $this->db->select("rut,email,telefono,celular");
         $this->db->from('tbl_usuarios');
         $this->db->where('id_usuario',$id_paciente);
         $datos_cita = $this->db->get();

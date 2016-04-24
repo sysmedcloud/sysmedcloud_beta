@@ -18,6 +18,8 @@
 </head>
 <body>
 <div class="container">
+<form action="<?php echo base_url(); ?>agenda/accion_agenda" method="post">    
+<input type="hidden" id="id_cita_med" name="id_cita_medica" value="<?=$id_cita_medica?>">
 <script src="<?=base_url();?>js/underscore-min.js"></script>
 <script src="<?=base_url();?>js/calendar.js"></script>
     <div class="row">
@@ -58,7 +60,7 @@
     </div>
     <div class="row">
         <div class="control-label col-xs-12 col-md-12">
-            <p><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Paciente:</strong> 32423423-9 <?=$paciente;?></p> 
+            <p><strong><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Paciente:</strong> <?=$rut;?> <?=$paciente;?></p> 
             <p><strong><i class="fa fa-at" aria-hidden="true"></i>&nbsp;Correo:</strong> <?php echo $correo; ?></p>
             <p><strong><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Celular:</strong> <?php echo $celular; ?> / <strong>T. fijo:</strong> <?php echo $tel_fijo; ?></p>
             <p>
@@ -75,32 +77,29 @@
             <textarea id="nota" class="form-control" rows="2" required="" name="nota"><?=$nota;?></textarea>
         </div>
     </div>
-            <script type="text/javascript">
-                        
-                $(function () {
-                        
-                    $('#from').datetimepicker({
-                        //defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
-                        language: 'es',
-                        minDate: new Date()
-                    });
-                    $('#to').datetimepicker({
-                        //defaultDate: mm+'/'+dd+'/'+yyyy+' '+hora+':'+min,
-                        language: 'es',
-                        minDate: new Date()
-                    });
+    <script type="text/javascript">
 
-                });
+        $(function () {
+            $('#from').datetimepicker({
+                language: 'es',
+                minDate: new Date()
+            });
+            $('#to').datetimepicker({
+                language: 'es',
+                minDate: new Date()
+            });
+        });
 
-            </script>
+    </script>
     <br>
-    <div class="row">    
+    <div class="row">
         <div class="col-xs-12 col-md-12">
-            <button type="button" class="btn btn-default btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modificar Cita</button>
-            <button type="button" class="btn btn-default btn-danger"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Eliminar Cita</button>
-            <button type="button" class="btn btn-default btn-info"><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;Iniciar Consulta Medica</button>
+            <button type="submit" class="btn btn-default btn-warning" name="btn_accion" value="modificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modificar Cita</button>
+            <button type="submit" class="btn btn-default btn-danger" name="btn_accion" value="eliminar"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Eliminar Cita</button>
+            <button type="submit" class="btn btn-default btn-info" name="btn_accion" value="consulta"><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;Iniciar Consulta Medica</button>
         </div>
     </div>
+</form>
 </div>
 <!--
 <form action="<?php echo base_url(); ?>agenda/eliminar_cita" method="post">

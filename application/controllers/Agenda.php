@@ -151,6 +151,7 @@ class Agenda extends CI_Controller {
         $data["id_cita_medica"] = $id_cita_medica;
         $data["id_paciente"]    = $row['id_paciente'];
         $data["paciente"]       = $row['nom_paciente'];
+        $data["rut"]            = $row_c['rut'];
         $data["correo"]         = $row_c['email']       != "" ? $row_c['email']  : "no informado";
         $data["celular"]        = $row_c['celular']     != "" ? $row_c['celular'] : "no informado";
         $data["tel_fijo"]       = $row_c['telefono']    != "" ? $row_c['telefono']: "no informado";
@@ -162,20 +163,43 @@ class Agenda extends CI_Controller {
     }
     
     /**************************************************************************/
-    /** FUNCION QUE PERMITE ELIMINAR UNA CITA
+    /** FUNCION QUE PERMITE CONTROLAR ACCIONES PARA VISTA DE CITA MEDICA
     /**************************************************************************/
-    public function eliminar_cita(){
+    public function accion_agenda(){
         
-        $id = $this->input->post("id_cita_medica");
+        $btn_accion = $this->input->post("btn_accion");
         
-        $id_cita_medica  = evaluar($id);
-         
-        $resp = $this->agenda_model->remove_cita_medica($id_cita_medica);
-         
-        if($resp){ 
-            echo "Cita Medica eliminada correctamente";
-        }else{
-            echo "Error al eliminar cita medica";
+        //verificamos que accion seguir
+        if(isset($btn_accion) && $btn_accion != ""){
+            
+            switch ($btn_accion) {
+                
+                case "eliminar":
+                    
+                    $id = $this->input->post("id_cita_medica");
+                    $id_cita_medica  = evaluar($id);
+                    $resp = $this->agenda_model->remove_cita_medica($id_cita_medica);
+
+                    if($resp){ 
+                        $data["titulo"]     = "Cita médica eliminada Correctamente.";
+                        $data["btn_type"]   = "alert-success";
+                    }else{
+                        $data["titulo"]     = "Error al eliminar Cita médica, porfavor intentelo nuevamente.";
+                        $data["btn_type"]   = "alert-danger";
+                    }
+                    $this->load->view('admin/result_accion_cita_view',$data);
+                    break;
+                    
+                case "modificar":
+                    //$data["titulo"]     = "Cita médica Modificada Correctamente.";
+                    //$data["btn_type"]   = "alert-success";
+                    //$this->load->view('admin/result_accion_cita_view',$data);
+                    echo "funcionalidad en construccion...s";
+                    break;
+                
+                default : echo "Sin accion";
+            }
         }
+        
     }
 }

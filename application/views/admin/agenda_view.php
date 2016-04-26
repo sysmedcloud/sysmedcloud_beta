@@ -257,7 +257,7 @@
                                 //Cambiamos valores a nuestros input
                                 $("#id_paciente").val(id_paciente);
                                 
-                                if(data.primer_nombre === "no informado"){
+                                if(data.primer_nombre === "No informado"){
                                     var nombres = "";
                                     var apellidos = "";
                                 }else{

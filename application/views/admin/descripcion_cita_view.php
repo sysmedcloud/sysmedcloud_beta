@@ -33,8 +33,8 @@
         </div>
         <div class="col-xs-9 col-md-9">
             <div class="row">
-                <label for="title" class="control-label col-xs-5 col-md-5 col-sm-5"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;Fecha Inicio: </label>
-                <div style="margin-bottom: 5px;" class="col-xs-7 col-md-7 col-sm-7">
+                <label for="title" class="control-label col-xs-4 col-md-4 col-sm-4"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Inicio: </label>
+                <div style="margin-bottom: 5px;" class="col-xs-8 col-md-8 col-sm-8">
                 <div class='input-group date' id='from'>
                     <input type='text' id="from" name="from" style="font-weight:bold;" value="<?=$inicio;?>" class="form-control" readonly />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -42,8 +42,8 @@
                 </div>
             </div>
             <div class="row">
-                <label for="title" class="control-label col-xs-5 col-md-5 col-sm-5"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;Fecha Final: </label>
-                <div style="margin-bottom: 5px;" class="col-xs-7 col-md-7 col-sm-7">
+                <label for="title" class="control-label col-xs-4 col-md-4 col-sm-4"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Final: </label>
+                <div style="margin-bottom: 5px;" class="col-xs-8 col-md-8 col-sm-8">
                 <div class='input-group date' id='to'>
                     <input type='text' name="to" id="to" style="font-weight:bold;" value="<?=$final;?>" class="form-control" readonly />
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -51,8 +51,8 @@
                 </div>
             </div>
              <div class="row">
-                <label for="title" class="control-label col-xs-5 col-md-5"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Estado Cita: </label>
-                <div class="col-xs-7 col-md-7">
+                <label for="title" class="control-label col-xs-4 col-md-4"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Estado: </label>
+                <div class="col-xs-8 col-md-8">
                 <select style="font-weight:bold;" class="form-control" name="estado" id="tipo">
                     <option value="">-- Seleccione estado cita --</option>
                     <?php echo $estadosCitas; ?>

@@ -52,8 +52,8 @@
                 <li class="<?=$active["consulta"];?>">
                     <a href="#"><i class="fa fa-stethoscope"></i> <span class="nav-label">Consulta Medica</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li ><a href="<?=base_url();?>/Consulta_medica/nueva_consulta">Nueva Consulta Médica</a></li>
-                        <li ><a href="<?=base_url();?>/Consulta_medica">Listado de Consultas</a></li>
+                        <li ><a href="<?=base_url();?>consulta_medica/nueva_consulta">Nueva Consulta Médica</a></li>
+                        <li ><a href="<?=base_url();?>consulta_medica">Listado de Consultas</a></li>
                     </ul>
                 </li>
                 <li class="<?=$active["gestion"];?>">

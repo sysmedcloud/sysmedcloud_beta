@@ -71,13 +71,6 @@
                                             </div>
                                          </div>
                                     </div>
-                                     <!--<div class="panel-options">
-                                       <ul class="nav nav-tabs">
-                                          <li class="active"><a data-toggle="tab" href="#tab-1">Antecentes Clínicos / Anamnésis Remota</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-2">Revisión por Sistemas</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-3">Examen Físico General</a></li>
-                                       </ul>
-                                    </div>-->
                                     <div class="row">
                                       <div class="col-lg-12">
                                           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -85,41 +78,193 @@
                                             <div class="panel-heading" role="tab" id="headingOne">
                                               <h4 class="panel-title" >
                                                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Antecedentes Clínicos / Anamnésis Remota
+                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Información adicional
                                                 </a>
                                               </h4>
                                             </div>
                                             <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
                                               <div class="panel-body">
-                                                  <h3>En Construcción...</h3>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingTwo">
-                                              <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                  <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Revisión por Sistemas
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                              <div class="panel-body">
-                                                  <h3>En Construcción...</h3>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingThree">
-                                              <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                  <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Examen Físico General
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                              <div class="panel-body">
-                                                <h3>En Construcción...</h3>
+                                                 <ul class="nav nav-tabs">
+                                                    <li class="dropdown">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Antecedentes Clínicos / Anamnésis Remota <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a data-toggle="tab" href="#tab1">Mórbidos</a></li>
+                                                            <li><a data-toggle="tab" href="#tab2">Ginecoobstétricos</a></li>
+                                                            <li><a data-toggle="tab" href="#tab3">Hábitos</a></li>
+                                                            <li><a data-toggle="tab" href="#tab4">Medicamentos</a></li>
+                                                            <li><a data-toggle="tab" href="#tab5">Alergias</a></li>
+                                                            <li><a data-toggle="tab" href="#tab6">Social y Personales</a></li>
+                                                            <li><a data-toggle="tab" href="#tab7">Familiares</a></li>
+                                                            <li><a data-toggle="tab" href="#tab8">Inmunizaciones</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Revisión por Sistemas <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a data-toggle="tab" href="#tab9">Síntomas Generales</a></li>
+                                                            <li><a data-toggle="tab" href="#tab10">Respiratorio</a></li>
+                                                            <li><a data-toggle="tab" href="#tab11">Cardiovascular</a></li>
+                                                            <li><a data-toggle="tab" href="#tab12">Gastrointestinal</a></li>
+                                                            <li><a data-toggle="tab" href="#tab13">Genitourinario</a></li>
+                                                            <li><a data-toggle="tab" href="#tab14">Neurológico</a></li>
+                                                            <li><a data-toggle="tab" href="#tab15">Endocrino</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Examen Físico General <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a data-toggle="tab" href="#tab16">Decúbito</a></li>
+                                                            <li><a data-toggle="tab" href="#tab17">Deambulación</a></li>
+                                                            <li><a data-toggle="tab" href="#tab18">Facie</a></li>
+                                                            <li><a data-toggle="tab" href="#tab19">Conciencia</a></li>
+                                                            <li><a data-toggle="tab" href="#tab20">Constitución</a></li>
+                                                            <li><a data-toggle="tab" href="#tab21">Piel</a></li>
+                                                            <li><a data-toggle="tab" href="#tab22">S. Linfático</a></li>
+                                                            <li><a data-toggle="tab" href="#tab23">Respiración</a></li>
+                                                            <li><a data-toggle="tab" href="#tab24">Temperatura</a></li>
+                                                            <li><a data-toggle="tab" href="#tab25">Presion y Pulso</a></li>
+                                                        </ul>
+                                                    </li>
+                                                  </ul>
+                                                  <div class="tab-content">
+                                                    <!-- in active -->
+                                                    <div class="tab-pane in active">
+                                                        <div class="col-xs-12 col-md-12">
+                                                            <br>
+                                                            <div class="thumbnail" style="border: 0px;">
+                                                                <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tab1" class="tab-pane fade">
+                                                      <h1>Antecedentes Mórbidos</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab2" class="tab-pane fade">
+                                                      <h1>Antecedentes Ginecoobstétricos</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab3" class="tab-pane fade">
+                                                      <h1>Antecedentes Hábitos</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab4" class="tab-pane fade">
+                                                      <h1>Antecedentes Medicamentos</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab5" class="tab-pane fade">
+                                                      <h1>Antecedentes Alergias</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab6" class="tab-pane fade">
+                                                      <h1>Antecedentes Social y Personales</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab7" class="tab-pane fade">
+                                                      <h1>Antecedentes Familiares</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab8" class="tab-pane fade">
+                                                      <h1>Antecedentes Inmunizaciones</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    
+                                                    <div id="tab9" class="tab-pane fade">
+                                                      <h1>Antecedentes Síntomas Generales</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab10" class="tab-pane fade">
+                                                      <h1>Antecedentes Respiratorio</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab11" class="tab-pane fade">
+                                                      <h1>Antecedentes Cardiovascular</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab12" class="tab-pane fade">
+                                                      <h1>Antecedentes Gastrointestinal</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab13" class="tab-pane fade">
+                                                      <h1>Antecedentes Genitourinario</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab14" class="tab-pane fade">
+                                                      <h1>Antecedentes Neurológico</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab15" class="tab-pane fade">
+                                                      <h1>Antecedentes Endocrino</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    
+                                                    <div id="tab16" class="tab-pane fade">
+                                                      <h1>Antecedentes Decúbito</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab17" class="tab-pane fade">
+                                                      <h1>Antecedentes Deambulación</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab18" class="tab-pane fade">
+                                                      <h1>Antecedentes Facie</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab19" class="tab-pane fade">
+                                                      <h1>Antecedentes Conciencia</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab20" class="tab-pane fade">
+                                                      <h1>Antecedentes Constitución</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab21" class="tab-pane fade">
+                                                      <h1>Antecedentes Piel</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab22" class="tab-pane fade">
+                                                      <h1>Antecedentes S. Linfático</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab23" class="tab-pane fade">
+                                                      <h1>Antecedentes Respiración</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab24" class="tab-pane fade">
+                                                      <h1>Antecedentes Temperatura</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    <div id="tab25" class="tab-pane fade">
+                                                      <h1>Antecedentes Presion y Pulso</h1>
+                                                      <br>
+                                                      <h2>En Construcción...</h2>
+                                                    </div>
+                                                    
+                                                  </div>
                                               </div>
                                             </div>
                                             </div>

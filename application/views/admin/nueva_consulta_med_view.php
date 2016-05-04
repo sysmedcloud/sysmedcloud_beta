@@ -168,9 +168,14 @@
                                                         </div>
                                                     </div>
                                                     <div id="tab2" class="tab-pane fade">
-                                                      <h1>Antecedentes Ginecoobstétricos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Ginecoobstétricos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     <div id="tab3" class="tab-pane fade">
                                                         <div class="col-xs-12 col-md-12 col-sm-12">
@@ -211,9 +216,14 @@
                                                         </div>
                                                     </div>
                                                     <div id="tab4" class="tab-pane fade">
-                                                      <h1>Antecedentes Medicamentos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Medicamentos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     <div id="tab5" class="tab-pane fade">
                                                         <div class="col-xs-12 col-md-12 col-sm-12">
@@ -295,9 +305,14 @@
                                                         </div>
                                                     </div>
                                                     <div id="tab8" class="tab-pane fade">
-                                                      <h1>Antecedentes Inmunizaciones</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Inmunizaciones
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     
                                                     <div id="tab9" class="tab-pane fade">

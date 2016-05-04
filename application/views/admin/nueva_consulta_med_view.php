@@ -137,44 +137,182 @@
                                                         </div>
                                                     </div>
                                                     <div id="tab1" class="tab-pane fade">
-                                                      <h1>Antecedentes Mórbidos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Mórbidos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Enfermedades: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="enfermedades" name="enfermedades" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Traumatismos: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="traumatismos" name="traumatismos" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Operaciones: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="operaciones" name="operaciones" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                     <div id="tab2" class="tab-pane fade">
-                                                      <h1>Antecedentes Ginecoobstétricos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Ginecoobstétricos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     <div id="tab3" class="tab-pane fade">
-                                                      <h1>Antecedentes Hábitos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Hábitos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Tabaquismo: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Alcoholismo: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="alcoholismo" name="alcoholismo" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Drogas: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="drogas" name="drogas" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Desórdenes Alimenticios: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="des_alimenticios" name="des_alimenticios" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                     <div id="tab4" class="tab-pane fade">
-                                                      <h1>Antecedentes Medicamentos</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Medicamentos
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     <div id="tab5" class="tab-pane fade">
-                                                      <h1>Antecedentes Alergias</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Alergias
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
+                                                        <label class="col-xs-12 col-md-3 col-sm-3">
+                                                            Alimentos: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="alimentos" name="alimentos" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Medicamentos: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Ambiente: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="ambiente" name="ambiente" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Animales: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="animales" name="animales" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Contacto con la Piel: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="contacto_piel" name="contacto_piel" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                     <div id="tab6" class="tab-pane fade">
-                                                      <h1>Antecedentes Social y Personales</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Sociales y Personales
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Breve descripción de antecedentes sociales relevantes: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="sociales_personales" name="sociales_personales" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                     <div id="tab7" class="tab-pane fade">
-                                                      <h1>Antecedentes Familiares</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Familiares
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
+                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                            Breve descripción de antecedentes familiares relevantes: </label>
+                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
+                                                        <div class='input-group'>
+                                                            <textarea class="form-control" id="familiares" name="familiares" cols="90" rows="1"></textarea>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                     <div id="tab8" class="tab-pane fade">
-                                                      <h1>Antecedentes Inmunizaciones</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
+                                                      <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Inmunizaciones
+                                                            </h4>
+                                                            <hr>
+                                                        </div>
                                                     </div>
                                                     
                                                     <div id="tab9" class="tab-pane fade">
@@ -282,21 +420,21 @@
                                                             Motivo de la Consulta: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="motivo_consulta" name="motivo_consulta" cols="90" rows="1"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Anamnésis Próxima: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="anamnesis_proxima" name="anamnesis_proxima" cols="90" rows="1"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Hipótesis Diagnóstica: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="hipotesis_diagnostica" name="hipotesis_diagnostica" cols="90" rows="1"></textarea>
                                                         </div>
                                                         </div>
                                                   </div>
@@ -305,34 +443,7 @@
                                     </div>
                                       </div>
                                     </div>
-                                 </div>
-                                
-                                 <!--<div class="panel-body">
-                                    <div class="tab-content">
-                                       <div id="tab-1" class="tab-pane active">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    tab 1
-                                                </div>
-                                            </div>
-                                       </div>
-                                       <div id="tab-2" class="tab-pane">                                          
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    tab 2
-                                                </div>
-                                            </div>
-                                       </div>
-                                       <div id="tab-3" class="tab-pane">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    tab 3
-                                                </div>
-                                            </div>
-                                       </div>
-                                    </div>
-                                 </div>-->
-                                 
+                                </div>
                                  
                                 <div class="col-md-12">
                                   <?php

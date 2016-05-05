@@ -55,7 +55,7 @@ class Consulta_medica extends CI_Controller {
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_dashboard();
+        $data['files'] = $this->fileclass->nueva_consulta();
         
         $data["menu"]   = "Nueva Consulta Médica";
         

@@ -149,21 +149,21 @@
                                                             Enfermedades: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="enfermedades" name="enfermedades" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="enfermedades" name="enfermedades" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Traumatismos: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="traumatismos" name="traumatismos" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="traumatismos" name="traumatismos" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Operaciones: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="operaciones" name="operaciones" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="operaciones" name="operaciones" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -175,6 +175,116 @@
                                                                 Ginecoobstétricos
                                                             </h4>
                                                             <hr>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    Menarquía / Rango de edad: </label>
+                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    <div class='input-group'>
+                                                                        <select name="menarquia" id="menarquia" class="form-control" >
+                                                                            <option value="">-- Seleccione una opcion -- </option>
+                                                                            <option value="-">No presenta</option>
+                                                                            <option value="<10">Menor a 10 años</option>
+                                                                            <option value="11-15">Entre 11 - 15 años</option>
+                                                                            <option value=">15">Mayor a 15 años</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    Menopausia / Rango de edad: </label>
+                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    <div class='input-group'>
+                                                                        <select name="menopausia" id="menopausia" class="form-control" >
+                                                                            <option value="">-- Seleccione una opcion -- </option>
+                                                                            <option value="-">No presenta</option>
+                                                                            <option value="<45">Menor a 45 años</option>
+                                                                            <option value="45-55">Entre 45 - 55 años</option>
+                                                                            <option value=">55">Mayor a 55 años</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                Presencia de algun sintoma: </label>
+                                                            <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="dismenorrea" id="dismenorrea">
+                                                                        &nbsp;&nbsp;Dismenorrea
+                                                                    </label>
+                                                                </div>
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="hipermenorrea" id="hipermenorrea">
+                                                                        &nbsp;&nbsp;Hipermenorrea
+                                                                    </label>
+                                                                </div>
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="polimenorrea" id="polimenorrea">
+                                                                        &nbsp;&nbsp;Polimenorrea
+                                                                    </label>
+                                                                </div>
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="oligomenorrea" id="oligomenorrea">
+                                                                        &nbsp;&nbsp;Oligomenorrea
+                                                                    </label>
+                                                                </div>
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="amenorrea" id="amenorrea">
+                                                                        &nbsp;&nbsp;Amenorrea
+                                                                    </label>
+                                                                </div>
+                                                                <div class='input-group'>
+                                                                    <label class="checkbox-inline i-checks"> 
+                                                                        <input type="checkbox" name="metrorragia" id="metrorragia">
+                                                                        &nbsp;&nbsp;Metrorragia
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                Información sobre embarazo con fórmula obstétrica: </label>
+                                                            <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                Gestion: 
+                                                                <input type="text" name="gestion" id="gestion" class="input-sm form-control" style="width: 50px;">
+                                                                Partos: 
+                                                                <input type="text" name="partos" id="partos" class="form-control input-sm" style="width: 50px;">
+                                                                Abortos:                                                             
+                                                                <input type="text" name="abortos" id="abortos" class="form-control input-sm" style="width: 50px;">
+                                                            </div>
+                                                        </div>                                                       
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                   FUR (Fecha ultima menstruación): </label>
+                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    <div class='input-group'>
+                                                                        <input type="date" name="fecha_mens" id="fecha_mens" class="form-control" >
+                                                                    </div>
+                                                                </div>
+                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    Métodos anticonceptivos: </label>
+                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
+                                                                    <div class='input-group'>
+                                                                        <select name="met_anticonceptivos" id="met_anticonceptivos" class="form-control" >
+                                                                            <option value="">-- Seleccione una opcion -- </option>
+                                                                            <option value="1">Opción 1</option>
+                                                                            <option value="2">Opción 2</option>
+                                                                            <option value="3">Opción 3</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-12 col-sm-12">
+                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
+                                                                Otras Observaciones: </label>
+                                                            <div class="col-xs-12 col-md-9 col-sm-9">
+                                                                <div class='input-group'>
+                                                                    <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="2"></textarea>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div id="tab3" class="tab-pane fade">
@@ -190,28 +300,28 @@
                                                             Tabaquismo: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Alcoholismo: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="alcoholismo" name="alcoholismo" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="alcoholismo" name="alcoholismo" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Drogas: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="drogas" name="drogas" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="drogas" name="drogas" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Desórdenes Alimenticios: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="des_alimenticios" name="des_alimenticios" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="des_alimenticios" name="des_alimenticios" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -238,35 +348,35 @@
                                                             Alimentos: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="alimentos" name="alimentos" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="alimentos" name="alimentos" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Medicamentos: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Ambiente: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="ambiente" name="ambiente" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="ambiente" name="ambiente" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Animales: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="animales" name="animales" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="animales" name="animales" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Contacto con la Piel: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="contacto_piel" name="contacto_piel" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="contacto_piel" name="contacto_piel" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -283,7 +393,7 @@
                                                             Breve descripción de antecedentes sociales relevantes: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="sociales_personales" name="sociales_personales" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="sociales_personales" name="sociales_personales" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -300,7 +410,7 @@
                                                             Breve descripción de antecedentes familiares relevantes: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="familiares" name="familiares" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="familiares" name="familiares" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -420,22 +530,22 @@
                                                             Motivo de la Consulta: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="motivo_consulta" name="motivo_consulta" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="motivo_consulta" name="motivo_consulta" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Anamnésis Próxima: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
                                                         <div class='input-group'>
-                                                            <textarea class="form-control" id="anamnesis_proxima" name="anamnesis_proxima" cols="90" rows="1"></textarea>
+                                                            <textarea class="form-control" id="anamnesis_proxima" name="anamnesis_proxima" cols="90" rows="2"></textarea>
                                                         </div>
                                                         </div>
                                                         <label for="title" class="col-xs-12 col-md-3 col-sm-3">
                                                             Hipótesis Diagnóstica: </label>
                                                         <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="hipotesis_diagnostica" name="hipotesis_diagnostica" cols="90" rows="1"></textarea>
-                                                        </div>
+                                                            <div class='input-group'>
+                                                                <textarea class="form-control" id="hipotesis_diagnostica" name="hipotesis_diagnostica" cols="90" rows="2"></textarea>
+                                                            </div>
                                                         </div>
                                                   </div>
                                                 </div>

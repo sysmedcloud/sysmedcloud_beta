@@ -72,486 +72,129 @@
                                          </div>
                                     </div>
                                     <div class="row">
-                                      <div class="col-lg-12">
-                                          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                          <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingOne">
-                                              <h4 class="panel-title" >
-                                                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Información adicional
-                                                </a>
-                                              </h4>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
-                                              <div class="panel-body">
-                                                 <ul class="nav nav-tabs">
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Antecedentes Clínicos / Anamnésis Remota <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a data-toggle="tab" href="#tab1">Mórbidos</a></li>
-                                                            <li><a data-toggle="tab" href="#tab2">Ginecoobstétricos</a></li>
-                                                            <li><a data-toggle="tab" href="#tab3">Hábitos</a></li>
-                                                            <li><a data-toggle="tab" href="#tab4">Medicamentos</a></li>
-                                                            <li><a data-toggle="tab" href="#tab5">Alergias</a></li>
-                                                            <li><a data-toggle="tab" href="#tab6">Social y Personales</a></li>
-                                                            <li><a data-toggle="tab" href="#tab7">Familiares</a></li>
-                                                            <li><a data-toggle="tab" href="#tab8">Inmunizaciones</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Revisión por Sistemas <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a data-toggle="tab" href="#tab9">Síntomas Generales</a></li>
-                                                            <li><a data-toggle="tab" href="#tab10">Respiratorio</a></li>
-                                                            <li><a data-toggle="tab" href="#tab11">Cardiovascular</a></li>
-                                                            <li><a data-toggle="tab" href="#tab12">Gastrointestinal</a></li>
-                                                            <li><a data-toggle="tab" href="#tab13">Genitourinario</a></li>
-                                                            <li><a data-toggle="tab" href="#tab14">Neurológico</a></li>
-                                                            <li><a data-toggle="tab" href="#tab15">Endocrino</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="dropdown">
-                                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Examen Físico General <b class="caret"></b></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a data-toggle="tab" href="#tab16">Decúbito</a></li>
-                                                            <li><a data-toggle="tab" href="#tab17">Deambulación</a></li>
-                                                            <li><a data-toggle="tab" href="#tab18">Facie</a></li>
-                                                            <li><a data-toggle="tab" href="#tab19">Conciencia</a></li>
-                                                            <li><a data-toggle="tab" href="#tab20">Constitución</a></li>
-                                                            <li><a data-toggle="tab" href="#tab21">Piel</a></li>
-                                                            <li><a data-toggle="tab" href="#tab22">S. Linfático</a></li>
-                                                            <li><a data-toggle="tab" href="#tab23">Respiración</a></li>
-                                                            <li><a data-toggle="tab" href="#tab24">Temperatura</a></li>
-                                                            <li><a data-toggle="tab" href="#tab25">Presion y Pulso</a></li>
-                                                        </ul>
-                                                    </li>
-                                                  </ul>
-                                                  <div class="tab-content">
-                                                    <!-- in active -->
-                                                    <div class="tab-pane in active">
-                                                        <div class="col-xs-12 col-md-12">
-                                                            <br>
-                                                            <div class="thumbnail" style="border: 0px;">
-                                                                <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab1" class="tab-pane fade">
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Mórbidos
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Enfermedades: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="enfermedades" name="enfermedades" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Traumatismos: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="traumatismos" name="traumatismos" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Operaciones: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="operaciones" name="operaciones" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab2" class="tab-pane fade">
-                                                      <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Ginecoobstétricos
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    Menarquía / Rango de edad: </label>
-                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    <div class='input-group'>
-                                                                        <select name="menarquia" id="menarquia" class="form-control" >
-                                                                            <option value="">-- Seleccione una opcion -- </option>
-                                                                            <option value="-">No presenta</option>
-                                                                            <option value="<10">Menor a 10 años</option>
-                                                                            <option value="11-15">Entre 11 - 15 años</option>
-                                                                            <option value=">15">Mayor a 15 años</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    Menopausia / Rango de edad: </label>
-                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    <div class='input-group'>
-                                                                        <select name="menopausia" id="menopausia" class="form-control" >
-                                                                            <option value="">-- Seleccione una opcion -- </option>
-                                                                            <option value="-">No presenta</option>
-                                                                            <option value="<45">Menor a 45 años</option>
-                                                                            <option value="45-55">Entre 45 - 55 años</option>
-                                                                            <option value=">55">Mayor a 55 años</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                Presencia de algun sintoma: </label>
-                                                            <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="dismenorrea" id="dismenorrea">
-                                                                        &nbsp;&nbsp;Dismenorrea
-                                                                    </label>
-                                                                </div>
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="hipermenorrea" id="hipermenorrea">
-                                                                        &nbsp;&nbsp;Hipermenorrea
-                                                                    </label>
-                                                                </div>
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="polimenorrea" id="polimenorrea">
-                                                                        &nbsp;&nbsp;Polimenorrea
-                                                                    </label>
-                                                                </div>
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="oligomenorrea" id="oligomenorrea">
-                                                                        &nbsp;&nbsp;Oligomenorrea
-                                                                    </label>
-                                                                </div>
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="amenorrea" id="amenorrea">
-                                                                        &nbsp;&nbsp;Amenorrea
-                                                                    </label>
-                                                                </div>
-                                                                <div class='input-group'>
-                                                                    <label class="checkbox-inline i-checks"> 
-                                                                        <input type="checkbox" name="metrorragia" id="metrorragia">
-                                                                        &nbsp;&nbsp;Metrorragia
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                Información sobre embarazo con fórmula obstétrica: </label>
-                                                            <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                Gestion: 
-                                                                <input type="text" name="gestion" id="gestion" class="input-sm form-control" style="width: 50px;">
-                                                                Partos: 
-                                                                <input type="text" name="partos" id="partos" class="form-control input-sm" style="width: 50px;">
-                                                                Abortos:                                                             
-                                                                <input type="text" name="abortos" id="abortos" class="form-control input-sm" style="width: 50px;">
-                                                            </div>
-                                                        </div>                                                       
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                   FUR (Fecha ultima menstruación): </label>
-                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    <div class='input-group'>
-                                                                        <input type="date" name="fecha_mens" id="fecha_mens" class="form-control" >
-                                                                    </div>
-                                                                </div>
-                                                                <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    Métodos anticonceptivos: </label>
-                                                                <div style="margin-bottom: 5px;" class="col-xs-12 col-md-3 col-sm-3">
-                                                                    <div class='input-group'>
-                                                                        <select name="met_anticonceptivos" id="met_anticonceptivos" class="form-control" >
-                                                                            <option value="">-- Seleccione una opcion -- </option>
-                                                                            <option value="1">Opción 1</option>
-                                                                            <option value="2">Opción 2</option>
-                                                                            <option value="3">Opción 3</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                                Otras Observaciones: </label>
-                                                            <div class="col-xs-12 col-md-9 col-sm-9">
-                                                                <div class='input-group'>
-                                                                    <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="2"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab3" class="tab-pane fade">
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Hábitos
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Tabaquismo: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="tabaquismo" name="tabaquismo" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Alcoholismo: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="alcoholismo" name="alcoholismo" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Drogas: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="drogas" name="drogas" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Desórdenes Alimenticios: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="des_alimenticios" name="des_alimenticios" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab4" class="tab-pane fade">
-                                                      <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Medicamentos
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab5" class="tab-pane fade">
-                                                        <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Alergias
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <label class="col-xs-12 col-md-3 col-sm-3">
-                                                            Alimentos: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="alimentos" name="alimentos" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Medicamentos: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Ambiente: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="ambiente" name="ambiente" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Animales: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="animales" name="animales" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Contacto con la Piel: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="contacto_piel" name="contacto_piel" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab6" class="tab-pane fade">
-                                                      <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Sociales y Personales
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Breve descripción de antecedentes sociales relevantes: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="sociales_personales" name="sociales_personales" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab7" class="tab-pane fade">
-                                                      <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Familiares
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Breve descripción de antecedentes familiares relevantes: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="familiares" name="familiares" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="tab8" class="tab-pane fade">
-                                                      <div class="col-xs-12 col-md-12 col-sm-12">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Inmunizaciones
-                                                            </h4>
-                                                            <hr>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div id="tab9" class="tab-pane fade">
-                                                      <h1>Antecedentes Síntomas Generales</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab10" class="tab-pane fade">
-                                                      <h1>Antecedentes Respiratorio</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab11" class="tab-pane fade">
-                                                      <h1>Antecedentes Cardiovascular</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab12" class="tab-pane fade">
-                                                      <h1>Antecedentes Gastrointestinal</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab13" class="tab-pane fade">
-                                                      <h1>Antecedentes Genitourinario</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab14" class="tab-pane fade">
-                                                      <h1>Antecedentes Neurológico</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab15" class="tab-pane fade">
-                                                      <h1>Antecedentes Endocrino</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    
-                                                    <div id="tab16" class="tab-pane fade">
-                                                      <h1>Antecedentes Decúbito</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab17" class="tab-pane fade">
-                                                      <h1>Antecedentes Deambulación</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab18" class="tab-pane fade">
-                                                      <h1>Antecedentes Facie</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab19" class="tab-pane fade">
-                                                      <h1>Antecedentes Conciencia</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab20" class="tab-pane fade">
-                                                      <h1>Antecedentes Constitución</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab21" class="tab-pane fade">
-                                                      <h1>Antecedentes Piel</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab22" class="tab-pane fade">
-                                                      <h1>Antecedentes S. Linfático</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab23" class="tab-pane fade">
-                                                      <h1>Antecedentes Respiración</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab24" class="tab-pane fade">
-                                                      <h1>Antecedentes Temperatura</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    <div id="tab25" class="tab-pane fade">
-                                                      <h1>Antecedentes Presion y Pulso</h1>
-                                                      <br>
-                                                      <h2>En Construcción...</h2>
-                                                    </div>
-                                                    
-                                                  </div>
-                                              </div>
-                                            </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingMotivo">
-                                                  <h4 class="panel-title" >
-                                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMotivo" aria-expanded="true" aria-controls="collapseMotivo">
-                                                          <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Motivo de la Consulta / Diagnóstico Clínico Preliminar
-                                                    </a>
-                                                  </h4>
+                                        <div class="col-lg-12">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="pill" href="#motivo_consulta">Motivo</a></li>
+                                                <li><a data-toggle="pill" href="#anamnesis_proxima">A. Próx.</a></li>
+                                                <li><a data-toggle="pill" href="#anamnesis_remota">A. Remota</a></li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        R. por Sist.
+                                                    <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#rs_gen">Revisíon por Sistemas / <b>Síntomas Generales</b></a></li>
+                                                        <li><a href="#rs_resp">Revisíon por Sistemas / <b>Respiratorio</b></a></li>
+                                                        <li><a href="#rs_card">Revisíon por Sistemas / <b>Cardiovascular</b></a></li>
+                                                        <li><a href="#rs_gast">Revisíon por Sistemas / <b>Gastroinstestinal</b></a></li>
+                                                        <li><a href="#rs_geni">Revisíon por Sistemas / <b>Genitourinario</b></a></li>
+                                                        <li><a href="#rs_neuro">Revisíon por Sistemas / <b>Neurológico</b></a></li>
+                                                        <li><a href="#rs_endo">Revisíon por Sistemas / <b>Endocrino</b></a></li>
+                                                        <li><a href="#rs_arch_doc">Revisíon por Sistemas / <b>Archivos y Documentos</b></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        E. Físico
+                                                    <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                      <li><a href="#ex_decubito">Examen Físico / <b>Decúbito</b></a></li>
+                                                      <li><a href="#ex_deambu">Examen Físico / <b>Deambulación</b></a></li>
+                                                      <li><a href="#ex_facie">Examen Físico / <b>Facie</b></a></li>
+                                                      <li><a href="#ex_conciencia">Examen Físico / <b>Conciencia</b></a></li>
+                                                      <li><a href="#ex_const">Examen Físico / <b>Constitución</b></a></li>
+                                                      <li><a href="#ex_piel">Examen Físico / <b>Piel</b></a></li>
+                                                      <li><a href="#ex_s_linfa">Examen Físico / <b>S. Linfático</b></a></li>
+                                                      <li><a href="#ex_resp">Examen Físico / <b>Respiración</b></a></li>
+                                                      <li><a href="#ex_temp">Examen Físico / <b>Temperatura</b></a></li>
+                                                      <li><a href="#ex_pres_pul">Examen Físico / <b>Presion y Pulso</b></a></li>
+                                                      <li><a href="#ex_arch_doc">Examen Físico / <b>Archivos y Documentos</b></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        E. Físico S.
+                                                    <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                      <li><a href="#">Examen Físico Segmentario / <b></b></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a data-toggle="pill" href="#diagnostico">Diagnostico</a></li>
+                                                <li><a data-toggle="pill" href="#tratamiento">Tratamiento</a></li>
+                                                <li><a data-toggle="pill" href="#obs_recomendaciones">Obs.</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div id="motivo_consulta" class="tab-pane fade in active">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Motivo Consulta Médica
+                                                    </h4>
+                                                    <textarea class="form-control" id="motivo" name="motivo" cols="90" rows="6"></textarea>
                                                 </div>
-                                                <div id="collapseMotivo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingMotivo">
-                                                  <div class="panel-body">
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Motivo de la Consulta: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="motivo_consulta" name="motivo_consulta" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Anamnésis Próxima: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                        <div class='input-group'>
-                                                            <textarea class="form-control" id="anamnesis_proxima" name="anamnesis_proxima" cols="90" rows="2"></textarea>
-                                                        </div>
-                                                        </div>
-                                                        <label for="title" class="col-xs-12 col-md-3 col-sm-3">
-                                                            Hipótesis Diagnóstica: </label>
-                                                        <div style="margin-bottom: 5px;" class="col-xs-12 col-md-9 col-sm-9">
-                                                            <div class='input-group'>
-                                                                <textarea class="form-control" id="hipotesis_diagnostica" name="hipotesis_diagnostica" cols="90" rows="2"></textarea>
-                                                            </div>
-                                                        </div>
-                                                  </div>
+                                                <div id="anamnesis_proxima" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Anamnesis Próxima
+                                                    </h4>
+                                                    <textarea class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"></textarea>
+                                                </div>
+                                                <div id="anamnesis_remota" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Anamnesis Remota
+                                                    </h4>
+                                                    <div class="alert alert-info">
+                                                        <h4>
+                                                            La Anamnesis Remota se enfoca en constatar los antecedentes del paciente.  
+                                                            En esta, se deben consignar en orden cronológico todas las enfermedades, hospitalizaciones, cirugías, etc., 
+                                                            que el paciente haya padecido, y que sean relevantes en cuanto al diagnóstico.
+                                                        </h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div id="diagnostico" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Hipótesis Diagnóstico
+                                                    </h4>
+                                                    <textarea class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"></textarea>
+                                                </div>
+                                                <div id="tratamiento" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Tratamiento
+                                                    </h4>
+                                                    <textarea class="form-control" id="tratamiento" name="tratamiento" cols="90" rows="6"></textarea>
+                                                </div>
+                                                <div id="biometria" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Biometría / Exploración Física
+                                                    </h4>
+                                                </div>
+                                                <div id="archivos_documentos" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Archivos y Documentos
+                                                    </h4>
+                                                    
+                                                </div>
+                                                <div id="obs_recomendaciones" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Observaciones / Recomendaciones
+                                                    </h4>
+                                                    <textarea class="form-control" id="observaciones" name="observaciones" cols="90" rows="6"></textarea>
                                                 </div>
                                             </div>
-                                    </div>
-                                      </div>
+                                        </div>
                                     </div>
                                 </div>
                                  

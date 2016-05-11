@@ -77,47 +77,9 @@
                                                 <li class="active"><a data-toggle="pill" href="#motivo_consulta">Motivo</a></li>
                                                 <li><a data-toggle="pill" href="#anamnesis_proxima">A. Próx.</a></li>
                                                 <li><a data-toggle="pill" href="#anamnesis_remota">A. Remota</a></li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                        R. por Sist.
-                                                    <span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#rs_gen">Revisíon por Sistemas / <b>Síntomas Generales</b></a></li>
-                                                        <li><a href="#rs_resp">Revisíon por Sistemas / <b>Respiratorio</b></a></li>
-                                                        <li><a href="#rs_card">Revisíon por Sistemas / <b>Cardiovascular</b></a></li>
-                                                        <li><a href="#rs_gast">Revisíon por Sistemas / <b>Gastroinstestinal</b></a></li>
-                                                        <li><a href="#rs_geni">Revisíon por Sistemas / <b>Genitourinario</b></a></li>
-                                                        <li><a href="#rs_neuro">Revisíon por Sistemas / <b>Neurológico</b></a></li>
-                                                        <li><a href="#rs_endo">Revisíon por Sistemas / <b>Endocrino</b></a></li>
-                                                        <li><a href="#rs_arch_doc">Revisíon por Sistemas / <b>Archivos y Documentos</b></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                        E. Físico
-                                                    <span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                      <li><a href="#ex_decubito">Examen Físico / <b>Decúbito</b></a></li>
-                                                      <li><a href="#ex_deambu">Examen Físico / <b>Deambulación</b></a></li>
-                                                      <li><a href="#ex_facie">Examen Físico / <b>Facie</b></a></li>
-                                                      <li><a href="#ex_conciencia">Examen Físico / <b>Conciencia</b></a></li>
-                                                      <li><a href="#ex_const">Examen Físico / <b>Constitución</b></a></li>
-                                                      <li><a href="#ex_piel">Examen Físico / <b>Piel</b></a></li>
-                                                      <li><a href="#ex_s_linfa">Examen Físico / <b>S. Linfático</b></a></li>
-                                                      <li><a href="#ex_resp">Examen Físico / <b>Respiración</b></a></li>
-                                                      <li><a href="#ex_temp">Examen Físico / <b>Temperatura</b></a></li>
-                                                      <li><a href="#ex_pres_pul">Examen Físico / <b>Presion y Pulso</b></a></li>
-                                                      <li><a href="#ex_arch_doc">Examen Físico / <b>Archivos y Documentos</b></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown">
-                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                        E. Físico S.
-                                                    <span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                      <li><a href="#">Examen Físico Segmentario / <b></b></a></li>
-                                                    </ul>
-                                                </li>
+                                                <li><a data-toggle="pill" href="#r_sistema">R. por Sist.</a></li>
+                                                <li><a data-toggle="pill" href="#e_fisico">E. Físico</a></li>
+                                                <li><a data-toggle="pill" href="#e_fisico_s">E. Físico S.</a></li>
                                                 <li><a data-toggle="pill" href="#diagnostico">Diagnostico</a></li>
                                                 <li><a data-toggle="pill" href="#tratamiento">Tratamiento</a></li>
                                                 <li><a data-toggle="pill" href="#obs_recomendaciones">Obs.</a></li>
@@ -145,14 +107,263 @@
                                                         <i class="fa fa-leaf" aria-hidden="true"></i>
                                                         Anamnesis Remota
                                                     </h4>
-                                                    <div class="alert alert-info">
-                                                        <h4>
-                                                            La Anamnesis Remota se enfoca en constatar los antecedentes del paciente.  
-                                                            En esta, se deben consignar en orden cronológico todas las enfermedades, hospitalizaciones, cirugías, etc., 
-                                                            que el paciente haya padecido, y que sean relevantes en cuanto al diagnóstico.
-                                                        </h4>
-                                                    </div>
+                                                    <p>
+                                                        La Anamnesis Remota se enfoca en constatar los antecedentes del paciente.  
+                                                        En esta, se deben consignar en orden cronológico todas las enfermedades, hospitalizaciones, cirugías, etc., 
+                                                        que el paciente haya padecido, y que sean relevantes en cuanto al diagnóstico.
+                                                    </p>                                                    
+                                                </div>
+                                                <div id="r_sistema" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a data-toggle="tab" href="#rs_1">Síntomas Generales<b></b></a></li>
+                                                        <li><a data-toggle="tab" href="#rs_2">Respiratorio<b></b></a></li>
+                                                        <li><a data-toggle="tab" href="#rs_3">Cardiovascular</a></li>
+                                                        <li><a data-toggle="tab" href="#rs_4">Gastroinstestinal</a></li>
+                                                        <li><a data-toggle="tab" href="#rs_5">Genitourinario</a></li>
+                                                        <li><a data-toggle="tab" href="#rs_6">Neurológico</a></li>
+                                                        <li><a data-toggle="tab" href="#rs_7">Endocrino</a></li>
+                                                        <li><a data-toggle="tab" href="#rs_8">Archivos y Documentos</a></li>
+                                                    </ul>
                                                     
+                                                    <div class="tab-content">
+                                                        <div id="rs_1" class="tab-pane fade in active">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Síntomas Generales
+                                                            </h4>
+                                                            <div class="col-sm-6">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <br>
+                                                                Puede agregar un comentario adicional para mayor información
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="sg_fiebre" id="sg_fiebre"> Fiebre
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso"> Transtornos de Peso
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen"> Malestar General
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape"> Problemas con el apetito
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n"> Sudoración Nocturna
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_insomnio" id="sg_insomnio"> Insomnio
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_angustia" id="sg_angustia"> Angustia
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_otros" id="sg_otros"> Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="col-sm-12">
+                                                                &nbsp;
+                                                                Comentarios Adicionales:
+                                                                &nbsp;
+                                                                <textarea class="form-control" id="sg_comentarios" name="anamnesis" cols="90" rows="4"></textarea>
+                                                            </div>
+                                                                
+                                                        </div>
+                                                        <div id="rs_2" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Respiratorio
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_3" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Cardiovascular
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_4" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Gastroinstestinal
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_5" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Genitourinario
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_6" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Neurológico
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_7" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Endocrino
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                        <div id="rs_8" class="tab-pane fade">
+                                                          &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Revisíon por Sistemas / Archivos y Documentos
+                                                            </h4>
+                                                            <p>Contenido...</p>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                                <div id="e_fisico" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a data-toggle="tab" href="#ef_1">Decúbito</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_2">Deambulación</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_3">Facie</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_4">Conciencia</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_5">Constitución</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_6">Piel</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_7">S. Linfático</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_8">Respiración</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_9">Temperatura</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_10">Presion y Pulso</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_11">Archivos y Documentos</a></li>                                                        
+                                                    </ul>
+                                                    
+                                                    <div class="tab-content">
+                                                        <div id="ef_1" class="tab-pane fade in active">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Decúbito
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_2" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Deambulación
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_3" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Facie
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_4" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Conciencia
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_5" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Constitución
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_6" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Piel
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_7" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / S. Linfático
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_8" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Respiración
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_9" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Temperatura
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_10" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Presion y Pulso
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                        <div id="ef_11" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Archivos y Documentos
+                                                            </h4>
+                                                            <p>Contenido...</p>    
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                                <div id="e_fisico_s" class="tab-pane fade">
+                                                    &nbsp;
+                                                    <h4 style="color:#21B9BB;">
+                                                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                        Examen Físico Segmentado
+                                                    </h4>
+                                                    <p>Contenido...</p>
                                                 </div>
                                                 <div id="diagnostico" class="tab-pane fade">
                                                     &nbsp;

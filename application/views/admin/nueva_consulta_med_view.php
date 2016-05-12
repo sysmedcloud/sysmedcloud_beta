@@ -141,45 +141,45 @@
                                                             <div class="col-sm-6">
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="sg_fiebre" id="sg_fiebre"> Fiebre
+                                                                        <input type="checkbox" name="sg_fiebre" id="sg_fiebre">&nbsp;&nbsp;Fiebre
                                                                     </label> 
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso"> Transtornos de Peso
+                                                                        <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso">&nbsp;&nbsp;Transtornos de Peso
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen"> Malestar General
+                                                                        <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen">&nbsp;&nbsp;Malestar General
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape"> Problemas con el apetito
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n"> Sudoración Nocturna
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_insomnio" id="sg_insomnio"> Insomnio
+                                                                        <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape">&nbsp;&nbsp;Problemas con el apetito
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_angustia" id="sg_angustia"> Angustia
+                                                                        <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n">&nbsp;&nbsp;Sudoración Nocturna
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_otros" id="sg_otros"> Otros Sintomas
+                                                                        <input type="checkbox" name="sg_insomnio" id="sg_insomnio">&nbsp;&nbsp;Insomnio
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_angustia" id="sg_angustia">&nbsp;&nbsp;Angustia
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="sg_otros" id="sg_otros">&nbsp;&nbsp;Otros Sintomas
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -205,40 +205,40 @@
                                                             <div class="col-sm-6">
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="resp_disnea" id="resp_disnea"> Disnea
+                                                                        <input type="checkbox" name="resp_disnea" id="resp_disnea">&nbsp;&nbsp;Disnea
                                                                     </label> 
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_tos" id="resp_tos"> Tos
+                                                                        <input type="checkbox" name="resp_tos" id="resp_tos">&nbsp;&nbsp;Tos
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_exp" id="resp_exp"> Expectoración
+                                                                        <input type="checkbox" name="resp_exp" id="resp_exp">&nbsp;&nbsp;Expectoración
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_hemop" id="resp_hemop"> Hemoptisis
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_p_costado" id="resp_p_costado"> Puntada de Costado
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_obs_br" id="resp_obs_br"> Obstrucción bronquial
+                                                                        <input type="checkbox" name="resp_hemop" id="resp_hemop">&nbsp;&nbsp;Hemoptisis
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_otros" id="resp_otros"> Otros Sintomas
+                                                                        <input type="checkbox" name="resp_p_costado" id="resp_p_costado">&nbsp;&nbsp;Puntada de Costado
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_obs_br" id="resp_obs_br">&nbsp;&nbsp;Obstrucción bronquial
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_otros" id="resp_otros">&nbsp;&nbsp;Otros Sintomas
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
@@ -269,34 +269,34 @@
                                                             <div class="col-sm-6">
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="card_dis_esf" id="card_dis_esf"> Disnea de Esfuerzo
+                                                                        <input type="checkbox" name="card_dis_esf" id="card_dis_esf">&nbsp;&nbsp;Disnea de Esfuerzo
                                                                     </label> 
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_ortopnea" id="card_ortopnea"> Ortopnea
+                                                                        <input type="checkbox" name="card_ortopnea" id="card_ortopnea">&nbsp;&nbsp;Ortopnea
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc"> Disnea Paroxística Nocturna
+                                                                        <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc">&nbsp;&nbsp;Disnea Paroxística Nocturna
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf"> Edema de extremidades interiores
+                                                                        <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf">&nbsp;&nbsp;Edema de extremidades interiores
                                                                     </label>
                                                                 </div>
                                                                 
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco"> Dolor Precordial
+                                                                        <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco">&nbsp;&nbsp;Dolor Precordial
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_otros" id="card_otros"> Otros Sintomas
+                                                                        <input type="checkbox" name="card_otros" id="card_otros">&nbsp;&nbsp;Otros Sintomas
                                                                     </label>
                                                                 </div>
                                                             </div>

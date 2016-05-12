@@ -188,17 +188,72 @@
                                                                 &nbsp;
                                                                 Comentarios Adicionales:
                                                                 &nbsp;
-                                                                <textarea class="form-control" id="sg_comentarios" name="anamnesis" cols="90" rows="4"></textarea>
+                                                                <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="4"></textarea>
                                                             </div>
-                                                                
                                                         </div>
                                                         <div id="rs_2" class="tab-pane fade">
-                                                          &nbsp;
+                                                            &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Respiratorio
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-6">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <br>
+                                                                Puede agregar un comentario adicional para mayor información
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="resp_disnea" id="resp_disnea"> Disnea
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_tos" id="resp_tos"> Tos
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_exp" id="resp_exp"> Expectoración
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_hemop" id="resp_hemop"> Hemoptisis
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_p_costado" id="resp_p_costado"> Puntada de Costado
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_obs_br" id="resp_obs_br"> Obstrucción bronquial
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="resp_otros" id="resp_otros"> Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        &nbsp;
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="col-sm-12">
+                                                                &nbsp;
+                                                                Comentarios Adicionales:
+                                                                &nbsp;
+                                                                <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="4"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_3" class="tab-pane fade">
                                                           &nbsp;
@@ -206,7 +261,52 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Cardiovascular
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-6">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <br>
+                                                                Puede agregar un comentario adicional para mayor información
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="card_dis_esf" id="card_dis_esf"> Disnea de Esfuerzo
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="card_ortopnea" id="card_ortopnea"> Ortopnea
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc"> Disnea Paroxística Nocturna
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf"> Edema de extremidades interiores
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco"> Dolor Precordial
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="card_otros" id="card_otros"> Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="col-sm-12">
+                                                                &nbsp;
+                                                                Comentarios Adicionales:
+                                                                &nbsp;
+                                                                <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="4"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_4" class="tab-pane fade">
                                                           &nbsp;

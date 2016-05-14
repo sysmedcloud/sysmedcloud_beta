@@ -133,12 +133,9 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Síntomas Generales
                                                             </h4>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
-                                                                <br>
-                                                                Puede agregar un comentario adicional para mayor información
-                                                            </div>
-                                                            <div class="col-sm-6">
+                                                                <hr>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
                                                                         <input type="checkbox" name="sg_fiebre" id="sg_fiebre">&nbsp;&nbsp;Fiebre
@@ -183,12 +180,10 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            &nbsp;
-                                                            <div class="col-sm-12">
-                                                                &nbsp;
-                                                                Comentarios Adicionales:
-                                                                &nbsp;
-                                                                <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="4"></textarea>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="5"></textarea>
                                                             </div>
                                                         </div>
                                                         <div id="rs_2" class="tab-pane fade">
@@ -197,12 +192,9 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Respiratorio
                                                             </h4>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
-                                                                <br>
-                                                                Puede agregar un comentario adicional para mayor información
-                                                            </div>
-                                                            <div class="col-sm-6">
+                                                                <hr>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
                                                                         <input type="checkbox" name="resp_disnea" id="resp_disnea">&nbsp;&nbsp;Disnea
@@ -247,26 +239,21 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            &nbsp;
-                                                            <div class="col-sm-12">
-                                                                &nbsp;
-                                                                Comentarios Adicionales:
-                                                                &nbsp;
-                                                                <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="4"></textarea>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="5"></textarea>
                                                             </div>
                                                         </div>
                                                         <div id="rs_3" class="tab-pane fade">
-                                                          &nbsp;
+                                                           &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Cardiovascular
                                                             </h4>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
-                                                                <br>
-                                                                Puede agregar un comentario adicional para mayor información
-                                                            </div>
-                                                            <div class="col-sm-6">
+                                                                <hr>
                                                                 <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
                                                                         <input type="checkbox" name="card_dis_esf" id="card_dis_esf">&nbsp;&nbsp;Disnea de Esfuerzo
@@ -300,45 +287,282 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            &nbsp;
-                                                            <div class="col-sm-12">
-                                                                &nbsp;
-                                                                Comentarios Adicionales:
-                                                                &nbsp;
-                                                                <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="4"></textarea>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="5"></textarea>
                                                             </div>
                                                         </div>
                                                         <div id="rs_4" class="tab-pane fade">
-                                                          &nbsp;
+                                                            &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Gastroinstestinal
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-7">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="gast_p_ape" id="gast_p_ape">
+                                                                        &nbsp;&nbsp;Problemas de Apetito
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_nausas" id="gast_nausas">
+                                                                        &nbsp;&nbsp;Nausas
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_vomitos" id="gast_vomitos">
+                                                                            &nbsp;&nbsp;Vomitos
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_disfagia" id="gast_disfagia">
+                                                                        &nbsp;&nbsp;Disfagia
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_pirosis" id="gast_pirosis">
+                                                                        &nbsp;&nbsp;Pirosis
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_diarrea" id="gast_diarrea">
+                                                                        &nbsp;&nbsp;Diarrea
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_constipación" id="gast_constipación">
+                                                                            &nbsp;&nbsp;Constipación
+                                                                        </label>
+                                                                    </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_melena" id="gast_melena">
+                                                                        &nbsp;&nbsp;Melena
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="gast_otros" id="gast_otros">
+                                                                        &nbsp;&nbsp;Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="gast_comentarios" name="gast_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_5" class="tab-pane fade">
-                                                          &nbsp;
+                                                            &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Genitourinario
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-7">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="geni_disuria" id="geni_disuria">
+                                                                        &nbsp;&nbsp;Disuria dolorosa o de esfuerzo
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_polaquiuria" id="geni_polaquiuria">
+                                                                        &nbsp;&nbsp;Polaquiuria
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_poliuria" id="geni_poliuria">
+                                                                            &nbsp;&nbsp;Poliuria
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_nicturia" id="geni_nicturia">
+                                                                        &nbsp;&nbsp;Nicturia
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_alt_uri" id="geni_alt_uri">
+                                                                        &nbsp;&nbsp;Alteración del chorro urinario
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_hematuria" id="geni_hematuria">
+                                                                        &nbsp;&nbsp;Hematuria
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_dolores_lum" id="geni_dolores_lum">
+                                                                            &nbsp;&nbsp;Dolores en fosas lumbares
+                                                                        </label>
+                                                                    </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="geni_otros" id="geni_otros">
+                                                                        &nbsp;&nbsp;Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="geni_comentarios" name="geni_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_6" class="tab-pane fade">
-                                                          &nbsp;
+                                                            &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Neurológico
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-7">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="neuro_cafalea" id="neuro_cafalea">
+                                                                        &nbsp;&nbsp;Cafalea
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="neuro_mareos" id="neuro_mareos">
+                                                                        &nbsp;&nbsp;Mareos
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="neuro_problemas_coord" id="neuro_problemas_coord">
+                                                                            &nbsp;&nbsp;Problemas de Coordinación
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="neuro_paresias" id="neuro_paresias">
+                                                                        &nbsp;&nbsp;Paresias
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="neuro_parestesias" id="neuro_parestesias">
+                                                                        &nbsp;&nbsp;Parestesias
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="neuro_otros" id="neuro_otros">
+                                                                        &nbsp;&nbsp;Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="neuro_comentarios" name="neuro_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_7" class="tab-pane fade">
-                                                          &nbsp;
+                                                            &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Endocrino
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <div class="col-sm-7">
+                                                                Indique aquellos sintomas que pueden ser observados en el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="endo_b_peso" id="endo_b_peso">
+                                                                        &nbsp;&nbsp;Baja de peso
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_into_frio" id="endo_into_frio">
+                                                                        &nbsp;&nbsp;Intolerancia al frío
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_into_calor" id="endo_into_calor">
+                                                                            &nbsp;&nbsp;Intolerancia al calor
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_temblor_fino" id="endo_temblor_fino">
+                                                                        &nbsp;&nbsp;Temblor fino
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_polidefecacion" id="endo_polidefecacion">
+                                                                        &nbsp;&nbsp;Polidefecacion
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_ronquera" id="endo_ronquera">
+                                                                        &nbsp;&nbsp;Ronquera
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_somnolencia" id="endo_somnolencia">
+                                                                        &nbsp;&nbsp;Somnolencia
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_sequedad_piel" id="endo_sequedad_piel">
+                                                                        &nbsp;&nbsp;Sequedad de la piel
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="endo_otros" id="endo_otros">
+                                                                        &nbsp;&nbsp;Otros Sintomas
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Puedes agregar un comentario adicional.
+                                                                <hr>
+                                                                <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="rs_8" class="tab-pane fade">
                                                           &nbsp;
@@ -346,7 +570,9 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Revisíon por Sistemas / Archivos y Documentos
                                                             </h4>
-                                                            <p>Contenido...</p>
+                                                            <p>Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
+                                                               tipo de archivo digital. Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
+                                                               Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. </p>
                                                         </div>
                                                      </div>
                                                 </div>

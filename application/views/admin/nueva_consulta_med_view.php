@@ -599,7 +599,16 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Decúbito
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="col-sm-6">
+                                                                <b>Posición /</b> descripción de la posición de pie del paciente.
+                                                                <hr>
+                                                                <textarea class="form-control" id="d_posición_pie" name="d_posición_pie" cols="90" rows="5"></textarea>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <b>Decúbito /</b> descripción de la posición en decúbito del paciente.
+                                                                <hr>
+                                                                <textarea class="form-control" id="d_posición_decubito" name="d_posición_decubito" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="ef_2" class="tab-pane fade">
                                                             &nbsp;
@@ -607,7 +616,62 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Deambulación
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="col-sm-7">
+                                                                Seleccione algun trastorno de marcha que presente el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="deammbulación_normal" id="deammbulación_normal">
+                                                                        &nbsp;&nbsp;Deammbulación normal
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="marcha_ataxica" id="marcha_ataxica">
+                                                                        &nbsp;&nbsp;Marcha atáxica o tabética
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="marcha_polineuritis" id="marcha_polineuritis">
+                                                                            &nbsp;&nbsp;Marcha de pacientes con polineuritis (marcha esquina o "steppage")
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="marcha_espastica" id="marcha_espastica">
+                                                                        &nbsp;&nbsp;Marcha espástica (en tijeras) 
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="marcha_hemiplejico" id="marcha_hemiplejico">
+                                                                        &nbsp;&nbsp;Marcha del hemipléjico
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="marcha_parkinsoniana" id="marcha_parkinsoniana">
+                                                                        &nbsp;&nbsp;Marcha parkinsoniana
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="d_otros_trastornos" id="d_otros_trastornos">
+                                                                        &nbsp;&nbsp;Otros trastornos
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Comentarios / Puedes ingresar un nuevo transtorno.
+                                                                <hr>
+                                                                <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="ef_3" class="tab-pane fade">
                                                             &nbsp;
@@ -615,7 +679,88 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Facie
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="col-sm-7">
+                                                                Seleccione algun trastorno facie que presente el paciente.
+                                                                <hr>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks"> 
+                                                                        <input type="checkbox" name="facie_normal" id="facie_normal">
+                                                                        &nbsp;&nbsp;Facie normal
+                                                                    </label> 
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_acromegalica" id="facie_acromegalica">
+                                                                        &nbsp;&nbsp;Facie acromegálica
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_cushingoide" id="facie_cushingoide">
+                                                                            &nbsp;&nbsp;Facie cushingoide
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_hipertiroídea" id="facie_hipertiroídea">
+                                                                        &nbsp;&nbsp;Facie hipertiroídea
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_hipotiroidea" id="facie_hipotiroidea">
+                                                                        &nbsp;&nbsp;Facie hipotiroídea o mixedematosa
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_hipocratica" id="facie_hipocratica">
+                                                                        &nbsp;&nbsp;Facie hipocrática
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_mongolica" id="facie_mongolica">
+                                                                        &nbsp;&nbsp;Facie mongólica (s. de Down)
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_parkinsoniana" id="facie_parkinsoniana">
+                                                                        &nbsp;&nbsp;Facie parkinsoniana
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_febril" id="facie_febril">
+                                                                        &nbsp;&nbsp;Facie febril
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_mitralica" id="facie_mitralica">
+                                                                        &nbsp;&nbsp;Facie mitrálica
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-6">
+                                                                    <label class="radio-inline i-checks">
+                                                                        <input type="checkbox" name="facie_otros_trastornos" id="facie_otros_trastornos">
+                                                                        &nbsp;&nbsp;Otros trastornos
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                Comentarios / Puedes ingresar un nuevo transtorno.
+                                                                <hr>
+                                                                <textarea class="form-control" id="facie_comentarios" name="facie_comentarios" cols="90" rows="5"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div id="ef_4" class="tab-pane fade">
                                                             &nbsp;

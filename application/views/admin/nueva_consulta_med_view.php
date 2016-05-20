@@ -136,54 +136,61 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="sg_fiebre" id="sg_fiebre">&nbsp;&nbsp;Fiebre
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="sg_fiebre" id="sg_fiebre">&nbsp;&nbsp;Fiebre
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso">&nbsp;&nbsp;Transtornos de Peso
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso">&nbsp;&nbsp;Transtornos de Peso
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen">&nbsp;&nbsp;Malestar General
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape">&nbsp;&nbsp;Problemas con el apetito
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen">&nbsp;&nbsp;Malestar General
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n">&nbsp;&nbsp;Sudoración Nocturna
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_insomnio" id="sg_insomnio">&nbsp;&nbsp;Insomnio
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape">&nbsp;&nbsp;Problemas con el apetito
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n">&nbsp;&nbsp;Sudoración Nocturna
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_insomnio" id="sg_insomnio">&nbsp;&nbsp;Insomnio
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_angustia" id="sg_angustia">&nbsp;&nbsp;Angustia
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="sg_otros" id="sg_otros">&nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
-                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_angustia" id="sg_angustia">&nbsp;&nbsp;Angustia
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="sg_otros" id="sg_otros">&nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
+                                                                </div>                                                                
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_2" class="tab-pane fade">
@@ -195,54 +202,61 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="resp_disnea" id="resp_disnea">&nbsp;&nbsp;Disnea
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="resp_disnea" id="resp_disnea">&nbsp;&nbsp;Disnea
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_tos" id="resp_tos">&nbsp;&nbsp;Tos
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_tos" id="resp_tos">&nbsp;&nbsp;Tos
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_exp" id="resp_exp">&nbsp;&nbsp;Expectoración
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_hemop" id="resp_hemop">&nbsp;&nbsp;Hemoptisis
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_exp" id="resp_exp">&nbsp;&nbsp;Expectoración
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_p_costado" id="resp_p_costado">&nbsp;&nbsp;Puntada de Costado
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_obs_br" id="resp_obs_br">&nbsp;&nbsp;Obstrucción bronquial
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_hemop" id="resp_hemop">&nbsp;&nbsp;Hemoptisis
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_p_costado" id="resp_p_costado">&nbsp;&nbsp;Puntada de Costado
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_obs_br" id="resp_obs_br">&nbsp;&nbsp;Obstrucción bronquial
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="resp_otros" id="resp_otros">&nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        &nbsp;
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="resp_otros" id="resp_otros">&nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            &nbsp;
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_3" class="tab-pane fade">
@@ -254,43 +268,49 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="card_dis_esf" id="card_dis_esf">&nbsp;&nbsp;Disnea de Esfuerzo
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="card_dis_esf" id="card_dis_esf">&nbsp;&nbsp;Disnea de Esfuerzo
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="card_ortopnea" id="card_ortopnea">&nbsp;&nbsp;Ortopnea
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_ortopnea" id="card_ortopnea">&nbsp;&nbsp;Ortopnea
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc">&nbsp;&nbsp;Disnea Paroxística Nocturna
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf">&nbsp;&nbsp;Edema de extremidades interiores
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc">&nbsp;&nbsp;Disnea Paroxística Nocturna
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf">&nbsp;&nbsp;Edema de extremidades interiores
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco">&nbsp;&nbsp;Dolor Precordial
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="card_otros" id="card_otros">&nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco">&nbsp;&nbsp;Dolor Precordial
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="card_otros" id="card_otros">&nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_4" class="tab-pane fade">
@@ -302,71 +322,80 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="gast_p_ape" id="gast_p_ape">
-                                                                        &nbsp;&nbsp;Problemas de Apetito
-                                                                    </label> 
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_nausas" id="gast_nausas">
-                                                                        &nbsp;&nbsp;Nausas
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_vomitos" id="gast_vomitos">
-                                                                            &nbsp;&nbsp;Vomitos
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_disfagia" id="gast_disfagia">
-                                                                        &nbsp;&nbsp;Disfagia
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_pirosis" id="gast_pirosis">
-                                                                        &nbsp;&nbsp;Pirosis
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_diarrea" id="gast_diarrea">
-                                                                        &nbsp;&nbsp;Diarrea
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                            <input type="checkbox" name="gast_constipación" id="gast_constipación">
-                                                                            &nbsp;&nbsp;Constipación
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="gast_p_ape" id="gast_p_ape">
+                                                                            &nbsp;&nbsp;Problemas de Apetito
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_nausas" id="gast_nausas">
+                                                                            &nbsp;&nbsp;Nausas
                                                                         </label>
                                                                     </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_melena" id="gast_melena">
-                                                                        &nbsp;&nbsp;Melena
-                                                                    </label>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="gast_otros" id="gast_otros">
-                                                                        &nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_vomitos" id="gast_vomitos">
+                                                                                &nbsp;&nbsp;Vomitos
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_disfagia" id="gast_disfagia">
+                                                                            &nbsp;&nbsp;Disfagia
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    &nbsp;
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_pirosis" id="gast_pirosis">
+                                                                            &nbsp;&nbsp;Pirosis
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_diarrea" id="gast_diarrea">
+                                                                            &nbsp;&nbsp;Diarrea
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="gast_constipación" id="gast_constipación">
+                                                                                &nbsp;&nbsp;Constipación
+                                                                            </label>
+                                                                        </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_melena" id="gast_melena">
+                                                                            &nbsp;&nbsp;Melena
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="gast_otros" id="gast_otros">
+                                                                            &nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="gast_comentarios" name="gast_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="gast_comentarios" name="gast_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_5" class="tab-pane fade">
@@ -378,61 +407,69 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="geni_disuria" id="geni_disuria">
-                                                                        &nbsp;&nbsp;Disuria dolorosa o de esfuerzo
-                                                                    </label> 
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_polaquiuria" id="geni_polaquiuria">
-                                                                        &nbsp;&nbsp;Polaquiuria
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_poliuria" id="geni_poliuria">
-                                                                            &nbsp;&nbsp;Poliuria
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_nicturia" id="geni_nicturia">
-                                                                        &nbsp;&nbsp;Nicturia
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_alt_uri" id="geni_alt_uri">
-                                                                        &nbsp;&nbsp;Alteración del chorro urinario
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_hematuria" id="geni_hematuria">
-                                                                        &nbsp;&nbsp;Hematuria
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                            <input type="checkbox" name="geni_dolores_lum" id="geni_dolores_lum">
-                                                                            &nbsp;&nbsp;Dolores en fosas lumbares
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="geni_disuria" id="geni_disuria">
+                                                                            &nbsp;&nbsp;Disuria dolorosa o de esfuerzo
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_polaquiuria" id="geni_polaquiuria">
+                                                                            &nbsp;&nbsp;Polaquiuria
                                                                         </label>
                                                                     </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="geni_otros" id="geni_otros">
-                                                                        &nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_poliuria" id="geni_poliuria">
+                                                                                &nbsp;&nbsp;Poliuria
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_nicturia" id="geni_nicturia">
+                                                                            &nbsp;&nbsp;Nicturia
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_alt_uri" id="geni_alt_uri">
+                                                                            &nbsp;&nbsp;Alteración del chorro urinario
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_hematuria" id="geni_hematuria">
+                                                                            &nbsp;&nbsp;Hematuria
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="geni_dolores_lum" id="geni_dolores_lum">
+                                                                                &nbsp;&nbsp;Dolores en fosas lumbares
+                                                                            </label>
+                                                                        </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="geni_otros" id="geni_otros">
+                                                                            &nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="geni_comentarios" name="geni_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="geni_comentarios" name="geni_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_6" class="tab-pane fade">
@@ -444,48 +481,55 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="neuro_cafalea" id="neuro_cafalea">
-                                                                        &nbsp;&nbsp;Cafalea
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="neuro_cafalea" id="neuro_cafalea">
+                                                                            &nbsp;&nbsp;Cafalea
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="neuro_mareos" id="neuro_mareos">
+                                                                            &nbsp;&nbsp;Mareos
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="neuro_mareos" id="neuro_mareos">
-                                                                        &nbsp;&nbsp;Mareos
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="neuro_problemas_coord" id="neuro_problemas_coord">
+                                                                                &nbsp;&nbsp;Problemas de Coordinación
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="neuro_paresias" id="neuro_paresias">
+                                                                            &nbsp;&nbsp;Paresias
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="neuro_problemas_coord" id="neuro_problemas_coord">
-                                                                            &nbsp;&nbsp;Problemas de Coordinación
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="neuro_paresias" id="neuro_paresias">
-                                                                        &nbsp;&nbsp;Paresias
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="neuro_parestesias" id="neuro_parestesias">
-                                                                        &nbsp;&nbsp;Parestesias
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="neuro_otros" id="neuro_otros">
-                                                                        &nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="neuro_parestesias" id="neuro_parestesias">
+                                                                            &nbsp;&nbsp;Parestesias
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="neuro_otros" id="neuro_otros">
+                                                                            &nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="neuro_comentarios" name="neuro_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="neuro_comentarios" name="neuro_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_7" class="tab-pane fade">
@@ -497,71 +541,80 @@
                                                             <div class="col-sm-7">
                                                                 Indique aquellos sintomas que pueden ser observados en el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="endo_b_peso" id="endo_b_peso">
-                                                                        &nbsp;&nbsp;Baja de peso
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="endo_b_peso" id="endo_b_peso">
+                                                                            &nbsp;&nbsp;Baja de peso
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_into_frio" id="endo_into_frio">
+                                                                            &nbsp;&nbsp;Intolerancia al frío
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_into_frio" id="endo_into_frio">
-                                                                        &nbsp;&nbsp;Intolerancia al frío
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_into_calor" id="endo_into_calor">
+                                                                                &nbsp;&nbsp;Intolerancia al calor
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_temblor_fino" id="endo_temblor_fino">
+                                                                            &nbsp;&nbsp;Temblor fino
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_into_calor" id="endo_into_calor">
-                                                                            &nbsp;&nbsp;Intolerancia al calor
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_polidefecacion" id="endo_polidefecacion">
+                                                                            &nbsp;&nbsp;Polidefecacion
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_ronquera" id="endo_ronquera">
+                                                                            &nbsp;&nbsp;Ronquera
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_temblor_fino" id="endo_temblor_fino">
-                                                                        &nbsp;&nbsp;Temblor fino
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_somnolencia" id="endo_somnolencia">
+                                                                            &nbsp;&nbsp;Somnolencia
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_sequedad_piel" id="endo_sequedad_piel">
+                                                                            &nbsp;&nbsp;Sequedad de la piel
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_polidefecacion" id="endo_polidefecacion">
-                                                                        &nbsp;&nbsp;Polidefecacion
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_ronquera" id="endo_ronquera">
-                                                                        &nbsp;&nbsp;Ronquera
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_somnolencia" id="endo_somnolencia">
-                                                                        &nbsp;&nbsp;Somnolencia
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_sequedad_piel" id="endo_sequedad_piel">
-                                                                        &nbsp;&nbsp;Sequedad de la piel
-                                                                    </label>
-                                                                </div>
-
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="endo_otros" id="endo_otros">
-                                                                        &nbsp;&nbsp;Otros Sintomas
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    &nbsp;
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="endo_otros" id="endo_otros">
+                                                                            &nbsp;&nbsp;Otros Sintomas
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Puedes agregar un comentario adicional.
-                                                                <hr>
-                                                                <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Puedes agregar un comentario adicional.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="rs_8" class="tab-pane fade">
@@ -599,15 +652,17 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Decúbito
                                                             </h4>
-                                                            <div class="col-sm-6">
-                                                                <b>Posición /</b> descripción de la posición de pie del paciente.
-                                                                <hr>
-                                                                <textarea class="form-control" id="d_posición_pie" name="d_posición_pie" cols="90" rows="5"></textarea>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <b>Decúbito /</b> descripción de la posición en decúbito del paciente.
-                                                                <hr>
-                                                                <textarea class="form-control" id="d_posición_decubito" name="d_posición_decubito" cols="90" rows="5"></textarea>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <b>Posición /</b> descripción de la posición de pie del paciente.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="d_posición_pie" name="d_posición_pie" cols="90" rows="5"></textarea>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <b>Decúbito /</b> descripción de la posición en decúbito del paciente.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="d_posición_decubito" name="d_posición_decubito" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="ef_2" class="tab-pane fade">
@@ -619,58 +674,66 @@
                                                             <div class="col-sm-7">
                                                                 Seleccione algun trastorno de marcha que presente el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks"> 
-                                                                        <input type="checkbox" name="deammbulación_normal" id="deammbulación_normal">
-                                                                        &nbsp;&nbsp;Deammbulación normal
-                                                                    </label> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks"> 
+                                                                            <input type="checkbox" name="deammbulación_normal" id="deammbulación_normal">
+                                                                            &nbsp;&nbsp;Deammbulación normal
+                                                                        </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="marcha_ataxica" id="marcha_ataxica">
+                                                                            &nbsp;&nbsp;Marcha atáxica o tabética
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="marcha_ataxica" id="marcha_ataxica">
-                                                                        &nbsp;&nbsp;Marcha atáxica o tabética
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="marcha_polineuritis" id="marcha_polineuritis">
+                                                                                &nbsp;&nbsp;Marcha de pacientes con polineuritis (marcha esquina o "steppage")
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="marcha_espastica" id="marcha_espastica">
+                                                                            &nbsp;&nbsp;Marcha espástica (en tijeras) 
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="marcha_polineuritis" id="marcha_polineuritis">
-                                                                            &nbsp;&nbsp;Marcha de pacientes con polineuritis (marcha esquina o "steppage")
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="marcha_hemiplejico" id="marcha_hemiplejico">
+                                                                            &nbsp;&nbsp;Marcha del hemipléjico
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="marcha_parkinsoniana" id="marcha_parkinsoniana">
+                                                                            &nbsp;&nbsp;Marcha parkinsoniana
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="marcha_espastica" id="marcha_espastica">
-                                                                        &nbsp;&nbsp;Marcha espástica (en tijeras) 
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="marcha_hemiplejico" id="marcha_hemiplejico">
-                                                                        &nbsp;&nbsp;Marcha del hemipléjico
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="marcha_parkinsoniana" id="marcha_parkinsoniana">
-                                                                        &nbsp;&nbsp;Marcha parkinsoniana
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="d_otros_trastornos" id="d_otros_trastornos">
-                                                                        &nbsp;&nbsp;Otros trastornos
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    &nbsp;
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="d_otros_trastornos" id="d_otros_trastornos">
+                                                                            &nbsp;&nbsp;Otros trastornos
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Comentarios / Puedes ingresar un nuevo transtorno.
-                                                                <hr>
-                                                                <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Comentarios / Puedes ingresar un nuevo transtorno.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="ef_3" class="tab-pane fade">
@@ -682,84 +745,93 @@
                                                             <div class="col-sm-7">
                                                                 Seleccione algun trastorno facie que presente el paciente.
                                                                 <hr>
-                                                                <div class="col-sm-6">
+                                                                <div class="row">                                                                <div class="col-sm-6">
                                                                     <label class="radio-inline i-checks"> 
                                                                         <input type="checkbox" name="facie_normal" id="facie_normal">
                                                                         &nbsp;&nbsp;Facie normal
                                                                     </label> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_acromegalica" id="facie_acromegalica">
+                                                                            &nbsp;&nbsp;Facie acromegálica
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_acromegalica" id="facie_acromegalica">
-                                                                        &nbsp;&nbsp;Facie acromegálica
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_cushingoide" id="facie_cushingoide">
+                                                                                &nbsp;&nbsp;Facie cushingoide
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_hipertiroídea" id="facie_hipertiroídea">
+                                                                            &nbsp;&nbsp;Facie hipertiroídea
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_cushingoide" id="facie_cushingoide">
-                                                                            &nbsp;&nbsp;Facie cushingoide
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_hipotiroidea" id="facie_hipotiroidea">
+                                                                            &nbsp;&nbsp;Facie hipotiroídea o mixedematosa
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_hipocratica" id="facie_hipocratica">
+                                                                            &nbsp;&nbsp;Facie hipocrática
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_hipertiroídea" id="facie_hipertiroídea">
-                                                                        &nbsp;&nbsp;Facie hipertiroídea
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_mongolica" id="facie_mongolica">
+                                                                            &nbsp;&nbsp;Facie mongólica (s. de Down)
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_parkinsoniana" id="facie_parkinsoniana">
+                                                                            &nbsp;&nbsp;Facie parkinsoniana
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_hipotiroidea" id="facie_hipotiroidea">
-                                                                        &nbsp;&nbsp;Facie hipotiroídea o mixedematosa
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_febril" id="facie_febril">
+                                                                            &nbsp;&nbsp;Facie febril
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_mitralica" id="facie_mitralica">
+                                                                            &nbsp;&nbsp;Facie mitrálica
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_hipocratica" id="facie_hipocratica">
-                                                                        &nbsp;&nbsp;Facie hipocrática
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_mongolica" id="facie_mongolica">
-                                                                        &nbsp;&nbsp;Facie mongólica (s. de Down)
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_parkinsoniana" id="facie_parkinsoniana">
-                                                                        &nbsp;&nbsp;Facie parkinsoniana
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_febril" id="facie_febril">
-                                                                        &nbsp;&nbsp;Facie febril
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_mitralica" id="facie_mitralica">
-                                                                        &nbsp;&nbsp;Facie mitrálica
-                                                                    </label>
-                                                                </div>
-                                                                
-                                                                <div class="col-sm-6">
-                                                                    <label class="radio-inline i-checks">
-                                                                        <input type="checkbox" name="facie_otros_trastornos" id="facie_otros_trastornos">
-                                                                        &nbsp;&nbsp;Otros trastornos
-                                                                    </label>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    &nbsp;
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <label class="radio-inline i-checks">
+                                                                            <input type="checkbox" name="facie_otros_trastornos" id="facie_otros_trastornos">
+                                                                            &nbsp;&nbsp;Otros trastornos
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                Comentarios / Puedes ingresar un nuevo transtorno.
-                                                                <hr>
-                                                                <textarea class="form-control" id="facie_comentarios" name="facie_comentarios" cols="90" rows="5"></textarea>
+                                                                <div class="row">
+                                                                    Comentarios / Puedes ingresar un nuevo transtorno.
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="facie_comentarios" name="facie_comentarios" cols="90" rows="5"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="ef_4" class="tab-pane fade">
@@ -768,7 +840,66 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Conciencia
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                Orientación en el tiempo
+                                                                <textarea class="form-control" id="orientacion_t" name="orientacion_t" cols="90" rows="3"></textarea>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    Orientación en el espacio
+                                                                    <textarea class="form-control" id="orientacion_e" name="orientacion_e" cols="90" rows="3"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                Reconocimiento de personas&nbsp;
+                                                                <textarea class="form-control" id="reconocimiento_p" name="reconocimiento_p" cols="90" rows="3"></textarea>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    Nivel de conciencia&nbsp;
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="lucidez" id="lucidez">
+                                                                                &nbsp;&nbsp;Lucidez
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                &nbsp;&nbsp;Obnubilación
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-5">&nbsp;</div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="sopor" id="sopor">
+                                                                                &nbsp;&nbsp;Sopor
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="coma" id="coma">
+                                                                                &nbsp;&nbsp;Coma
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-5">&nbsp;</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    Comentarios&nbsp;
+                                                                    <textarea class="form-control" id="conciencia_comentarios" name="conciencia_comentarios" cols="90" rows="3"></textarea>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    &nbsp;
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div id="ef_5" class="tab-pane fade">
                                                             &nbsp;

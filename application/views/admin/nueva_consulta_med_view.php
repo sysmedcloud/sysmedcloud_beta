@@ -927,13 +927,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_sin_lesiones" id="piel_sin_lesiones">
                                                                                 &nbsp;&nbsp;No presenta lesiones
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_Eritema" id="piel_Eritema">
                                                                                 &nbsp;&nbsp;Eritema por exposicion solar
                                                                             </label>
                                                                         </div>
@@ -941,13 +941,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_mascula" id="piel_mascula">
                                                                                 &nbsp;&nbsp;Máscula en la cara
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_papula" id="piel_papula">
                                                                                 &nbsp;&nbsp;Pápula
                                                                             </label>
                                                                         </div>
@@ -955,13 +955,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_nodulo" id="piel_nodulo">
                                                                                 &nbsp;&nbsp;Nódulo
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_tumor" id="piel_tumor">
                                                                                 &nbsp;&nbsp;Tumor
                                                                             </label>
                                                                         </div>
@@ -969,13 +969,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_vesicula" id="piel_vesicula">
                                                                                 &nbsp;&nbsp;Vesícula
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_ampolla" id="piel_ampolla">
                                                                                 &nbsp;&nbsp;Ampolla
                                                                             </label>
                                                                         </div>
@@ -983,13 +983,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_pustula" id="piel_pustula">
                                                                                 &nbsp;&nbsp;Pústula
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_placa" id="piel_placa">
                                                                                 &nbsp;&nbsp;Placa
                                                                             </label>
                                                                         </div>
@@ -997,13 +997,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_eritema" id="piel_eritema">
                                                                                 &nbsp;&nbsp;Eritema
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_escama" id="piel_escama">
                                                                                 &nbsp;&nbsp;Escama
                                                                             </label>
                                                                         </div>
@@ -1011,13 +1011,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_erosion" id="piel_erosion">
                                                                                 &nbsp;&nbsp;Erosión
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_ulceracion" id="piel_ulceracion">
                                                                                 &nbsp;&nbsp;Ulceración
                                                                             </label>
                                                                         </div>
@@ -1025,13 +1025,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_costra" id="piel_costra">
                                                                                 &nbsp;&nbsp;Costra
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_cicatriz" id="piel_cicatriz">
                                                                                 &nbsp;&nbsp;Cicatriz
                                                                             </label>
                                                                         </div>
@@ -1039,13 +1039,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_roncha" id="piel_roncha">
                                                                                 &nbsp;&nbsp;Roncha
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_liquenificacion" id="piel_liquenificacion">
                                                                                 &nbsp;&nbsp;Liquenificación
                                                                             </label>
                                                                         </div>
@@ -1053,13 +1053,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_telangiectasia" id="piel_telangiectasia">
                                                                                 &nbsp;&nbsp;Telangiectasia
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_petequia" id="piel_petequia">
                                                                                 &nbsp;&nbsp;Petequia
                                                                             </label>
                                                                         </div>
@@ -1067,13 +1067,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_equimosis" id="piel_equimosis">
                                                                                 &nbsp;&nbsp;Equímosis
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_vibice" id="piel_vibice">
                                                                                 &nbsp;&nbsp;Víbice
                                                                             </label>
                                                                         </div>
@@ -1081,13 +1081,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_efelide" id="piel_efelide">
                                                                                 &nbsp;&nbsp;Efélide
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="piel_otros_t" id="piel_otros_t">
                                                                                 &nbsp;&nbsp;Otros trastornos
                                                                             </label>
                                                                         </div>
@@ -1101,37 +1101,39 @@
                                                                     <hr>
                                                                 </div>
                                                                 <div class="col-sm-6">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-12">
-                                                                            <b>Pelos:</b> alteraciones de la distribución y características del pelo.
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <b>Pelos:</b> alteraciones de la distribución y características del pelo.
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">                                                                <div class="col-sm-6">
-                                                                        <label class="radio-inline i-checks">
-                                                                            <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                                                            &nbsp;&nbsp;Calvicie
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                                                                &nbsp;&nbsp;Alopecía
-                                                                            </label>
+                                                                                <input type="checkbox" name="pelos_calvicie" id="pelos_calvicie">
+                                                                                &nbsp;&nbsp;Calvicie
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="pelos_alopecia" id="pelos_alopecia">
+                                                                                    &nbsp;&nbsp;Alopecía
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row">                                                                  <div class="col-sm-6">
-                                                                        <label class="radio-inline i-checks">
-                                                                            <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                                                                &nbsp;&nbsp;Hirsutismo
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                                                                &nbsp;&nbsp;Otras alteraciones
-                                                                            </label>
+                                                                                <input type="checkbox" name="pelos_hirsutismo" id="pelos_hirsutismo">
+                                                                                    &nbsp;&nbsp;Hirsutismo
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="pelos_otros_alt" id="pelos_otros_alt">
+                                                                                    &nbsp;&nbsp;Otras alteraciones
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <div class="row">
@@ -1142,13 +1144,13 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_acropaquia" id="unias_acropaquia">
                                                                                 &nbsp;&nbsp;Acropaquia
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_coiloniquia" id="unias_coiloniquia">
                                                                                 &nbsp;&nbsp;Coiloniquia o uña en cuchara
                                                                             </label>
                                                                         </div>
@@ -1156,39 +1158,41 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_psoriasis" id="unias_psoriasis">
                                                                                 &nbsp;&nbsp;Uñas en psoriasis
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_l_beau" id="unias_l_beau">
                                                                                 &nbsp;&nbsp;Uñas con líneas de Beau
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">                                                              <div class="col-sm-6">
-                                                                        <label class="radio-inline i-checks">
-                                                                            <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                                                            &nbsp;&nbsp;Lechos ungueales pálidos
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_l_ungueales_p" id="unias_l_ungueales_p">
+                                                                                &nbsp;&nbsp;Lechos ungueales pálidos
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_l_ungueales_c" id="unias_l_ungueales_c">
                                                                                 &nbsp;&nbsp;Lechos ungueales cianóticos
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">                                                                  <div class="col-sm-6">
-                                                                        <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="unias_renal_c" id="unias_renal_c">
                                                                                 &nbsp;&nbsp;Uñas en la insuficiencia renal crónica
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <label class="radio-inline i-checks">
-                                                                                <input type="checkbox" name="obnubilacion" id="obnubilacion">
+                                                                                <input type="checkbox" name="unias_hemorragias_s" id="unias_hemorragias_s">
                                                                                 &nbsp;&nbsp;Hemorragias subungueales o en astilla
                                                                             </label>
                                                                         </div>

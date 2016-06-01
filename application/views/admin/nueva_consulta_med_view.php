@@ -636,13 +636,10 @@
                                                         <li><a data-toggle="tab" href="#ef_2">Deambulación</a></li>
                                                         <li><a data-toggle="tab" href="#ef_3">Facie</a></li>
                                                         <li><a data-toggle="tab" href="#ef_4">Conciencia</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_5">Constitución</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_6">Piel</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_7">S. Linfático</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_8">Respiración</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_9">Temperatura</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_10">Presion y Pulso</a></li>
-                                                        <li><a data-toggle="tab" href="#ef_11">Archivos y Documentos</a></li>                                                        
+                                                        <li><a data-toggle="tab" href="#ef_5">Piel</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_6">S. Linfático</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_7">Signos Vitales</a></li>
+                                                        <li><a data-toggle="tab" href="#ef_8">Archivos y Documentos</a></li>                                                        
                                                     </ul>
                                                     
                                                     <div class="tab-content">
@@ -850,7 +847,6 @@
                                                                     <textarea class="form-control" id="orientacion_e" name="orientacion_e" cols="90" rows="3"></textarea>
                                                                 </div>
                                                             </div>
-                                                            &nbsp;
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                 Reconocimiento de personas&nbsp;
@@ -890,7 +886,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            &nbsp;
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     Comentarios&nbsp;
@@ -905,19 +900,308 @@
                                                             &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Examen Físico / Constitución
-                                                            </h4>
-                                                            <p>Contenido...</p>    
-                                                        </div>
-                                                        <div id="ef_6" class="tab-pane fade">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Piel
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                Color
+                                                                <textarea class="form-control" id="piel_color" name="piel_color" cols="90" rows="2"></textarea>
+                                                                <br>
+                                                                Humedad y untuosidad
+                                                                <textarea class="form-control" id="piel_humedad_u" name="piel_humedad_u" cols="90" rows="2"></textarea>
+                                                                <br>
+                                                                Turgor y elasticidad
+                                                                <textarea class="form-control" id="piel_turgor_e" name="piel_turgor_e" cols="90" rows="2"></textarea>
+                                                                <br>
+                                                                Temperatura
+                                                                <select name="piel_temperatura" id="piel_temperatura" class="form-control">
+                                                                    <option value="">--- Seleccione una opción ---</option>
+                                                                    <option value="">Normal</option>
+                                                                    <option value="">Aumentada</option>
+                                                                    <option value="">Disminuida</option>
+                                                                </select>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    Seleccione algun trastorno en la piel que presente el paciente.
+                                                                    <hr>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_sin_lesiones" id="piel_sin_lesiones">
+                                                                                &nbsp;&nbsp;No presenta lesiones
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_Eritema" id="piel_Eritema">
+                                                                                &nbsp;&nbsp;Eritema por exposicion solar
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_mascula" id="piel_mascula">
+                                                                                &nbsp;&nbsp;Máscula en la cara
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_papula" id="piel_papula">
+                                                                                &nbsp;&nbsp;Pápula
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_nodulo" id="piel_nodulo">
+                                                                                &nbsp;&nbsp;Nódulo
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_tumor" id="piel_tumor">
+                                                                                &nbsp;&nbsp;Tumor
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_vesicula" id="piel_vesicula">
+                                                                                &nbsp;&nbsp;Vesícula
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_ampolla" id="piel_ampolla">
+                                                                                &nbsp;&nbsp;Ampolla
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_pustula" id="piel_pustula">
+                                                                                &nbsp;&nbsp;Pústula
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_placa" id="piel_placa">
+                                                                                &nbsp;&nbsp;Placa
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_eritema" id="piel_eritema">
+                                                                                &nbsp;&nbsp;Eritema
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_escama" id="piel_escama">
+                                                                                &nbsp;&nbsp;Escama
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_erosion" id="piel_erosion">
+                                                                                &nbsp;&nbsp;Erosión
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_ulceracion" id="piel_ulceracion">
+                                                                                &nbsp;&nbsp;Ulceración
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_costra" id="piel_costra">
+                                                                                &nbsp;&nbsp;Costra
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_cicatriz" id="piel_cicatriz">
+                                                                                &nbsp;&nbsp;Cicatriz
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_roncha" id="piel_roncha">
+                                                                                &nbsp;&nbsp;Roncha
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_liquenificacion" id="piel_liquenificacion">
+                                                                                &nbsp;&nbsp;Liquenificación
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_telangiectasia" id="piel_telangiectasia">
+                                                                                &nbsp;&nbsp;Telangiectasia
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_petequia" id="piel_petequia">
+                                                                                &nbsp;&nbsp;Petequia
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_equimosis" id="piel_equimosis">
+                                                                                &nbsp;&nbsp;Equímosis
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_vibice" id="piel_vibice">
+                                                                                &nbsp;&nbsp;Víbice
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_efelide" id="piel_efelide">
+                                                                                &nbsp;&nbsp;Efélide
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="piel_otros_t" id="piel_otros_t">
+                                                                                &nbsp;&nbsp;Otros trastornos
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <strong>Anexos de la piel: pelos y uñas.</strong>
+                                                                    <hr>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <b>Pelos:</b> alteraciones de la distribución y características del pelo.
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="pelos_calvicie" id="pelos_calvicie">
+                                                                                &nbsp;&nbsp;Calvicie
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="pelos_alopecia" id="pelos_alopecia">
+                                                                                    &nbsp;&nbsp;Alopecía
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="pelos_hirsutismo" id="pelos_hirsutismo">
+                                                                                    &nbsp;&nbsp;Hirsutismo
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="pelos_otros_alt" id="pelos_otros_alt">
+                                                                                    &nbsp;&nbsp;Otras alteraciones
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <b>Uñas:</b> seleccione signos presentes.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_acropaquia" id="unias_acropaquia">
+                                                                                &nbsp;&nbsp;Acropaquia
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_coiloniquia" id="unias_coiloniquia">
+                                                                                &nbsp;&nbsp;Coiloniquia o uña en cuchara
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_psoriasis" id="unias_psoriasis">
+                                                                                &nbsp;&nbsp;Uñas en psoriasis
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_l_beau" id="unias_l_beau">
+                                                                                &nbsp;&nbsp;Uñas con líneas de Beau
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_l_ungueales_p" id="unias_l_ungueales_p">
+                                                                                &nbsp;&nbsp;Lechos ungueales pálidos
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_l_ungueales_c" id="unias_l_ungueales_c">
+                                                                                &nbsp;&nbsp;Lechos ungueales cianóticos
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                    <input type="checkbox" name="unias_renal_c" id="unias_renal_c">
+                                                                                &nbsp;&nbsp;Uñas en la insuficiencia renal crónica
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <label class="radio-inline i-checks">
+                                                                                <input type="checkbox" name="unias_hemorragias_s" id="unias_hemorragias_s">
+                                                                                &nbsp;&nbsp;Hemorragias subungueales o en astilla
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<textarea class="form-control" id="piel_turgor_e" name="piel_turgor_e" cols="90" rows="2"></textarea>-->
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div id="ef_7" class="tab-pane fade">
+                                                        <div id="ef_6" class="tab-pane fade">
                                                             &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
@@ -925,37 +1209,45 @@
                                                             </h4>
                                                             <p>Contenido...</p>    
                                                         </div>
+                                                        <div id="ef_7" class="tab-pane fade">
+                                                            &nbsp;
+                                                            <h4 style="color:#21B9BB;">
+                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
+                                                                Examen Físico / Signos Vitales
+                                                            </h4>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    constitucion
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    Respiracion
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    Temperatura
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    Presion y pulso
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div id="ef_8" class="tab-pane fade">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Examen Físico / Respiración
-                                                            </h4>
-                                                            <p>Contenido...</p>    
-                                                        </div>
-                                                        <div id="ef_9" class="tab-pane fade">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Examen Físico / Temperatura
-                                                            </h4>
-                                                            <p>Contenido...</p>    
-                                                        </div>
-                                                        <div id="ef_10" class="tab-pane fade">
-                                                            &nbsp;
-                                                            <h4 style="color:#21B9BB;">
-                                                                <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                                Examen Físico / Presion y Pulso
-                                                            </h4>
-                                                            <p>Contenido...</p>    
-                                                        </div>
-                                                        <div id="ef_11" class="tab-pane fade">
                                                             &nbsp;
                                                             <h4 style="color:#21B9BB;">
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / Archivos y Documentos
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <p>
+                                                                Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
+                                                                tipo de archivo digital. 
+                                                                Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
+                                                                Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
+                                                            </p>    
                                                         </div>
                                                      </div>
                                                 </div>

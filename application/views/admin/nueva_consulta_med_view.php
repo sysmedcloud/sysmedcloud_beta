@@ -1207,7 +1207,18 @@
                                                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                                                                 Examen Físico / S. Linfático
                                                             </h4>
-                                                            <p>Contenido...</p>    
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    Adenopatía:
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="sl_adenopatia" name="sl_adenopatia" cols="90" rows="5"></textarea>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    Comentarios
+                                                                    <hr>
+                                                                    <textarea class="form-control" id="sl_comercial" name="sl_comercial" cols="90" rows="5"></textarea>
+                                                                </div>
+                                                            </div>    
                                                         </div>
                                                         <div id="ef_7" class="tab-pane fade">
                                                             &nbsp;

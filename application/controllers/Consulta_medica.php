@@ -72,9 +72,9 @@ class Consulta_medica extends CI_Controller {
         
         //Datos POST formulario
         $this->form_validation->set_rules('motivo','motivo de la consulta','required|trim');
-        /*$this->form_validation->set_rules('anamnesis','anamnesis próxima','required|trim');
+        $this->form_validation->set_rules('anamnesis','anamnesis próxima','required|trim');
         $this->form_validation->set_rules('diagnostico','diagnóstico','required|trim');
-        $this->form_validation->set_rules('tratamiento','tratamiento','required|trim');*/
+        $this->form_validation->set_rules('tratamiento','tratamiento','required|trim');
         
         //Validar datos del formulario
         if($this->form_validation->run() == FALSE) {

@@ -100,10 +100,10 @@
                                             </ul>
                                             <div class="tab-content">
                                                 <div id="motivo_consulta" class="tab-pane fade in active">
-                                                    <textarea class="form-control" id="motivo" name="motivo" cols="90" rows="6"></textarea>
+                                                    <textarea class="form-control" id="motivo" name="motivo" cols="90" rows="6"><?php echo set_value('motivo'); ?></textarea>
                                                 </div>
                                                 <div id="anamnesis_proxima" class="tab-pane fade">
-                                                    <textarea class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"></textarea>
+                                                    <textarea class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"><?php echo set_value('anamnesis'); ?></textarea>
                                                 </div>
                                                 <!--<div id="anamnesis_remota" class="tab-pane fade">
                                                     &nbsp;
@@ -118,13 +118,13 @@
                                                     </p>                                                    
                                                 </div>-->
                                                 <div id="diagnostico" class="tab-pane fade">
-                                                    <textarea class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"></textarea>
+                                                    <textarea class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"><?php echo set_value('diagnostico'); ?></textarea>
                                                 </div>
                                                 <div id="tratamiento" class="tab-pane fade">
-                                                    <textarea class="form-control" id="tratamiento" name="tratamiento" cols="90" rows="6"></textarea>
+                                                    <textarea class="form-control" id="tratamiento" name="tratamiento" cols="90" rows="6"><?php echo set_value('tratamiento'); ?></textarea>
                                                 </div>
                                                 <div id="obs_recomendaciones" class="tab-pane fade">
-                                                    <textarea class="form-control" id="observaciones" name="observaciones" cols="90" rows="6"></textarea>
+                                                    <textarea class="form-control" id="observaciones" name="observaciones" cols="90" rows="6"><?php echo set_value('observaciones'); ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,48 +160,48 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="sg_fiebre" id="sg_fiebre">&nbsp;&nbsp;Fiebre
+                                    <?php echo form_checkbox('sg_fiebre','',set_checkbox('sg_fiebre'),' id="sg_fiebre" '); ?>&nbsp;&nbsp;FiebreFiebre
                                 </label> 
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_trans_peso" id="sg_trans_peso">&nbsp;&nbsp;Transtornos de Peso
+                                    <?php echo form_checkbox('sg_trans_peso','',set_checkbox('sg_trans_peso'),' id="sg_trans_peso" '); ?>&nbsp;&nbsp;Transtornos de Peso
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_malestar_gen" id="sg_malestar_gen">&nbsp;&nbsp;Malestar General
+                                    <?php echo form_checkbox('sg_malestar_gen','',set_checkbox('sg_malestar_gen'),' id="sg_malestar_gen" '); ?>&nbsp;&nbsp;Malestar General
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_problemas_ape" id="sg_problemas_ape">&nbsp;&nbsp;Problemas con el apetito
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_sudoracion_n" id="sg_sudoracion_n">&nbsp;&nbsp;Sudoración Nocturna
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_insomnio" id="sg_insomnio">&nbsp;&nbsp;Insomnio
+                                    <?php echo form_checkbox('sg_problemas_ape','',set_checkbox('sg_problemas_ape'),' id="sg_problemas_ape" '); ?>&nbsp;&nbsp;Problemas con el apetito
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_angustia" id="sg_angustia">&nbsp;&nbsp;Angustia
+                                    <?php echo form_checkbox('sg_sudoracion_n','',set_checkbox('sg_sudoracion_n'),' id="sg_sudoracion_n" '); ?>&nbsp;&nbsp;Sudoración Nocturna
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sg_otros" id="sg_otros">&nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('sg_insomnio','',set_checkbox('sg_insomnio'),' id="sg_insomnio" '); ?>&nbsp;&nbsp;Insomnio
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('sg_angustia','',set_checkbox('sg_angustia'),' id="sg_angustia" '); ?>&nbsp;&nbsp;Angustia
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('sg_otros','',set_checkbox('sg_otros'),' id="sg_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                         </div>                                                                
@@ -210,7 +210,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="sg_comentarios" name="sg_comentarios" cols="90" rows="5"><?php echo set_value('sg_comentarios');?></textarea>
                         </div>
                     </div>
                 </div>
@@ -222,43 +222,43 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="resp_disnea" id="resp_disnea">&nbsp;&nbsp;Disnea
+                                    <?php echo form_checkbox('resp_disnea','',set_checkbox('resp_disnea'),' id="resp_disnea" '); ?>&nbsp;&nbsp;Disnea
                                 </label> 
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_tos" id="resp_tos">&nbsp;&nbsp;Tos
+                                    <?php echo form_checkbox('resp_tos','',set_checkbox('resp_tos'),' id="resp_tos" '); ?>&nbsp;&nbsp;Tos
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_exp" id="resp_exp">&nbsp;&nbsp;Expectoración
+                                    <?php echo form_checkbox('resp_exp','',set_checkbox('resp_exp'),' id="resp_exp" '); ?>&nbsp;&nbsp;Expectoración
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_hemop" id="resp_hemop">&nbsp;&nbsp;Hemoptisis
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_p_costado" id="resp_p_costado">&nbsp;&nbsp;Puntada de Costado
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_obs_br" id="resp_obs_br">&nbsp;&nbsp;Obstrucción bronquial
+                                    <?php echo form_checkbox('resp_hemop','',set_checkbox('resp_hemop'),' id="resp_hemop" '); ?>&nbsp;&nbsp;Hemoptisis
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="resp_otros" id="resp_otros">&nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('resp_p_costado','',set_checkbox('resp_p_costado'),' id="resp_p_costado" '); ?>&nbsp;&nbsp;Puntada de Costado
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">                                    
+                                    <?php echo form_checkbox('resp_obs_br','',set_checkbox('resp_obs_br'),' id="resp_obs_br" '); ?>&nbsp;&nbsp;Obstrucción bronquial
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">                                    
+                                    <?php echo form_checkbox('resp_otros','',set_checkbox('resp_otros'),' id="resp_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                             <div class="col-sm-6">
@@ -272,7 +272,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="resp_comentarios" name="resp_comentarios" cols="90" rows="5"><?php echo set_value("resp_comentarios"); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -283,37 +283,37 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="card_dis_esf" id="card_dis_esf">&nbsp;&nbsp;Disnea de Esfuerzo
+                                <label class="radio-inline i-checks">                                    
+                                    <?php echo form_checkbox('card_dis_esf','',set_checkbox('card_dis_esf'),' id="card_dis_esf" '); ?>&nbsp;&nbsp;Disnea de Esfuerzo
                                 </label> 
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="card_ortopnea" id="card_ortopnea">&nbsp;&nbsp;Ortopnea
+                                    <?php echo form_checkbox('card_ortopnea','',set_checkbox('card_ortopnea'),' id="card_ortopnea" '); ?>&nbsp;&nbsp;Ortopnea
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="card_dis_parox_noc" id="card_dis_parox_noc">&nbsp;&nbsp;Disnea Paroxística Nocturna
+                                    <?php echo form_checkbox('card_dis_parox_noc','',set_checkbox('card_dis_parox_noc'),' id="card_dis_parox_noc" '); ?>&nbsp;&nbsp;Disnea Paroxística Nocturna
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="card_edema_ext_inf" id="card_edema_ext_inf">&nbsp;&nbsp;Edema de extremidades interiores
+                                    <?php echo form_checkbox('card_edema_ext_inf','',set_checkbox('card_edema_ext_inf'),' id="card_edema_ext_inf" '); ?>&nbsp;&nbsp;Edema de extremidades interiores
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="card_dolor_preco" id="card_dolor_preco">&nbsp;&nbsp;Dolor Precordial
+                                    <?php echo form_checkbox('card_dolor_preco','',set_checkbox('card_dolor_preco'),' id="card_dolor_preco" '); ?>&nbsp;&nbsp;Dolor Precordial
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="card_otros" id="card_otros">&nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('card_otros','',set_checkbox('card_otros'),' id="card_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="card_comentarios" name="card_comentarios" cols="90" rows="5"><?php echo set_value("card_comentarios"); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -334,64 +334,55 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="gast_p_ape" id="gast_p_ape">
-                                    &nbsp;&nbsp;Problemas de Apetito
+                                    <?php echo form_checkbox('gast_p_ape','',set_checkbox('gast_p_ape'),' id="gast_p_ape" '); ?>&nbsp;&nbsp;Problemas de Apetito
                                 </label> 
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_nausas" id="gast_nausas">
-                                    &nbsp;&nbsp;Nausas
+                                    <?php echo form_checkbox('gast_nausas','',set_checkbox('gast_nausas'),' id="gast_nausas" '); ?>&nbsp;&nbsp;Nausas
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_vomitos" id="gast_vomitos">
-                                        &nbsp;&nbsp;Vomitos
+                                    <?php echo form_checkbox('gast_vomitos','',set_checkbox('gast_vomitos'),' id="gast_vomitos" '); ?>&nbsp;&nbsp;Vomitos
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_disfagia" id="gast_disfagia">
-                                    &nbsp;&nbsp;Disfagia
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_pirosis" id="gast_pirosis">
-                                    &nbsp;&nbsp;Pirosis
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_diarrea" id="gast_diarrea">
-                                    &nbsp;&nbsp;Diarrea
+                                    <?php echo form_checkbox('gast_disfagia','',set_checkbox('gast_disfagia'),' id="gast_disfagia" '); ?>&nbsp;&nbsp;Disfagia
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                        <input type="checkbox" name="gast_constipación" id="gast_constipación">
-                                        &nbsp;&nbsp;Constipación
-                                    </label>
+                                    <?php echo form_checkbox('gast_pirosis','',set_checkbox('gast_pirosis'),' id="gast_pirosis" '); ?>&nbsp;&nbsp;Pirosis
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('gast_diarrea','',set_checkbox('gast_diarrea'),' id="gast_diarrea" '); ?>&nbsp;&nbsp;Diarrea
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('gast_constipacion','',set_checkbox('gast_constipacion'),' id="gast_constipacion" '); ?>&nbsp;&nbsp;Constipación
+                                </label>
                                 </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_melena" id="gast_melena">
-                                    &nbsp;&nbsp;Melena
+                                    <?php echo form_checkbox('gast_melena','',set_checkbox('gast_melena'),' id="gast_melena" '); ?>&nbsp;&nbsp;Melena
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="gast_otros" id="gast_otros">
-                                    &nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('gast_otros','',set_checkbox('gast_otros'),' id="gast_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                             <div class="col-sm-6">
@@ -403,7 +394,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="gast_comentarios" name="gast_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="gast_comentarios" name="gast_comentarios" cols="90" rows="5"><?php echo set_value("gast_comentarios") ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -414,57 +405,49 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="geni_disuria" id="geni_disuria">
-                                    &nbsp;&nbsp;Disuria dolorosa o de esfuerzo
+                                <label class="radio-inline i-checks">                                     
+                                    <?php echo form_checkbox('geni_disuria','',set_checkbox('geni_disuria'),' id="geni_disuria" '); ?>&nbsp;&nbsp;Disuria dolorosa o de esfuerzo
                                 </label> 
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_polaquiuria" id="geni_polaquiuria">
-                                    &nbsp;&nbsp;Polaquiuria
+                                    <?php echo form_checkbox('geni_polaquiuria','',set_checkbox('geni_polaquiuria'),' id="geni_polaquiuria" '); ?>&nbsp;&nbsp;Polaquiuria
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_poliuria" id="geni_poliuria">
-                                        &nbsp;&nbsp;Poliuria
+                                    <?php echo form_checkbox('geni_poliuria','',set_checkbox('geni_poliuria'),' id="geni_poliuria" '); ?>&nbsp;&nbsp;Poliuria
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_nicturia" id="geni_nicturia">
-                                    &nbsp;&nbsp;Nicturia
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_alt_uri" id="geni_alt_uri">
-                                    &nbsp;&nbsp;Alteración del chorro urinario
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_hematuria" id="geni_hematuria">
-                                    &nbsp;&nbsp;Hematuria
+                                    <?php echo form_checkbox('geni_nicturia','',set_checkbox('geni_nicturia'),' id="geni_nicturia" '); ?>&nbsp;&nbsp;Nicturia
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                        <input type="checkbox" name="geni_dolores_lum" id="geni_dolores_lum">
-                                        &nbsp;&nbsp;Dolores en fosas lumbares
-                                    </label>
+                                    <?php echo form_checkbox('geni_alt_uri','',set_checkbox('geni_alt_uri'),' id="geni_alt_uri" '); ?>&nbsp;&nbsp;Alteración del chorro urinario
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('geni_hematuria','',set_checkbox('geni_hematuria'),' id="geni_hematuria" '); ?>&nbsp;&nbsp;Hematuria
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('geni_dolores_lum','',set_checkbox('geni_dolores_lum'),' id="geni_dolores_lum" '); ?>&nbsp;&nbsp;Dolores en fosas lumbares
+                                </label>
                                 </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="geni_otros" id="geni_otros">
-                                    &nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('geni_otros','',set_checkbox('geni_otros'),' id="geni_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                         </div>
@@ -473,7 +456,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="geni_comentarios" name="geni_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="geni_comentarios" name="geni_comentarios" cols="90" rows="5"><?php echo set_value("geni_comentarios"); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -484,43 +467,37 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="neuro_cafalea" id="neuro_cafalea">
-                                    &nbsp;&nbsp;Cafalea
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('neuro_cafalea','',set_checkbox('neuro_cafalea'),' id="neuro_cafalea" '); ?>&nbsp;&nbsp;Cafalea
                                 </label> 
                             </div>
                             <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="neuro_mareos" id="neuro_mareos">
-                                    &nbsp;&nbsp;Mareos
+                                <label class="radio-inline i-checks">                                    
+                                    <?php echo form_checkbox('neuro_mareos','',set_checkbox('neuro_mareos'),' id="neuro_mareos" '); ?>&nbsp;&nbsp;Mareos
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="neuro_problemas_coord" id="neuro_problemas_coord">
-                                        &nbsp;&nbsp;Problemas de Coordinación
+                                    <?php echo form_checkbox('neuro_problemas_coord','',set_checkbox('neuro_problemas_coord'),' id="neuro_problemas_coord" '); ?>&nbsp;&nbsp;Problemas de Coordinación
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="neuro_paresias" id="neuro_paresias">
-                                    &nbsp;&nbsp;Paresias
+                                    <?php echo form_checkbox('neuro_paresias','',set_checkbox('neuro_paresias'),' id="neuro_paresias" '); ?>&nbsp;&nbsp;Paresias
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="neuro_parestesias" id="neuro_parestesias">
-                                    &nbsp;&nbsp;Parestesias
+                                    <?php echo form_checkbox('neuro_parestesias','',set_checkbox('neuro_parestesias'),' id="neuro_parestesias" '); ?>&nbsp;&nbsp;Parestesias
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="neuro_otros" id="neuro_otros">
-                                    &nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('neuro_otros','',set_checkbox('neuro_otros'),' id="neuro_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                         </div>
@@ -529,7 +506,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="neuro_comentarios" name="neuro_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="neuro_comentarios" name="neuro_comentarios" cols="90" rows="5"><?php echo set_value("neuro_comentarios"); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -541,64 +518,55 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks"> 
-                                    <input type="checkbox" name="endo_b_peso" id="endo_b_peso">
-                                    &nbsp;&nbsp;Baja de peso
+                                    <?php echo form_checkbox('endo_b_peso','',set_checkbox('endo_b_peso'),' id="endo_b_peso" '); ?>&nbsp;&nbsp;Baja de peso
                                 </label> 
                             </div>
                             <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_into_frio" id="endo_into_frio">
-                                    &nbsp;&nbsp;Intolerancia al frío
+                                <label class="radio-inline i-checks">                                                                  
+                                    <?php echo form_checkbox('endo_into_frio','',set_checkbox('endo_into_frio'),' id="endo_into_frio" '); ?>&nbsp;&nbsp;Intolerancia al frío
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">                                    
+                                    <?php echo form_checkbox('endo_into_calor','',set_checkbox('endo_into_calor'),' id="endo_into_calor" '); ?>&nbsp;&nbsp;Intolerancia al calor
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">                                                           
+                                    <?php echo form_checkbox('endo_temblor_fino','',set_checkbox('endo_temblor_fino'),' id="endo_temblor_fino" '); ?>&nbsp;&nbsp;Temblor fino
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_into_calor" id="endo_into_calor">
-                                        &nbsp;&nbsp;Intolerancia al calor
+                                    <?php echo form_checkbox('endo_polidefecacion','',set_checkbox('endo_polidefecacion'),' id="endo_polidefecacion" '); ?>&nbsp;&nbsp;Polidefecacion
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_temblor_fino" id="endo_temblor_fino">
-                                    &nbsp;&nbsp;Temblor fino
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_polidefecacion" id="endo_polidefecacion">
-                                    &nbsp;&nbsp;Polidefecacion
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_ronquera" id="endo_ronquera">
-                                    &nbsp;&nbsp;Ronquera
+                                    <?php echo form_checkbox('endo_ronquera','',set_checkbox('endo_ronquera'),' id="endo_ronquera" '); ?>&nbsp;&nbsp;Ronquera
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_somnolencia" id="endo_somnolencia">
-                                    &nbsp;&nbsp;Somnolencia
+                                    <?php echo form_checkbox('endo_somnolencia','',set_checkbox('endo_somnolencia'),' id="endo_somnolencia" '); ?>&nbsp;&nbsp;Somnolencia
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_sequedad_piel" id="endo_sequedad_piel">
-                                    &nbsp;&nbsp;Sequedad de la piel
+                                    <?php echo form_checkbox('endo_sequedad_piel','',set_checkbox('endo_sequedad_piel'),' id="endo_sequedad_piel" '); ?>&nbsp;&nbsp;Sequedad de la piel
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="endo_otros" id="endo_otros">
-                                    &nbsp;&nbsp;Otros Sintomas
+                                    <?php echo form_checkbox('endo_otros','',set_checkbox('endo_otros'),' id="endo_otros" '); ?>&nbsp;&nbsp;Otros Sintomas
                                 </label>
                             </div>
                             <div class="col-sm-6">
@@ -610,7 +578,7 @@
                         <div class="row">
                             Puedes agregar un comentario adicional.
                             <hr>
-                            <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                            <textarea class="form-control" id="endo_comentarios" name="endo_comentarios" cols="90" rows="5"><?php echo set_value("endo_comentarios"); ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -725,7 +693,7 @@
                     <div class="row">
                         Comentarios / Puedes ingresar un nuevo transtorno.
                         <hr>
-                        <textarea class="form-control" id="neuro_comentarios" name="endo_comentarios" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="d_comentarios" name="d_comentarios" cols="90" rows="5"></textarea>
                     </div>
                 </div>
             </div>
@@ -1344,9 +1312,10 @@
                                       ?>
                                     <div class="alert alert-danger alert-dismissable">
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                        Recuerda completar todos los campos que sean obligatorios.
-                                        <br>
-                                        Asegúrate de ingresar todos los datos correctamente.
+                                        <?php echo form_error('motivo'); ?>
+                                        <?php echo form_error('anamnesis'); ?>
+                                        <?php echo form_error('diagnostico'); ?>
+                                        <?php echo form_error('tratamiento'); ?>
                                         <br>
                                         <a class="alert-link" href="#">¡Inténtelo otra vez!</a>.
                                     </div>

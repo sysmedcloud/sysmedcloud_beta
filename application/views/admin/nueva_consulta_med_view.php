@@ -621,12 +621,12 @@
                     <div class="col-sm-6">
                         <b>Posición /</b> descripción de la posición de pie del paciente.
                         <hr>
-                        <textarea class="form-control" id="d_posición_pie" name="d_posición_pie" cols="90" rows="5"><?php echo set_value("d_posicion_pie"); ?></textarea>
+                        <textarea class="form-control" id="d_posicion_pie" name="d_posicion_pie" cols="90" rows="5"><?php echo set_value("d_posicion_pie"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         <b>Decúbito /</b> descripción de la posición en decúbito del paciente.
                         <hr>
-                        <textarea class="form-control" id="d_posición_decubito" name="d_posición_decubito" cols="90" rows="5"><?php echo set_value("d_posicion_decubito"); ?></textarea>
+                        <textarea class="form-control" id="d_posicion_decubito" name="d_posicion_decubito" cols="90" rows="5"><?php echo set_value("d_posicion_decubito"); ?></textarea>
                     </div>
                 </div>
             </div>

@@ -621,12 +621,12 @@
                     <div class="col-sm-6">
                         <b>Posición /</b> descripción de la posición de pie del paciente.
                         <hr>
-                        <textarea class="form-control" id="d_posición_pie" name="d_posición_pie" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="d_posicion_pie" name="d_posicion_pie" cols="90" rows="5"><?php echo set_value("d_posicion_pie"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         <b>Decúbito /</b> descripción de la posición en decúbito del paciente.
                         <hr>
-                        <textarea class="form-control" id="d_posición_decubito" name="d_posición_decubito" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="d_posicion_decubito" name="d_posicion_decubito" cols="90" rows="5"><?php echo set_value("d_posicion_decubito"); ?></textarea>
                     </div>
                 </div>
             </div>
@@ -638,50 +638,43 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks"> 
-                                <input type="checkbox" name="deammbulación_normal" id="deammbulación_normal">
-                                &nbsp;&nbsp;Deammbulación normal
+                                <?php echo form_checkbox('deammbulación_normal','',set_checkbox('deammbulación_normal'),' id="deammbulación_normal" '); ?>&nbsp;&nbsp;Deammbulación normal
                             </label> 
                         </div>
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="marcha_ataxica" id="marcha_ataxica">
-                                &nbsp;&nbsp;Marcha atáxica o tabética
+                                <?php echo form_checkbox('marcha_ataxica','',set_checkbox('marcha_ataxica'),' id="marcha_ataxica" '); ?>&nbsp;&nbsp;Marcha atáxica o tabética
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="marcha_polineuritis" id="marcha_polineuritis">
-                                    &nbsp;&nbsp;Marcha de pacientes con polineuritis
+                                <?php echo form_checkbox('marcha_polineuritis','',set_checkbox('marcha_polineuritis'),' id="marcha_polineuritis" '); ?>&nbsp;&nbsp;Marcha de pacientes con polineuritis
                             </label>
                         </div>
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="marcha_espastica" id="marcha_espastica">
-                                &nbsp;&nbsp;Marcha espástica (en tijeras) 
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="marcha_hemiplejico" id="marcha_hemiplejico">
-                                &nbsp;&nbsp;Marcha del hemipléjico
-                            </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="marcha_parkinsoniana" id="marcha_parkinsoniana">
-                                &nbsp;&nbsp;Marcha parkinsoniana
+                                <?php echo form_checkbox('marcha_espastica','',set_checkbox('marcha_espastica'),' id="marcha_espastica" '); ?>&nbsp;&nbsp;Marcha espástica (en tijeras)
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="d_otros_trastornos" id="d_otros_trastornos">
-                                &nbsp;&nbsp;Otros trastornos
+                                <?php echo form_checkbox('marcha_hemiplejico','',set_checkbox('marcha_hemiplejico'),' id="marcha_hemiplejico" '); ?>&nbsp;&nbsp;Marcha del hemipléjico
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">
+                                <?php echo form_checkbox('marcha_parkinsoniana','',set_checkbox('marcha_parkinsoniana'),' id="marcha_parkinsoniana" '); ?>&nbsp;&nbsp;Marcha parkinsoniana
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">
+                                <?php echo form_checkbox('d_otros_trastornos','',set_checkbox('d_otros_trastornos'),' id="d_otros_trastornos" '); ?>&nbsp;&nbsp;Otros trastornos
                             </label>
                         </div>
                         <div class="col-sm-6">
@@ -693,7 +686,7 @@
                     <div class="row">
                         Comentarios / Puedes ingresar un nuevo transtorno.
                         <hr>
-                        <textarea class="form-control" id="d_comentarios" name="d_comentarios" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="d_comentarios" name="d_comentarios" cols="90" rows="5"><?php echo set_value("d_comentarios"); ?></textarea>
                     </div>
                 </div>
             </div>
@@ -702,80 +695,70 @@
                 <div class="col-sm-7">
                     Seleccione algun trastorno facie que presente el paciente.
                     <hr>
-                    <div class="row">                                                                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-6">
                         <label class="radio-inline i-checks"> 
-                            <input type="checkbox" name="facie_normal" id="facie_normal">
-                            &nbsp;&nbsp;Facie normal
+                            <?php echo form_checkbox('facie_normal','',set_checkbox('facie_normal'),' id="facie_normal" '); ?>&nbsp;&nbsp;Facie normal
                         </label> 
                         </div>
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_acromegalica" id="facie_acromegalica">
-                                &nbsp;&nbsp;Facie acromegálica
+                                <?php echo form_checkbox('facie_acromegalica','',set_checkbox('facie_acromegalica'),' id="facie_acromegalica" '); ?>&nbsp;&nbsp;Facie acromegálica
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">                              
+                                <?php echo form_checkbox('facie_cushingoide','',set_checkbox('facie_cushingoide'),' id="facie_cushingoide" '); ?>&nbsp;&nbsp;Facie cushingoide
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">
+                                <?php echo form_checkbox('facie_hipertiroídea','',set_checkbox('facie_hipertiroídea'),' id="facie_hipertiroídea" '); ?>&nbsp;&nbsp;Facie hipertiroídea
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_cushingoide" id="facie_cushingoide">
-                                    &nbsp;&nbsp;Facie cushingoide
+                                <?php echo form_checkbox('facie_hipotiroidea','',set_checkbox('facie_hipotiroidea'),' id="facie_hipotiroidea" '); ?>&nbsp;&nbsp;Facie hipotiroídea o mixedematosa
                             </label>
                         </div>
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_hipertiroídea" id="facie_hipertiroídea">
-                                &nbsp;&nbsp;Facie hipertiroídea
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_hipotiroidea" id="facie_hipotiroidea">
-                                &nbsp;&nbsp;Facie hipotiroídea o mixedematosa
-                            </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_hipocratica" id="facie_hipocratica">
-                                &nbsp;&nbsp;Facie hipocrática
+                                <?php echo form_checkbox('facie_hipocratica','',set_checkbox('facie_hipocratica'),' id="facie_hipocratica" '); ?>&nbsp;&nbsp;Facie hipocrática
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_mongolica" id="facie_mongolica">
-                                &nbsp;&nbsp;Facie mongólica (s. de Down)
+                                <?php echo form_checkbox('facie_mongolica','',set_checkbox('facie_mongolica'),' id="facie_mongolica" '); ?>&nbsp;&nbsp;Facie mongólica (s. de Down)
                             </label>
                         </div>
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_parkinsoniana" id="facie_parkinsoniana">
-                                &nbsp;&nbsp;Facie parkinsoniana
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_febril" id="facie_febril">
-                                &nbsp;&nbsp;Facie febril
-                            </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_mitralica" id="facie_mitralica">
-                                &nbsp;&nbsp;Facie mitrálica
+                                <?php echo form_checkbox('facie_parkinsoniana','',set_checkbox('facie_parkinsoniana'),' id="facie_parkinsoniana" '); ?>&nbsp;&nbsp;Facie parkinsoniana
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="radio-inline i-checks">
-                                <input type="checkbox" name="facie_otros_trastornos" id="facie_otros_trastornos">
-                                &nbsp;&nbsp;Otros trastornos
+                                <?php echo form_checkbox('facie_febril','',set_checkbox('facie_febril'),' id="facie_febril" '); ?>&nbsp;&nbsp;Facie febril
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">
+                                <?php echo form_checkbox('facie_mitralica','',set_checkbox('facie_mitralica'),' id="facie_mitralica" '); ?>&nbsp;&nbsp;Facie mitrálica
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="radio-inline i-checks">
+                                <?php echo form_checkbox('facie_otros_trastornos','',set_checkbox('facie_otros_trastornos'),' id="facie_otros_trastornos" '); ?>&nbsp;&nbsp;Otros trastornos
                             </label>
                         </div>
                         <div class="col-sm-6">
@@ -787,7 +770,7 @@
                     <div class="row">
                         Comentarios / Puedes ingresar un nuevo transtorno.
                         <hr>
-                        <textarea class="form-control" id="facie_comentarios" name="facie_comentarios" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="facie_comentarios" name="facie_comentarios" cols="90" rows="5"><?php echo set_value("facie_comentarios"); ?></textarea>
                     </div>
                 </div>
             </div>
@@ -796,31 +779,29 @@
                 <div class="row">
                     <div class="col-sm-6">
                     Orientación en el tiempo
-                    <textarea class="form-control" id="orientacion_t" name="orientacion_t" cols="90" rows="3"></textarea>
+                    <textarea class="form-control" id="orientacion_t" name="orientacion_t" cols="90" rows="3"><?php echo set_value("orientacion_t"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         Orientación en el espacio
-                        <textarea class="form-control" id="orientacion_e" name="orientacion_e" cols="90" rows="3"></textarea>
+                        <textarea class="form-control" id="orientacion_e" name="orientacion_e" cols="90" rows="3"><?php echo set_value("orientacion_e"); ?></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                     Reconocimiento de personas&nbsp;
-                    <textarea class="form-control" id="reconocimiento_p" name="reconocimiento_p" cols="90" rows="3"></textarea>
+                    <textarea class="form-control" id="reconocimiento_p" name="reconocimiento_p" cols="90" rows="3"><?php echo set_value("reconocimiento_p"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         Nivel de conciencia&nbsp;
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="lucidez" id="lucidez">
-                                    &nbsp;&nbsp;Lucidez
+                                    <?php echo form_checkbox('lucidez','',set_checkbox('lucidez'),' id="lucidez" '); ?>&nbsp;&nbsp;Lucidez
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="obnubilacion" id="obnubilacion">
-                                    &nbsp;&nbsp;Obnubilación
+                                    <?php echo form_checkbox('obnubilacion','',set_checkbox('obnubilacion'),' id="obnubilacion" '); ?>&nbsp;&nbsp;Obnubilación
                                 </label>
                             </div>
                             <div class="col-sm-5">&nbsp;</div>
@@ -828,14 +809,12 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="sopor" id="sopor">
-                                    &nbsp;&nbsp;Sopor
+                                    <?php echo form_checkbox('sopor','',set_checkbox('sopor'),' id="sopor" '); ?>&nbsp;&nbsp;Sopor
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="coma" id="coma">
-                                    &nbsp;&nbsp;Coma
+                                    <?php echo form_checkbox('coma','',set_checkbox('coma'),' id="coma" '); ?>&nbsp;&nbsp;Coma
                                 </label>
                             </div>
                             <div class="col-sm-5">&nbsp;</div>
@@ -845,7 +824,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         Comentarios&nbsp;
-                        <textarea class="form-control" id="conciencia_comentarios" name="conciencia_comentarios" cols="90" rows="3"></textarea>
+                        <textarea class="form-control" id="conciencia_comentarios" name="conciencia_comentarios" cols="90" rows="3"><?php echo set_value("conciencia_comentarios"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         &nbsp;
@@ -857,13 +836,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                     Color
-                    <textarea class="form-control" id="piel_color" name="piel_color" cols="90" rows="2"></textarea>
+                    <textarea class="form-control" id="piel_color" name="piel_color" cols="90" rows="2"><?php echo set_value("piel_color"); ?></textarea>
                     <br>
                     Humedad y untuosidad
-                    <textarea class="form-control" id="piel_humedad_u" name="piel_humedad_u" cols="90" rows="2"></textarea>
+                    <textarea class="form-control" id="piel_humedad_u" name="piel_humedad_u" cols="90" rows="2"><?php echo set_value("piel_humedad_u"); ?></textarea>
                     <br>
                     Turgor y elasticidad
-                    <textarea class="form-control" id="piel_turgor_e" name="piel_turgor_e" cols="90" rows="2"></textarea>
+                    <textarea class="form-control" id="piel_turgor_e" name="piel_turgor_e" cols="90" rows="2"><?php echo set_value("piel_turgor_e"); ?></textarea>
                     <br>
                     Temperatura
                     <select name="piel_temperatura" id="piel_temperatura" class="form-control">
@@ -879,168 +858,144 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_sin_lesiones" id="piel_sin_lesiones">
-                                    &nbsp;&nbsp;No presenta lesiones
+                                    <?php echo form_checkbox('piel_sin_lesiones','',set_checkbox('piel_sin_lesiones'),' id="piel_sin_lesiones" '); ?>&nbsp;&nbsp;No presenta lesiones
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_Eritema" id="piel_Eritema">
-                                    &nbsp;&nbsp;Eritema por exposicion solar
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_mascula" id="piel_mascula">
-                                    &nbsp;&nbsp;Máscula en la cara
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_papula" id="piel_papula">
-                                    &nbsp;&nbsp;Pápula
+                                    <?php echo form_checkbox('piel_Eritema','',set_checkbox('piel_Eritema'),' id="piel_Eritema" '); ?>&nbsp;&nbsp;Eritema por exposicion solar
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_nodulo" id="piel_nodulo">
-                                    &nbsp;&nbsp;Nódulo
+                                    <?php echo form_checkbox('piel_mascula','',set_checkbox('piel_mascula'),' id="piel_mascula" '); ?>&nbsp;&nbsp;Máscula en la cara
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_tumor" id="piel_tumor">
-                                    &nbsp;&nbsp;Tumor
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_vesicula" id="piel_vesicula">
-                                    &nbsp;&nbsp;Vesícula
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_ampolla" id="piel_ampolla">
-                                    &nbsp;&nbsp;Ampolla
+                                    <?php echo form_checkbox('piel_papula','',set_checkbox('piel_papula'),' id="piel_papula" '); ?>&nbsp;&nbsp;Pápula
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_pustula" id="piel_pustula">
-                                    &nbsp;&nbsp;Pústula
+                                    <?php echo form_checkbox('piel_nodulo','',set_checkbox('piel_nodulo'),' id="piel_nodulo" '); ?>&nbsp;&nbsp;Nódulo
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_placa" id="piel_placa">
-                                    &nbsp;&nbsp;Placa
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_eritema" id="piel_eritema">
-                                    &nbsp;&nbsp;Eritema
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_escama" id="piel_escama">
-                                    &nbsp;&nbsp;Escama
+                                    <?php echo form_checkbox('piel_tumor','',set_checkbox('piel_tumor'),' id="piel_tumor" '); ?>&nbsp;&nbsp;Tumor
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_erosion" id="piel_erosion">
-                                    &nbsp;&nbsp;Erosión
+                                    <?php echo form_checkbox('piel_vesicula','',set_checkbox('piel_vesicula'),' id="piel_vesicula" '); ?>&nbsp;&nbsp;Vesícula
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_ulceracion" id="piel_ulceracion">
-                                    &nbsp;&nbsp;Ulceración
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_costra" id="piel_costra">
-                                    &nbsp;&nbsp;Costra
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_cicatriz" id="piel_cicatriz">
-                                    &nbsp;&nbsp;Cicatriz
+                                    <?php echo form_checkbox('piel_ampolla','',set_checkbox('piel_ampolla'),' id="piel_ampolla" '); ?>&nbsp;&nbsp;Ampolla
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_roncha" id="piel_roncha">
-                                    &nbsp;&nbsp;Roncha
+                                    <?php echo form_checkbox('piel_pustula','',set_checkbox('piel_pustula'),' id="piel_pustula" '); ?>&nbsp;&nbsp;Pústula
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_liquenificacion" id="piel_liquenificacion">
-                                    &nbsp;&nbsp;Liquenificación
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_telangiectasia" id="piel_telangiectasia">
-                                    &nbsp;&nbsp;Telangiectasia
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_petequia" id="piel_petequia">
-                                    &nbsp;&nbsp;Petequia
+                                    <?php echo form_checkbox('piel_placa','',set_checkbox('piel_placa'),' id="piel_placa" '); ?>&nbsp;&nbsp;Placa
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_equimosis" id="piel_equimosis">
-                                    &nbsp;&nbsp;Equímosis
+                                    <?php echo form_checkbox('piel_eritema','',set_checkbox('piel_eritema'),' id="piel_eritema" '); ?>&nbsp;&nbsp;Eritema
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_vibice" id="piel_vibice">
-                                    &nbsp;&nbsp;Víbice
+                                    <?php echo form_checkbox('piel_escama','',set_checkbox('piel_escama'),' id="piel_escama" '); ?>&nbsp;&nbsp;Escama
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_efelide" id="piel_efelide">
-                                    &nbsp;&nbsp;Efélide
+                                    <?php echo form_checkbox('piel_erosion','',set_checkbox('piel_erosion'),' id="piel_erosion" '); ?>&nbsp;&nbsp;Erosión
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="piel_otros_t" id="piel_otros_t">
-                                    &nbsp;&nbsp;Otros trastornos
+                                    <?php echo form_checkbox('piel_ulceracion','',set_checkbox('piel_ulceracion'),' id="piel_ulceracion" '); ?>&nbsp;&nbsp;Ulceración
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_costra','',set_checkbox('piel_costra'),' id="piel_costra" '); ?>&nbsp;&nbsp;Costra
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_cicatriz','',set_checkbox('piel_cicatriz'),' id="piel_cicatriz" '); ?>&nbsp;&nbsp;Cicatriz
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_roncha','',set_checkbox('piel_roncha'),' id="piel_roncha" '); ?>&nbsp;&nbsp;Roncha
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_liquenificacion','',set_checkbox('piel_liquenificacion'),' id="piel_liquenificacion" '); ?>&nbsp;&nbsp;Liquenificación
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_telangiectasia','',set_checkbox('piel_telangiectasia'),' id="piel_telangiectasia" '); ?>&nbsp;&nbsp;Telangiectasia
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_petequia','',set_checkbox('piel_petequia'),' id="piel_petequia" '); ?>&nbsp;&nbsp;Petequia
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_equimosis','',set_checkbox('piel_equimosis'),' id="piel_equimosis" '); ?>&nbsp;&nbsp;Equímosis
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_vibice','',set_checkbox('piel_vibice'),' id="piel_vibice" '); ?>&nbsp;&nbsp;Víbice
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_efelide','',set_checkbox('piel_efelide'),' id="piel_efelide" '); ?>&nbsp;&nbsp;Efélide
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('piel_otros_t','',set_checkbox('piel_otros_t'),' id="piel_otros_t" '); ?>&nbsp;&nbsp;Otros trastornos
                                 </label>
                             </div>
                         </div>
@@ -1061,28 +1016,24 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="pelos_calvicie" id="pelos_calvicie">
-                                    &nbsp;&nbsp;Calvicie
+                                    <?php echo form_checkbox('pelos_calvicie','',set_checkbox('pelos_calvicie'),' id="pelos_calvicie" '); ?>&nbsp;&nbsp;Calvicie
                                     </label>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="radio-inline i-checks">
-                                        <input type="checkbox" name="pelos_alopecia" id="pelos_alopecia">
-                                        &nbsp;&nbsp;Alopecía
+                                        <?php echo form_checkbox('pelos_alopecia','',set_checkbox('pelos_alopecia'),' id="pelos_alopecia" '); ?>&nbsp;&nbsp;Alopecía
                                     </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="pelos_hirsutismo" id="pelos_hirsutismo">
-                                        &nbsp;&nbsp;Hirsutismo
+                                        <?php echo form_checkbox('pelos_hirsutismo','',set_checkbox('pelos_hirsutismo'),' id="pelos_hirsutismo" '); ?>&nbsp;&nbsp;Hirsutismo
                                     </label>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="radio-inline i-checks">
-                                        <input type="checkbox" name="pelos_otros_alt" id="pelos_otros_alt">
-                                        &nbsp;&nbsp;Otras alteraciones
+                                        <?php echo form_checkbox('pelos_otros_alt','',set_checkbox('pelos_otros_alt'),' id="pelos_otros_alt" '); ?>&nbsp;&nbsp;Otras alteraciones
                                     </label>
                                 </div>
                             </div>
@@ -1096,56 +1047,48 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_acropaquia" id="unias_acropaquia">
-                                    &nbsp;&nbsp;Acropaquia
+                                    <?php echo form_checkbox('unias_acropaquia','',set_checkbox('unias_acropaquia'),' id="unias_acropaquia" '); ?>&nbsp;&nbsp;Acropaquia
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_coiloniquia" id="unias_coiloniquia">
-                                    &nbsp;&nbsp;Coiloniquia o uña en cuchara
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_psoriasis" id="unias_psoriasis">
-                                    &nbsp;&nbsp;Uñas en psoriasis
-                                </label>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_l_beau" id="unias_l_beau">
-                                    &nbsp;&nbsp;Uñas con líneas de Beau
+                                    <?php echo form_checkbox('unias_coiloniquia','',set_checkbox('unias_coiloniquia'),' id="unias_coiloniquia" '); ?>&nbsp;&nbsp;Coiloniquia o uña en cuchara
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_l_ungueales_p" id="unias_l_ungueales_p">
-                                    &nbsp;&nbsp;Lechos ungueales pálidos
+                                    <?php echo form_checkbox('unias_psoriasis','',set_checkbox('unias_psoriasis'),' id="unias_psoriasis" '); ?>&nbsp;&nbsp;Uñas en psoriasis
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_l_ungueales_c" id="unias_l_ungueales_c">
-                                    &nbsp;&nbsp;Lechos ungueales cianóticos
+                                    <?php echo form_checkbox('unias_l_beau','',set_checkbox('unias_l_beau'),' id="unias_l_beau" '); ?>&nbsp;&nbsp;Uñas con líneas de Beau
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                        <input type="checkbox" name="unias_renal_c" id="unias_renal_c">
-                                    &nbsp;&nbsp;Uñas en la insuficiencia renal crónica
+                                    <?php echo form_checkbox('unias_l_ungueales_p','',set_checkbox('unias_l_ungueales_p'),' id="unias_l_ungueales_p" '); ?>&nbsp;&nbsp;Lechos ungueales pálidos
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline i-checks">
-                                    <input type="checkbox" name="unias_hemorragias_s" id="unias_hemorragias_s">
-                                    &nbsp;&nbsp;Hemorragias subungueales o en astilla
+                                    <?php echo form_checkbox('unias_l_ungueales_c','',set_checkbox('unias_l_ungueales_c'),' id="unias_l_ungueales_c" '); ?>&nbsp;&nbsp;Lechos ungueales cianóticos
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('unias_renal_c','',set_checkbox('unias_renal_c'),' id="unias_renal_c" '); ?>&nbsp;&nbsp;Uñas en la insuficiencia renal crónica
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline i-checks">
+                                    <?php echo form_checkbox('unias_hemorragias_s','',set_checkbox('unias_hemorragias_s'),' id="unias_hemorragias_s" '); ?>&nbsp;&nbsp;Hemorragias subungueales o en astilla
                                 </label>
                             </div>
                         </div>
@@ -1159,12 +1102,12 @@
                     <div class="col-sm-6">
                         Adenopatía:
                         <hr>
-                        <textarea class="form-control" id="sl_adenopatia" name="sl_adenopatia" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="sl_adenopatia" name="sl_adenopatia" cols="90" rows="5"><?php echo set_value("sl_adenopatia"); ?></textarea>
                     </div>
                     <div class="col-sm-6">
                         Comentarios
                         <hr>
-                        <textarea class="form-control" id="sl_comercial" name="sl_comercial" cols="90" rows="5"></textarea>
+                        <textarea class="form-control" id="sl_comercial" name="sl_comercial" cols="90" rows="5"><?php echo set_value("sl_comercial"); ?></textarea>
                     </div>
                 </div>    
             </div>
@@ -1175,7 +1118,7 @@
                 <div class="row">
                     <div class="col-sm-2 col-xs-2">F.R.</div>
                     <div class="col-sm-3 col-xs-6">
-                        <input type="text" id="sv_fr" name="sv_fr" class="form-control input-sm">
+                        <input type="text" id="sv_fr" name="sv_fr" class="form-control input-sm" value="<?php echo set_value("sv_fr"); ?>">
                     </div>
                     <div class="col-sm-1 col-xs-1">R.P.M.</div>
                     <div class="col-sm-8 col-xs-3">&nbsp</div>                     
@@ -1184,7 +1127,7 @@
                 <div class="row">
                     <div class="col-sm-2 col-xs-2">Temp.</div>
                     <div class="col-sm-3 col-xs-6">
-                        <input type="text" id="sv_temperatura" name="sv_temperatura" class="form-control input-sm">
+                        <input type="text" id="sv_temperatura" name="sv_temperatura" value="<?php echo set_value("sv_temperatura"); ?>" class="form-control input-sm">
                     </div>
                     <div class="col-sm-1 col-xs-1">°C</div>
                     <div class="col-sm-8 col-xs-3">&nbsp;</div>  
@@ -1195,13 +1138,13 @@
                             T.A.
                         </div>
                         <div class="col-sm-3 col-xs-3">
-                            <input type="text" id="sv_ta_sis" name="sv_ta_sis" placeholder="sis." class="form-control input-sm">
+                            <input type="text" id="sv_ta_sis" name="sv_ta_sis" value="<?php echo set_value("sv_ta_sis"); ?>" placeholder="sis." class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">
                             /
                         </div>
                         <div class="col-sm-3 col-xs-3">
-                            <input type="text" id="sv_ta_diast" name="sv_ta_diast" placeholder="diast." class="form-control input-sm">
+                            <input type="text" id="sv_ta_diast" name="sv_ta_diast" value="<?php echo set_value("sv_ta_diast"); ?>" placeholder="diast." class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">
                             mmHg.
@@ -1212,7 +1155,7 @@
                 <div class="row">
                     <div class="col-sm-2 col-xs-2">P.A.</div>
                     <div class="col-sm-3 col-xs-6">
-                        <input type="text" id="sv_pa" name="sv_pa" class="form-control input-sm">
+                        <input type="text" id="sv_pa" name="sv_pa" value="<?php echo set_value("sv_pa"); ?>" class="form-control input-sm">
                     </div>
                     <div class="col-sm-1 col-xs-1">P.P.M.</div>
                     <div class="col-sm-8 col-xs-3">&nbsp;</div>               
@@ -1224,7 +1167,7 @@
                     <div class="row">
                         <div class="col-sm-2 col-xs-2">F.C.</div>
                         <div class="col-sm-3 col-xs-6">
-                            <input type="text" id="sv_fc" name="sv_fc" class="form-control input-sm">
+                            <input type="text" id="sv_fc" name="sv_fc" value="<?php echo set_value("sv_fc"); ?>" class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">L.P.M.</div>
                         <div class="col-sm-8 col-xs-3">&nbsp;</div>  
@@ -1233,7 +1176,7 @@
                     <div class="row">
                         <div class="col-sm-2 col-xs-2">Peso</div>
                         <div class="col-sm-3 col-xs-6">
-                            <input type="text" id="sv_peso" name="sv_peso" class="form-control input-sm">
+                            <input type="text" id="sv_peso" name="sv_peso" value="<?php echo set_value("sv_peso"); ?>" class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">Kgs.</div>
                         <div class="col-sm-8 col-xs-3">&nbsp;</div>  
@@ -1242,7 +1185,7 @@
                     <div class="row">
                         <div class="col-sm-2 col-xs-2">Talla</div>
                         <div class="col-sm-3 col-xs-6">
-                            <input type="text" id="sv_talla" name="sv_talla" class="form-control input-sm">
+                            <input type="text" id="sv_talla" name="sv_talla" value="<?php echo set_value("sv_talla"); ?>" class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">Cms.</div>
                         <div class="col-sm-8 col-xs-3">&nbsp;</div>  
@@ -1251,7 +1194,7 @@
                     <div class="row">
                         <div class="col-sm-2 col-xs-2">IMC</div>
                         <div class="col-sm-3 col-xs-6">
-                            <input type="text" id="sv_imc" name="sv_imc" class="form-control input-sm">
+                            <input type="text" id="sv_imc" name="sv_imc" value="<?php echo set_value("sv_imc"); ?>" class="form-control input-sm">
                         </div>
                         <div class="col-sm-1 col-xs-1">Kg/m2</div>
                         <div class="col-sm-8 col-xs-3">&nbsp;</div>                      
@@ -1279,7 +1222,7 @@
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Examen Físico Segmentado
         </a>
-      </h4>
+      </h4> 
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">

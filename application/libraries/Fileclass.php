@@ -178,6 +178,7 @@ class Fileclass {
             '2' => base_url().'css/plugins/iCheck/custom.css',
             '3' => base_url().'css/animate.css',
             '4' => base_url().'css/style.css',
+            '5' => base_url().'css/sweetalert.css',
         );
         
         $this->files['script'] = array(
@@ -189,9 +190,9 @@ class Fileclass {
             '4' => base_url().'js/inspinia.js',
             '5' => base_url().'js/pace.min.js',
             '6'=> base_url().'js/icheck.min.js',
-            '7'=> base_url().'js/mi_perfil.js',
-            '8'=> base_url().'js/jasny-bootstrap.min.js',
-            '9'=> base_url().'js/mi_perfil_selects.js',
+            '7'=> base_url().'js/jasny-bootstrap.min.js',
+            '8'=> base_url().'js/consulta_medica.js',
+            '9' => base_url().'js/sweetalert.min.js',
         );
         
         return $this->files;

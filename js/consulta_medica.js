@@ -19,6 +19,8 @@ function buscar_paciente(){
         });
         
         limpiar_campos();
+        
+        return false;
     }
 
     $.ajax({
@@ -93,6 +95,7 @@ function buscar_paciente(){
     });
 }
 
+
 function limpiar_campos(){
     
     $('#id_paciente').val('');
@@ -101,4 +104,6 @@ function limpiar_campos(){
     $("#fecha_nac_paciente").html('');
     $("#nacionalidad_paciente").html('');
     $("#est_civil_paciente").html('');
+    
+    return false;
 }

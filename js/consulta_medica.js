@@ -104,4 +104,6 @@ function limpiar_campos(){
     $("#fecha_nac_paciente").html('');
     $("#nacionalidad_paciente").html('');
     $("#est_civil_paciente").html('');
+    
+    return false;
 }

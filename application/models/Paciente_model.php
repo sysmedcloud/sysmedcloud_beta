@@ -541,9 +541,13 @@ class Paciente_model extends CI_Model
             u.apellido_materno,
             u.celular,
             u.telefono,
-            u.email'
+            u.email,u.fecha_nac,
+            p.nombre as pais,
+            e.estado_civil'
         );
         $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_paises p','u.nacionalidad = p.cod_pais','left');
+        $this->db->join('tbl_estado_civil e','u.id_estado_civil = e.id_estado_civil','left');
         $this->db->where('u.rut',$rut_paciente);
         $this->db->where('u.id_perfil',4);
         $this->db->where('u.estado',0);
@@ -564,6 +568,10 @@ class Paciente_model extends CI_Model
             $tel_fijo       = $datos->row()->telefono   == "" ? "no informado" : $datos->row()->telefono;
             $correo         = $datos->row()->email      == "" ? "no informado" : $datos->row()->email;
             
+            $fecha_nac      = $datos->row()->fecha_nac;
+            $nacionalidad   = $datos->row()->pais == "" ? "no informado" : $datos->row()->pais;
+            $estado_civil   = $datos->row()->estado_civil == "" ? "no informado" : $datos->row()->estado_civil;
+            
             $arr_paciente = array(
                 "id_paciente"       => $id_paciente,
                 "rut"               => $rut,
@@ -574,6 +582,9 @@ class Paciente_model extends CI_Model
                 "celular"           => $celular,
                 "tel_fijo"          => $tel_fijo,
                 "correo"            => $correo,
+                "nacionalidad"      => $nacionalidad,
+                "estado_civil"      => $estado_civil,
+                "fecha_nac"         => $fecha_nac
             );
             
             echo json_encode($arr_paciente); 

@@ -39,11 +39,13 @@
                                                 <label class="col-sm-3"  for="title">Busqueda por RUT del paciente: </label>
                                                 &nbsp;
                                                 <div class="col-sm-5">
-                                                    <input type='text' placeholder="Ingrese RUT o DNI de un paciente" class="form-control" />
+                                                    <!-- usar ejm: 18144801-6a -->
+                                                    <input type='text' name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" class="form-control" />
+                                                    <input type="hidden" name="id_paciente" id="id_paciente">
                                                 </div>
                                                 &nbsp;
                                                 <div class="col-sm-3">
-                                                    <button class="btn btn-info" type="button" ><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Buscar Paciente</button>
+                                                    <button class="btn btn-info" type="button" onclick="buscar_paciente();" ><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Buscar Paciente</button>
                                                 </div>
                                         </div>
                                     </div>
@@ -56,17 +58,15 @@
                                         </div>
                                         &nbsp;
                                         <div class="col-lg-9">
-                                            <label for="title">Rut del paciente: </label>&nbsp; 
+                                            <label for="title">Rut del paciente:</label>&nbsp;<span id="rut_paciente"></span> 
                                             <br>
-                                            <label for="title">Nombre Completo: </label>&nbsp; 
+                                            <label for="title">Nombre Completo:</label>&nbsp;<span id="nombre_paciente"></span> 
                                             <br>
-                                            <label for="title">Sexo: </label>&nbsp; 
+                                            <label for="title">Fecha Nacimiento:</label>&nbsp;<span id="fecha_nac_paciente"></span> 
                                             <br>
-                                            <label for="title">Edad: </label>&nbsp; 
+                                            <label for="title">Nacionalidad:</label>&nbsp;<span id="nacionalidad_paciente"></span> 
                                             <br>
-                                            <label for="title">Nacionalidad: </label>&nbsp; 
-                                            <br>
-                                            <label for="title">Estado Civil: </label>&nbsp; 
+                                            <label for="title">Estado Civil:</label>&nbsp;<span id="est_civil_paciente"></span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1255,6 +1255,7 @@
                                       ?>
                                     <div class="alert alert-danger alert-dismissable">
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                        <?php echo form_error('id_paciente'); ?>
                                         <?php echo form_error('motivo'); ?>
                                         <?php echo form_error('anamnesis'); ?>
                                         <?php echo form_error('diagnostico'); ?>

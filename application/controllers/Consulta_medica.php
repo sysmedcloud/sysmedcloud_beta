@@ -68,9 +68,10 @@ class Consulta_medica extends CI_Controller {
     public function recibirDatos(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $session    =   $this->general_sessions->validarSessionAdmin();
         
         //Datos POST formulario
+        $this->form_validation->set_rules('id_paciente','paciente','required|trim');
         $this->form_validation->set_rules('motivo','motivo de la consulta','required|trim');
         $this->form_validation->set_rules('anamnesis','anamnesis próxima','required|trim');
         $this->form_validation->set_rules('diagnostico','diagnóstico','required|trim');
@@ -84,9 +85,22 @@ class Consulta_medica extends CI_Controller {
                 
          } else {
              
-            //DATOS BASICOS CONSULTA MEDICA
-            $data_consulta  = $this->data_consulta();
-             
+            $id_paciente = $this->input->post('id_paciente'); 
+            
+            //INGRESAMOS INFORMACION CONSULTA MEDICA
+            $data_consulta                  = $this->data_consulta();
+            $data_consulta['ingresado_por'] = $session{'id_usuario'};
+            $data_consulta['id_paciente']   = $id_paciente;
+            $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta);
+            
+            if($id_consulta_med > 0){//datos ingresados correctamente
+                echo "consulta medica ID ".$id_consulta_med." ingresada con exito";
+            }else{//error al ingresar datos consulta medica
+                echo "error al ingresar consulta medica";
+            }
+            
+            exit();
+            
             //DATOS REFERENTES A LA REVISION POR SISTEMA
             $rv_sistema    = $this->revision_por_sistema();
             

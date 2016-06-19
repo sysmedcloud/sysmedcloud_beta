@@ -19,6 +19,8 @@ function buscar_paciente(){
         });
         
         limpiar_campos();
+        
+        return false;
     }
 
     $.ajax({
@@ -92,6 +94,7 @@ function buscar_paciente(){
         }
     });
 }
+
 
 function limpiar_campos(){
     

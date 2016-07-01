@@ -173,7 +173,8 @@ class Consulta_medica extends CI_Controller {
                 
                 if($id_consulta_med > 0){
                     
-                    $this->consultamed_succes($id_consulta_med);
+                    //$this->consultamed_succes($id_consulta_med);
+                    redirect(base_url()."consulta_medica/consultamed_succes/".$id_consulta_med);
                     
                 }else{
                     
@@ -394,7 +395,7 @@ class Consulta_medica extends CI_Controller {
         $EX_FACIE["facie_acromegalica"]     = $this->input->post('facie_acromegalica')      !== null ? TRUE : FALSE;
         $EX_FACIE["facie_cushingoide"]      = $this->input->post('facie_cushingoide')       !== null ? TRUE : FALSE;
         $EX_FACIE["facie_hipertiroidea"]    = $this->input->post('facie_hipertiroídea')     !== null ? TRUE : FALSE;
-        //$EX_FACIE["facie_hipotiroidea"]     = $this->input->post('facie_hipotiroidea')      !== null ? TRUE : FALSE;
+        $EX_FACIE["facie_hipotiroidea"]     = $this->input->post('facie_hipotiroidea')      !== null ? TRUE : FALSE;
         $EX_FACIE["facie_hipocratica"]      = $this->input->post('facie_hipocratica')       !== null ? TRUE : FALSE;
         $EX_FACIE["facie_mongolica"]        = $this->input->post('facie_mongolica')         !== null ? TRUE : FALSE;
         $EX_FACIE["facie_parkinsoniana"]    = $this->input->post('facie_parkinsoniana')     !== null ? TRUE : FALSE;
@@ -427,10 +428,10 @@ class Consulta_medica extends CI_Controller {
         
         $EX_PIEL["color"]                   = $this->input->post('piel_color');
         $EX_PIEL["humedad_untuosidad"]      = $this->input->post('piel_humedad_u');
-        $EX_PIEL["turgor_elasticidad"]      = $this->input->post('turgor_elasticidad');
+        $EX_PIEL["turgor_elasticidad"]      = $this->input->post('piel_turgor_e');
         $EX_PIEL["temperatura"]             = $this->input->post('piel_temperatura');        
         $EX_PIEL["no_lesiones"]             = $this->input->post('piel_sin_lesiones')       !== null ? TRUE : FALSE;
-        $EX_PIEL["eritema"]                 = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
+        $EX_PIEL["eritema_exp_solar"]                 = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
         $EX_PIEL["mascula_cara"]            = $this->input->post('piel_mascula')            !== null ? TRUE : FALSE;
         $EX_PIEL["papula"]                  = $this->input->post('piel_papula')             !== null ? TRUE : FALSE;
         $EX_PIEL["nodulo"]                  = $this->input->post('piel_nodulo')             !== null ? TRUE : FALSE;

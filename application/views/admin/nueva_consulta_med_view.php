@@ -872,9 +872,9 @@
                                                                   Temperatura
                                                                   <select name="piel_temperatura" id="piel_temperatura" class="form-control">
                                                                      <option value="">--- Seleccione una opción ---</option>
-                                                                     <option value="">Normal</option>
-                                                                     <option value="">Aumentada</option>
-                                                                     <option value="">Disminuida</option>
+                                                                     <option value="normal">Normal</option>
+                                                                     <option value="aumentada">Aumentada</option>
+                                                                     <option value="disminuida">Disminuida</option>
                                                                   </select>
                                                                </div>
                                                                <div class="col-sm-6">

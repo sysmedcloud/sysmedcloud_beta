@@ -74,6 +74,7 @@ function listado_pacientes(){
             { "data": "edad" },
             { "data": "celular" },
             { "data": "email"},
+            { "data": "h_clinica"},
             { "data": "editar"},
             { "data": "view"},
             { "data": "delete"}

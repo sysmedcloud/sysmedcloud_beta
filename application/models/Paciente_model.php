@@ -361,9 +361,12 @@ class Paciente_model extends CI_Model
         du.celular,
         du.email,
         du.fecha_creacion,
-        du.fecha_nac
+        du.fecha_nac,
+        hd.id_historia_medica,
+        hd.fecha_creacion
         ");
         $this->db->from('tbl_usuarios du');
+        $this->db->join('tbl_historias_medicas hd','hd.id_paciente = du.id_usuario');
         $this->db->where('du.id_perfil',4);
         $this->db->where('du.estado',0);
         $this->db->where('du.eliminado',0);
@@ -398,7 +401,9 @@ class Paciente_model extends CI_Model
                 $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
                 $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Paciente" onclick="eliminar_paciente(\''.$row->id_usuario.'\',\''.$row->primer_nombre.' '.$row->apellido_paterno.'\',\''.$row->rut.'\');"><i class="fa fa-times"></i></a>';
+                $fa_hc      = '<a href="#" title="Ver Historia Clínica" onclick="ver_HC(\''.$row->id_historia_medica.'\');"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>';
                 
+
                 //Crear arreglo con los datos del paciente
                 $arr_paciente[] = array(
                     "fecha_creacion"    => $fecha_c,
@@ -408,6 +413,7 @@ class Paciente_model extends CI_Model
                     "edad"              => $edad,
                     "celular"           => $celular,
                     "email"             => $email,
+                    "h_clinica"         => $fa_hc,
                     "editar"            => $fa_editar,
                     "view"              => $fa_view,
                     "delete"            => $fa_delete

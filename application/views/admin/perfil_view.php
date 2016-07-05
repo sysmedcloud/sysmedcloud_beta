@@ -26,10 +26,13 @@
             <div class="ibox-content">
                <form method="POST" action="<?=base_url();?>perfil_admin/recibirDatos" class="form-horizontal">
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">
-                     <img src="<?=base_url();?>img/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario">
-                     </label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-3">
+                        <a href="#" class="thumbnail">
+                             <img src="<?=base_url();?>img/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario">
+                        </a>
+                        <hr>
+                     </div>
+                     <div class="col-sm-9">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">

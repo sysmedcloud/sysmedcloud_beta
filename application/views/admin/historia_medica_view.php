@@ -4,7 +4,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Historia Clínica <small> recuerda...</small></h5>
+               <h5>Historia Clínica ID# N° 2343<small></small></h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -28,10 +28,25 @@
                    <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <div class="form-group">
-                     <label class="col-sm-2 control-label">
-                     <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
-                     </label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-3" style="text-align:justify;">
+                         <a href="#" class="thumbnail">
+                             <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
+                         </a>                         
+                        <hr>
+                        <span>
+                            La <b>historia clínica electrónica (HCE)</b>, también denominada historia clínica informatizada (HCI), 
+                            es el registro mecanizado de los datos sociales, preventivos y médicos de un paciente, 
+                            obtenidos de forma directa o indirecta y constantemente puestos al día, es el conjunto 
+                            de documentos (tanto escritos como gráficos) que contienen los datos, valoraciones e informaciones de cualquier índole, 
+                            sobre la situación y la evolución clínica de un paciente a lo largo del proceso asistencial.
+                            <br><br>
+                            <a href="https://es.wikipedia.org/wiki/Historia_cl%C3%ADnica_electr%C3%B3nica" title="link de referencia" target="_blanck" >
+                                https://es.wikipedia.org/wiki/Historia_cl%C3%ADnica_electr%C3%B3nica
+                            </a>
+                            <hr>
+                        </span>
+                     </div>
+                     <div class="col-sm-9">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">
@@ -40,8 +55,8 @@
                                     <div class="panel-options">
                                        <ul class="nav nav-tabs">
                                           <li class="active"><a data-toggle="tab" href="#tab-1">Datos Filiatorios</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-2">Antecedentes Familiares</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-3">Antecedentes Sociales y Personales</a></li>
+                                          <li class=""><a data-toggle="tab" href="#tab-2">Ant. Familiares</a></li>
+                                          <li class=""><a data-toggle="tab" href="#tab-3">Ant. Sociales y Personales</a></li>
                                           <li class=""><a data-toggle="tab" href="#tab-4">Personas de Contacto</a></li>
                                        </ul>
                                     </div>

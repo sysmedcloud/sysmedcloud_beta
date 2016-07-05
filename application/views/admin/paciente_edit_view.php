@@ -28,10 +28,13 @@
                    <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <div class="form-group">
-                     <label class="col-sm-2 control-label">
-                     <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
-                     </label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-3">
+                         <a href="#" class="thumbnail">
+                             <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
+                         </a>                       
+                        <hr>
+                     </div>
+                     <div class="col-sm-9">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">
@@ -39,8 +42,8 @@
                                     <!--<div class="panel-title m-b-md"><h4>Blank Panel with text tabs</h4></div>-->
                                     <div class="panel-options">
                                        <ul class="nav nav-tabs">
-                                          <li class="active"><a data-toggle="tab" href="#tab-1">Datos de Identificación</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-2">Datos Residencia Actual</a></li>
+                                          <li class="active"><a data-toggle="tab" href="#tab-1">Identificación</a></li>
+                                          <li class=""><a data-toggle="tab" href="#tab-2">Residencia Actual</a></li>
                                           <li class=""><a data-toggle="tab" href="#tab-3">Grupo Sanguineo / Factor RH</a></li>
                                           <li class=""><a data-toggle="tab" href="#tab-4">Personas de Contacto</a></li>
                                        </ul>

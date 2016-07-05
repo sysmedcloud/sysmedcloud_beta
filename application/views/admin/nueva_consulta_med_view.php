@@ -78,9 +78,9 @@
                                     </div>
                                     &nbsp;
                                     <div class="row">
-                                       <div class="col-lg-2">
+                                       <div class="col-lg-3">
                                           <a href="#" class="thumbnail">
-                                          <img src="<?=base_url();?>img/sin-foto.png"  class="img-thumbnail" alt="imagen usuario">
+                                            <img src="<?=base_url();?>img/sin-foto.png"  class="img-thumbnail" alt="imagen usuario">
                                           </a>
                                        </div>
                                        &nbsp;

@@ -386,7 +386,85 @@
                                        </div>
                                     </div>
                                  </div>
-                                 
+                                  
+                                  <div class="panel-heading">
+                                     <div class="panel-options">
+                                       <ul class="nav nav-tabs">
+                                          <li class="active"><a data-toggle="tab" href="#tab-cm">Consultas Médicas</a></li>
+                                          <li class=""><a data-toggle="tab" href="#tab-ad">Archivos y Documentos.</a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 <div class="panel-body">
+                                    <div class="tab-content">
+                                       <div id="tab-cm" class="tab-pane active">
+                                            <div class="row">
+                                               <div class="col-md-12">
+                                                  listado de consultas medicas
+                                               </div>
+                                            </div>
+                                       </div>
+                                       <div id="tab-ad" class="tab-pane">
+                                            <div class="row">
+                                               <div class="col-md-12">
+                                                   listado de archivos y documentos
+                                               </div>
+                                            </div>
+                                       </div>
+                                       <div id="tab-h" class="tab-pane">
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                <textarea 
+                                                    name="habitos" 
+                                                    placeholder="Entre los hábitos que se investigan destacan: El hábito de fumar (tabaquismo), La ingesta de bebidas alcohólicas, Tipo de alimentación y Uso de drogas no legales"
+                                                    id="habitos" 
+                                                    class="form-control" 
+                                                    cols="92" 
+                                                    rows="10" ></textarea>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div id="tab-med" class="tab-pane">
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                <textarea 
+                                                      name="medicamentos" 
+                                                      placeholder="Es importante identificar qué medicamentos está tomando el paciente y en qué cantidad. En algunos casos, también se deben indicar los fármacos que el paciente recibió en los días o semanas anteriores."
+                                                      id="medicamentos" 
+                                                      class="form-control" 
+                                                      cols="92" 
+                                                      rows="10" ></textarea>
+                                             </div>
+                                          </div>
+                                       </div>
+                                        <div id="tab-a" class="tab-pane">
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                <textarea 
+                                                      name="alergias" 
+                                                      placeholder="El tema de las alergias es muy importante ya que puede tener graves consecuencias para la persona. Entre los alergenos, que son las sustancias ante las cuales se desencadenan las respuestas alérgicas, hay varios que se deben investigar: Medicamentos, Alimentos, Sustancias que entran en contacto con la piel y Picaduras de insectos."
+                                                      id="alergias" 
+                                                      class="form-control" 
+                                                      cols="92" 
+                                                      rows="10" ></textarea>
+                                             </div>
+                                          </div>
+                                       </div>
+                                        <div id="tab-i" class="tab-pane">
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                <textarea 
+                                                      name="inmunizaciones" 
+                                                      placeholder="Según el cuadro clínico que presente el paciente puede ser importante señalar las inmunizaciones que el paciente ha recibido."
+                                                      id="inmunizaciones" 
+                                                      class="form-control" 
+                                                      cols="92" 
+                                                      rows="10" ></textarea>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
                                  <div class="col-md-12">
                                     <?php
                                        //Mensaje tipo flashdata - datos de acceso son incorrectos

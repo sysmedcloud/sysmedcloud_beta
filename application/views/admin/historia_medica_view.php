@@ -4,7 +4,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Historia Clínica ID# N° 2343<small></small></h5>
+               <h5>Historia Clínica ID# N° 2343 / Nombre del paciente<small></small></h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -28,14 +28,14 @@
                   <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                   <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                   <div class="form-group">
-                     <div class="col-sm-2" style="text-align:justify;">
+                     <!--<div class="col-sm-2" style="text-align:justify;">
                         <a href="#" class="thumbnail">
                         <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
                         </a>                         
                         <hr>
                         </span>
-                     </div>
-                     <div class="col-sm-10">
+                     </div>-->
+                     <div class="col-sm-12">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">

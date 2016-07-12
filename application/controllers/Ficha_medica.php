@@ -71,7 +71,7 @@ class Ficha_medica extends CI_Controller {
     /******************************************************************/
     /** @Function...
     /******************************************************************/
-    public function listado_consultas_med($id_paciente = 0){
+    public function listado_consultas_med($id_paciente = 42){
         
         $this->load->model('ficha_medica_model');
         

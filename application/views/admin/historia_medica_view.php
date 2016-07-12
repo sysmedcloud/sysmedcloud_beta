@@ -28,25 +28,14 @@
                   <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                   <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                   <div class="form-group">
-                     <div class="col-sm-3" style="text-align:justify;">
+                     <div class="col-sm-2" style="text-align:justify;">
                         <a href="#" class="thumbnail">
                         <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
                         </a>                         
                         <hr>
-                        <span>
-                           La <b>historia clínica electrónica (HCE)</b>, también denominada historia clínica informatizada (HCI), 
-                           es el registro mecanizado de los datos sociales, preventivos y médicos de un paciente, 
-                           obtenidos de forma directa o indirecta y constantemente puestos al día, es el conjunto 
-                           de documentos (tanto escritos como gráficos) que contienen los datos, valoraciones e informaciones de cualquier índole, 
-                           sobre la situación y la evolución clínica de un paciente a lo largo del proceso asistencial.
-                           <br><br>
-                           <a href="https://es.wikipedia.org/wiki/Historia_cl%C3%ADnica_electr%C3%B3nica" title="link de referencia" target="_blanck" >
-                           https://es.wikipedia.org/wiki/Historia_cl%C3%ADnica_electr%C3%B3nica
-                           </a>
-                           <hr>
                         </span>
                      </div>
-                     <div class="col-sm-9">
+                     <div class="col-sm-10">
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">
@@ -400,7 +389,19 @@
                                        <div id="tab-cm" class="tab-pane active">
                                             <div class="row">
                                                <div class="col-md-12">
-                                                  listado de consultas medicas
+                                                  <div class="table-responsive">
+                    <table id="consultas_medicas" class="table table-striped table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Fecha</th>
+                        <th>Motivo Consulta</th>
+                        <th>Anamnesis Próxima</th>
+                        <th>acciones</th>
+                    </tr>
+                    </thead>
+                </table>
+                </div>
                                                </div>
                                             </div>
                                        </div>

@@ -197,6 +197,40 @@ class Fileclass {
         
         return $this->files;
     }
+    
+    public function files_ficha_clinica(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/plugins/iCheck/custom.css',
+            '3' => base_url().'css/plugins/dataTables/dataTables.bootstrap.css',
+            '4' => base_url().'css/plugins/dataTables/dataTables.responsive.css',
+            '5' => base_url().'css/plugins/dataTables/dataTables.tableTools.min.css',
+            '6' => base_url().'css/animate.css',
+            '7' => base_url().'css/style.css',
+        );
+        
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/inspinia.js',
+            '5' => base_url().'js/pace.min.js',
+            '6'=> base_url().'js/icheck.min.js',
+            '7'=> base_url().'js/jasny-bootstrap.min.js',
+            '8' => base_url().'js/jquery.dataTables.js',
+            '9' => base_url().'js/dataTables.bootstrap.js',
+            '10' => base_url().'js/dataTables.responsive.js',
+            '11' => base_url().'js/dataTables.tableTools.min.js',
+            '12'=> base_url().'js/ficha_clinica.js',
+        );
+        
+        return $this->files;
+    }
 }
 
 /* End of file Files.php */ 

@@ -5,12 +5,7 @@ class Ficha_medica extends CI_Controller {
 
     public function __construct() {
 
-        parent::__construct();
-        
-        //cargamos modelo para CI perfil
-        $this->load->model('paciente_model');
-        $this->load->model('dropdown_model');
-        $this->load->model('perfil_model');
+        parent::__construct();  
         
         //Cargamos todas las librerias utilizadas en es CI
         $this->load->library(array(
@@ -35,11 +30,14 @@ class Ficha_medica extends CI_Controller {
     /******************************************************************/
     public function ver_detalle($id_paciente){
         
+        $this->load->model('paciente_model');//cargar modelo
+        $this->load->model('dropdown_model');//cargar modelo
+        
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_crearpacientes();
+        $data['files'] = $this->fileclass->files_ficha_clinica();
         
         $data["menu"]       = "Historia Clíente";//muestra opcion seleccionada top
         
@@ -68,5 +66,18 @@ class Ficha_medica extends CI_Controller {
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("historia_medica_view",$data);
         
+    }
+    
+    /******************************************************************/
+    /** @Function...
+    /******************************************************************/
+    public function listado_consultas_med($id_paciente = 0){
+        
+        $this->load->model('ficha_medica_model');
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $this->general_sessions->validarSessionAdmin();
+        
+        echo $this->ficha_medica_model->listado_consultas_medicas($id_paciente);
     }
 }

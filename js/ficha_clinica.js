@@ -95,6 +95,7 @@ function eliminar_consulta_med(id_consulta_medica){
 function listado_consultas_medicas(){
     
     var id_paciente = $("#id_paciente").val();
+    
     var baseURL = $('body').data('baseurl');//url base
     
     $('#consultas_medicas').dataTable({

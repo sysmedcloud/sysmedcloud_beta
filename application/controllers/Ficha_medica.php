@@ -28,7 +28,7 @@ class Ficha_medica extends CI_Controller {
     /******************************************************************/
     /** @Function...
     /******************************************************************/
-    public function ver_detalle($id_paciente){
+    public function ver_detalle($id_paciente,$id_historia_med){
         
         $this->load->model('paciente_model');//cargar modelo
         $this->load->model('dropdown_model');//cargar modelo
@@ -45,6 +45,10 @@ class Ficha_medica extends CI_Controller {
         
         //Id del paciente
         $data["id_paciente"]=$id_paciente;
+        
+        //Id historia medica
+        
+        $data["id_historia_med"] = $id_historia_med;
         
         //Cargamos datos del paciente seleccionado
         $data["paciente"]   = $this->paciente_model->info_paciente($id_paciente);    
@@ -71,7 +75,7 @@ class Ficha_medica extends CI_Controller {
     /******************************************************************/
     /** @Function...
     /******************************************************************/
-    public function listado_consultas_med($id_paciente = 42){
+    public function listado_consultas_med($id_paciente){
         
         $this->load->model('ficha_medica_model');
         

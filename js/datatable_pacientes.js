@@ -397,10 +397,9 @@ function eliminar_paciente(id_paciente,nombre,rut){
 }
 
 //FUNCION QUE PERMITE VISUALIZAR DETALLE DE LA HISTORIA MEDICA DE UN PACIENTE
-function ver_HC(id_paciente){
-    
+function ver_HC(id_paciente,id_historia_med){
     var baseURL = $('body').data('baseurl');//url base
-    var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente;    
+    var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente+"/"+id_historia_med;    
     $(location).attr('href',url);
 
 }

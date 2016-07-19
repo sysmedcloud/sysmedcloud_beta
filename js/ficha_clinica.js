@@ -94,12 +94,13 @@ function eliminar_consulta_med(id_consulta_medica){
 //FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
 function listado_consultas_medicas(){
     
+    var id_paciente = $("#id_paciente").val();
     var baseURL = $('body').data('baseurl');//url base
     
     $('#consultas_medicas').dataTable({
         "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
         "ajax": {
-            "url": baseURL+"ficha_medica/listado_consultas_med",//data
+            "url": baseURL+"ficha_medica/listado_consultas_med/"+id_paciente,//data
             "dataSrc": ""
         },
         "columns": [ //columnas de nuestra tabla

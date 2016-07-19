@@ -4,7 +4,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Historia Clínica ID# N° 2343 / Nombre del paciente<small></small></h5>
+               <h5>Historia Clínica ID# N° <?=$id_historia_med;?> / Nombre del paciente<small></small></h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -26,7 +26,8 @@
             <div class="ibox-content">
                <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal">
                   <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
-                  <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
+                  <input type="hidden" id="id_paciente" name="id_paciente" value="<?=$paciente["id_usuario"];?>">
+                  <input type="hidden"  id="id_historia_med" name="id_historia_med" value="<?=$id_historia_med;?>">
                   <div class="form-group">
                      <!--<div class="col-sm-2" style="text-align:justify;">
                         <a href="#" class="thumbnail">

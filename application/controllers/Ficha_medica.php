@@ -87,6 +87,11 @@ class Ficha_medica extends CI_Controller {
     
     public function eliminarConsultaMed(){
         
-        echo "success";
+        $this->load->model('ficha_medica_model');
+        
+        $id_consulta = $this->input->post("id_consulta_med");
+        
+        //Eliminamos consulta medica (Solo cambiamos el estado)
+        echo $this->ficha_medica_model->removeConsultaMed($id_consulta);
     }
 }

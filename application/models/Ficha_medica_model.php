@@ -20,6 +20,7 @@ class Ficha_medica_model extends CI_Model
         $this->db->where('u.estado',0);
         $this->db->where('u.eliminado',0);
         //$this->db->where('u.id_usuario',$id_paciente);
+        $this->db->where('cm.eliminado',0);
         $this->db->where('cm.id_paciente',$id_paciente);
         $this->db->order_by("cm.id_consulta","asc");
         $datos = $this->db->get();
@@ -38,7 +39,7 @@ class Ficha_medica_model extends CI_Model
                 $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
                 
                 $fa_editar  = '<a href="#" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
+                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Consulta Medica" onclick="eliminar_consulta_med(\''.$row->id_consulta.'\');"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente
@@ -61,6 +62,22 @@ class Ficha_medica_model extends CI_Model
             //RETORNAR JSON VACIO
             //$response['data'] = $arr_data;
             echo json_encode($arr_data);
+        }
+    }
+    
+    public function removeConsultaMed($id_consulta_meds){
+        
+        //Editar estado eliminado de la consulta medica
+        $this->db->where('id_consulta',$id_consulta_meds);
+        $res = $this->db->update('tbl_consulta_medica',array("eliminado" => true));
+        
+        if($res){
+            
+            return "success";
+            
+        }else{
+            
+            return "error";
         }
     }
 }	

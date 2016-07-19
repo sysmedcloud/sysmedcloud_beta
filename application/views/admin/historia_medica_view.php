@@ -512,73 +512,57 @@
          </div>
       </div>
    </div>
+    <!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".informacion_consulta_medica">Large modal</button>
+
+<div class="modal fade informacion_consulta_medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Información Consulta Médica</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+              muestra informacion de la consulta médica
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  </div>
 </div>
-<script>
-   //Función para añadir un nuevo input file
-   function newFile(){
-       
-       var html = '<div id="group_'+$("#contador").val()+'"><div class="row"><hr>'+
-                   '<div class="col-md-4">'+
-                      '<strong>Nombres</strong>'+
-                      '<input type="hidden" name="pc_ids[]" id="pc_ids[]" value="">'+
-                      '<input type="text" name="pc_nombres[]" id="pc_nombres" class="form-control m-b " value="">'+
-                  '</div>'+
-                   '<div class="col-md-4">'+
-                      '<strong>Apellidos</strong>'+
-                      '<input type="text" name="pc_apellidos[]" id="pc_apellidos" class="form-control m-b " value="">'+
-                   '</div>'+
-                    '<div class="col-md-4">'+
-                      '<strong>Familiaridad</strong>'+
-                      '<select class="form-control m-b " id="factorn_rh" name="familiariodad[]">'+
-                      '<option selected="selected" value="">Seleccione un parentesco</option>'+
-                      '<option value="1">Padres</option>'+
-                      '<option value="2">Hijos</option>'+
-                      '<option value="3">Cónyuge</option>'+
-                      '<option value="4">Suegro</option>'+
-                      '<option value="5">Yerno/nuera</option>'+
-                      '<option value="6">Abuelos</option>'+
-                      '<option value="7">Nietos</option>'+
-                      '<option value="8">Hermanos</option>'+
-                      '<option value="9">Cuñados</option>'+
-                      '<option value="10">Bisabuelos Y Bisnietos</option>'+
-                      '<option value="11">Tíos Y Sobrinos</option>'+
-                      '<option value="12">Primos Y Tíos Abuelos</option>'+
-                      '</select>'+
-                   '</div>'+
-                '</div>'+
-                 '<div class="row">'+
-                   '<div class="col-md-4">'+
-                      '<strong>Telefono/Celular</strong>'+
-                      '<input type="text" name="pc_telefono[]" id="pc_telefono" class="form-control m-b " value="">'+
-                   '</div>'+
-                   '<div class="col-md-4">'+
-                      '<strong>Correo</strong>'+
-                      '<input type="text" name="pc_correo[]" id="pc_correo" class="form-control m-b " value="">'+
-                   '</div>'+
-                    '<div class="col-md-4">'+
-                        '<br>'+
-                        '<a href="javascript:;" title="Eliminar contacto" onclick="deleteFile('+$("#contador").val()+');" id="delete_'+$("#contador").val()+'" class="delete btn btn-danger">Eliminar Contacto<i class="fa fa-fw fa-times"></i></a>'+
-                    '</div>'+
-                '</div></div>';
-                
-       $("#inFiles").append(html);
-       var cont = $("#contador").val()+1;
-       $("#contador").val(cont);
-       //Si el contador es igual a 5 se bloquea el boton añadir nuevo input
-       if(cont == 5){
-           $("#plus").addClass("disabled");
-           $("#msj").html("&nbsp; *Maximo de archivos permitidos!.");
-       }
-   
-   }
-   
-   //Eliminar un input de archivo
-   function deleteFile(num){
-       $("#group_"+num+"").remove();
-       cont = cont - 1;
-      if(cont < 5){
-           $("#plus").removeClass("disabled");
-           $("#msj").html("");
-       }
-   }
-</script>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar_consulta_medica">Large modal</button>
+
+<div class="modal fade editar_consulta_medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Editar Consulta Médica</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+              editar informacion de la consulta médica
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  </div>
+</div>
+</div>

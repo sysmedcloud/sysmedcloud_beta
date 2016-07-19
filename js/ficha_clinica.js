@@ -37,7 +37,7 @@ function eliminar_consulta_med(id_consulta_medica){
         
         //Iniciar peticion con ajax
         $.ajax({
-            data: {"id_consulta" : id_consulta_medica},
+            data: {"id_consulta_med" : id_consulta_medica},
             type: "POST",
             //dataType: "json",
             url: baseURL+"ficha_medica/eliminarConsultaMed"

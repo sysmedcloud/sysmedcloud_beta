@@ -2,12 +2,97 @@
 $(document).ready(function() {
     
     //CARGA TABLA DE PACIENTES
-    listado_pacientes();
+    listado_consultas_medicas();
     
 });
 
+//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA
+function editar_consulta_med(){
+    
+    alert("editar consulta medica");
+}
+
+//FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA
+function ver_info_consulta_med(){
+    
+    alert("ver informacion consulta medica");
+}
+
+//FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA
+function eliminar_consulta_med(id_consulta_medica){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    swal({   
+        title: "¿Estas seguro de eliminar consulta médica n° "+id_consulta_medica+"?",   
+        text: "Recuerda que... sera eliminado!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, eliminalo!",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false 
+    }, 
+    function(){
+        
+        //Iniciar peticion con ajax
+        $.ajax({
+            data: {"id_consulta" : id_consulta_medica},
+            type: "POST",
+            //dataType: "json",
+            url: baseURL+"ficha_medica/eliminarConsultaMed"
+        })
+       .done(function(data,textStatus,jqXHR ) {         
+            
+            if(data === "success"){//La solicitud se realizo correctamente
+                
+               //Consulta medica eliminada correctamente 
+               swal({ 
+                    title: "Consulta Médica eliminada!",
+                    text:  "consulta médica n° "+id_consulta_medica+" fue eliminada correctamente.",
+                    type:  "success" 
+                },
+                function(){
+                    //recargar tabla de consultas medicas
+                    listado_consultas_medicas();
+                });
+                
+            }else{
+                
+                swal({ 
+                    title: "Ha ocurrido un error",
+                    text:  "Por favor intente nuevamente",
+                    type:  "error" 
+                });
+                
+                return false;
+            }
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+
+            if(textStatus === "error") {//La solicitud a fallado
+                alert("Error: "+textStatus+" "+jqXHR);
+                console.log("La solicitud a fallado: " +  textStatus);
+                console.log(textStatus+" "+jqXHR);
+                
+                swal({ 
+                    title: "Error: "+textStatus+" "+jqXHR,
+                    text:  "",
+                    type:  "error" 
+                });
+            }
+        });
+    });
+    
+    return false;
+}
+
+
+
+
+
 //FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
-function listado_pacientes(){
+function listado_consultas_medicas(){
     
     var baseURL = $('body').data('baseurl');//url base
     

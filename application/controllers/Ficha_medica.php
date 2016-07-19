@@ -80,4 +80,9 @@ class Ficha_medica extends CI_Controller {
         
         echo $this->ficha_medica_model->listado_consultas_medicas($id_paciente);
     }
+    
+    public function eliminarConsultaMed(){
+        
+        echo "success";
+    }
 }

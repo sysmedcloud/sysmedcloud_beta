@@ -38,8 +38,8 @@ class Ficha_medica_model extends CI_Model
                 $fecha_c    = strtotime($fecha[0]);
                 $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
                 
-                $fa_editar  = '<a href="#" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');"><i class="fa fa-eye"></i></a>';
+                $fa_editar  = '<a href="#" data-toggle="modal" data-target=".editar_consulta_medica" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#" data-toggle="modal" data-target=".informacion_consulta_medica" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Consulta Medica" onclick="eliminar_consulta_med(\''.$row->id_consulta.'\');"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente

@@ -512,9 +512,7 @@
          </div>
       </div>
    </div>
-    <!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".informacion_consulta_medica">Large modal</button>
-
+<!-- modal informacion consulta médica -->
 <div class="modal fade informacion_consulta_medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-dialog modal-lg" role="document">
@@ -538,10 +536,9 @@
   </div><!-- /.modal-dialog -->
   </div>
 </div>
+<!-- fin modal informacion consulta médica -->
 
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".editar_consulta_medica">Large modal</button>
-
+<!-- modal edicion consulta médica -->
 <div class="modal fade editar_consulta_medica" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-dialog modal-lg" role="document">
@@ -565,4 +562,5 @@
   </div><!-- /.modal-dialog -->
   </div>
 </div>
+<!-- fin modal edicion consulta médica -->
 </div>

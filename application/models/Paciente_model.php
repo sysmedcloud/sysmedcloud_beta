@@ -58,7 +58,7 @@ class Paciente_model extends CI_Model
         //VALIDAR SI EXISTE UN USUARIO TIPO PACIENTE CON EL MISMO RUT
         $this->anadirUsuario($dataForm);
         
-        @date_default_timezone_set("America/Santiago");
+        @date_default_timezone_set("Chile/Continental");
         $fecha = @date("Y-m-d G:i:s");
             
         $data["id_empresa"]          = $dataForm["id_empresa"];
@@ -205,7 +205,7 @@ class Paciente_model extends CI_Model
     public function anadirHistoriaClinica($id_paciente){
                 
         //obtiene fecha y hora segun zona horaria
-        @date_default_timezone_set("America/Santiago");
+        @date_default_timezone_set("Chile/Continental");
         $fecha = @date("Y-m-d G:i:s");
         
         //datos a ingresar

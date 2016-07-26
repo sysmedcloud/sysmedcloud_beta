@@ -13,7 +13,7 @@ class Agenda_model extends CI_Model
     public function add_cita_medica($dataCita){
         
         // Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+        date_default_timezone_set("Chile/Continental");
         
         $data["id_empresa"]             = $dataCita["id_empresa"];
         $data["id_profesional"]         = $dataCita["id_profesional"];
@@ -60,7 +60,7 @@ class Agenda_model extends CI_Model
     public function edit_cita_medica($dataCita){
         
         //Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+        date_default_timezone_set("Chile/Continental");
         
         $id_cita_medica                 = $dataCita["id_cita_medica"];
         $data["id_empresa"]             = $dataCita["id_empresa"];
@@ -98,6 +98,8 @@ class Agenda_model extends CI_Model
     */
     /**************************************************************************/
     public function citas_medicas($data){
+        
+        date_default_timezone_set("Chile/Continental");
         
         //Query para obtener listado de pacientes
         $this->db->select("*");

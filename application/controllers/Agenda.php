@@ -65,7 +65,7 @@ class Agenda extends CI_Controller {
         $session        = $this->general_sessions->validarSessionAdmin();
         
         // Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+        date_default_timezone_set("Chile/Continental");
         $from   = $this->input->post('from');
         $to     = $this->input->post('to');
         
@@ -112,6 +112,8 @@ class Agenda extends CI_Controller {
     /** FUNCION QUE PERMITE OBTENER TODAS LAS CITAS MEDICAS REGISTRADAS
     /**************************************************************************/
     public function obtener_citas_medicas(){
+        
+        @date_default_timezone_set("Chile/Continental");
         
         $session        = $this->general_sessions->validarSessionAdmin();
         $id_profesional = $session["id_usuario"];
@@ -200,7 +202,7 @@ class Agenda extends CI_Controller {
                 case "modificar":
                     
                     //Definimos nuestra zona horaria
-                    date_default_timezone_set("America/Santiago");
+                    date_default_timezone_set("Chile/Continental");
                     $from   = $this->input->post('from');
                     $to     = $this->input->post('to');
                     $id_cita_medica = $this->input->post('id_cita_medica');

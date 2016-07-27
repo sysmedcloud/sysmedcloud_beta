@@ -66,9 +66,9 @@
                                           <label class="col-sm-3"  for="title">Busqueda por RUT del paciente: </label>
                                           &nbsp;
                                           <div class="col-sm-5">
-                                             <!-- usar ejm: 18144801-6a -->
-                                             <input type='text' name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" class="form-control" />
-                                             <input type="hidden" name="id_paciente" id="id_paciente">
+                                             <input type='text'     name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
+                                             <input type="hidden"   name="id_paciente" value="<?php echo $id_paciente; ?>" id="id_paciente">
+                                             <input type="hidden"   id="id_cita_med"   name="id_cita_med"   value="<?=$id_cita_medica;?>">
                                           </div>
                                           &nbsp;
                                           <div class="col-sm-3">
@@ -85,15 +85,15 @@
                                        </div>
                                        &nbsp;
                                        <div class="col-lg-9">
-                                          <label for="title">Rut del paciente:</label>&nbsp;<span id="rut_paciente"></span> 
+                                          <label for="title">Rut del paciente:</label>&nbsp;<span id="rut_paciente"><?php echo $rut; ?></span> 
                                           <br>
-                                          <label for="title">Nombre Completo:</label>&nbsp;<span id="nombre_paciente"></span> 
+                                          <label for="title">Nombre Completo:</label>&nbsp;<span id="nombre_paciente"><?php echo $nombre; ?></span> 
                                           <br>
-                                          <label for="title">Fecha Nacimiento:</label>&nbsp;<span id="fecha_nac_paciente"></span> 
+                                          <label for="title">Fecha Nacimiento:</label>&nbsp;<span id="fecha_nac_paciente"><?php echo $fecha_nac; ?></span> 
                                           <br>
-                                          <label for="title">Nacionalidad:</label>&nbsp;<span id="nacionalidad_paciente"></span> 
+                                          <label for="title">Nacionalidad:</label>&nbsp;<span id="nacionalidad_paciente"><?php echo $nacionalidad; ?></span> 
                                           <br>
-                                          <label for="title">Estado Civil:</label>&nbsp;<span id="est_civil_paciente"></span>
+                                          <label for="title">Estado Civil:</label>&nbsp;<span id="est_civil_paciente"><?php echo $estado_civil; ?></span>
                                        </div>
                                     </div>
                                     <div class="row">

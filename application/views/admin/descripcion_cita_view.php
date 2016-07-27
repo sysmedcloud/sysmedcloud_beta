@@ -68,7 +68,7 @@
             <p><strong><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Celular:</strong> <?php echo $celular; ?> / <strong>T. fijo:</strong> <?php echo $tel_fijo; ?></p>
             <p>
             <a href="#">Ver Datos Paciente</a> / 
-            <a href="#">Ver Ficha Medica</a> / 
+            <a target="_parent" href="<?php echo base_url(); ?>/ficha_medica/ver_detalle/<?php echo $id_paciente; ?>/<?php echo $id_historia_med; ?>">Ver Ficha Medica</a> / 
             <a href="#" title="Puedes enviar un email para que el paciente confirme asistencia">Notificar vía e-mail</a>
             </p>
         </div>
@@ -99,7 +99,7 @@
         <div class="col-xs-12 col-md-12">
             <button type="submit" class="btn btn-default btn-warning" name="btn_accion" value="modificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modificar Cita</button>
             <button type="submit" class="btn btn-default btn-danger" name="btn_accion" value="eliminar"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Eliminar Cita</button>
-            <button type="submit" class="btn btn-default btn-info" name="btn_accion" value="consulta"><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;Iniciar Consulta Medica</button>
+            <a target="_parent" href="<?php echo base_url(); ?>consulta_medica/nueva_consulta/<?php echo $id_paciente; ?>/<?php echo $id_cita_medica; ?>" class="btn btn-default btn-info" name="btn_accion"><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;Iniciar Consulta Medica</a>
         </div>
     </div>
 </form>

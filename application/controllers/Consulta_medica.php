@@ -49,7 +49,9 @@ class Consulta_medica extends CI_Controller {
     /**************************************************************************/
     /** FUNCION QUE PERMITE CREAR UNA CONSULTA MEDICA
     /**************************************************************************/
-    public function nueva_consulta(){
+    public function nueva_consulta($id_paciente = "",$id_cita_med = ""){
+        
+        $this->load->model('paciente_model');
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
@@ -61,6 +63,17 @@ class Consulta_medica extends CI_Controller {
         
         $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
                 
+        $paciente = $this->paciente_model->info_basica($id_paciente);
+        
+        //Obtenemos datos basicos del paciente utilizados en la vista
+        $data["id_paciente"]    = $id_paciente;
+        $data["id_cita_medica"] = $id_cita_med;
+        $data["rut"]            = $paciente["rut"];  
+        $data["nombre"]         = $paciente["nombre"];  
+        $data["fecha_nac"]      = $paciente["fecha_nac"];  
+        $data["nacionalidad"]   = $paciente["nacionalidad"];  
+        $data["estado_civil"]   = $paciente["estado_civil"];  
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("nueva_consulta_med_view",$data);
     }
@@ -79,19 +92,24 @@ class Consulta_medica extends CI_Controller {
         
         //Validar datos del formulario
         if($this->form_validation->run() == FALSE) {
-                
+            
+            $id_paciente    = $this->input->post("id_paciente");
+            $id_cita_med    = $this->input->post("id_cita_med");    
+            
             //Muestra los errores en la vista
-            $this->nueva_consulta();
+            $this->nueva_consulta($id_paciente,$id_cita_med);
                 
          } else {
              
-            $id_paciente = $this->input->post('id_paciente'); 
+            $id_paciente    = $this->input->post('id_paciente'); 
+            $id_cita_med    = $this->input->post("id_cita_med");
             
             //INGRESAMOS INFORMACION CONSULTA MEDICA
             $data_consulta                  = $this->data_consulta();
             $data_consulta['ingresado_por'] = $session{'id_usuario'};
             $data_consulta['id_paciente']   = $id_paciente;
-            $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta);
+            
+            $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta,$id_cita_med);
             
             if($id_consulta_med > 0){//datos ingresados correctamente
                 

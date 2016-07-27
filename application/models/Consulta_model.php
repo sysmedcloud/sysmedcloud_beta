@@ -8,10 +8,32 @@ class Consulta_model extends CI_Model
     }
     
     //ingresar consulta medica
-    public function add_consulta_med($data){
+    public function add_consulta_med($data,$id_cita_med){
         
         $this->db->insert('tbl_consulta_medica',$data);
-        return $this->db->insert_id();
+        $id_consulta_med = $this->db->insert_id();
+        
+        if($id_consulta_med > 0){
+            
+            //Validar si consulta medica tiene relacion con alguna cita medica
+            if($id_cita_med != ""){
+                
+                //Relacionar cita med. con consulta realizada 
+                //Cambiamos estado cita medica (atendido)
+                $this->db->where('id',$id_cita_med);
+                $this->db->update('tbl_citas_medicas',array("id_consulta_medica"=>$id_consulta_med,"id_estado_cita_medica" => 5,"class"=>"#095894"));
+                
+                return $id_consulta_med;
+                
+            }else{//No hay relacion con alguna cita medica
+                
+                return $id_consulta_med;
+            }
+            
+        }else{
+            
+            return $id_consulta_med;
+        }
     }
     
     public function add_rev_sint_generales($data){

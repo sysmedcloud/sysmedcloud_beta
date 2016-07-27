@@ -21,6 +21,50 @@ class Paciente_model extends CI_Model
         
         return $datos->num_rows();
     }
+    
+    public function info_basica($id_paciente){
+    
+        $this->db->select("u.rut, u.primer_nombre, u.segundo_nombre, u.apellido_paterno, u.apellido_materno, u.fecha_nac, e.estado_civil, p.nombre as pais");
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_estado_civil e','u.id_estado_civil = e.id_estado_civil');
+        $this->db->join('tbl_paises p','u.nacionalidad = p.cod_pais');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.id_usuario',$id_paciente);
+        $datos = $this->db->get();
+        //echo $this->db->last_query();exit();
+        
+        if($datos->num_rows() > 0){
+            
+            
+            //Obtener y parsear datos basico del paciente
+            $rut            = $datos->row()->rut                == "" ? "no informado"  :$datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre      == "" ? "no informado" : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre     == "" ? "no informado" : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno   == "" ? "no informado" : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno   == "" ? "no informado" : $datos->row()->apellido_materno;
+            $fecha_nac      = $datos->row()->fecha_nac          == "" ? "no informado" : $datos->row()->fecha_nac;
+            $estado_civil   = $datos->row()->estado_civil       == "" ? "no informado" : $datos->row()->estado_civil;
+            $pais           = $datos->row()->pais               == "" ? "no informado" : $datos->row()->pais;
+            
+            return array(
+                "rut"           => $rut,
+                "nombre"        => $p_nombre." ".$s_nombre." ".$a_peterno." ".$a_materno,
+                "fecha_nac"     => $fecha_nac,
+                "estado_civil"  => $estado_civil,
+                "nacionalidad"  => $pais);
+            
+        }else{
+            
+            array(
+                "rut"           => "",
+                "nombre"        => "",
+                "fecha_nac"     => "",
+                "estado_civil"  => "",
+                "nacionalidad"  => "");
+        }        
+
+    }
+    
     /***************************************************************************
     /** @Funtion que permite ingresar un nuevo usuario perfil paciente
     /**************************************************************************/

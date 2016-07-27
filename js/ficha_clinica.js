@@ -6,16 +6,16 @@ $(document).ready(function() {
     
 });
 
-//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA
+//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)
 function editar_consulta_med(){
     
-    alert("editar consulta medica");
+    return true;
 }
 
-//FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA
+//FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA (Sin Realizar)
 function ver_info_consulta_med(){
     
-    alert("ver informacion consulta medica");
+    return true;
 }
 
 //FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA
@@ -86,10 +86,6 @@ function eliminar_consulta_med(id_consulta_medica){
     
     return false;
 }
-
-
-
-
 
 //FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
 function listado_consultas_medicas(){
@@ -162,6 +158,11 @@ function listado_consultas_medicas(){
         }
     });
 }
+
+
+
+
+//Funciones de referencias (ojo)
 
 //FUNCION QUE PERMITE MOSTRAR UN MODAL CON LA INFORMACION DE UN PACIENTE
 function ver_datos_paciente(id_paciente){

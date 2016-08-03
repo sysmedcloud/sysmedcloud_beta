@@ -77,7 +77,7 @@
                     time_end: '22:00',   
 
                     // intervalo de tiempo entre las hora, en este caso son 30 minutos
-                    time_split: '30',    
+                    time_split: '15',    
 
                     // Definimos un ancho del 100% a nuestro calendario
                     width: '100%', 

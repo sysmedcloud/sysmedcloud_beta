@@ -32,6 +32,8 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function index(){
         
+        @date_default_timezone_set("Chile/Continental");
+        
         /* el profesional medico tendra la opcion de poder notificar via email al paciente,
          * de esta manera el paciente podra confirmar o rechazar la cita */
         
@@ -64,8 +66,7 @@ class Agenda extends CI_Controller {
         //Cargamos las variables de session (LIBRERIA)
         $session        = $this->general_sessions->validarSessionAdmin();
         
-        // Definimos nuestra zona horaria
-        date_default_timezone_set("Chile/Continental");
+
         $from   = $this->input->post('from');
         $to     = $this->input->post('to');
         

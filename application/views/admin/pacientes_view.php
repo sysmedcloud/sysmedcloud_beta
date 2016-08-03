@@ -6,7 +6,11 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Listado de pacientes registrados </h5>
-                    &nbsp;&nbsp;(E: editar datos, V: ver información, E: eliminar paciente)
+                    &nbsp;&nbsp;( 
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Ver Historia Clínica, 
+                    <i class="fa fa-pencil-square-o"></i>&nbsp;Editar Datos Paciente, 
+                    <i class="fa fa-eye"></i>&nbsp;Ver Información del Paciente, 
+                    <i class="fa fa-times"></i>&nbsp;Eliminar Paciente)
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -37,6 +41,7 @@
                         <th>Edad</th>
                         <th>Celular</th>
                         <th>Email</th>
+                        <th>HC</th>
                         <th>E</th>
                         <th>V</th>
                         <th>E</th>

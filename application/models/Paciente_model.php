@@ -21,6 +21,50 @@ class Paciente_model extends CI_Model
         
         return $datos->num_rows();
     }
+    
+    public function info_basica($id_paciente){
+    
+        $this->db->select("u.rut, u.primer_nombre, u.segundo_nombre, u.apellido_paterno, u.apellido_materno, u.fecha_nac, e.estado_civil, p.nombre as pais");
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_estado_civil e','u.id_estado_civil = e.id_estado_civil');
+        $this->db->join('tbl_paises p','u.nacionalidad = p.cod_pais');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.id_usuario',$id_paciente);
+        $datos = $this->db->get();
+        //echo $this->db->last_query();exit();
+        
+        if($datos->num_rows() > 0){
+            
+            
+            //Obtener y parsear datos basico del paciente
+            $rut            = $datos->row()->rut                == "" ? "no informado"  :$datos->row()->rut;
+            $p_nombre       = $datos->row()->primer_nombre      == "" ? "no informado" : $datos->row()->primer_nombre;
+            $s_nombre       = $datos->row()->segundo_nombre     == "" ? "no informado" : $datos->row()->segundo_nombre;
+            $a_peterno      = $datos->row()->apellido_paterno   == "" ? "no informado" : $datos->row()->apellido_paterno;
+            $a_materno      = $datos->row()->apellido_materno   == "" ? "no informado" : $datos->row()->apellido_materno;
+            $fecha_nac      = $datos->row()->fecha_nac          == "" ? "no informado" : $datos->row()->fecha_nac;
+            $estado_civil   = $datos->row()->estado_civil       == "" ? "no informado" : $datos->row()->estado_civil;
+            $pais           = $datos->row()->pais               == "" ? "no informado" : $datos->row()->pais;
+            
+            return array(
+                "rut"           => $rut,
+                "nombre"        => $p_nombre." ".$s_nombre." ".$a_peterno." ".$a_materno,
+                "fecha_nac"     => $fecha_nac,
+                "estado_civil"  => $estado_civil,
+                "nacionalidad"  => $pais);
+            
+        }else{
+            
+            array(
+                "rut"           => "",
+                "nombre"        => "",
+                "fecha_nac"     => "",
+                "estado_civil"  => "",
+                "nacionalidad"  => "");
+        }        
+
+    }
+    
     /***************************************************************************
     /** @Funtion que permite ingresar un nuevo usuario perfil paciente
     /**************************************************************************/
@@ -58,7 +102,7 @@ class Paciente_model extends CI_Model
         //VALIDAR SI EXISTE UN USUARIO TIPO PACIENTE CON EL MISMO RUT
         $this->anadirUsuario($dataForm);
         
-        @date_default_timezone_set("America/Santiago");
+        @date_default_timezone_set("Chile/Continental");
         $fecha = @date("Y-m-d G:i:s");
             
         $data["id_empresa"]          = $dataForm["id_empresa"];
@@ -205,7 +249,7 @@ class Paciente_model extends CI_Model
     public function anadirHistoriaClinica($id_paciente){
                 
         //obtiene fecha y hora segun zona horaria
-        @date_default_timezone_set("America/Santiago");
+        @date_default_timezone_set("Chile/Continental");
         $fecha = @date("Y-m-d G:i:s");
         
         //datos a ingresar
@@ -361,9 +405,12 @@ class Paciente_model extends CI_Model
         du.celular,
         du.email,
         du.fecha_creacion,
-        du.fecha_nac
+        du.fecha_nac,
+        hd.id_historia_medica,
+        hd.fecha_creacion
         ");
         $this->db->from('tbl_usuarios du');
+        $this->db->join('tbl_historias_medicas hd','hd.id_paciente = du.id_usuario');
         $this->db->where('du.id_perfil',4);
         $this->db->where('du.estado',0);
         $this->db->where('du.eliminado',0);
@@ -395,10 +442,12 @@ class Paciente_model extends CI_Model
                 $fecha_nac  = @$fecha_nac[0];//Fecha de nacimiento
                 $edad       = calcularEdad($fecha_nac) == "2015" ? "no informado" : calcularEdad($fecha_nac); 
                 
-                $fa_editar  = '<a href="'.  base_url().'paciente_admin/editarPaciente/'.$row->id_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_editar  = '<a href="'.base_url().'paciente_admin/editarPaciente/'.$row->id_usuario.'" title="Editar Información"><i class="fa fa-pencil-square-o"></i></a>';
                 $fa_view    = '<a href="#" title="Ver Información" onclick="ver_datos_paciente('.$row->id_usuario.');" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>';
                 $fa_delete  = '<a href="#" title="Eliminar Paciente" onclick="eliminar_paciente(\''.$row->id_usuario.'\',\''.$row->primer_nombre.' '.$row->apellido_paterno.'\',\''.$row->rut.'\');"><i class="fa fa-times"></i></a>';
+                $fa_hc      = '<a href="#" title="Ver Historia Clínica" onclick="ver_HC(\''.$row->id_usuario.'\',\''.$row->id_historia_medica.'\');"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>';
                 
+
                 //Crear arreglo con los datos del paciente
                 $arr_paciente[] = array(
                     "fecha_creacion"    => $fecha_c,
@@ -408,6 +457,7 @@ class Paciente_model extends CI_Model
                     "edad"              => $edad,
                     "celular"           => $celular,
                     "email"             => $email,
+                    "h_clinica"         => $fa_hc,
                     "editar"            => $fa_editar,
                     "view"              => $fa_view,
                     "delete"            => $fa_delete

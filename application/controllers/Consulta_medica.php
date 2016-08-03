@@ -49,7 +49,9 @@ class Consulta_medica extends CI_Controller {
     /**************************************************************************/
     /** FUNCION QUE PERMITE CREAR UNA CONSULTA MEDICA
     /**************************************************************************/
-    public function nueva_consulta(){
+    public function nueva_consulta($id_paciente = "",$id_cita_med = ""){
+        
+        $this->load->model('paciente_model');
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
@@ -61,6 +63,17 @@ class Consulta_medica extends CI_Controller {
         
         $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
                 
+        $paciente = $this->paciente_model->info_basica($id_paciente);
+        
+        //Obtenemos datos basicos del paciente utilizados en la vista
+        $data["id_paciente"]    = $id_paciente;
+        $data["id_cita_medica"] = $id_cita_med;
+        $data["rut"]            = $paciente["rut"];  
+        $data["nombre"]         = $paciente["nombre"];  
+        $data["fecha_nac"]      = $paciente["fecha_nac"];  
+        $data["nacionalidad"]   = $paciente["nacionalidad"];  
+        $data["estado_civil"]   = $paciente["estado_civil"];  
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("nueva_consulta_med_view",$data);
     }
@@ -79,38 +92,140 @@ class Consulta_medica extends CI_Controller {
         
         //Validar datos del formulario
         if($this->form_validation->run() == FALSE) {
-                
+            
+            $id_paciente    = $this->input->post("id_paciente");
+            $id_cita_med    = $this->input->post("id_cita_med");    
+            
             //Muestra los errores en la vista
-            $this->nueva_consulta();
+            $this->nueva_consulta($id_paciente,$id_cita_med);
                 
          } else {
              
-            $id_paciente = $this->input->post('id_paciente'); 
+            $id_paciente    = $this->input->post('id_paciente'); 
+            $id_cita_med    = $this->input->post("id_cita_med");
             
             //INGRESAMOS INFORMACION CONSULTA MEDICA
             $data_consulta                  = $this->data_consulta();
             $data_consulta['ingresado_por'] = $session{'id_usuario'};
             $data_consulta['id_paciente']   = $id_paciente;
-            $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta);
+            
+            $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta,$id_cita_med);
             
             if($id_consulta_med > 0){//datos ingresados correctamente
-                echo "consulta medica ID ".$id_consulta_med." ingresada con exito";
+                
+                //DATOS REFERENTES A LA REVISION POR SISTEMA
+                $rv_sistema = $this->revision_por_sistema();
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GENERALES
+                $rv_sistema[0]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[0]['id_paciente']   = $id_paciente;
+                $rv_sistema[0]['ingresado_por'] = $session{'id_usuario'};                      
+                $this->consulta_model->add_rev_sint_generales($rv_sistema[0]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS RESPIRATORIOS
+                $rv_sistema[1]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[1]['id_paciente']   = $id_paciente;
+                $rv_sistema[1]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_resp($rv_sistema[1]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS CARDIOVASCULARES
+                $rv_sistema[2]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[2]['id_paciente']   = $id_paciente;
+                $rv_sistema[2]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_cardio($rv_sistema[2]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GASTROINSTESTINALES
+                $rv_sistema[3]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[3]['id_paciente']   = $id_paciente;
+                $rv_sistema[3]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_gastro($rv_sistema[3]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GENITOURINARIOS
+                $rv_sistema[4]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[4]['id_paciente']   = $id_paciente;
+                $rv_sistema[4]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_geni($rv_sistema[4]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS NEUROLOGICOS
+                $rv_sistema[5]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[5]['id_paciente']   = $id_paciente;
+                $rv_sistema[5]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_neuro($rv_sistema[5]);
+                //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS ENDOCRINOS
+                $rv_sistema[6]['id_consulta']   = $id_consulta_med;
+                $rv_sistema[6]['id_paciente']   = $id_paciente;
+                $rv_sistema[6]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_rev_sint_endo($rv_sistema[6]);
+                
+                //DATOS REFERENTES AL EXAMEN FISICO
+                $examen_fisico = $this->examen_fisico(); 
+                //INGRESAR DATOS EXAMEN FISICO / DECUBITO
+                $examen_fisico[0]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[0]['id_paciente']   = $id_paciente;
+                $examen_fisico[0]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_decubito($examen_fisico[0]);
+                //INGRESAR DATOS EXAMEN FISICO / DEAMBULACION
+                $examen_fisico[1]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[1]['id_paciente']   = $id_paciente;
+                $examen_fisico[1]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_deambulacion($examen_fisico[1]);
+                //INGRESAR DATOS EXAMEN FISICO / FACIE
+                $examen_fisico[2]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[2]['id_paciente']   = $id_paciente;
+                $examen_fisico[2]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_facie($examen_fisico[2]);
+                //INGRESAR DATOS EXAMEN FISICO / CONCIENCIA
+                $examen_fisico[3]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[3]['id_paciente']   = $id_paciente;
+                $examen_fisico[3]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_conciencia($examen_fisico[3]);
+                //INGRESAR DATOS EXAMEN FISICO / PIEL
+                $examen_fisico[4]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[4]['id_paciente']   = $id_paciente;
+                $examen_fisico[4]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_piel($examen_fisico[4]);
+                //INGRESAR DATOS EXAMEN FISICO / S. LINFATICO
+                $examen_fisico[5]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[5]['id_paciente']   = $id_paciente;
+                $examen_fisico[5]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_s_linfatico($examen_fisico[5]);
+                //INGRESAR DATOS EXAMEN FISICO / SIGNOS VITALES
+                $examen_fisico[6]['id_consulta']   = $id_consulta_med;
+                $examen_fisico[6]['id_paciente']   = $id_paciente;
+                $examen_fisico[6]['ingresado_por'] = $session{'id_usuario'};       
+                $this->consulta_model->add_ex_signos_vitales($examen_fisico[6]);
+                
+                if($id_consulta_med > 0){
+                    
+                    //$this->consultamed_succes($id_consulta_med);
+                    redirect(base_url()."consulta_medica/consultamed_succes/".$id_consulta_med);
+                    
+                }else{
+                    
+                    echo "error al ingresar consulta medica";exit();
+                    
+                } 
+                
             }else{//error al ingresar datos consulta medica
-                echo "error al ingresar consulta medica";
+                
+                echo "error al ingresar consulta medica";exit();
             }
-            
-            exit();
-            
-            //DATOS REFERENTES A LA REVISION POR SISTEMA
-            $rv_sistema    = $this->revision_por_sistema();
-            
-            //DATOS REFERENTES AL EXAMEN FISICO
-            $examen_fisico = $this->examen_fisico(); 
-            
-            echo "<pre>";print_r(array($data_consulta,$rv_sistema,$examen_fisico));exit();
-            
-            return false;
         }       
+    }
+    
+    /**************************************************************************/
+    /** @Funcion que permite ---
+    /**************************************************************************/
+    public function consultamed_succes($id_consulta_medica){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        
+        //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
+        $data['files']      = $this->fileclass->nueva_consulta();
+        
+        $data["menu"]       = "Nueva Consulta Médica";
+        
+        $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
+        
+        $data["id_consulta_med"] = $id_consulta_medica;
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->gestion_view->defaultAdminView("consultamed_succes_view",$data);
     }
     
     //DATOS BASICOS CONSULTA MEDICA
@@ -175,13 +290,13 @@ class Consulta_medica extends CI_Controller {
     //REVISION POR SISTEMA / SINTOMAS CARDIOVASCULARES
     public function rv_sintomas_cardiovasculares(){
         
-        $RV_CARD["disnea_esfuerzo"]        = $this->input->post('card_dis_esf')        !== null ? TRUE : FALSE;
-        $RV_CARD["ortopnea"]       = $this->input->post('card_ortopnea')       !== null ? TRUE : FALSE;
+        $RV_CARD["disnea_esfuerzo"]     = $this->input->post('card_dis_esf')        !== null ? TRUE : FALSE;
+        $RV_CARD["ortopnea"]            = $this->input->post('card_ortopnea')       !== null ? TRUE : FALSE;
         $RV_CARD["disnea_paroxistica"]  = $this->input->post('card_dis_parox_noc')  !== null ? TRUE : FALSE;
-        $RV_CARD["edema_ext_int"]  = $this->input->post('card_edema_ext_inf')  !== null ? TRUE : FALSE;
+        $RV_CARD["edema_ext_int"]       = $this->input->post('card_edema_ext_inf')  !== null ? TRUE : FALSE;
         $RV_CARD["dolor_precordial"]    = $this->input->post('card_dolor_preco')    !== null ? TRUE : FALSE;
-        $RV_CARD["otros_sintomas"]          = $this->input->post('card_otros')          !== null ? TRUE : FALSE;        
-        $RV_CARD["comentarios"]    = $this->input->post('card_comentarios');
+        $RV_CARD["otros_sintomas"]      = $this->input->post('card_otros')          !== null ? TRUE : FALSE;        
+        $RV_CARD["comentarios"]         = $this->input->post('card_comentarios');
         
         return $RV_CARD;
     }
@@ -279,14 +394,14 @@ class Consulta_medica extends CI_Controller {
     //DATOS EXAMEN FISICO DEAMBULACION
     public function deambulacion(){
         
-        $EX_DEAMBULACION["deam_normal"]    = $this->input->post('deammbulación_normal')  !== null ? TRUE : FALSE;
+        $EX_DEAMBULACION["deam_normal"]             = $this->input->post('deammbulación_normal')  !== null ? TRUE : FALSE;
         $EX_DEAMBULACION["marcha_ataxica"]          = $this->input->post('marcha_ataxica')        !== null ? TRUE : FALSE;
-        $EX_DEAMBULACION["marcha_p_polineuritis"]     = $this->input->post('marcha_polineuritis')   !== null ? TRUE : FALSE;
+        $EX_DEAMBULACION["marcha_p_polineuritis"]   = $this->input->post('marcha_polineuritis')   !== null ? TRUE : FALSE;
         $EX_DEAMBULACION["marcha_espastica"]        = $this->input->post('marcha_espastica')      !== null ? TRUE : FALSE;
         $EX_DEAMBULACION["marcha_hemiplejico"]      = $this->input->post('marcha_hemiplejico')    !== null ? TRUE : FALSE;
         $EX_DEAMBULACION["marcha_parkinsoniana"]    = $this->input->post('marcha_parkinsoniana')  !== null ? TRUE : FALSE;
-        $EX_DEAMBULACION["otros_trastornos"]      = $this->input->post('d_otros_trastornos')    !== null ? TRUE : FALSE;       
-        $EX_DEAMBULACION["comentarios"]           = $this->input->post('d_comentarios');
+        $EX_DEAMBULACION["otros_trastornos"]        = $this->input->post('d_otros_trastornos')    !== null ? TRUE : FALSE;       
+        $EX_DEAMBULACION["comentarios"]             = $this->input->post('d_comentarios');
         
         return $EX_DEAMBULACION;
     }
@@ -313,15 +428,15 @@ class Consulta_medica extends CI_Controller {
     //DATOS EXAMEN FISICO CONCIENCIA
     public function conciencia(){
         
-        $EX_CONCIENCIA["orientacion_tiempo"]               = $this->input->post('orientacion_t');
-        $EX_CONCIENCIA["orientacion_espacio"]               = $this->input->post('orientacion_e');
-        $EX_CONCIENCIA["reconocimiento_personas"]            = $this->input->post('reconocimiento_p');
-        $EX_CONCIENCIA["comentarios"]      = $this->input->post('conciencia_comentarios');
+        $EX_CONCIENCIA["orientacion_tiempo"]        = $this->input->post('orientacion_t');
+        $EX_CONCIENCIA["orientacion_espacio"]       = $this->input->post('orientacion_e');
+        $EX_CONCIENCIA["reconocimiento_personas"]   = $this->input->post('reconocimiento_p');
+        $EX_CONCIENCIA["comentarios"]               = $this->input->post('conciencia_comentarios');
         
-        $EX_CONCIENCIA["lucidez"]        = $this->input->post('lucidez')         !== null ? TRUE : FALSE;
-        $EX_CONCIENCIA["obnubilacion"]   = $this->input->post('obnubilacion')    !== null ? TRUE : FALSE;
-        $EX_CONCIENCIA["sopor"]          = $this->input->post('sopor')           !== null ? TRUE : FALSE;
-        $EX_CONCIENCIA["coma"]           = $this->input->post('coma')            !== null ? TRUE : FALSE;
+        $EX_CONCIENCIA["lucidez"]                   = $this->input->post('lucidez')         !== null ? TRUE : FALSE;
+        $EX_CONCIENCIA["obnubilacion"]              = $this->input->post('obnubilacion')    !== null ? TRUE : FALSE;
+        $EX_CONCIENCIA["sopor"]                     = $this->input->post('sopor')           !== null ? TRUE : FALSE;
+        $EX_CONCIENCIA["coma"]                      = $this->input->post('coma')            !== null ? TRUE : FALSE;
         
         return $EX_CONCIENCIA;
     }
@@ -329,46 +444,46 @@ class Consulta_medica extends CI_Controller {
     //DATOS EXAMEN FISICO PIEL 
     public function piel(){
         
-        $EX_PIEL["color"]                 = $this->input->post('piel_color');
-        $EX_PIEL["humedad_untuosidad"]    = $this->input->post('piel_humedad_u');
-        $EX_PIEL["turgor_elasticidad"]    = $this->input->post('turgor_elasticidad');
-        $EX_PIEL["temperatura"]           = $this->input->post('piel_temperatura');        
-        $EX_PIEL["piel_sin_lesiones"]     = $this->input->post('piel_sin_lesiones')       !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_Eritema"]          = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_mascula"]          = $this->input->post('piel_mascula')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_papula"]           = $this->input->post('piel_papula')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_nodulo"]           = $this->input->post('piel_nodulo')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_tumor"]            = $this->input->post('piel_tumor')              !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_vesicula"]         = $this->input->post('piel_vesicula')           !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_ampolla"]          = $this->input->post('piel_ampolla')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_pustula"]          = $this->input->post('piel_pustula')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_placa"]            = $this->input->post('piel_placa')              !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_eritema"]          = $this->input->post('piel_eritema')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_escama"]           = $this->input->post('piel_escama')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_erosion"]          = $this->input->post('piel_erosion')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_ulceracion"]       = $this->input->post('piel_ulceracion')         !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_costra"]           = $this->input->post('piel_costra')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_cicatriz"]         = $this->input->post('piel_cicatriz')           !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_roncha"]           = $this->input->post('piel_roncha')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_liquenificacion"]  = $this->input->post('piel_liquenificacion')    !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_telangiectasia"]   = $this->input->post('piel_telangiectasia')     !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_petequia"]         = $this->input->post('piel_petequia')           !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_equimosis"]        = $this->input->post('piel_equimosis')          !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_vibice"]           = $this->input->post('piel_vibice')             !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_efelide"]          = $this->input->post('piel_efelide')            !== null ? TRUE : FALSE;
-        $EX_PIEL["piel_otros_t"]          = $this->input->post('piel_otros_t')            !== null ? TRUE : FALSE;
-        $EX_PIEL["pelos_calvicie"]        = $this->input->post('pelos_calvicie')          !== null ? TRUE : FALSE;
-        $EX_PIEL["pelos_alopecia"]        = $this->input->post('pelos_alopecia')          !== null ? TRUE : FALSE;
-        $EX_PIEL["pelos_hirsutismo"]      = $this->input->post('pelos_hirsutismo')        !== null ? TRUE : FALSE;
-        $EX_PIEL["pelos_otros_alt"]       = $this->input->post('pelos_otros_alt')         !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_acropaquia"]      = $this->input->post('unias_acropaquia')        !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_coiloniquia"]     = $this->input->post('unias_coiloniquia')       !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_psoriasis"]       = $this->input->post('unias_psoriasis')         !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_l_beau"]          = $this->input->post('unias_l_beau')            !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_l_ungueales_p"]   = $this->input->post('unias_l_ungueales_p')     !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_l_ungueales_c"]   = $this->input->post('unias_l_ungueales_c')     !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_renal_c"]         = $this->input->post('unias_renal_c')           !== null ? TRUE : FALSE;
-        $EX_PIEL["unias_hemorragias_s"]   = $this->input->post('unias_hemorragias_s')     !== null ? TRUE : FALSE;
+        $EX_PIEL["color"]                   = $this->input->post('piel_color');
+        $EX_PIEL["humedad_untuosidad"]      = $this->input->post('piel_humedad_u');
+        $EX_PIEL["turgor_elasticidad"]      = $this->input->post('piel_turgor_e');
+        $EX_PIEL["temperatura"]             = $this->input->post('piel_temperatura');        
+        $EX_PIEL["no_lesiones"]             = $this->input->post('piel_sin_lesiones')       !== null ? TRUE : FALSE;
+        $EX_PIEL["eritema_exp_solar"]                 = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
+        $EX_PIEL["mascula_cara"]            = $this->input->post('piel_mascula')            !== null ? TRUE : FALSE;
+        $EX_PIEL["papula"]                  = $this->input->post('piel_papula')             !== null ? TRUE : FALSE;
+        $EX_PIEL["nodulo"]                  = $this->input->post('piel_nodulo')             !== null ? TRUE : FALSE;
+        $EX_PIEL["tumor"]                   = $this->input->post('piel_tumor')              !== null ? TRUE : FALSE;
+        $EX_PIEL["vesicula"]                = $this->input->post('piel_vesicula')           !== null ? TRUE : FALSE;
+        $EX_PIEL["ampolla"]                 = $this->input->post('piel_ampolla')            !== null ? TRUE : FALSE;
+        $EX_PIEL["pustula"]                 = $this->input->post('piel_pustula')            !== null ? TRUE : FALSE;
+        $EX_PIEL["placa"]                   = $this->input->post('piel_placa')              !== null ? TRUE : FALSE;
+        $EX_PIEL["eritema"]                 = $this->input->post('piel_eritema')            !== null ? TRUE : FALSE;
+        $EX_PIEL["escama"]                  = $this->input->post('piel_escama')             !== null ? TRUE : FALSE;
+        $EX_PIEL["erosion"]                 = $this->input->post('piel_erosion')            !== null ? TRUE : FALSE;
+        $EX_PIEL["ulceracion"]              = $this->input->post('piel_ulceracion')         !== null ? TRUE : FALSE;
+        $EX_PIEL["costra"]                  = $this->input->post('piel_costra')             !== null ? TRUE : FALSE;
+        $EX_PIEL["cicatriz"]                = $this->input->post('piel_cicatriz')           !== null ? TRUE : FALSE;
+        $EX_PIEL["roncha"]                  = $this->input->post('piel_roncha')             !== null ? TRUE : FALSE;
+        $EX_PIEL["liquenificacion"]         = $this->input->post('piel_liquenificacion')    !== null ? TRUE : FALSE;
+        $EX_PIEL["telangiectasia"]          = $this->input->post('piel_telangiectasia')     !== null ? TRUE : FALSE;
+        $EX_PIEL["petequia"]                = $this->input->post('piel_petequia')           !== null ? TRUE : FALSE;
+        $EX_PIEL["equimosis"]               = $this->input->post('piel_equimosis')          !== null ? TRUE : FALSE;
+        $EX_PIEL["víbice"]                  = $this->input->post('piel_vibice')             !== null ? TRUE : FALSE;
+        $EX_PIEL["efelide"]                 = $this->input->post('piel_efelide')            !== null ? TRUE : FALSE;
+        $EX_PIEL["otros_trastornos"]        = $this->input->post('piel_otros_t')            !== null ? TRUE : FALSE;
+        $EX_PIEL["pelos_calvicie"]          = $this->input->post('pelos_calvicie')          !== null ? TRUE : FALSE;
+        $EX_PIEL["pelos_alopecia"]          = $this->input->post('pelos_alopecia')          !== null ? TRUE : FALSE;
+        $EX_PIEL["pelos_hirsutismo"]        = $this->input->post('pelos_hirsutismo')        !== null ? TRUE : FALSE;
+        $EX_PIEL["pelos_otras_alt"]         = $this->input->post('pelos_otros_alt')         !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_acropaquia"]         = $this->input->post('unias_acropaquia')        !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_coiloniquia"]        = $this->input->post('unias_coiloniquia')       !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_psoriasis"]          = $this->input->post('unias_psoriasis')         !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_líneas_beau"]        = $this->input->post('unias_l_beau')            !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_lechos_ungueales_p"] = $this->input->post('unias_l_ungueales_p')     !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_lechos_ungueales_cianoticos"]    = $this->input->post('unias_l_ungueales_c')     !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_insuficiencia_renal_cronica"]    = $this->input->post('unias_renal_c')           !== null ? TRUE : FALSE;
+        $EX_PIEL["unas_hemorragias_subungueales"]       = $this->input->post('unias_hemorragias_s')     !== null ? TRUE : FALSE;
         
         return $EX_PIEL;
     }
@@ -376,8 +491,8 @@ class Consulta_medica extends CI_Controller {
     //DATOS EXAMEN FISICO S. LINFATICO
     public function s_linfatico(){
         
-        $EX_S_LINFATICO["sl_adenopatia"]   = $this->input->post('sl_adenopatia');
-        $EX_S_LINFATICO["sl_comercial"]    = $this->input->post('sl_comercial');
+        $EX_S_LINFATICO["adenopatia"]       = $this->input->post('sl_adenopatia');
+        $EX_S_LINFATICO["cometarios"]       = $this->input->post('sl_comercial');
         
         return $EX_S_LINFATICO;
     }
@@ -385,15 +500,15 @@ class Consulta_medica extends CI_Controller {
     //DATOS EXAMEN FISICO SIGNOS VITALES
     public function signos_vitales(){
         
-        $EX_SIGNOS_VITALES["sv_fr"]            = $this->input->post('sv_fr');
-        $EX_SIGNOS_VITALES["sv_temperatura"]   = $this->input->post('sv_temperatura');
-        $EX_SIGNOS_VITALES["sv_ta_sis"]        = $this->input->post('sv_ta_sis');
-        $EX_SIGNOS_VITALES["sv_ta_diast"]      = $this->input->post('sv_ta_diast');
-        $EX_SIGNOS_VITALES["sv_pa"]            = $this->input->post('sv_pa');
-        $EX_SIGNOS_VITALES["sv_fc"]            = $this->input->post('sv_fc');
-        $EX_SIGNOS_VITALES["sv_peso"]          = $this->input->post('sv_peso');
-        $EX_SIGNOS_VITALES["sv_talla"]         = $this->input->post('sv_talla');
-        $EX_SIGNOS_VITALES["sv_imc"]           = $this->input->post('sv_imc');
+        $EX_SIGNOS_VITALES["fr"]            = $this->input->post('sv_fr');
+        $EX_SIGNOS_VITALES["temperatura"]   = $this->input->post('sv_temperatura');
+        $EX_SIGNOS_VITALES["ta_sis"]        = $this->input->post('sv_ta_sis');
+        $EX_SIGNOS_VITALES["ta_diast"]      = $this->input->post('sv_ta_diast');
+        $EX_SIGNOS_VITALES["pa"]            = $this->input->post('sv_pa');
+        $EX_SIGNOS_VITALES["fc"]            = $this->input->post('sv_fc');
+        $EX_SIGNOS_VITALES["peso"]          = $this->input->post('sv_peso');
+        $EX_SIGNOS_VITALES["talla"]         = $this->input->post('sv_talla');
+        $EX_SIGNOS_VITALES["imc"]           = $this->input->post('sv_imc');
         
         return $EX_SIGNOS_VITALES;
     }

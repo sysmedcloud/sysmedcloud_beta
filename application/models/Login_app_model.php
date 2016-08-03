@@ -81,7 +81,7 @@ class Login_app_model extends CI_Model {
     /******************************************************************/
     public function log_login_out($data){
         
-        @date_default_timezone_set("America/Santiago");
+        @date_default_timezone_set("Chile/Continental");
         $fecha = @date("Y-m-d G:i:s");
 
         $data = array(

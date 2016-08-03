@@ -13,7 +13,7 @@ class Agenda_model extends CI_Model
     public function add_cita_medica($dataCita){
         
         // Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+        date_default_timezone_set("Chile/Continental");
         
         $data["id_empresa"]             = $dataCita["id_empresa"];
         $data["id_profesional"]         = $dataCita["id_profesional"];
@@ -60,7 +60,7 @@ class Agenda_model extends CI_Model
     public function edit_cita_medica($dataCita){
         
         //Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+        date_default_timezone_set("Chile/Continental");
         
         $id_cita_medica                 = $dataCita["id_cita_medica"];
         $data["id_empresa"]             = $dataCita["id_empresa"];
@@ -98,6 +98,8 @@ class Agenda_model extends CI_Model
     */
     /**************************************************************************/
     public function citas_medicas($data){
+        
+        date_default_timezone_set("Chile/Continental");
         
         //Query para obtener listado de pacientes
         $this->db->select("*");
@@ -140,10 +142,14 @@ class Agenda_model extends CI_Model
     public function info_cita_medica($id_cita_medica,$id_empresa){
         
         //Query para validar existencia del usuario perfil paciente
-        $this->db->select("*");
-        $this->db->from('tbl_citas_medicas');
-        $this->db->where('id',$id_cita_medica);
-        $this->db->where('id_empresa',$id_empresa);
+        $this->db->select("h.id_historia_medica, cm.id, cm.id_empresa, cm.id_profesional, cm.id_paciente, cm.rut_paciente, cm.id_estado_cita_medica,
+                           cm.nom_paciente, cm.correo, cm.celular, cm.tel_fijo, cm.body, 
+                           cm.url, cm.class, cm.start, cm.end, cm.inicio_normal, cm.final_normal, cm.fecha_mod");
+        $this->db->from('tbl_citas_medicas cm');
+        $this->db->join('tbl_usuarios u',' u.id_usuario = cm.id_paciente');
+        $this->db->join('tbl_historias_medicas h',' h.id_paciente = u.id_usuario');
+        $this->db->where('cm.id',$id_cita_medica);
+        $this->db->where('cm.id_empresa',$id_empresa);
         $datos_cita = $this->db->get();
         return $datos_cita->row_array();
     }

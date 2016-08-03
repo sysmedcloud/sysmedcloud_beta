@@ -1,83 +1,111 @@
-//SCRIPT QUE PERMITE ORDENAR TABLA DE PACIENTES POR FECHA
-jQuery.extend( jQuery.fn.dataTableExt.oSort, {
-    "date-eu-pre": function ( date ) {
-        date = date.replace(" ", "");
-        var eu_date, year;
-
-        if (date == '') {
-            return 0;
-        }
-
-        if (date.indexOf('.') > 0) {
-            /*date a, format dd.mn.(yyyy) ; (year is optional)*/
-            eu_date = date.split('.');
-        } else {
-            /*date a, format dd/mn/(yyyy) ; (year is optional)*/
-            eu_date = date.split('/');
-        }
-
-        /*year (optional)*/
-        if (eu_date[2]) {
-            year = eu_date[2];
-        } else {
-            year = 0;
-        }
-
-        /*month*/
-        var month = eu_date[1];
-        if (month.length == 1) {
-            month = 0+month;
-        }
-
-        /*day*/
-        var day = eu_date[0];
-        if (day.length == 1) {
-            day = 0+day;
-        }
-
-        return (year + month + day) * 1;
-    },
-
-    "date-eu-asc": function ( a, b ) {
-        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-    },
-
-    "date-eu-desc": function ( a, b ) {
-        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-    }
-});
-
 //AL MOMENTO DE CARGAR LA PAGINA CARGA ESTO
 $(document).ready(function() {
     
     //CARGA TABLA DE PACIENTES
-    listado_pacientes();
+    listado_consultas_medicas();
     
 });
 
-//FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
-function listado_pacientes(){
+//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)
+function editar_consulta_med(){
+    
+    return true;
+}
+
+//FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA (Sin Realizar)
+function ver_info_consulta_med(){
+    
+    return true;
+}
+
+//FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA
+function eliminar_consulta_med(id_consulta_medica){
     
     var baseURL = $('body').data('baseurl');//url base
     
-    $('#pacientes').dataTable({
+    swal({   
+        title: "¿Estas seguro de eliminar consulta médica n° "+id_consulta_medica+"?",   
+        text: "Recuerda que... sera eliminado!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, eliminalo!",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false 
+    }, 
+    function(){
+        
+        //Iniciar peticion con ajax
+        $.ajax({
+            data: {"id_consulta_med" : id_consulta_medica},
+            type: "POST",
+            //dataType: "json",
+            url: baseURL+"ficha_medica/eliminarConsultaMed"
+        })
+       .done(function(data,textStatus,jqXHR ) {         
+            
+            if(data === "success"){//La solicitud se realizo correctamente
+                
+               //Consulta medica eliminada correctamente 
+               swal({ 
+                    title: "Consulta Médica eliminada!",
+                    text:  "consulta médica n° "+id_consulta_medica+" fue eliminada correctamente.",
+                    type:  "success" 
+                },
+                function(){
+                    //recargar tabla de consultas medicas
+                    listado_consultas_medicas();
+                });
+                
+            }else{
+                
+                swal({ 
+                    title: "Ha ocurrido un error",
+                    text:  "Por favor intente nuevamente",
+                    type:  "error" 
+                });
+                
+                return false;
+            }
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+
+            if(textStatus === "error") {//La solicitud a fallado
+                alert("Error: "+textStatus+" "+jqXHR);
+                console.log("La solicitud a fallado: " +  textStatus);
+                console.log(textStatus+" "+jqXHR);
+                
+                swal({ 
+                    title: "Error: "+textStatus+" "+jqXHR,
+                    text:  "",
+                    type:  "error" 
+                });
+            }
+        });
+    });
+    
+    return false;
+}
+
+//FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
+function listado_consultas_medicas(){
+    
+    var id_paciente = $("#id_paciente").val();
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#consultas_medicas').dataTable({
         "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
         "ajax": {
-            "url": baseURL+"paciente_admin/pacientes_json",//data
+            "url": baseURL+"ficha_medica/listado_consultas_med/"+id_paciente,//data
             "dataSrc": ""
         },
         "columns": [ //columnas de nuestra tabla
-            { "data": "fecha_creacion" },
-            { "data": "rut" },
-            { "data": "nombres" },
-            { "data": "apellidos" },
-            { "data": "edad" },
-            { "data": "celular" },
-            { "data": "email"},
-            { "data": "h_clinica"},
-            { "data": "editar"},
-            { "data": "view"},
-            { "data": "delete"}
+            { "data": "id_consulta"},
+            { "data": "fecha" },
+            { "data": "motivo_consulta" },
+            { "data": "anamnesis_proxima" },
+            { "data": "acciones"}
         ],
         columnDefs: [
             { type: 'date-eu', //ordena fecha
@@ -130,6 +158,11 @@ function listado_pacientes(){
         }
     });
 }
+
+
+
+
+//Funciones de referencias (ojo)
 
 //FUNCION QUE PERMITE MOSTRAR UN MODAL CON LA INFORMACION DE UN PACIENTE
 function ver_datos_paciente(id_paciente){
@@ -397,9 +430,10 @@ function eliminar_paciente(id_paciente,nombre,rut){
 }
 
 //FUNCION QUE PERMITE VISUALIZAR DETALLE DE LA HISTORIA MEDICA DE UN PACIENTE
-function ver_HC(id_paciente,id_historia_med){
+function ver_HC(id_paciente){
+    
     var baseURL = $('body').data('baseurl');//url base
-    var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente+"/"+id_historia_med;    
+    var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente;    
     $(location).attr('href',url);
 
 }

@@ -82,6 +82,8 @@ function activeMenu($nom_menu){
 //////////////////////////////////////////////////// 
 function _formatear($fecha){
     
+    date_default_timezone_set("Chile/Continental");
+    
     return strtotime(substr($fecha, 6, 4)."-".substr($fecha, 3, 2)."-".substr($fecha, 0, 2)." " .substr($fecha, 10, 6)) * 1000;
 }
 

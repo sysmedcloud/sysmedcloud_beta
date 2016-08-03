@@ -32,6 +32,8 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function index(){
         
+        @date_default_timezone_set("Chile/Continental");
+        
         /* el profesional medico tendra la opcion de poder notificar via email al paciente,
          * de esta manera el paciente podra confirmar o rechazar la cita */
         
@@ -64,8 +66,7 @@ class Agenda extends CI_Controller {
         //Cargamos las variables de session (LIBRERIA)
         $session        = $this->general_sessions->validarSessionAdmin();
         
-        // Definimos nuestra zona horaria
-        date_default_timezone_set("America/Santiago");
+
         $from   = $this->input->post('from');
         $to     = $this->input->post('to');
         
@@ -113,6 +114,8 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function obtener_citas_medicas(){
         
+        @date_default_timezone_set("Chile/Continental");
+        
         $session        = $this->general_sessions->validarSessionAdmin();
         $id_profesional = $session["id_usuario"];
         $id_perfil      = $session["id_perfil"];
@@ -148,16 +151,17 @@ class Agenda extends CI_Controller {
         $row_c = $this->agenda_model->datos_contacto($row['id_paciente']);
         
         //Creamos variables para nuestra vista
-        $data["id_cita_medica"] = $id_cita_medica;
-        $data["id_paciente"]    = $row['id_paciente'];
-        $data["paciente"]       = $row['nom_paciente'];
-        $data["rut"]            = $row_c['rut'];
-        $data["correo"]         = $row_c['email']       != "" ? $row_c['email']  : "no informado";
-        $data["celular"]        = $row_c['celular']     != "" ? $row_c['celular'] : "no informado";
-        $data["tel_fijo"]       = $row_c['telefono']    != "" ? $row_c['telefono']: "no informado";
-        $data["nota"]           = $row['body']          != "" ? $row['body']    : "Sin comentarios";
-        $data["inicio"]         = $row['inicio_normal'];
-        $data["final"]          = $row['final_normal'];
+        $data["id_cita_medica"]     = $id_cita_medica;
+        $data["id_historia_med"]    = $row['id_historia_medica'];
+        $data["id_paciente"]        = $row['id_paciente'];
+        $data["paciente"]           = $row['nom_paciente'];
+        $data["rut"]                = $row_c['rut'];
+        $data["correo"]             = $row_c['email']       != "" ? $row_c['email']  : "no informado";
+        $data["celular"]            = $row_c['celular']     != "" ? $row_c['celular'] : "no informado";
+        $data["tel_fijo"]           = $row_c['telefono']    != "" ? $row_c['telefono']: "no informado";
+        $data["nota"]               = $row['body']          != "" ? $row['body']    : "Sin comentarios";
+        $data["inicio"]             = $row['inicio_normal'];
+        $data["final"]              = $row['final_normal'];
         
         $this->load->view('admin/descripcion_cita_view',$data);
     }
@@ -200,7 +204,7 @@ class Agenda extends CI_Controller {
                 case "modificar":
                     
                     //Definimos nuestra zona horaria
-                    date_default_timezone_set("America/Santiago");
+                    date_default_timezone_set("Chile/Continental");
                     $from   = $this->input->post('from');
                     $to     = $this->input->post('to');
                     $id_cita_medica = $this->input->post('id_cita_medica');

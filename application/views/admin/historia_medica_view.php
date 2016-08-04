@@ -392,11 +392,11 @@
                                                    <table id="consultas_medicas" class="table table-striped table-hover dataTables-example" >
                                                       <thead>
                                                          <tr>
-                                                            <th>N°</th>
-                                                            <th>Fecha</th>
-                                                            <th>Motivo Consulta</th>
-                                                            <th>Anamnesis Próxima</th>
-                                                            <th>acciones</th>
+                                                            <th style="width:5%">N°</th>
+                                                            <th style="width:5%">Fecha</th>
+                                                            <th style="width:40%">Motivo Consulta</th>
+                                                            <th style="width:40%">Anamnesis Próxima</th>
+                                                            <th style="width:10%">acciones</th>
                                                          </tr>
                                                       </thead>
                                                    </table>

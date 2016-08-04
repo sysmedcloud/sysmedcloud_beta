@@ -1,3 +1,165 @@
+//AL MOMENTO DE CARGAR LA PAGINA CARGA ESTO
+$(document).ready(function() {
+    
+    //CARGA TABLA DE PACIENTES
+    listado_consultas_medicas_user();
+    
+});
+
+
+//FUNCION QUE PERMITE CARGAR TABLA DE PACIENTES
+function listado_consultas_medicas_user(){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#listado_consultas_medicas').dataTable({
+        "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
+        "ajax": {
+            "url": baseURL+"consulta_medica/consultas_med_json/",
+            "dataSrc": ""
+        },
+        "columns": [ //columnas de nuestra tabla
+            { "data": "id_consulta"},
+            { "data": "fecha" },
+            { "data": "rut" },
+            { "data": "paciente" },
+            { "data": "motivo_consulta" },
+            /*{ "data": "anamnesis_proxima" },*/
+            { "data": "acciones"}
+        ],
+        /*columnDefs: [
+            { type: 'date-eu', //ordena fecha
+              targets: 0
+            }
+        ],*/
+        order: [[ 0, "desc" ]],//orden by por fecha de creacion
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+            }
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        responsive: false,//tabla responsive, agrega un boton
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
+            "aButtons": [ //botones que sirven para exportar informacion de la tabla
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "CSV"
+                },
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Excel"
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "PDF"
+                }                
+            ]
+        }
+    });
+}
+
+//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)
+function editar_consulta_med(){
+    
+    return true;
+}
+
+//FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA (Sin Realizar)
+function ver_info_consulta_med(){
+    
+    return true;
+}
+
+//FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA
+function eliminar_consulta_med(id_consulta_medica){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    swal({   
+        title: "¿Estas seguro de eliminar consulta médica n° "+id_consulta_medica+"?",   
+        text: "Recuerda que... sera eliminado!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Si, eliminalo!",
+        cancelButtonText: "Cancelar",
+        closeOnConfirm: false 
+    }, 
+    function(){
+        
+        //Iniciar peticion con ajax
+        $.ajax({
+            data: {"id_consulta_med" : id_consulta_medica},
+            type: "POST",
+            //dataType: "json",
+            url: baseURL+"ficha_medica/eliminarConsultaMed"
+        })
+       .done(function(data,textStatus,jqXHR ) {         
+            
+            if(data === "success"){//La solicitud se realizo correctamente
+                
+               //Consulta medica eliminada correctamente 
+               swal({ 
+                    title: "Consulta Médica eliminada!",
+                    text:  "consulta médica n° "+id_consulta_medica+" fue eliminada correctamente.",
+                    type:  "success" 
+                },
+                function(){
+                    //recargar tabla de consultas medicas
+                    listado_consultas_medicas_user();
+                });
+                
+            }else{
+                
+                swal({ 
+                    title: "Ha ocurrido un error",
+                    text:  "Por favor intente nuevamente",
+                    type:  "error" 
+                });
+                
+                return false;
+            }
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+
+            if(textStatus === "error") {//La solicitud a fallado
+                alert("Error: "+textStatus+" "+jqXHR);
+                console.log("La solicitud a fallado: " +  textStatus);
+                console.log(textStatus+" "+jqXHR);
+                
+                swal({ 
+                    title: "Error: "+textStatus+" "+jqXHR,
+                    text:  "",
+                    type:  "error" 
+                });
+            }
+        });
+    });
+    
+    return false;
+}
+
 function buscar_paciente(){
     
     var baseURL = $('body').data('baseurl');//url base
@@ -94,7 +256,6 @@ function buscar_paciente(){
         }
     });
 }
-
 
 function limpiar_campos(){
     

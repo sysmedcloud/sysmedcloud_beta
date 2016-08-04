@@ -32,18 +32,37 @@ class Consulta_medica extends CI_Controller {
     /**************************************************************************/
     public function index(){
         
+        $this->listado_consultas_medicas();
+    }
+    
+    public function listado_consultas_medicas(){
+        
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_dashboard();
+        $data['files'] = $this->fileclass->files_listado_consultas_med();
         
         $data["menu"]   = "Consultas Médicas";
         
         $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
                 
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
-        $this->gestion_view->defaultAdminView("consultas_medicas_view",$data);
+        $this->gestion_view->defaultAdminView("listado_consultas_medicas_view",$data);
+    }
+    
+    /******************************************************************/
+    /** @Function...
+    /******************************************************************/
+    public function consultas_med_json(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $this->general_sessions->validarSessionAdmin();
+        
+        echo $this->consulta_model->listado_consultas_medicas($data["session"]["id_usuario"]);
     }
     
     /**************************************************************************/

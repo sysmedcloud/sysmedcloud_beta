@@ -95,6 +95,7 @@ class Fileclass {
             '3' => base_url().'js/jquery.slimscroll.min.js',
             '4' => base_url().'js/inspinia.js',
             '5' => base_url().'js/pace.min.js'
+
         );
 
         return $this->files;

@@ -62,11 +62,11 @@
                 <li>
                     <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">Gestion de datos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li ><a href="<?=base_url();?>profesional/medicamentos">Medicamentos</a></li>
-                        <li ><a href="<?=base_url();?>profesional/alergias">Alergias</a></li>
-                        <li ><a href="<?=base_url();?>profesional/patologias">Patologías</a></li>
-                        <li ><a href="<?=base_url();?>profesional/tratamientos">Tratamientos</a></li>
-                        <li ><a href="<?=base_url();?>profesional/vacunas">Vacunas</a></li>
+                        <li ><a href="#medicamentos">Medicamentos</a></li>
+                        <li ><a href="#alergias">Alergias</a></li>
+                        <li ><a href="patologias">Patologías</a></li>
+                        <li ><a href="#tratamientos">Tratamientos</a></li>
+                        <li ><a href="#vacunas">Vacunas</a></li>
                     </ul>
                 </li>
                 

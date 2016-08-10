@@ -4,6 +4,76 @@ $(document).ready(function() {
     //CARGA TABLA DE PACIENTES
     listado_consultas_medicas();
     
+    $('#guardar_cambios').click(function(event) {
+
+        event.preventDefault();
+        
+        //información del formulario
+        var formData        = new FormData(document.getElementById("form_ficha_clinica"));
+        var baseURL         = $('body').data('baseurl');//url base
+        var id_paciente     = $("#id_paciente").val();
+        var id_h_clinica    = $("#id_historia_med").val();
+        
+        //hacemos la petición ajax  
+        $.ajax({
+            type: "POST",
+            url: baseURL+"ficha_medica/guardar",
+            secureuri : false,
+            //fileElementId :'logo',
+            //dataType: 'json',
+            data: formData,
+            //necesario para subir archivos via ajax
+            cache: false,
+            contentType: false,
+            processData: false,
+            //mientras enviamos el archivo
+            /*beforeSend: function(){
+                message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
+                showMessage(message)        
+            },*/
+            success: function(res) {
+                
+                //Ficha clinica modificada correctamente
+                if(res == "success")
+                {   
+                    swal({ 
+                        title:"Historia Clínica Editada Correctamente",
+                        text:"haz click en 'OK' para volver a la historia clínica!",
+                        type:"success" 
+                    },
+                    function(){
+                        //window.location.href = 'login.html';
+                        var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente+"/"+id_h_clinica;   
+                        $(location).attr('href',url);
+                    });
+                    
+                }else if(res == "error"){//Error al editar informacion de la historia clínica
+
+                    swal({ 
+                        title: "Error al editar historia clínica",
+                        text:  "Por favor inténtelo nuevamente!",
+                        type:  "error" 
+                    },
+                    function(){
+                        var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente+"/"+id_h_clinica;
+                        $(location).attr('href',url);
+                    });
+
+                }else{//Error en la valición de datos    
+
+                    var html = ''+res+'';
+                    var errores = $(html).text();
+                                       
+                    swal({ 
+                        title: "Error de validación",
+                        text:   errores,
+                        type:  "error"
+                    });
+                }
+            }
+        });
+    });
+    
 });
 
 //FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)

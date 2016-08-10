@@ -4,7 +4,10 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Historia Clínica ID# N° <?=$id_historia_med;?> /&nbsp;&nbsp;<span style="color: red;">(EN CONSTRUCCIÓN)</span></h5>
+               <h5>
+                   Historia Clínica ID# N° <?=$id_historia_med;?>&nbsp;&nbsp;/&nbsp;&nbsp; 
+               Fecha Creación: <?=$info_hc["fecha_creacion"];?> &nbsp;&nbsp;/&nbsp;&nbsp;  
+               Fecha Ultima Edición: <?=$info_hc["fecha_modificacion"];?> </h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>
@@ -24,7 +27,7 @@
                </div>
             </div>
             <div class="ibox-content">
-               <form method="POST" class="form-horizontal">
+                <form name="form_ficha_clinica" id="form_ficha_clinica" class="form-horizontal">
                   <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                   <input type="hidden" id="id_paciente" name="id_paciente" value="<?=$paciente["id_usuario"];?>">
                   <input type="hidden"  id="id_historia_med" name="id_historia_med" value="<?=$id_historia_med;?>">
@@ -215,7 +218,7 @@
                                                    id="ant_familiares" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["ant_familiares"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -228,7 +231,7 @@
                                                    id="ant_soc_personales" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["ant_sociales_personales"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -299,12 +302,12 @@
                                           <div class="row">
                                              <div class="col-md-12">
                                                 <textarea 
-                                                   name="ant_familiares" 
+                                                   name="ant_morbidos" 
                                                    placeholder="En esta parte se deben precisar las enfermedades, operaciones y traumatismos que el paciente ha tenido a lo largo de su vida. Por supuesto, se precisarán aquellas patologías que sean más significativas."
-                                                   id="ant_familiares" 
+                                                   id="ant_morbidos" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["morbidos"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -317,7 +320,7 @@
                                                    id="annt_ginecoobstetricos" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["ginecoobstetricos"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -330,7 +333,7 @@
                                                    id="habitos" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["habitos"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -343,7 +346,7 @@
                                                    id="medicamentos" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["medicamentos"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -356,7 +359,7 @@
                                                    id="alergias" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["alergias"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -369,7 +372,7 @@
                                                    id="inmunizaciones" 
                                                    class="form-control" 
                                                    cols="92" 
-                                                   rows="10" ></textarea>
+                                                   rows="10" ><?=$info_hc["inmunizaciones"];?></textarea>
                                              </div>
                                           </div>
                                        </div>
@@ -411,58 +414,6 @@
                                              </div>
                                           </div>
                                        </div>
-                                       <div id="tab-h" class="tab-pane">
-                                          <div class="row">
-                                             <div class="col-md-12">
-                                                <textarea 
-                                                   name="habitos" 
-                                                   placeholder="Entre los hábitos que se investigan destacan: El hábito de fumar (tabaquismo), La ingesta de bebidas alcohólicas, Tipo de alimentación y Uso de drogas no legales"
-                                                   id="habitos" 
-                                                   class="form-control" 
-                                                   cols="92" 
-                                                   rows="10" ></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div id="tab-med" class="tab-pane">
-                                          <div class="row">
-                                             <div class="col-md-12">
-                                                <textarea 
-                                                   name="medicamentos" 
-                                                   placeholder="Es importante identificar qué medicamentos está tomando el paciente y en qué cantidad. En algunos casos, también se deben indicar los fármacos que el paciente recibió en los días o semanas anteriores."
-                                                   id="medicamentos" 
-                                                   class="form-control" 
-                                                   cols="92" 
-                                                   rows="10" ></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div id="tab-a" class="tab-pane">
-                                          <div class="row">
-                                             <div class="col-md-12">
-                                                <textarea 
-                                                   name="alergias" 
-                                                   placeholder="El tema de las alergias es muy importante ya que puede tener graves consecuencias para la persona. Entre los alergenos, que son las sustancias ante las cuales se desencadenan las respuestas alérgicas, hay varios que se deben investigar: Medicamentos, Alimentos, Sustancias que entran en contacto con la piel y Picaduras de insectos."
-                                                   id="alergias" 
-                                                   class="form-control" 
-                                                   cols="92" 
-                                                   rows="10" ></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div id="tab-i" class="tab-pane">
-                                          <div class="row">
-                                             <div class="col-md-12">
-                                                <textarea 
-                                                   name="inmunizaciones" 
-                                                   placeholder="Según el cuadro clínico que presente el paciente puede ser importante señalar las inmunizaciones que el paciente ha recibido."
-                                                   id="inmunizaciones" 
-                                                   class="form-control" 
-                                                   cols="92" 
-                                                   rows="10" ></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
                                     </div>
                                  </div>
                                  <div class="col-md-12">
@@ -496,7 +447,7 @@
                                     <div class="col-md-6">
                                        <button class="btn btn-white" type="button">Mis pacientes</button>
                                        &nbsp;&nbsp;
-                                       <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+                                       <button class="btn btn-primary"  id="guardar_cambios" type="submit">Guardar Cambios</button>
                                     </div>
                                     <div class="col-md-6">&nbsp;</div>
                                  </div>

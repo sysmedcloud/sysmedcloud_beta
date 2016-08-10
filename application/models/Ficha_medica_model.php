@@ -80,4 +80,40 @@ class Ficha_medica_model extends CI_Model
             return "error";
         }
     }
+    
+    /***************************************************************************
+    /** @Funtion que permite retornar informacion de la historia medica
+    /**************************************************************************/
+    public function info_ficha_med($id_paciente,$id_hc){
+        
+        //Query para obtener informacion de la historia clinica
+        $this->db->select("h.id_historia_medica,h.id_paciente,h.ant_familiares,h.ant_sociales_personales,h.morbidos,h.ginecoobstetricos,h.habitos,h.medicamentos,h.alergias,h.inmunizaciones,h.fecha_creacion,h.fecha_modificacion,h.creado_por,h.modificado_por");
+        $this->db->from('tbl_historias_medicas h');
+        $this->db->join('tbl_usuarios u','u.id_usuario = h.id_paciente');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('h.id_paciente',$id_paciente);
+        $this->db->where('h.id_historia_medica',$id_hc);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0 ){
+            
+            return $datos->row_array();
+            
+        }else{
+            
+            return false;
+        }
+    }
+    
+    /***************************************************************************
+    /** @Funtion que permite modificar informacion de una ficha clinica
+    /**************************************************************************/
+    public function guardar_cambios($data,$id_hc){
+        
+        //Editar historia clinica del usuario
+        $this->db->where('id_historia_medica',$id_hc);
+        return $this->db->update('tbl_historias_medicas',$data);
+    }
 }	

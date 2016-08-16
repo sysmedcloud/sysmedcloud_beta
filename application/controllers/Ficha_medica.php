@@ -32,6 +32,7 @@ class Ficha_medica extends CI_Controller {
         
         $this->load->model('paciente_model');//cargar modelo
         $this->load->model('dropdown_model');//cargar modelo
+        $this->load->model('ficha_medica_model');//cargar modelo
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
@@ -67,6 +68,9 @@ class Ficha_medica extends CI_Controller {
         $data["gr_sang"]        = $this->dropdown_model->cargarGrSanguineos();
         $data["factoresRH"]     = $this->dropdown_model->cargarFactoresRH();
         
+        //Cargamos informacion historia clinica
+        $data["info_hc"]        = $this->ficha_medica_model->info_ficha_med($id_paciente,$id_historia_med);
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("historia_medica_view",$data);
         
@@ -94,4 +98,35 @@ class Ficha_medica extends CI_Controller {
         //Eliminamos consulta medica (Solo cambiamos el estado)
         echo $this->ficha_medica_model->removeConsultaMed($id_consulta);
     }
+    
+    public function guardar(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $session                            = $this->general_sessions->validarSessionAdmin();
+        $data["id_paciente"]                = $this->input->post("id_paciente");
+        $id_historia_medica                 = $this->input->post("id_historia_med");
+        $data["ant_familiares"]             = $this->input->post("ant_familiares");
+        $data["ant_sociales_personales"]    = $this->input->post("ant_soc_personales");
+        $data["morbidos"]                   = $this->input->post("ant_morbidos");
+        $data["ginecoobstetricos"]          = $this->input->post("annt_ginecoobstetricos");
+        $data["habitos"]                    = $this->input->post("habitos");
+        $data["medicamentos"]               = $this->input->post("medicamentos");
+        $data["alergias"]                   = $this->input->post("alergias");
+        $data["inmunizaciones"]             = $this->input->post("inmunizaciones");
+        $data["modificado_por"]             = $session["id_usuario"];
+        
+        //Editar informacion ficha clinica
+        $res = $this->ficha_medica_model->guardar_cambios($data,$id_historia_medica);
+        
+        //Retornar resultado
+        if($res){
+            echo "success";
+        }else{
+            echo "error";
+        }
+        
+    }
 }
+

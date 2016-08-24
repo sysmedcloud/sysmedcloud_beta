@@ -126,7 +126,14 @@ class Consulta_model extends CI_Model
     public function listado_consultas_medicas($id_usuario){
         
         //Query para obtener listado de pacientes
-        $this->db->select("cm.id_consulta,cm.id_paciente,cm.motivo_consulta,cm.anamnesis_proxima,cm.hipotesis_diagnostica,cm.tratamiento,cm.observaciones,cm.fecha_consulta");
+        $this->db->select("cm.id_consulta,
+                            cm.id_paciente,
+                            cm.motivo_consulta,
+                            cm.anamnesis_proxima,
+                            cm.hipotesis_diagnostica,
+                            cm.tratamiento,
+                            cm.observaciones,
+                            cm.fecha_consulta");
         $this->db->from('tbl_consulta_medica cm');
         $this->db->join('tbl_usuarios u','u.id_usuario = cm.ingresado_por');
         //$this->db->where('u.id_perfil',4);

@@ -59,11 +59,7 @@
                 <li class="<?=$active["gestion"];?>">
                     <a href="#"><i class="fa fa-gears"></i> <span class="nav-label">Gestion de datos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li ><a href="<?=base_url();?>gestion/medicamentos">Medicamentos</a></li>
-                        <li ><a href="<?=base_url();?>gestion/alergias">Alergias</a></li>
-                        <li ><a href="<?=base_url();?>gestion/patologias">Patologías</a></li>
-                        <li ><a href="<?=base_url();?>gestion/tratamientos">Tratamientos</a></li>
-                        <li ><a href="<?=base_url();?>gestion/vacunas">Vacunas</a></li>
+                        <li ><a href="<?=base_url();?>gestion" id="href_gestion">Gestión de datos</a></li>                        
                     </ul>
                 </li>
                 <li class="<?=$active["reportes"];?>">

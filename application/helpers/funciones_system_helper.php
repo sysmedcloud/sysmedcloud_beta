@@ -55,7 +55,8 @@ function activeMenu($nom_menu){
         "consulta",//modulo consulta
         "gestion",//modulo gestion de datos
         "reportes",//modulo de reportess
-        "soporte"//modulo soporte
+        "soporte",//modulo soporte
+        "medicamentos"//modulo medicamentos
     );
 
     //recorre nuestro arreglo

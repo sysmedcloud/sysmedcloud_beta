@@ -17,7 +17,9 @@ class Gestion extends CI_Controller {
             'fileclass',//control css y js para cada pagina
             'general_sessions',//Validar datos de session
             'data_empresa',//informacion de la empresa
-            'gestion_view'));//controlar vistas
+            'gestion_view',//controlar vistas
+            'templates'//Carga vistas por ajax
+            ));
             
         //Cargamos todos los helper que utilizaremos
         $this->load->helper(array('url', 'form','html','funciones_system'));
@@ -79,8 +81,8 @@ class Gestion extends CI_Controller {
                                 $html.= '  <td>'.$val_alergia['zona_afectada'].'</td>';
                                 $html.= '  <td>'.$val_alergia['sintomatologia'].'</td>';
                                 $html.= '  <td>'.$val_alergia['indicaciones'].'</td>';
-                                $html.= '  <td align="center"><button class="btn btn-primary btn-circle"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-primary btn-circle"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -96,16 +98,22 @@ class Gestion extends CI_Controller {
                             $html= '<table class="table table-bordered" text-align="left">';
                             $html.= '<thead>';
                             $html.= '<tr>';                                           
-                            $html.= '    <th>Ver</th>';
+                            $html.= '    <th>Descripción</th>';
+                            $html.= '    <th>Sintomatología</th>';
+                            $html.= '    <th>Indicaciones Preliminares</th>';
+                            $html.= '    <th>Ver</th>';   
                             $html.= '    <th>Editar</th>';    
                             $html.= '</tr>';
                             $html.= '</thead>';
                             $html.= '<tbody>';
-                            foreach ($r as $key_patologia => $val_patologia) {
-                                $html.= '<tr>';                                
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
-                                $html.= '</tr>'; 
+                            foreach ($r as $key_patologia => $val_patologia) {                               
+                                $html.= '<tr>';
+                                $html.= '  <td>'.$val_patologia['descripcion'].'</td>';  
+                                $html.= '  <td>'.$val_patologia['sintomatologia'].'</td>';  
+                                $html.= '  <td>'.$val_patologia['indicaciones_preliminares'].'</td>';                                
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>';  
                             }                            
                             $html.= '</tbody>';
                             $html.= '</table>';  
@@ -119,15 +127,33 @@ class Gestion extends CI_Controller {
                             $html= '<table class="table table-bordered" text-align="left">';
                             $html.= '<thead>';
                             $html.= '<tr>';                                                    
+                            $html.= '    <th>Nombre</th>';
+                            $html.= '    <th>Fecha Venc.</th>';
+                            $html.= '    <th>Pres. Comerc.</th>';
+                            $html.= '    <th>Via Adm.</th>';
+                            $html.= '    <th>Princ. Activo</th>';
+                            $html.= '    <th>U. M.</th>';
+                            $html.= '    <th>Cant.</th>';
+                            $html.= '    <th>U. R.</th>';
+                            $html.= '    <th>Laboratorio</th>';
                             $html.= '    <th>Ver</th>';
                             $html.= '    <th>Editar</th>';    
                             $html.= '</tr>';
                             $html.= '</thead>';
                             $html.= '<tbody>';
                             foreach ($r as $key_meds => $val_meds) {
-                                $html.= '<tr>';                          
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '<tr>'; 
+                                $html.= '  <td>'.$val_meds['nombre_medicamento'].'</td>';
+                                $html.= '  <td>'.$val_meds['fecha_vencimiento'].'</td>';
+                                $html.= '  <td>'.$val_meds['presentcion_comercial'].'</td>';
+                                $html.= '  <td>'.$val_meds['via_administracion'].'</td>';
+                                $html.= '  <td>'.$val_meds['principio_activo'].'</td>';
+                                $html.= '  <td>'.$val_meds['unididad_medida'].'</td>';
+                                $html.= '  <td>'.$val_meds['cantidad'].'</td>';
+                                $html.= '  <td>'.$val_meds['unidad_referencia'].'</td>';
+                                $html.= '  <td>'.$val_meds['nombre_laboratorio'].'</td>'; 
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -146,11 +172,11 @@ class Gestion extends CI_Controller {
                             $html.= '</tr>';
                             $html.= '</thead>';
                             $html.= '<tbody>';
-                            foreach ($r as $key_alergia => $val_alergia) {
+                            foreach ($r as $key_vacunas => $val_vacunas) {
                                 $html.= '<tr>';                         
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
-                                $html.= '</tr>'; 
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>';  
                             }                            
                             $html.= '</tbody>';
                             $html.= '</table>';  
@@ -168,10 +194,222 @@ class Gestion extends CI_Controller {
                             $html.= '</tr>';
                             $html.= '</thead>';
                             $html.= '<tbody>';
-                            foreach ($r as $key_alergia => $val_alergia) {
+                            foreach ($r as $key_tratamientos => $val_tratamientos) {
                                 $html.= '<tr>';                            
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>';  
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+                           echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '6': 
+                            # Diagnósticos
+                            $r = $this->gestion->get_diagnosticos();
+
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                                                 
+                            $html.= '    <th>Sistema Afectado</th>';
+                            $html.= '    <th>Descripción Diagnóstico</th>';
+                            $html.= '    <th>Reposo Indicado</th>';
+                            $html.= '    <th>Ver</th>';
+                            $html.= '    <th>Editar</th>';    
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_diag => $val_diag) {
+
+                                $html.= '<tr>';                            
+                                $html.= '  <td>'.$val_diag['sistema_afectado'].'</td>'; 
+                                $html.= '  <td>'.$val_diag['desc_diagnostico'].'</td>'; 
+                                $html.= '  <td>'.$val_diag['reposo_indicado'].'</td>'; 
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>'; 
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        default:
+                            # Error
+                            echo json_encode(array("html" => "Error", "tipo" => @$_POST['tipo']));
+                            break;
+                    };                    
+                break;
+                case 2: // Ingreso de Informacion
+                    switch (@$_POST['tipo']) {
+                       case '1':
+                            # Alergias
+                            $html = $this->templates->add_alergias();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                           break;
+                        case '2':
+                            # Patologías
+                            $html = $this->templates->add_patologias();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '3':
+                            # Medicamentos
+                            $html = $this->templates->add_medicamentos();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '4':
+                            # Vacunas
+                            $html = $this->templates->add_vacunas();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '5':
+                            # Tratamientos
+                            $html = $this->templates->add_tratamientos();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));    
+                            break;
+                        case '6':
+                            # Diagnosticos
+                            $html = $this->templates->add_diagnosticos();
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));    
+                            break;
+                       default:
+                           echo json_encode(array("html" => "Error", "tipo" => @$_POST['tipo']));
+                           break;
+                    }   
+                    break;
+                case 3: // Eliminacion de Informacion
+                    switch (@$_POST['tipo']) {
+                        case '1': 
+                            # Alergias
+                            $r = $this->gestion->get_alergias();
+                            
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                            
+                            $html.= '    <th>Nombre</th>';
+                            $html.= '    <th>Alergeno Detectado</th>';               
+                            $html.= '    <th>Zona Afectada</th>';  
+                            $html.= '    <th>Sintomatología</th>';
+                            $html.= '    <th>Indicaciones</th>';                            
+                            $html.= '    <th>Eliminar</th>';    
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_alergia => $val_alergia) {
+                                $html.= '<tr>';
+                                $html.= '  <td>'.$val_alergia['nombre_alergia'].'</td>';
+                                $html.= '  <td>'.$val_alergia['alergeno_detectado'].'</td>';
+                                $html.= '  <td>'.$val_alergia['zona_afectada'].'</td>';
+                                $html.= '  <td>'.$val_alergia['sintomatologia'].'</td>';
+                                $html.= '  <td>'.$val_alergia['indicaciones'].'</td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                
+                                $html.= '</tr>'; 
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+
+                            break;
+                        case '2': 
+                            # Patologías
+                            $r = $this->gestion->get_patologias();                         
+
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                                           
+                            $html.= '    <th>Descripción</th>';
+                            $html.= '    <th>Sintomatología</th>';
+                            $html.= '    <th>Indicaciones Preliminares</th>';
+                            $html.= '    <th>Eliminar</th>';     
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_patologia => $val_patologia) {                               
+                                $html.= '<tr>';
+                                $html.= '  <td>'.$val_patologia['descripcion'].'</td>';  
+                                $html.= '  <td>'.$val_patologia['sintomatologia'].'</td>';  
+                                $html.= '  <td>'.$val_patologia['indicaciones_preliminares'].'</td>';                                
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>'; 
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                   
+                            break;
+                        case '3': 
+                            # Medicamentos
+                            $r = $this->gestion->get_medicamentos();
+
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                                                    
+                            $html.= '    <th>Nombre</th>';
+                            $html.= '    <th>Fecha Venc.</th>';
+                            $html.= '    <th>Pres. Comerc.</th>';
+                            $html.= '    <th>Via Adm.</th>';
+                            $html.= '    <th>Princ. Activo</th>';
+                            $html.= '    <th>U. M.</th>';
+                            $html.= '    <th>Cant.</th>';
+                            $html.= '    <th>U. R.</th>';
+                            $html.= '    <th>Laboratorio</th>';
+                            $html.= '    <th>Eliminar</th>';    
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_meds => $val_meds) {
+                                $html.= '<tr>'; 
+                                $html.= '  <td>'.$val_meds['nombre_medicamento'].'</td>';
+                                $html.= '  <td>'.$val_meds['fecha_vencimiento'].'</td>';
+                                $html.= '  <td>'.$val_meds['presentcion_comercial'].'</td>';
+                                $html.= '  <td>'.$val_meds['via_administracion'].'</td>';
+                                $html.= '  <td>'.$val_meds['principio_activo'].'</td>';
+                                $html.= '  <td>'.$val_meds['unididad_medida'].'</td>';
+                                $html.= '  <td>'.$val_meds['cantidad'].'</td>';
+                                $html.= '  <td>'.$val_meds['unidad_referencia'].'</td>';
+                                $html.= '  <td>'.$val_meds['nombre_laboratorio'].'</td>'; 
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>'; 
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '4': 
+                            # Vacunas
+                            $r = $this->gestion->get_vacunas(); //Falta tabla
+
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                                                    
+                            $html.= '    <th>Eliminar</th>';    
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_vacunas => $val_vacunas) {
+                                $html.= '<tr>';                         
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                $html.= '</tr>'; 
+                            }                            
+                            $html.= '</tbody>';
+                            $html.= '</table>';  
+                            echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
+                            break;
+                        case '5': 
+                            # Tratamientos
+                            $r = $this->gestion->get_tratamientos(); // Falta tabla
+
+                            $html= '<table class="table table-bordered" text-align="left">';
+                            $html.= '<thead>';
+                            $html.= '<tr>';                                                     
+                            $html.= '    <th>Eliminar</th>';     
+                            $html.= '</tr>';
+                            $html.= '</thead>';
+                            $html.= '<tbody>';
+                            foreach ($r as $key_tratamientos => $val_tratamientos) {
+                                $html.= '<tr>';                            
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -185,15 +423,20 @@ class Gestion extends CI_Controller {
                             $html= '<table class="table table-bordered" text-align="left">';
                             $html.= '<thead>';
                             $html.= '<tr>';                                                 
-                            $html.= '    <th>Ver</th>';
-                            $html.= '    <th>Editar</th>';    
+                            $html.= '    <th>Sistema Afectado</th>';
+                            $html.= '    <th>Descripción Diagnóstico</th>';
+                            $html.= '    <th>Reposo Indicado</th>';
+                            $html.= '    <th>Eliminar</th>';   
                             $html.= '</tr>';
                             $html.= '</thead>';
                             $html.= '<tbody>';
                             foreach ($r as $key_diag => $val_diag) {
+
                                 $html.= '<tr>';                            
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td>'.$val_diag['sistema_afectado'].'</td>'; 
+                                $html.= '  <td>'.$val_diag['desc_diagnostico'].'</td>'; 
+                                $html.= '  <td>'.$val_diag['reposo_indicado'].'</td>'; 
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -202,15 +445,13 @@ class Gestion extends CI_Controller {
                             break;
                         default:
                             # Error
-                            echo json_encode("Error al procesar su solicitud");
+                            echo json_encode(array("html" => "Error", "tipo" => @$_POST['tipo']));
                             break;
                     };                    
                 break;
-                case 2: // Ingreso de Informacion
-                    # code...
-                    break;
-                case 3: // Eliminacion de Informacion
-                    # code...
+                case 4:
+                    $r = $this->gestion->eliminar_datos($_POST);
+                    echo json_encode($_POST);
                     break;
                 default:
                     # Error

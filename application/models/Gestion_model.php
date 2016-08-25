@@ -26,7 +26,7 @@ class Gestion_model extends CI_Model
 
     function get_medicamentos(){
     	$this->db->from('tbl_medicamentos');
-        $this->db->limit('20');
+        $this->db->limit('50');
     	$query = $this->db->get();
     	return $query->result_array();
     }
@@ -57,4 +57,35 @@ class Gestion_model extends CI_Model
     /**************************************************************************/
     /** Área de eliminacion de datos
     /**************************************************************************/
+    function eliminar_datos( $param ){        
+        switch ($param['dato']) {
+            case 1:
+                # Alergias
+                $this->db->delete('tbl_alergias', array('cod_alergia' => $param['id']));
+                break;
+            case 2:
+                # Patologias
+                $this->db->delete('tbl_patologias', array('cod_patologia' => $param['id']));
+                break;
+            case 3:
+                # Medicamentos
+                $this->db->delete('tbl_medicamentos', array('cod_medicamento' => $param['id']));
+                break;
+            case 4:
+                # Vacunas
+                $this->db->delete('tbl_vacunas', array('cod_vacuna' => $param['id']));
+                break;
+            case 5:
+                # Tratamientos
+                $this->db->delete('tbl_tratamientos', array('cod_tratamiento' => $param['id']));
+                break;
+            case 6:
+                # Diagnosticos
+                $this->db->delete('tbl_diagnosticos', array('cod_diagnostico' => $param['id']));
+                break;            
+            default:
+                echo "Error al eliminar datos";
+                break;
+        }
+    }
 }	

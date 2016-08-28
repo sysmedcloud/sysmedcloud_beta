@@ -240,35 +240,36 @@ class Gestion extends CI_Controller {
                     };                    
                 break;
                 case 2: // Ingreso de Informacion
-                    switch (@$_POST['tipo']) {
+                    $tipo = intval(@$_POST['tipo']);
+                    switch ($tipo) {
                        case '1':
                             # Alergias
-                            $html = $this->templates->add_alergias();
+                            $html = $this->templates->add_alergias($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
                            break;
                         case '2':
                             # Patologías
-                            $html = $this->templates->add_patologias();
+                            $html = $this->templates->add_patologias($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
                             break;
                         case '3':
                             # Medicamentos
-                            $html = $this->templates->add_medicamentos();
+                            $html = $this->templates->add_medicamentos($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
                             break;
                         case '4':
                             # Vacunas
-                            $html = $this->templates->add_vacunas();
+                            $html = $this->templates->add_vacunas($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));
                             break;
                         case '5':
                             # Tratamientos
-                            $html = $this->templates->add_tratamientos();
+                            $html = $this->templates->add_tratamientos($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));    
                             break;
                         case '6':
                             # Diagnosticos
-                            $html = $this->templates->add_diagnosticos();
+                            $html = $this->templates->add_diagnosticos($tipo);
                             echo json_encode(array("html" => $html, "tipo" => @$_POST['tipo']));    
                             break;
                        default:
@@ -453,6 +454,62 @@ class Gestion extends CI_Controller {
                     $r = $this->gestion->eliminar_datos($_POST);
                     echo json_encode($_POST);
                     break;
+                case 5:
+                    $tipo = @$_POST['tipo'];
+                    switch ($tipo) {
+                        case '1':
+                            $r = $this->gestion->agregar_alergia($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '2':
+                            $r = $this->gestion->agregar_patologia($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '3':
+                            $r = $this->gestion->agregar_medicamento($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }                            
+                            break;
+                        case '4':
+                            $r = $this->gestion->agregar_vacuna($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '5':
+                            $r = $this->gestion->agregar_tratamiento($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '6':
+                            $r = $this->gestion->agregar_diagnostico($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        default:
+                            echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            break;
+                    }
+                break;
                 default:
                     # Error
                 echo json_encode("Error al procesar su solicitud");

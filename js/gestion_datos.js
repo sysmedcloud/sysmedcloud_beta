@@ -156,11 +156,70 @@ function eliminar_dato(dato, id) {
         data: datos,
         dataType: 'JSON',
         success: function( result ) {
-        	console.log(result);
         	swal("Confirmación!", "La información ha sido eliminada del sistema.", "success"); 
         	crud_datos(result.dato , 3);                 	 
             }
 
     	});
     });
+}
+
+/**************************************************************************/
+/** @Functiones que permiten ingresar informacion a la base de datos
+/**************************************************************************/
+
+function ingresar_datos(tipo){	
+
+	$.ajax({
+        type: "POST",
+        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        data: $('#frm_'+tipo).serialize() + "&case=5&tipo="+tipo,
+        dataType: 'JSON',
+        success: function( result ) {        	
+        	var estado = result.estado;
+        	var tipo = result.tipo;
+        	if(estado){
+        		sweetAlert(
+				  'Confirmación',
+				  'Informacion agregada al sistema',
+				  'success'
+				);
+				// Limpiando los campos del formulario
+				switch(tipo){
+					case '1':
+						$("#frm_"+tipo)[0].reset();		
+						break;
+					case '2':
+						$("#frm_"+tipo)[0].reset();
+						break;
+					case '3':
+						$("#frm_"+tipo)[0].reset();
+						break;
+					case '4':
+						$("#frm_"+tipo)[0].reset();
+						break;
+					case '5':
+						$("#frm_"+tipo)[0].reset();
+						break;
+					case '6':
+						$("#frm_"+tipo)[0].reset();
+						break;
+					default:
+						sweetAlert(
+						  'Error',
+						  'Error al procesar su solicitud',
+						  'error'
+						);	
+						break;
+				}				       		
+        	}else{
+        		sweetAlert(
+				  'Error',
+				  'Hubo un problema al procesar su solicitud',
+				  'error'
+				);
+        	}
+            }
+
+    	});
 }

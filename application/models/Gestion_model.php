@@ -50,6 +50,88 @@ class Gestion_model extends CI_Model
     }
 
     /**************************************************************************/
+    /** Área de inserción de datos
+    /**************************************************************************/
+
+    function agregar_alergia( $param ){
+        $data_alergia = array(
+            'nombre_alergia'        => $param['txt_nom_aler'],
+            'alergeno_detectado'    => $param['txt_aler_det'],
+            'zona_afectada'         => $param['txt_zona_afec'],
+            'sintomatologia'        => $param['txt_sintom'],
+            'indicaciones'          => $param['txt_ind'] 
+            );
+
+        if($this->db->insert('tbl_alergias',$data_alergia)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agregar_patologia( $param ){
+        print_r($param);
+        $data_patologia = array(
+
+            );
+
+        if($this->db->insert('tbl_patologias',$data_patologia)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agregar_medicamento( $param ){
+        print_r($param);
+        $data_medicamento = array(
+            );
+
+        if($this->db->insert('tbl_medicamentos',$data_medicamento)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agregar_vacuna( $param ){
+        print_r($param);
+        $data_vacuna = array(
+            
+            );
+
+        if($this->db->insert('tbl_vacunas',$data_vacuna)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agregar_tratamiento( $param ){
+        print_r($param);
+        $data_tratamiento = array(
+            );
+
+        if($this->db->insert('tbl_tratamientos',$data_tratamiento)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function agregar_diagnostico( $param ){
+        print_r($param);
+        $data_diagnostico = array(
+            );
+
+        if($this->db->insert('tbl_diagnosticos',$data_diagnostico)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**************************************************************************/
     /** Área de actualizacion de datos
     /**************************************************************************/
 

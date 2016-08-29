@@ -234,6 +234,27 @@ class Fileclass {
         return $this->files;
     }
     
+    
+    public function nueva_consulta_v2(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1'     => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/fileinput.css'
+        );
+        
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/fileinput.js',
+            '2' => base_url().'js/locales/es.js',
+            '3' => base_url().'js/bootstrap.min.js'
+        );
+        
+        return $this->files;
+    }
+    
     public function files_ficha_clinica(){
         
         $this->files['style'] = array(

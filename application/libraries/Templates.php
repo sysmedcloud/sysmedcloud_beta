@@ -7,7 +7,7 @@
 class Templates {
     
     /******************************************************************/
-    /** @Funtiones que permiten mostrar formularios pora 
+    /** @Funtions que permiten mostrar formularios pora 
         el ingreso de datos
     /******************************************************************/
     function add_alergias($tipo)
@@ -255,6 +255,47 @@ class Templates {
         $html.= '</div> ';
                    
         return $html;
+    }
+    /******************************************************************/
+    /** @Function que dibuja HTML y muestra data
+    /******************************************************************/
+
+    function show_datos_byID( $param , $opt){
+        $html= '<table class="table table-bordered">';
+        $html.= '<thead>';        
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        if($opt == 1){
+            foreach ($param as $key_obj => $val_obj) {            
+                $html.= '<tr>';                         
+                $html.= '  <td align="right">'.$key_obj.'</td>';
+                $html.= '  <td align="left" >'.$val_obj.'</td>';
+                $html.= '</tr>'; 
+            }                            
+        }else if($opt == 2){
+            foreach ($param as $key_obj => $val_obj) {                            
+                $html.= '<tr>';                         
+                $html.= '  <td align="right">';
+                $html.= '    <label class="col-lg-2 control-label">'.$key_obj.'</label> ';
+                $html.= '  </td>';
+                $html.= '  <td align="left" >';
+                if (preg_match('/id_/',$key_obj) || preg_match('/cod_/',$key_obj)){
+                    $html.= '    <label class="col-lg-2 control-label">'.$val_obj.'</label>
+                                    <input type="hidden" class="form-control" id="txt_'.$key_obj.'" 
+                                    name="txt_'.$key_obj.'" value="'.$val_obj.'">';                   
+                }else{
+                    $html.= '    <input type="text" class="form-control" id="txt_'.$key_obj.'" 
+                                    name="txt_'.$key_obj.'" placeholder="'.$val_obj.'">';
+                }
+                $html.= '  </td>';
+                $html.= '</tr>'; 
+            }
+        }
+        $html.= '</tbody>';
+        $html.= '</table>';
+
+        return $html;
+
     }
         
 }

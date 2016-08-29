@@ -44,6 +44,26 @@
          </div>
       </div>
    </div>
+   <!-- Mostrar / Editar datos -->
+   <div class="modal inmodal" id="mod_ver_datos" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+               <i class="fa fa-laptop modal-icon"></i>
+               <h4 class="modal-title"><span id="mod_title"></span></h4>
+            </div>
+            <div class="modal-body">
+               <form id="mod_ver_datos_body">               
+               </form>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+               <button type="button" class="btn btn-primary" id="bto_actualizar_datos" style="display:none" onclick="actualizar_datos()">Actualizar</button>
+            </div>
+         </div>
+      </div>
+   </div>
    <!-- Content -->
    <div id="ibox-wrapper" style="display: none;">
 	   <div class="ibox-title" >

@@ -50,6 +50,64 @@ class Gestion_model extends CI_Model
     }
 
     /**************************************************************************/
+    /** Área de seleccion de datos por ID
+    /**************************************************************************/
+
+    function get_datos_byID( $param ){
+        switch ($param['tipo']) {
+            case 1:
+                # Alergias
+                $this->db->from('tbl_alergias');       
+                $this->db->where('cod_alergia', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;
+            case 2:
+                # Patologias
+                $this->db->from('tbl_patologias');       
+                $this->db->where('id_patologia', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;
+            case 3:
+                # Medicmantos
+                $this->db->from('tbl_medicamentos');       
+                $this->db->where('cod_medicamento', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;
+            case 4:
+                # Vacunas
+                $this->db->from('tbl_vacunas');       
+                $this->db->where('cod_vacuna', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;
+            case 5:
+                # Tratamientos
+                $this->db->from('tbl_tratamientos');       
+                $this->db->where('cod_tratamiento', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;
+            case 6:
+                # Diagnosticos
+                $this->db->from('tbl_diagnosticos');       
+                $this->db->where('cod_diagnostico', $param['id']);
+                $query = $this->db->get();
+                return $query->result_array();
+                break;            
+            default:
+                echo "Error al obtener datos";
+                break;
+        }
+        $this->db->from('tbl_alergias');
+        $this->db->where('cod_alergia', $param['cod_alergia']);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    /**************************************************************************/
     /** Área de inserción de datos
     /**************************************************************************/
 
@@ -69,10 +127,15 @@ class Gestion_model extends CI_Model
         }
     }
 
-    function agregar_patologia( $param ){
-        print_r($param);
-        $data_patologia = array(
+    function agregar_patologia( $param ){       
+        $q = $this->db->get('tbl_patologias');
+        $nro_patologia = $q->num_rows();
 
+        $data_patologia = array(
+                'cod_patologia'             => "PAT".$nro_patologia,
+                'descripcion'               => $param['txt_desc'],
+                'sintomatologia'            => $param['txt_sintom'],
+                'indicaciones_preliminares' => $param['txt_ind'],
             );
 
         if($this->db->insert('tbl_patologias',$data_patologia)){
@@ -82,9 +145,17 @@ class Gestion_model extends CI_Model
         }
     }
 
-    function agregar_medicamento( $param ){
-        print_r($param);
+    function agregar_medicamento( $param ){    
         $data_medicamento = array(
+            'nombre_medicamento'        => $param['txt_nom_med'],
+            'fecha_vencimiento'         => $param['txt_fec_venc'],
+            'presentacion_comercial'    => $param['txt_pres'],
+            'via_administracion'        => $param['txt_via'],
+            'principio_activo'          => $param['txt_princ'],
+            'unidad_medida'             => $param['txt_uni'],
+            'cantidad'                  => $param['txt_cant'],
+            'unidad_referencia'         => $param['txt_uni_ref'],
+            'nombre_laboratorio'        => $param['txt_lab'],
             );
 
         if($this->db->insert('tbl_medicamentos',$data_medicamento)){
@@ -119,9 +190,11 @@ class Gestion_model extends CI_Model
         }
     }
 
-    function agregar_diagnostico( $param ){
-        print_r($param);
+    function agregar_diagnostico( $param ){        
         $data_diagnostico = array(
+            'sistema_afectado'  => $param['txt_sis'],
+            'desc_diagnostico'  => $param['txt_desc'],
+            'reposo_indicado'   => $param['txt_ind'],
             );
 
         if($this->db->insert('tbl_diagnosticos',$data_diagnostico)){
@@ -135,6 +208,21 @@ class Gestion_model extends CI_Model
     /** Área de actualizacion de datos
     /**************************************************************************/
 
+     function actualizar_alergia( $param ){
+        $data_alergia = array(
+            'nombre_alergia'        => $param['txt_nom_aler'],
+            'alergeno_detectado'    => $param['txt_aler_det'],
+            'zona_afectada'         => $param['txt_zona_afec'],
+            'sintomatologia'        => $param['txt_sintom'],
+            'indicaciones'          => $param['txt_ind'] 
+            );
+
+        if($this->db->update('tbl_alergias',$data_alergia, array("cod_alergia" => $param['txt_cod_alergia']))){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     /**************************************************************************/
     /** Área de eliminacion de datos
@@ -147,7 +235,7 @@ class Gestion_model extends CI_Model
                 break;
             case 2:
                 # Patologias
-                $this->db->delete('tbl_patologias', array('cod_patologia' => $param['id']));
+                $this->db->delete('tbl_patologias', array('id_patologia' => $param['id']));
                 break;
             case 3:
                 # Medicamentos

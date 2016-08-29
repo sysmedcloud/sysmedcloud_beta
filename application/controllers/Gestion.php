@@ -81,8 +81,12 @@ class Gestion extends CI_Controller {
                                 $html.= '  <td>'.$val_alergia['zona_afectada'].'</td>';
                                 $html.= '  <td>'.$val_alergia['sintomatologia'].'</td>';
                                 $html.= '  <td>'.$val_alergia['indicaciones'].'</td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].',1)">
+                                            <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_alergia['cod_alergia'].',2)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -111,8 +115,12 @@ class Gestion extends CI_Controller {
                                 $html.= '  <td>'.$val_patologia['descripcion'].'</td>';  
                                 $html.= '  <td>'.$val_patologia['sintomatologia'].'</td>';  
                                 $html.= '  <td>'.$val_patologia['indicaciones_preliminares'].'</td>';                                
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_patologia['id_patologia'].',1)">
+                                            <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_patologia['id_patologia'].',2)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>';  
                             }                            
                             $html.= '</tbody>';
@@ -145,15 +153,19 @@ class Gestion extends CI_Controller {
                                 $html.= '<tr>'; 
                                 $html.= '  <td>'.$val_meds['nombre_medicamento'].'</td>';
                                 $html.= '  <td>'.$val_meds['fecha_vencimiento'].'</td>';
-                                $html.= '  <td>'.$val_meds['presentcion_comercial'].'</td>';
+                                $html.= '  <td>'.$val_meds['presentacion_comercial'].'</td>';
                                 $html.= '  <td>'.$val_meds['via_administracion'].'</td>';
                                 $html.= '  <td>'.$val_meds['principio_activo'].'</td>';
-                                $html.= '  <td>'.$val_meds['unididad_medida'].'</td>';
+                                $html.= '  <td>'.$val_meds['unidad_medida'].'</td>';
                                 $html.= '  <td>'.$val_meds['cantidad'].'</td>';
                                 $html.= '  <td>'.$val_meds['unidad_referencia'].'</td>';
                                 $html.= '  <td>'.$val_meds['nombre_laboratorio'].'</td>'; 
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].',1)">
+                                            <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                            onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_meds['cod_medicamento'].',2)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -174,8 +186,12 @@ class Gestion extends CI_Controller {
                             $html.= '<tbody>';
                             foreach ($r as $key_vacunas => $val_vacunas) {
                                 $html.= '<tr>';                         
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].',1)">
+                                        <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary"
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_vacunas['cod_alergia'].',2)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>';  
                             }                            
                             $html.= '</tbody>';
@@ -196,8 +212,12 @@ class Gestion extends CI_Controller {
                             $html.= '<tbody>';
                             foreach ($r as $key_tratamientos => $val_tratamientos) {
                                 $html.= '<tr>';                            
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].'.1)">
+                                        <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_tratamientos['cod_alergia'].',2)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>';  
                             }                            
                             $html.= '</tbody>';
@@ -225,8 +245,12 @@ class Gestion extends CI_Controller {
                                 $html.= '  <td>'.$val_diag['sistema_afectado'].'</td>'; 
                                 $html.= '  <td>'.$val_diag['desc_diagnostico'].'</td>'; 
                                 $html.= '  <td>'.$val_diag['reposo_indicado'].'</td>'; 
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].')"><i class="fa fa-search" aria-hidden="true"></i></button></td>';
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="editar_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].')"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].',1)">
+                                        <i class="fa fa-search" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" 
+                                        onclick="ver_dato('.intval(@$_POST['tipo']).','.$val_diag['cod_diagnostico'].',2)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -331,7 +355,7 @@ class Gestion extends CI_Controller {
                                 $html.= '  <td>'.$val_patologia['descripcion'].'</td>';  
                                 $html.= '  <td>'.$val_patologia['sintomatologia'].'</td>';  
                                 $html.= '  <td>'.$val_patologia['indicaciones_preliminares'].'</td>';                                
-                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_patologia['cod_patologia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+                                $html.= '  <td align="center"><button class="btn btn-sm btn-primary" onclick="eliminar_dato('.intval(@$_POST['tipo']).','.$val_patologia['id_patologia'].')"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
                                 $html.= '</tr>'; 
                             }                            
                             $html.= '</tbody>';
@@ -363,10 +387,10 @@ class Gestion extends CI_Controller {
                                 $html.= '<tr>'; 
                                 $html.= '  <td>'.$val_meds['nombre_medicamento'].'</td>';
                                 $html.= '  <td>'.$val_meds['fecha_vencimiento'].'</td>';
-                                $html.= '  <td>'.$val_meds['presentcion_comercial'].'</td>';
+                                $html.= '  <td>'.$val_meds['presentacion_comercial'].'</td>';
                                 $html.= '  <td>'.$val_meds['via_administracion'].'</td>';
                                 $html.= '  <td>'.$val_meds['principio_activo'].'</td>';
-                                $html.= '  <td>'.$val_meds['unididad_medida'].'</td>';
+                                $html.= '  <td>'.$val_meds['unidad_medida'].'</td>';
                                 $html.= '  <td>'.$val_meds['cantidad'].'</td>';
                                 $html.= '  <td>'.$val_meds['unidad_referencia'].'</td>';
                                 $html.= '  <td>'.$val_meds['nombre_laboratorio'].'</td>'; 
@@ -450,11 +474,11 @@ class Gestion extends CI_Controller {
                             break;
                     };                    
                 break;
-                case 4:
+                case 4: // Eliminar datos desde BD
                     $r = $this->gestion->eliminar_datos($_POST);
                     echo json_encode($_POST);
                     break;
-                case 5:
+                case 5: // Ingresar Datos a la BD
                     $tipo = @$_POST['tipo'];
                     switch ($tipo) {
                         case '1':
@@ -510,6 +534,11 @@ class Gestion extends CI_Controller {
                             break;
                     }
                 break;
+                case 6: // Get data by ID
+                    $r = $this->gestion->get_datos_byID($_POST);                    
+                    $html = $this->templates->show_datos_byID($r[0], $_POST['opt']);
+                    echo json_encode(array("html" => $html));
+                    break;
                 default:
                     # Error
                 echo json_encode("Error al procesar su solicitud");

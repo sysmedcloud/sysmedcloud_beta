@@ -122,15 +122,42 @@ function crud_datos(dato, opcion) {
 /**************************************************************************/
 /** @Function que permite visualizar la informacion asociada a un dato
 /**************************************************************************/
-function ver_dato(dato, id) {
-    swal("mostrando dato " + dato + " " + id);
+function ver_dato(tipo, id, opt) {
+	if(opt == 1){
+		$('#mod_title').text('Ver información');
+		$('#bto_actualizar_datos').hide();	
+		
+	}else if (opt == 2){
+		$('#mod_title').text('Editar información');	
+		$('#bto_actualizar_datos').show();	
+	}
+
+	var datos = {
+        tipo: 	tipo,
+        id: 	id,
+        case: 	6,
+        opt : 	opt
+    };
+    $.ajax({
+        type: "POST",
+        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        data: datos,
+        dataType: 'JSON',
+        success: function(result) {
+        	$('#mod_ver_datos').modal('toggle');
+    		$('#mod_ver_datos_body').html(result.html);        	                        	
+        }
+    });
 }
 
 /**************************************************************************/
 /** @Function que permite actualizar la informacion asociada a un dato
 /**************************************************************************/
-function editar_dato(dato, id) {
-    swal("editando dato " + dato + " " + id);
+
+function actualizar_datos(){
+	var datos = $('#mod_ver_datos_body').serialize();
+	console.log(datos);
+	swal("actualizando informacion");
 }
 
 /**************************************************************************/

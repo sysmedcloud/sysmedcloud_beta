@@ -28,6 +28,17 @@ class Gestion_View{
         $this->CI->load->view('templates/admin/footer_app_view',$data);
     }
     
+    public function defaultAdminViewConsultaMed($view,$data){
+        
+        $this->CI->load->view('templates/admin/header_consulta_med_view',$data);
+        $this->CI->load->view('templates/admin/navigation_view',$data);
+        $this->CI->load->view('templates/admin/navbar_header_view',$data);
+        $this->CI->load->view('templates/admin/heading_view',$data);
+        $this->CI->load->view('admin/'.$view,$data);
+        $this->CI->load->view('templates/admin/footer_content_view');
+        $this->CI->load->view('templates/admin/footer_consulta_med_view',$data);
+    }
+    
     public function viewsAgenda($view,$data){
         
         $this->CI->load->view('templates/admin/header_agenda_view',$data);

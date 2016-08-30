@@ -94,7 +94,7 @@ class Consulta_medica extends CI_Controller {
         $data["estado_civil"]   = $paciente["estado_civil"];  
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
-        $this->gestion_view->defaultAdminView("nueva_consulta_med_view",$data);
+        $this->gestion_view->defaultAdminViewConsultaMed("nueva_consulta_med_view",$data);
     }
     
     

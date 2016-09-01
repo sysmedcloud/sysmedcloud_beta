@@ -260,7 +260,7 @@ class Templates {
     /** @Function que dibuja HTML y muestra data
     /******************************************************************/
 
-    function show_datos_byID( $param , $opt){
+    function show_datos_byID( $param , $opt){     
         $html= '<table class="table table-bordered">';
         $html.= '<thead>';        
         $html.= '</thead>';
@@ -285,7 +285,7 @@ class Templates {
                                     name="txt_'.$key_obj.'" value="'.$val_obj.'">';                   
                 }else{
                     $html.= '    <input type="text" class="form-control" id="txt_'.$key_obj.'" 
-                                    name="txt_'.$key_obj.'" placeholder="'.$val_obj.'">';
+                                    name="txt_'.$key_obj.'" value="'.$val_obj.'">';
                 }
                 $html.= '  </td>';
                 $html.= '</tr>'; 

@@ -210,11 +210,11 @@ class Gestion_model extends CI_Model
 
      function actualizar_alergia( $param ){
         $data_alergia = array(
-            'nombre_alergia'        => $param['txt_nom_aler'],
-            'alergeno_detectado'    => $param['txt_aler_det'],
-            'zona_afectada'         => $param['txt_zona_afec'],
-            'sintomatologia'        => $param['txt_sintom'],
-            'indicaciones'          => $param['txt_ind'] 
+            'nombre_alergia'        => $param['txt_nombre_alergia'],
+            'alergeno_detectado'    => $param['txt_alergeno_detectado'],
+            'zona_afectada'         => $param['txt_zona_afectada'],
+            'sintomatologia'        => $param['txt_sintomatologia'],
+            'indicaciones'          => $param['txt_indicaciones'] 
             );
 
         if($this->db->update('tbl_alergias',$data_alergia, array("cod_alergia" => $param['txt_cod_alergia']))){
@@ -223,6 +223,80 @@ class Gestion_model extends CI_Model
             return false;
         }
     }
+
+    function actualizar_patologia( $param ){       
+        $data_patologia = array(                
+                'descripcion'               => $param['txt_descripcion'],
+                'sintomatologia'            => $param['txt_sintomatologia'],
+                'indicaciones_preliminares' => $param['txt_indicaciones_preliminares'],
+            );
+
+        if($this->db->update('tbl_patologias',$data_patologia, array("cod_patologia" => $param['txt_cod_patologia']))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function actualizar_medicamento( $param ){    
+        $data_medicamento = array(
+            'nombre_medicamento'        => $param['txt_nombre_medicamento'],
+            'fecha_vencimiento'         => $param['txt_fecha_vencimiento'],
+            'presentacion_comercial'    => $param['txt_presentacion_comercial'],
+            'via_administracion'        => $param['txt_via_administracion'],
+            'principio_activo'          => $param['txt_principio_activo'],
+            'unidad_medida'             => $param['txt_unidad_medida'],
+            'cantidad'                  => $param['txt_cantidad'],
+            'unidad_referencia'         => $param['txt_unidad_referencia'],
+            'nombre_laboratorio'        => $param['txt_nombre_laboratorio'],
+            );
+
+        if($this->db->update('tbl_medicamentos',$data_medicamento, array("cod_medicamento" => $param['txt_cod_medicamento']))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function actualizar_vacuna( $param ){
+        print_r($param);
+        $data_vacuna = array(
+            
+            );
+
+        if($this->db->insert('tbl_vacunas',$data_vacuna)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function actualizar_tratamiento( $param ){
+        print_r($param);
+        $data_tratamiento = array(
+            );
+
+        if($this->db->insert('tbl_tratamientos',$data_tratamiento)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function actualizar_diagnostico( $param ){        
+        $data_diagnostico = array(
+            'sistema_afectado'  => $param['txt_sistema_afectado'],
+            'desc_diagnostico'  => $param['txt_desc_diagnostico'],
+            'reposo_indicado'   => $param['txt_reposo_indicado'],
+            );
+
+        if($this->db->update('tbl_diagnosticos',$data_diagnostico, array("cod_diagnostico" => $param['txt_cod_diagnostico']))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     /**************************************************************************/
     /** Área de eliminacion de datos

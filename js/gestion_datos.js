@@ -1,7 +1,57 @@
 // Gestion de datos (Mantenedores)
-$(document).ready(function() {
-    modal_info();
+$(document).ready(function() {    
+    render_grafico_balance();
 });
+
+function data_grafico_balance(){
+	
+}
+
+/**************************************************************************/
+/** @Function que renderiza el grafico de pie para el dashboard de datos
+/**************************************************************************/
+
+function render_grafico_balance(){
+	$('#grafico_pie').highcharts({
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Balance de Datos'
+        },
+        subtitle: {
+            text: 'Balance de datos en plataforma'
+        },
+        xAxis: {
+            categories: ''
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total de preguntas (t)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="blue">Hola </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} total</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+		    name: 'hola',
+		    data: [1,2,3]
+		}]
+    });
+}
+
 
 /**************************************************************************/
 /** @Function que permite seleccionar el tipo de dato a cargar
@@ -129,7 +179,8 @@ function ver_dato(tipo, id, opt) {
 		
 	}else if (opt == 2){
 		$('#mod_title').text('Editar información');	
-		$('#bto_actualizar_datos').show();	
+		$('#bto_actualizar_datos').show();
+		$('#inp_tipo').val(tipo);			
 	}
 
 	var datos = {
@@ -155,9 +206,35 @@ function ver_dato(tipo, id, opt) {
 /**************************************************************************/
 
 function actualizar_datos(){
-	var datos = $('#mod_ver_datos_body').serialize();
-	console.log(datos);
-	swal("actualizando informacion");
+	var tipo = $('#inp_tipo').val();
+	$.ajax({
+        type: "POST",
+        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        data: $('#mod_ver_datos_body').serialize() + "&case=7&tipo="+tipo,
+        dataType: 'JSON',
+        success: function( result ) {        	
+        	var estado = result.estado;
+        	var tipo = result.tipo;
+        	$('#mod_ver_datos').modal('hide');
+        	$('#mod_ver_datos_body')[0].reset();
+        	crud_datos(result.tipo , 1);
+        	if(estado){
+        		sweetAlert(
+				  'Confirmación',
+				  'Informacion agregada al sistema',
+				  'success'
+				);				      		
+        	}else{
+        		sweetAlert(
+				  'Error',
+				  'Hubo un problema al procesar su solicitud',
+				  'error'
+				);
+        	}
+            }
+
+    	});
+	
 }
 
 /**************************************************************************/
@@ -246,7 +323,6 @@ function ingresar_datos(tipo){
 				  'error'
 				);
         	}
-            }
-
-    	});
+        }
+   	});
 }

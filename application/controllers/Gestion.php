@@ -534,10 +534,69 @@ class Gestion extends CI_Controller {
                             break;
                     }
                 break;
-                case 6: // Get data by ID
+                case 6: 
+                    # Obtener datos por ID
                     $r = $this->gestion->get_datos_byID($_POST);                    
                     $html = $this->templates->show_datos_byID($r[0], $_POST['opt']);
                     echo json_encode(array("html" => $html));
+                    break;
+                case 7:
+                    # Update data por ID
+                    $tipo = $_POST['tipo'];
+                    switch ($tipo) {
+                        case '1':
+                            $r = $this->gestion->actualizar_alergia($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '2':
+                            $r = $this->gestion->actualizar_patologia($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '3':
+                            $r = $this->gestion->actualizar_medicamento($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }                            
+                            break;
+                        case '4':
+                            $r = $this->gestion->actualizar_vacuna($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '5':
+                            $r = $this->gestion->actualizar_tratamiento($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        case '6':
+                            $r = $this->gestion->actualizar_diagnostico($_POST);
+                            if($r == true){
+                                echo json_encode(array("estado" => TRUE, "tipo" => $tipo));                                
+                            }else{
+                                echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            }
+                            break;
+                        default:
+                            echo json_encode(array("estado" => FLASE, "tipo" => $tipo));
+                            break;
+                    }
+                break;
                     break;
                 default:
                     # Error

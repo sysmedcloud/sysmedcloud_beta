@@ -1,11 +1,11 @@
 <!--  inicio contenedor -->
 <div class="wrapper wrapper-content">
-   <div class="middle-box text-center" id="middle">
-      <h3 class="font-bold">Módulo de Gestión de Datos</h3>
-      <div class="error-desc">
-         Gracias a este módulo podrá agregar, editar o eliminar información del sistema.
-         <br/><a href="index.html" class="btn btn-primary m-t" data-toggle="modal" data-target="#gestion_datos">Gestionar Datos</a>
-      </div>
+   <div class="ibox float-e-margins" id="middle">
+       <div class="ibox-content">
+         <div id="grafico_pie">
+         </div>         
+         <button class="btn btn-primary m-t" onclick="modal_info()">Dashboard</button>
+       </div>
    </div>
    <!-- Ver datos gestionables -->
    <div class="modal inmodal" id="gestion_datos" tabindex="-1" role="dialog" aria-hidden="true">
@@ -58,6 +58,7 @@
                </form>
             </div>
             <div class="modal-footer">
+               <input type="hidden" name="inp_tipo" id="inp_tipo">
                <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
                <button type="button" class="btn btn-primary" id="bto_actualizar_datos" style="display:none" onclick="actualizar_datos()">Actualizar</button>
             </div>
@@ -75,7 +76,7 @@
          </div>    
 	   </div>
 	   <div class="ibox-content">
-	      <div class="row">
+	      <div class="row">          
 	   	 <div id="alergias"></div>
 		    <div id="patologias"></div>
 		    <div id="medicamentos"></div>

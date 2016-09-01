@@ -293,6 +293,7 @@ class Fileclass {
             '5' => base_url().'js/pace.min.js',
             '5' => base_url().'js/gestion_datos.js',
             '6'=> base_url().'js/sweetalert.min.js',
+            '6'=> base_url().'js/highcharts.js',
 
         );
 

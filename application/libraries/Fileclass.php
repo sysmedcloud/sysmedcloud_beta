@@ -293,13 +293,45 @@ class Fileclass {
             '5' => base_url().'js/pace.min.js',
             '5' => base_url().'js/gestion_datos.js',
             '6'=> base_url().'js/sweetalert.min.js',
-            '6'=> base_url().'js/highcharts.js',
+            '7'=> base_url().'js/highcharts.js',
+
+        );
+
+        return $this->files;
+    }
+
+    function files_reportes(){
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/animate.css',
+            '3' => base_url().'css/style.css',
+            '4' => base_url().'css/sweetalert.css',
+            '5' => base_url().'css/plugins/iCheck/custom.css',
+            '6' => base_url().'css/plugins/steps/jquery.steps.css'
+            
+        );
+        
+        //Archivos js template login
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/inspinia.js',
+            '5' => base_url().'js/pace.min.js',            
+            '6' => base_url().'js/sweetalert.min.js',
+            '7' => base_url().'js/highcharts.js',        
+            '8' => base_url().'js/plugins/metisMenu/jquery.metisMenu.js',
+            '9' => base_url().'js/jquery.slimscroll.min.js',
+            '10' => base_url().'js/jquery.steps.min.js',
+            '11' => base_url().'js/plugins/validate/jquery.validate.min.js',
+            '12' => base_url().'js/gestion_reportes.js',
 
         );
 
         return $this->files;
     }
 }
-
-
-/* End of file Files.php */ 

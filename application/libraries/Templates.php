@@ -297,5 +297,64 @@ class Templates {
         return $html;
 
     }
+    function header_repo(){
+        $html = '<html><head>';
+        $html.= '<style>
+                    .tbl_repo {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+
+                    .tbl_repo td, .tbl_repo th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+
+                    .tbl_repo tr:nth-child(even) {
+                        background-color: #dddddd;
+                    }
+                </style>';
+        $html.= '</head></html>';
+
+        return $html;
+
+    }
+
+    /******************************************************************/
+    /** @Function que permiten generar reportes
+    /******************************************************************/
+
+    function tmp_reporte_medicamentos($param){
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Nombre</th>';
+        $html.= '    <th>Fecha Venc.</th>';
+        $html.= '    <th>Pres. Comerc.</th>';
+        $html.= '    <th>Via Adm.</th>';
+        $html.= '    <th>Princ. Activo</th>';        
+        $html.= '    <th>Laboratorio</th>';           
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_meds) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_meds['nombre_medicamento'].'</td>';
+            $html.= '  <td>'.$val_meds['fecha_vencimiento'].'</td>';
+            $html.= '  <td>'.$val_meds['presentacion_comercial'].'</td>';
+            $html.= '  <td>'.$val_meds['via_administracion'].'</td>';
+            $html.= '  <td>'.$val_meds['principio_activo'].'</td>';            
+            $html.= '  <td>'.$val_meds['nombre_laboratorio'].'</td>'; 
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
         
 }

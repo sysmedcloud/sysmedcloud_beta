@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 <li class="<?=$active["reportes"];?>">
-                    <a href="<?=base_url();?>"><i class="fa fa-clipboard"></i> <span class="nav-label">Reportes</span></a>
+                    <a href="<?=base_url();?>reportes"><i class="fa fa-clipboard"></i> <span class="nav-label">Reportes</span></a>
                 </li>
                 <li class="<?=$active["soporte"];?>">
                     <a href="#"><i class="fa fa-phone-square"></i> <span class="nav-label">Soporte</span> <span class="fa arrow"></span></a>

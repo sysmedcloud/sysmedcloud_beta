@@ -3,16 +3,13 @@ $(document).ready(function() {
     render_grafico_balance();
 });
 
-function data_grafico_balance(){
-	
-}
 
 /**************************************************************************/
 /** @Function que renderiza el grafico de pie para el dashboard de datos
 /**************************************************************************/
 
 function render_grafico_balance(){
-	$('#grafico_pie').highcharts({
+	$('#grafico_pie2').highcharts({
         chart: {
             type: 'pie'
         },
@@ -49,6 +46,45 @@ function render_grafico_balance(){
 		    name: 'hola',
 		    data: [1,2,3]
 		}]
+    });
+
+    $('#grafico_pie').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Balance de Datos'
+        },
+        subtitle: {
+            text: 'Balance de datos en plataforma'
+        },
+        xAxis: {
+            categories: ''
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total de preguntas (t)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="blue">Hola </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} total</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'hola',
+            data: [1,2,3]
+        }]
     });
 }
 

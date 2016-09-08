@@ -2,9 +2,13 @@
 <div class="wrapper wrapper-content">
    <div class="ibox float-e-margins" id="middle">
        <div class="ibox-content">
-         <div id="grafico_pie">
-         </div>         
-         <button class="btn btn-primary m-t" onclick="modal_info()">Dashboard</button>
+          <div class="row">
+            <div id="grafico_pie" style="float:left" class ="col-lg-6"></div>  
+            <div id="grafico_pie2" style="float:left" class ="col-lg-6"></div>         
+          </div>
+          <div class="row">
+               <button class="btn btn-primary col-sm-3" onclick="modal_info()">Gestionar datos</button>            
+          </div>
        </div>
    </div>
    <!-- Ver datos gestionables -->

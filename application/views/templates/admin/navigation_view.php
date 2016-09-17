@@ -5,7 +5,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" width="48px;" class="img-circle" src="<?=base_url();?>img/<?=$session["imagen"];?>" />
+                            <img alt="image" width="48px;" class="img-circle" src="<?=base_url();?>img/foto_perfil/<?=$session["imagen"];?>" id="bar_foto_perfil" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> 

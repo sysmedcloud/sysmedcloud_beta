@@ -28,7 +28,7 @@
                   <div class="form-group">
                      <div class="col-sm-3">
                         <a href="#" class="thumbnail">
-                             <img src="<?=base_url();?>img/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario">
+                             <img src="<?=base_url();?>img/foto_perfil/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario" id="img_perfil" name="img_perfil">
                         </a>
                         <hr>
                      </div>
@@ -189,19 +189,14 @@
                                              <div class="col-md-4">&nbsp;</div>
                                           </div>
                                        </div>
-                                       <div id="tab-4" class="tab-pane">
-                                          <h1>EN CONSTRUCCION...</h1>
+                                       <div id="tab-4" class="tab-pane">                                          
                                           <div class="row">
-                                             <div class="col-md-4">
-                                             </div>
-                                             <div class="col-md-4">
-                                             </div>
-                                             <div class="col-md-4">&nbsp;</div>
+                                             <input multiple="" accept="image/*" type="file" id="upload_foto" name="upload_foto">
                                           </div>
+                                          <input type="button" class="btn btn-primary" id="bto_foto" name="bto_foto" value="Cambiar Imagen">
                                        </div>
                                     </div>
                                  </div>
-
                                 <div class="col-md-12">
                                    <?php 
                                       if(!empty(validation_errors())){

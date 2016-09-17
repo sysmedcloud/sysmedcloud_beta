@@ -37,9 +37,9 @@ class Fileclass {
 
         return $this->files;
     }
-    
-    public function files_listado_consultas_med(){
-        
+
+    // Funcion que carga por defecto aquellos archivos mas utilizados
+    public function default_files(){
         $this->files['style'] = array(
             
             '0' => base_url().'css/bootstrap.min.css',
@@ -67,6 +67,38 @@ class Fileclass {
             '9' => base_url().'js/pace.min.js',
             '10' => base_url().'js/sweetalert.min.js',
             '11' => base_url().'js/consulta_medica.js',
+        );
+    }
+    
+    public function files_listado_consultas_med(){
+        
+        $this->files['style'] = array(
+            
+            '0' => base_url().'css/bootstrap.min.css',
+            '1' => base_url().'font-awesome/css/font-awesome.css',
+            '2' => base_url().'css/plugins/dataTables/dataTables.bootstrap.css',
+            '3' => base_url().'css/plugins/dataTables/dataTables.responsive.css',
+            '4' => base_url().'css/plugins/dataTables/dataTables.tableTools.min.css',
+            '5' => base_url().'css/animate.css',
+            '6' => base_url().'css/style.css',
+            '7' => base_url().'css/button_data_table.css',
+            '8' => base_url().'css/sweetalert.css'
+        );
+        
+        $this->files['script'] = array(
+            
+            '0' => base_url().'js/jquery-2.1.1.js',
+            '1' => base_url().'js/bootstrap.min.js',
+            '2' => base_url().'js/jquery.metisMenu.js',
+            '3' => base_url().'js/jquery.slimscroll.min.js',
+            '4' => base_url().'js/jquery.dataTables.js',
+            '5' => base_url().'js/dataTables.bootstrap.js',
+            '6' => base_url().'js/dataTables.responsive.js',
+            '7' => base_url().'js/dataTables.tableTools.min.js',
+            '8' => base_url().'js/inspinia.js',
+            '9' => base_url().'js/pace.min.js',
+            '10' => base_url().'js/sweetalert.min.js',
+            '11' => base_url().'js/consulta_medica.js'
         );
         
         return $this->files;
@@ -123,7 +155,9 @@ class Fileclass {
             '1' => base_url().'font-awesome/css/font-awesome.css',
             '2' => base_url().'css/plugins/iCheck/custom.css',
             '3' => base_url().'css/animate.css',
-            '4' => base_url().'css/style.css'
+            '4' => base_url().'css/style.css',
+            '5' => base_url().'css/upload.css',
+            '6' => base_url().'css/sweetalert.css'
         );
         
         //Archivos js template login
@@ -139,6 +173,8 @@ class Fileclass {
             '7' => base_url().'js/mi_perfil.js',
             '8' => base_url().'js/jasny-bootstrap.min.js',
             '9' => base_url().'js/mi_perfil_selects.js',
+            '10' => base_url().'js/jquery.ajaxfileupload.js',
+            '11' => base_url().'js/sweetalert.min.js'
         );
         
         return $this->files;

@@ -78,9 +78,9 @@
                                     </div>
                                     &nbsp;
                                     <div class="row">
-                                       <div class="col-lg-3">
+                                       <div class="col-sm-3">
                                           <a href="#" class="thumbnail">
-                                            <img src="<?=base_url();?>img/sin-foto.png"  class="img-thumbnail" alt="imagen usuario">
+                                            <img src="<?=base_url();?>img/sin-foto.png"  class="img-thumbnail" alt="imagen usuario" width="130" heigth="130">
                                           </a>
                                        </div>
                                        &nbsp;
@@ -161,8 +161,8 @@
                                                 <div class="panel-heading" role="tab" id="headingOne">
                                                    <h4 class="panel-title">
                                                       <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Revisíon por Sistemas
-                                                      </a>
+                                                         <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Revisíon por Sistemas
+                                                      </a>                                                      
                                                    </h4>
                                                 </div>
                                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -610,10 +610,34 @@
                                                          </div>
                                                          <div id="rs_8" class="tab-pane fade">
                                                             <br>
-                                                            <p>Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
-                                                               tipo de archivo digital. Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
-                                                               Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
-                                                            </p>
+                                                            <div id="tab-4" class="tab-pane">                                          
+                                                               <div class="col-sm-4">
+                                                                  <input multiple="" accept="file_extension" type="file" id="endo_upload_img" name="endo_upload_img">
+                                                                  <br>
+                                                                  <input type="button" class="btn btn-white" id="endo_img" name="endo_img" 
+                                                                  value="Subir archivo">
+                                                               </div>
+                                                               <div class="col-sm-4" id="list_rv_archivos">
+                                                                  <ul>
+                                                                     
+                                                                  </ul>
+                                                               </div>
+                                                               <div class="modal inmodal fade" id="myModa1" tabindex="-1" role="dialog" aria-hidden="true">
+                                                               <div class="modal-dialog modal-lg">
+                                                                  <div class="modal-content">
+                                                                      <div class="modal-header">
+                                                                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                                                          <h4 class="modal-title"><span id="nom_rv_archivo"></span></h4>
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                                          <img class="img-responsive" id="img_rv_arcivo">
+                                                                      </div>
+                                                                      <div class="modal-footer">
+                                                                          <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                            </div>
                                                          </div>
                                                       </div>
                                                    </div>
@@ -1219,31 +1243,19 @@
                                                          </div>
                                                          <div id="ef_8" class="tab-pane fade">
                                                             <br>
-                                                            <p>
-                                                               Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
-                                                               tipo de archivo digital. 
-                                                               Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
-                                                               Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
-                                                            </p>
+                                                            <div id="tab-4" class="tab-pane">                                          
+                                                               <div class="col-sm-8">
+                                                                  <input multiple="" accept="file_extension" type="file" id="ef_upload_img" name="ef_upload_img">
+                                                                  <br>
+                                                                  <input type="button" class="btn btn-w-m btn-default" id="ef_img" name="ef_img" 
+                                                                  value="Subir archivo">
+                                                               </div>
+                                                            </div>
                                                          </div>
                                                       </div>
                                                    </div>
                                                 </div>
-                                             </div>
-                                             <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingThree">
-                                                   <h4 class="panel-title">
-                                                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Examen Físico Segmentado
-                                                      </a>
-                                                   </h4>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                   <div class="panel-body">
-                                                      Contenido...
-                                                   </div>
-                                                </div>
-                                             </div>
+                                             </div>                                             
                                           </div>
                                        </div>
                                     </div>

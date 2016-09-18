@@ -268,3 +268,68 @@ function limpiar_campos(){
     
     return false;
 }
+
+// Archivos Revision por sistemas
+$('#endo_img').click(function(){
+    
+    var documento = document.getElementById("endo_upload_img");
+    var file = documento.files[0];
+    var datos = new FormData();
+    datos.append('rv_archivo', file);
+    datos.append('id_paciente', $('#id_paciente').val());
+    datos.append('id_consulta', $('#id_cita_med').val())
+    $.ajax({
+        url:'http://' + window.location.host + '/sysmedcloud/consulta_medica/rv_archivos_documentos/',
+        type:'POST',
+        contentType:false,
+        data: datos,
+        dataType: 'json',
+        processData:false,
+        cache:false,
+        success: function(result){          
+            if(result.estado == 'true'){
+                $("#list_rv_archivos ul").append('<li>'+ result.nom_archivo +' <a href="#" title="Ver Información" onclick="ver_rv_imagen(\'' + result.nom_archivo + '\');" data-toggle="modal" data-target="#myModa1"><i class="fa fa-eye"></i></a></li>');                
+                swal("Éxito", "Archivo subido exitósamente al sistema", "success")
+            }else{
+                sweetAlert("Error", "Asegúrese de seleccionar un archivo", "error");
+            }            
+        }        
+    });
+});
+
+function ver_rv_imagen( nom_archivo ){
+    var src = 'http://' + window.location.host + '/sysmedcloud/img/rv_archivos/';
+    $('#nom_rv_archivo').text(nom_archivo);
+    $('#img_rv_arcivo').attr('src', src + nom_archivo);        
+}
+
+// Archivos Examen fisico
+$('#ef_img').click(function(){
+    
+    var foto_perfil = document.getElementById("upload_foto");
+    var file = foto_perfil.files[0];
+    var datos = new FormData();
+
+    datos.append('case', 1);
+    datos.append('foto_perfil', file);
+
+    $.ajax({
+        url:'http://' + window.location.host + '/sysmedcloud/consulta_medica/ef_archivos_documentos/',
+        type:'POST',
+        contentType:false,
+        data: datos,
+        dataType: 'json',
+        processData:false,
+        cache:false,
+        success: function(result){          
+            var src = 'http://' + window.location.host + '/sysmedcloud/img/foto_perfil/';                       
+            if(result.estado == 'true'){
+                $("#img_perfil").attr( "src", src + result.imagen);
+                $("#bar_foto_perfil").attr( "src", src + result.imagen);
+                swal("Éxito", "Imagen de perfil actualizada", "success")
+            }else{
+                sweetAlert("Error", "Asegúrese de seleccionar un archivo", "error");
+            }            
+        }        
+    });
+});

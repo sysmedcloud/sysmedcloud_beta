@@ -385,7 +385,34 @@ class Consulta_medica extends CI_Controller {
     }
     
     //REVISION POR SISTEMA / ARCHIVOS Y DOCUMENTOS
-    public function rv_archivos_documentos(){}
+    public function rv_archivos_documentos(){
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $param              = array();
+        $respuesta          = array();
+        if( count($_FILES) > 0 )                    {
+            $nombre_file        = $_FILES['rv_archivo']['name'];                        
+            $array_nombre_file  = explode( ".", $nombre_file );                        
+            $nombre_file        = $array_nombre_file[0]."-".date('Ymd').time().".".array_pop( $array_nombre_file );
+            $ruta_temp          = $_FILES['rv_archivo']['tmp_name'];
+            $ruta_file          = getcwd()."/img/rv_archivos/".$nombre_file;                                    
+            
+            move_uploaded_file($ruta_temp, $ruta_file);
+            $param["id_consulta"]       = $this->input->post('id_consulta');
+            $param["id_paciente"]       = $this->input->post('id_paciente');    
+            $param["atendido_por"]      = $data["session"]["id_usuario"]; // modificado por
+            $param["archivo"]           = $nombre_file;                                                            
+            $resp = $this->consulta_model->add_rv_archivos( $param );                                               
+            if( $resp )
+            {
+                $respuesta = array( "estado" => 'true', "nom_archivo" => $resp);                
+            }                        
+        }else{
+            $respuesta = array( "estado" => 'false' , "nom_archivo" => "");
+        }
+        echo json_encode( $respuesta ); 
+    }
+
+
     
     //DATOS EXAMEN FISICO
     public function examen_fisico(){
@@ -468,7 +495,7 @@ class Consulta_medica extends CI_Controller {
         $EX_PIEL["turgor_elasticidad"]      = $this->input->post('piel_turgor_e');
         $EX_PIEL["temperatura"]             = $this->input->post('piel_temperatura');        
         $EX_PIEL["no_lesiones"]             = $this->input->post('piel_sin_lesiones')       !== null ? TRUE : FALSE;
-        $EX_PIEL["eritema_exp_solar"]                 = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
+        $EX_PIEL["eritema_exp_solar"]       = $this->input->post('piel_Eritema')            !== null ? TRUE : FALSE;
         $EX_PIEL["mascula_cara"]            = $this->input->post('piel_mascula')            !== null ? TRUE : FALSE;
         $EX_PIEL["papula"]                  = $this->input->post('piel_papula')             !== null ? TRUE : FALSE;
         $EX_PIEL["nodulo"]                  = $this->input->post('piel_nodulo')             !== null ? TRUE : FALSE;
@@ -533,5 +560,5 @@ class Consulta_medica extends CI_Controller {
     }
     
     //DATOS EXAMEN FISICO ARCHIVOS Y DOCUMENTOS
-    public function archivos_documentos(){}
+    public function ef_archivos_documentos(){}
 }

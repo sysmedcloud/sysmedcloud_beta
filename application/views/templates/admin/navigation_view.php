@@ -21,9 +21,8 @@
                             </span> 
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Perfil</a></li>
-                            <li><a href="contacts.html">Contacto</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li><a href="<?=base_url();?>perfil_admin">Perfil</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModal6">Contacto</a></li>
                             <li class="divider"></li>
                             <li><a href="<?=base_url();?>login_app/accion/logout">Cerrar sesión</a></li>
                         </ul>
@@ -68,7 +67,31 @@
                 <li class="<?=$active["soporte"];?>">
                     <a href="#"><i class="fa fa-phone-square"></i> <span class="nav-label">Soporte</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li ><a href="<?=base_url();?>">Contactenos</a></li>
+                        <li ><a href="#" data-toggle="modal" data-target="#myModal6">Contactenos</a>
+                            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Contacto</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="SysMedCloud" title="SysMedCloud">
+                                            
+                                            0666 Antonio Varas, Providencia<br>
+                                            Santiago de Chile<br>
+                                            P: (+569) 8640-5645<br>
+                                            Correo<br>
+                                            <a href="">help@sysmedcloud.cl</a> 
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
                         <li >
                             <a href="#" data-toggle="modal" data-target="#myModal5">Acerca de Sysmedcloud</a>
                             <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">

@@ -77,6 +77,19 @@ class Consulta_model extends CI_Model
         $this->db->insert('tbl_rs_sintomas_endocrinos',$data);
         return $this->db->insert_id();
     }
+
+    public function add_rv_archivos($param){        
+        $this->db->insert('tbl_rs_archivos', $param);
+        if($this->db->insert_id()){
+            $this->db->from('tbl_rs_archivos');
+            $this->db->select('archivo');
+            $this->db->where('id_consulta', $param['id_consulta']);
+            $this->db->order_by("id", "desc");
+            $this->db->limit(1);
+            $q = $this->db->get()->result_array();            
+            return $q[0]['archivo'];
+        }
+    }
     
     public function add_ex_decubito($data){
         
@@ -126,21 +139,14 @@ class Consulta_model extends CI_Model
     public function listado_consultas_medicas($id_usuario){
         
         //Query para obtener listado de pacientes
-        $this->db->select("cm.id_consulta,
-                            cm.id_paciente,
-                            cm.motivo_consulta,
-                            cm.anamnesis_proxima,
-                            cm.hipotesis_diagnostica,
-                            cm.tratamiento,
-                            cm.observaciones,
-                            cm.fecha_consulta");
+        $this->db->select("cm.id_consulta,cm.id_paciente,cm.motivo_consulta,cm.anamnesis_proxima,cm.hipotesis_diagnostica,cm.tratamiento,cm.observaciones,cm.fecha_consulta");
         $this->db->from('tbl_consulta_medica cm');
         $this->db->join('tbl_usuarios u','u.id_usuario = cm.ingresado_por');
         //$this->db->where('u.id_perfil',4);
         $this->db->where('u.estado',0);
         $this->db->where('u.eliminado',0);
         $this->db->where('u.id_usuario',$id_usuario);
-        $this->db->where('cm.eliminado',0);        
+        $this->db->where('u.eliminado',0);        
         $this->db->order_by("cm.id_consulta","asc");
         $datos = $this->db->get();
         //echo $this->db->last_query();exit();

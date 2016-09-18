@@ -560,5 +560,31 @@ class Consulta_medica extends CI_Controller {
     }
     
     //DATOS EXAMEN FISICO ARCHIVOS Y DOCUMENTOS
-    public function ef_archivos_documentos(){}
+    public function ef_archivos_documentos(){
+        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $param              = array();
+        $respuesta          = array();
+        if( count($_FILES) > 0 )                    {
+            $nombre_file        = $_FILES['ef_archivo']['name'];                        
+            $array_nombre_file  = explode( ".", $nombre_file );                        
+            $nombre_file        = $array_nombre_file[0]."-".date('Ymd').time().".".array_pop( $array_nombre_file );
+            $ruta_temp          = $_FILES['ef_archivo']['tmp_name'];
+            $ruta_file          = getcwd()."/img/ef_archivos/".$nombre_file;                                    
+            
+            move_uploaded_file($ruta_temp, $ruta_file);
+            $param["id_consulta"]       = $this->input->post('id_consulta');
+            $param["id_paciente"]       = $this->input->post('id_paciente');    
+            $param["atendido_por"]      = $data["session"]["id_usuario"]; // modificado por
+            $param["archivo"]           = $nombre_file;                                                            
+            $resp = $this->consulta_model->add_ef_archivos( $param );                                               
+            if( $resp )
+            {
+                $respuesta = array( "estado" => 'true', "nom_archivo" => $resp);                
+            }                        
+        }else{
+            $respuesta = array( "estado" => 'false' , "nom_archivo" => "");
+        }
+        echo json_encode( $respuesta ); 
+    }
+
 }

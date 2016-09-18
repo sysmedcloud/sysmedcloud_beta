@@ -1,8 +1,14 @@
 //AL MOMENTO DE CARGAR LA PAGINA CARGA ESTO
 $(document).ready(function() {
-    
-    //CARGA TABLA DE PACIENTES
-    listado_consultas_medicas_user();
+    var url = window.location.pathname.split("/");
+    if(!url[3]){
+        //CARGA TABLA DE PACIENTES
+        listado_consultas_medicas_user();        
+    }else{
+        $('#div_cm').hide();
+        $('#div_bto_cm').hide();
+    }
+
     
 });
 
@@ -193,8 +199,6 @@ function buscar_paciente(){
     })
     .done(function(data,textStatus,jqXHR ) {         
         
-        console.log(data);
-        
         if(textStatus === "success"){//La solicitud se realizo correctamente
 
             var id_paciente = data.id_paciente;
@@ -217,6 +221,10 @@ function buscar_paciente(){
                 $("#fecha_nac_paciente").html(data.fecha_nac);
                 $("#nacionalidad_paciente").html(data.nacionalidad);
                 $("#est_civil_paciente").html(data.estado_civil);
+                $("#div_cm").show(1000);
+                $("#div_bto_cm").show(1000);
+
+
 
             }else{
 
@@ -306,13 +314,12 @@ function ver_rv_imagen( nom_archivo ){
 // Archivos Examen fisico
 $('#ef_img').click(function(){
     
-    var foto_perfil = document.getElementById("upload_foto");
-    var file = foto_perfil.files[0];
+    var documento = document.getElementById("ef_upload_img");
+    var file = documento.files[0];
     var datos = new FormData();
-
-    datos.append('case', 1);
-    datos.append('foto_perfil', file);
-
+    datos.append('ef_archivo', file);
+    datos.append('id_paciente', $('#id_paciente').val());
+    datos.append('id_consulta', $('#id_cita_med').val())
     $.ajax({
         url:'http://' + window.location.host + '/sysmedcloud/consulta_medica/ef_archivos_documentos/',
         type:'POST',
@@ -322,14 +329,18 @@ $('#ef_img').click(function(){
         processData:false,
         cache:false,
         success: function(result){          
-            var src = 'http://' + window.location.host + '/sysmedcloud/img/foto_perfil/';                       
             if(result.estado == 'true'){
-                $("#img_perfil").attr( "src", src + result.imagen);
-                $("#bar_foto_perfil").attr( "src", src + result.imagen);
-                swal("Éxito", "Imagen de perfil actualizada", "success")
+                $("#list_ef_archivos ul").append('<li>'+ result.nom_archivo +' <a href="#" title="Ver Información" onclick="ver_ef_imagen(\'' + result.nom_archivo + '\');" data-toggle="modal" data-target="#myModa2"><i class="fa fa-eye"></i></a></li>');                
+                swal("Éxito", "Archivo subido exitósamente al sistema", "success")
             }else{
                 sweetAlert("Error", "Asegúrese de seleccionar un archivo", "error");
             }            
         }        
     });
 });
+
+function ver_ef_imagen( nom_archivo ){
+    var src = 'http://' + window.location.host + '/sysmedcloud/img/ef_archivos/';
+    $('#nom_ef_archivo').text(nom_archivo);
+    $('#img_ef_arcivo').attr('src', src + nom_archivo);        
+}

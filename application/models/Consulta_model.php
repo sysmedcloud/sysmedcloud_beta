@@ -132,6 +132,19 @@ class Consulta_model extends CI_Model
         $this->db->insert('tbl_efg_signos_vitales',$data);
         return $this->db->insert_id();
     }
+
+    public function add_ef_archivos($param){        
+        $this->db->insert('tbl_ef_archivos', $param);
+        if($this->db->insert_id()){
+            $this->db->from('tbl_ef_archivos');
+            $this->db->select('archivo');
+            $this->db->where('id_consulta', $param['id_consulta']);
+            $this->db->order_by("id", "desc");
+            $this->db->limit(1);
+            $q = $this->db->get()->result_array();            
+            return $q[0]['archivo'];
+        }
+    }    
     
     /***************************************************************************
     /** @Funtion que permite retornar consultas medicas realizadas por un usuario

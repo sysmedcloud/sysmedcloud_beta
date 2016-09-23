@@ -38,7 +38,7 @@ class Paciente_admin extends CI_Controller {
     public function RegistrarPaciente(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $data["session"]    = $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_crearpacientes();
@@ -71,7 +71,7 @@ class Paciente_admin extends CI_Controller {
     public function listadoPacientes(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_tbl();
@@ -90,7 +90,7 @@ class Paciente_admin extends CI_Controller {
     public function pacientes_json(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $data["session"]    = $this->general_sessions->datosDeSession(); 
         
         $id_empresa         = $this->session->userdata('id_empresa');
         
@@ -103,7 +103,7 @@ class Paciente_admin extends CI_Controller {
     public function  recibirDatos(){
        
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //Datos POST formulario
         $this->form_validation->set_rules('rut','R.U.T.','required|trim');
@@ -218,7 +218,7 @@ class Paciente_admin extends CI_Controller {
     public function recibirDatosEdit(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //Datos POST formulario
         $this->form_validation->set_rules('rut','R.U.T.','required|trim');
@@ -312,7 +312,7 @@ class Paciente_admin extends CI_Controller {
     public function editarPaciente($id_paciente){
                
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_crearpacientes();
@@ -351,7 +351,7 @@ class Paciente_admin extends CI_Controller {
     public function pacienteAdd_succes(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $data["session"]    = $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
@@ -367,7 +367,7 @@ class Paciente_admin extends CI_Controller {
     public function pacienteEdit_succes(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $data["session"]    = $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();
@@ -383,7 +383,7 @@ class Paciente_admin extends CI_Controller {
     public function dataPaciente(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    = $this->general_sessions->validarSessionAdmin();
+        $data["session"]    = $this->general_sessions->datosDeSession(); 
         
         $id_paciente = $this->input->post('id_paciente');
         
@@ -459,7 +459,7 @@ class Paciente_admin extends CI_Controller {
     public function nombre_y_id_del_paciente(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $session        = $this->general_sessions->validarSessionAdmin();
+        $session        = $this->general_sessions->datosDeSession(); 
         $id_empresa     = $session["id_empresa"];
         $rut_paciente   = trim($this->input->post("rut"));
         

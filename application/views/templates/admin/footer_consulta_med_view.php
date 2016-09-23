@@ -1,14 +1,13 @@
 <!-- Mainly scripts -->
 <!-- Custom and plugin javascript -->
 <?php 	
-    $directory = "archivos_/";      
-    $archivos = glob($directory . "*.*");
+    
 ?>
 </body>
 <script>
     $('#archivos').fileinput({
-        uploadUrl: "<?php echo base_url(); ?>consulta_medica/upload_files",
-        deleteUrl: "<?php echo base_url(); ?>consulta_medica/delete_files",
+        uploadUrl: "<?php echo base_url(); ?>consulta_medica/upload_files/<?php echo $token; ?>",
+        deleteUrl: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token; ?>",
         maxFilePreviewSize: 10240,
         uploadAsync: true,
         minFileCount: 1,
@@ -102,7 +101,7 @@
 		],
 	    initialPreviewConfig: [
 	    <?php foreach($archivos as $archivo){ $infoArchivos=explode("/",$archivo);?>
-		{caption: "<?php echo $infoArchivos[1];?>",  height: "100px", url: "<?php echo base_url(); ?>consulta_medica/delete_files", key:"<?php echo $infoArchivos[1];?>"},
+		{caption: "<?php echo $infoArchivos[1];?>",  height: "100px", url: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token; ?>", key:"<?php echo $infoArchivos[1];?>"},
 		<?php } ?>
 		]
     }).on("filebatchselected", function(event, files) {

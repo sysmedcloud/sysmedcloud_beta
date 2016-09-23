@@ -38,7 +38,7 @@ class Consulta_medica extends CI_Controller {
     public function listado_consultas_medicas(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_listado_consultas_med();
@@ -57,10 +57,10 @@ class Consulta_medica extends CI_Controller {
     public function consultas_med_json(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //Cargamos las variables de session (LIBRERIA)
-        $this->general_sessions->validarSessionAdmin();
+        $this->general_sessions->datosDeSession(); 
         
         echo $this->consulta_model->listado_consultas_medicas($data["session"]["id_usuario"]);
     }
@@ -73,7 +73,7 @@ class Consulta_medica extends CI_Controller {
         $this->load->model('paciente_model');
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->nueva_consulta();
@@ -93,10 +93,28 @@ class Consulta_medica extends CI_Controller {
         $data["nacionalidad"]   = $paciente["nacionalidad"];  
         $data["estado_civil"]   = $paciente["estado_civil"];  
         
+        $data["token"] = $this->token();//Creamos token
+        
+        $data["archivos"] = $this->consulta_model->archivos_rs($data["token"]);//Buscamos archivos segun token
+        
+        //echo "<pre>";print_r($data["archivos"]);exit();
+        /*$directory = "archivos_/";      
+        $data["archivos"] = glob($directory . "*.*");*/
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminViewConsultaMed("nueva_consulta_med_view",$data);
     }
     
+    
+    /********************************************************************************************
+    * @Funcion que me permite crear un token para la subida de imagenes
+    *******************************************************************************************/
+    function token() {   		
+         srand (time());
+        //generamos un número aleatorio
+         $numero_aleatorio = rand(1,10000000); 
+         return $numero_aleatorio;
+    }
     
     public function test(){
             
@@ -109,7 +127,7 @@ class Consulta_medica extends CI_Controller {
     public function recibirDatos(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $session    =   $this->general_sessions->validarSessionAdmin();
+        $session    =   $this->general_sessions->datosDeSession(); 
         
         //Datos POST formulario
         $this->form_validation->set_rules('id_paciente','paciente','required|trim');
@@ -134,7 +152,7 @@ class Consulta_medica extends CI_Controller {
             
             //INGRESAMOS INFORMACION CONSULTA MEDICA
             $data_consulta                  = $this->data_consulta();
-            $data_consulta['ingresado_por'] = $session{'id_usuario'};
+            $data_consulta['ingresado_por'] = $session['id_usuario'];
             $data_consulta['id_paciente']   = $id_paciente;
             
             $id_consulta_med = $this->consulta_model->add_consulta_med($data_consulta,$id_cita_med);
@@ -146,37 +164,37 @@ class Consulta_medica extends CI_Controller {
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GENERALES
                 $rv_sistema[0]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[0]['id_paciente']   = $id_paciente;
-                $rv_sistema[0]['ingresado_por'] = $session{'id_usuario'};                      
+                $rv_sistema[0]['ingresado_por'] = $session['id_usuario'];                      
                 $this->consulta_model->add_rev_sint_generales($rv_sistema[0]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS RESPIRATORIOS
                 $rv_sistema[1]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[1]['id_paciente']   = $id_paciente;
-                $rv_sistema[1]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[1]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_resp($rv_sistema[1]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS CARDIOVASCULARES
                 $rv_sistema[2]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[2]['id_paciente']   = $id_paciente;
-                $rv_sistema[2]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[2]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_cardio($rv_sistema[2]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GASTROINSTESTINALES
                 $rv_sistema[3]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[3]['id_paciente']   = $id_paciente;
-                $rv_sistema[3]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[3]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_gastro($rv_sistema[3]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS GENITOURINARIOS
                 $rv_sistema[4]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[4]['id_paciente']   = $id_paciente;
-                $rv_sistema[4]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[4]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_geni($rv_sistema[4]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS NEUROLOGICOS
                 $rv_sistema[5]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[5]['id_paciente']   = $id_paciente;
-                $rv_sistema[5]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[5]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_neuro($rv_sistema[5]);
                 //INGRESAR DATOS REV. POR SISTEMA, SINTOMAS ENDOCRINOS
                 $rv_sistema[6]['id_consulta']   = $id_consulta_med;
                 $rv_sistema[6]['id_paciente']   = $id_paciente;
-                $rv_sistema[6]['ingresado_por'] = $session{'id_usuario'};       
+                $rv_sistema[6]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_endo($rv_sistema[6]);
                 
                 //DATOS REFERENTES AL EXAMEN FISICO
@@ -184,37 +202,37 @@ class Consulta_medica extends CI_Controller {
                 //INGRESAR DATOS EXAMEN FISICO / DECUBITO
                 $examen_fisico[0]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[0]['id_paciente']   = $id_paciente;
-                $examen_fisico[0]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[0]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_decubito($examen_fisico[0]);
                 //INGRESAR DATOS EXAMEN FISICO / DEAMBULACION
                 $examen_fisico[1]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[1]['id_paciente']   = $id_paciente;
-                $examen_fisico[1]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[1]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_deambulacion($examen_fisico[1]);
                 //INGRESAR DATOS EXAMEN FISICO / FACIE
                 $examen_fisico[2]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[2]['id_paciente']   = $id_paciente;
-                $examen_fisico[2]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[2]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_facie($examen_fisico[2]);
                 //INGRESAR DATOS EXAMEN FISICO / CONCIENCIA
                 $examen_fisico[3]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[3]['id_paciente']   = $id_paciente;
-                $examen_fisico[3]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[3]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_conciencia($examen_fisico[3]);
                 //INGRESAR DATOS EXAMEN FISICO / PIEL
                 $examen_fisico[4]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[4]['id_paciente']   = $id_paciente;
-                $examen_fisico[4]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[4]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_piel($examen_fisico[4]);
                 //INGRESAR DATOS EXAMEN FISICO / S. LINFATICO
                 $examen_fisico[5]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[5]['id_paciente']   = $id_paciente;
-                $examen_fisico[5]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[5]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_s_linfatico($examen_fisico[5]);
                 //INGRESAR DATOS EXAMEN FISICO / SIGNOS VITALES
                 $examen_fisico[6]['id_consulta']   = $id_consulta_med;
                 $examen_fisico[6]['id_paciente']   = $id_paciente;
-                $examen_fisico[6]['ingresado_por'] = $session{'id_usuario'};       
+                $examen_fisico[6]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_signos_vitales($examen_fisico[6]);
                 
                 if($id_consulta_med > 0){
@@ -241,7 +259,7 @@ class Consulta_medica extends CI_Controller {
     public function consultamed_succes($id_consulta_medica){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->nueva_consulta();
@@ -545,14 +563,17 @@ class Consulta_medica extends CI_Controller {
     public function archivos_documentos(){}
     
     //FUNCION QUE PERMITE AGREGAR ARCHIVOS Y DOCUMENTOS A UNA CONSULTA MED.  
-    public function upload_files(){
+    public function upload_files($token){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $session    =   $this->general_sessions->datosDeSession();
         
         $carpetaAdjunta="./archivos_/";
         // Contar envían por el plugin
         $Imagenes =count(isset($_FILES['imagenes']['name'])?$_FILES['imagenes']['name']:0);
         $infoImagenesSubidas = array();
         for($i = 0; $i < $Imagenes; $i++) {
-
+                    
             // El nombre y nombre temporal del archivo que vamos para adjuntar
             $nombreArchivo  = isset($_FILES['imagenes']['name'][$i])?$_FILES['imagenes']['name'][$i]:null;
             $nombreTemporal = isset($_FILES['imagenes']['tmp_name'][$i])?$_FILES['imagenes']['tmp_name'][$i]:null;
@@ -562,7 +583,15 @@ class Consulta_medica extends CI_Controller {
             
             move_uploaded_file($nombreTemporal,$rutaArchivo);
             
-            $infoImagenesSubidas[$i]=array("caption"=>"$nombreArchivo","height"=>"120px","url"=>"".base_url()."consulta_medica/delete_files","key"=>$nombreArchivo);
+            //Ingresar Archivo
+            $data['titulo']         = (string)"titulo archivo: ".$nombreArchivo;
+            $data['descripcion']    = (string)"descripcion archivo: ".$nombreArchivo;
+            $data['archivo']        = (string)$nombreArchivo;
+            $data['ingresado_por']  = (int)$session['id_usuario'];
+            $data['token']          = (string)$token;
+            $this->consulta_model->ingresar_archivo($data);
+            
+            $infoImagenesSubidas[$i]=array("caption"=>"$nombreArchivo","height"=>"120px","url"=>"".base_url()."consulta_medica/delete_files/".$token."","key"=>$nombreArchivo);
             
             $arch 	= explode(".",$nombreArchivo);
             $ext 	= $arch[1];
@@ -649,7 +678,7 @@ class Consulta_medica extends CI_Controller {
     }
     
     //FUNCION QUE PERMITE ELIMINAR ARCHIVOS Y DOCUMENTOS A UNA CONSULTA MED.
-    public function delete_files(){
+    public function delete_files($token){
         
         $carpetaAdjunta="./archivos_/";
         
@@ -660,6 +689,11 @@ class Consulta_medica extends CI_Controller {
             $key= $datosDELETE['key'];
 
             unlink($carpetaAdjunta.$key);
+            
+            //Eliminar Archivo
+            $data['archivo']        = (string)$key;
+            $data['token']          = (string)$token;
+            $this->consulta_model->eliminar_archivo($data);
 
             echo 0;
         }

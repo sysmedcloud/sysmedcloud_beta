@@ -617,6 +617,7 @@
                                                             <hr>
                                                             
                                                                 <h4>Examen Fisico</h4>
+                                                                <?php echo $token; ?>
                                                                     <label></label>
                                                                     <input id="archivos" name="imagenes[]" type="file" multiple="true" class="file-loading">
                                                                 <hr>

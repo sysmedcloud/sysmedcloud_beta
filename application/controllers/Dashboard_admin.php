@@ -34,7 +34,7 @@ class Dashboard_admin extends CI_Controller {
     public function dashboard(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_dashboard();

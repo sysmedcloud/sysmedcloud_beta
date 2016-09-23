@@ -38,7 +38,7 @@ class Agenda extends CI_Controller {
          * de esta manera el paciente podra confirmar o rechazar la cita */
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_agenda();
@@ -64,7 +64,7 @@ class Agenda extends CI_Controller {
     public function crear_cita(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $session        = $this->general_sessions->validarSessionAdmin();
+        $session        = $this->general_sessions->datosDeSession(); 
         
 
         $from   = $this->input->post('from');
@@ -116,7 +116,7 @@ class Agenda extends CI_Controller {
         
         @date_default_timezone_set("Chile/Continental");
         
-        $session        = $this->general_sessions->validarSessionAdmin();
+        $session        = $this->general_sessions->datosDeSession(); 
         $id_profesional = $session["id_usuario"];
         $id_perfil      = $session["id_perfil"];
         $id_empresa     = $session["id_empresa"];
@@ -137,7 +137,7 @@ class Agenda extends CI_Controller {
     /**************************************************************************/
     public function descripcion_evento($id){
         
-        $session        = $this->general_sessions->validarSessionAdmin();
+        $session        = $this->general_sessions->datosDeSession(); 
         
         //Obtenemos el id del evento
         $id_cita_medica = evaluar($id);
@@ -172,7 +172,7 @@ class Agenda extends CI_Controller {
     public function accion_agenda(){
         
         //CARGAMOS DATOS DE SESSION
-        $session        = $this->general_sessions->validarSessionAdmin();
+        $session        = $this->general_sessions->datosDeSession(); 
          
         //BOTON DE ACCION
         $btn_accion = $this->input->post("btn_accion");

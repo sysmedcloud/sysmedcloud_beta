@@ -191,4 +191,42 @@ class Consulta_model extends CI_Model
             echo json_encode($arr_data);
         }
     }
+    
+    public function ingresar_archivo($data){
+        
+        $this->db->insert('tbl_rs_archivos',$data);
+        //return $this->db->insert_id();
+        return true;
+    }
+    
+    public function archivos_rs($token){
+        
+        $this->db->select("a.id_rs_archivo,a.id_consulta,a.titulo,
+                           a.descripcion,a.archivo,a.fecha_ing,a.ingresado_por,
+                           a.fecha_mod,a.modificado_por,a.token");
+        $this->db->from('tbl_rs_archivos a');
+        $this->db->where('a.token',$token);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result_array() as $row){
+                
+                //Crear arreglo con los archivos
+                $archivos_rs[] = "archivos_/".$row["archivo"];
+            }
+            
+        }else{
+             
+            $archivos_rs = array();
+        }
+         
+         return $archivos_rs;
+    }
+    
+    public function eliminar_archivo($data){
+        
+        $this->db->delete('tbl_rs_archivos',$data); 
+    }
 }	

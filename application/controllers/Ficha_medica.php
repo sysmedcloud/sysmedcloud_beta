@@ -35,7 +35,7 @@ class Ficha_medica extends CI_Controller {
         $this->load->model('ficha_medica_model');//cargar modelo
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->files_ficha_clinica();
@@ -84,7 +84,7 @@ class Ficha_medica extends CI_Controller {
         $this->load->model('ficha_medica_model');
         
         //Cargamos las variables de session (LIBRERIA)
-        $this->general_sessions->validarSessionAdmin();
+        $this->general_sessions->datosDeSession(); 
         
         echo $this->ficha_medica_model->listado_consultas_medicas($id_paciente);
     }
@@ -104,7 +104,7 @@ class Ficha_medica extends CI_Controller {
         $this->load->model('ficha_medica_model');//cargar modelo
         
         //Cargamos las variables de session (LIBRERIA)
-        $session                            = $this->general_sessions->validarSessionAdmin();
+        $session                            = $this->general_sessions->datosDeSession(); 
         $data["id_paciente"]                = $this->input->post("id_paciente");
         $id_historia_medica                 = $this->input->post("id_historia_med");
         $data["ant_familiares"]             = $this->input->post("ant_familiares");

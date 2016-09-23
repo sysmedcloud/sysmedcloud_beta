@@ -35,7 +35,7 @@ class Perfil_admin extends CI_Controller {
     public function perfil(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =  $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =  $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_miperfil();
@@ -71,7 +71,7 @@ class Perfil_admin extends CI_Controller {
     public function  recibirDatos(){
        
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         $this->form_validation->set_rules('rut','R.U.T.','required|trim');
         $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
@@ -188,7 +188,7 @@ class Perfil_admin extends CI_Controller {
     public function perfil_succes(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =  $this->general_sessions->validarSessionAdmin();
+        $data["session"]    =  $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();

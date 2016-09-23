@@ -15,6 +15,35 @@ class General_sessions {
         //$this->CI->config->item('base_url');
     }
     
+    public function datosDeSession(){
+        
+        if($this->CI->session->userdata('is_logued_in') == true){
+            
+             $arr_session = array(
+                "id_usuario"    => $this->CI->session->userdata('id_usuario'),
+                "id_perfil"     => $this->CI->session->userdata('id_perfil'),
+                "perfil"        => $this->CI->session->userdata('perfil'),
+                "username"      => $this->CI->session->userdata('username'),
+                "id_empresa"    => $this->CI->session->userdata('id_empresa'),
+                "empresa"       => $this->CI->session->userdata('empresa'),
+                "rut"           => $this->CI->session->userdata('rut'),
+                "primer_nom"    => $this->CI->session->userdata('primer_nom'),
+                "segundo_nom"   => $this->CI->session->userdata('segundo_nom'),
+                "apellido_pat"  => $this->CI->session->userdata('apellido_pat'),
+                "apellido_mat"  => $this->CI->session->userdata('apellido_mat'),
+                "imagen"        => $this->CI->session->userdata('imagen'),
+                "last_login"    => $this->CI->session->userdata('last_login')
+            );
+
+            return $arr_session;
+            
+        }else{
+            
+            redirect(base_url()."login_app/accion/logout");
+        }
+        
+    }
+    
     /******************************************************************/
     /** @Funcion que permite validar datos de session del usuario
     /******************************************************************/

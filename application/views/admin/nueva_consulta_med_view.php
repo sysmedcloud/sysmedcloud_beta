@@ -128,10 +128,10 @@
                                           </ul>
                                           <div class="tab-content">
                                              <div id="motivo_consulta" class="tab-pane fade in active">
-                                                <textarea class="form-control" id="motivo" name="motivo" cols="90" rows="6"><?php echo set_value('motivo'); ?></textarea>
+                                                 <textarea required="true" class="form-control" id="motivo" name="motivo" cols="90" rows="6"><?php echo set_value('motivo'); ?></textarea>
                                              </div>
                                              <div id="anamnesis_proxima" class="tab-pane fade">
-                                                <textarea class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"><?php echo set_value('anamnesis'); ?></textarea>
+                                                <textarea required="true" class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"><?php echo set_value('anamnesis'); ?></textarea>
                                              </div>
                                              <!--<div id="anamnesis_remota" class="tab-pane fade">
                                                 &nbsp;
@@ -146,10 +146,10 @@
                                                 </p>                                                    
                                                 </div>-->
                                              <div id="diagnostico" class="tab-pane fade">
-                                                <textarea class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"><?php echo set_value('diagnostico'); ?></textarea>
+                                                <textarea required="true" class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"><?php echo set_value('diagnostico'); ?></textarea>
                                              </div>
                                              <div id="tratamiento" class="tab-pane fade">
-                                                <textarea class="form-control" id="tratamiento" name="tratamiento" cols="90" rows="6"><?php echo set_value('tratamiento'); ?></textarea>
+                                                <textarea required="true" class="form-control" id="tratamiento" name="tratamiento" cols="90" rows="6"><?php echo set_value('tratamiento'); ?></textarea>
                                              </div>
                                              <div id="obs_recomendaciones" class="tab-pane fade">
                                                 <textarea class="form-control" id="observaciones" name="observaciones" cols="90" rows="6"><?php echo set_value('observaciones'); ?></textarea>
@@ -614,15 +614,12 @@
                                                             <p>Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
                                                                tipo de archivo digital. Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
                                                                Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
-                                                            <hr>
-                                                            
-                                                                <h4>Examen Fisico</h4>
-                                                                <?php echo $token; ?>
-                                                                    <label></label>
-                                                                    <input id="archivos" name="imagenes[]" type="file" multiple="true" class="file-loading">
+                                                               <br> 
+                                                               <label></label>
+                                                               <input type="hidden" name="token_rs" id="token_rs" value="<?php  echo $token_rs; ?>">
+                                                                <input id="archivos_rs" name="imagenes[]" type="file" multiple="true" class="file-loading">
                                                                 <hr>
                                                                 <br>
-                                                            
                                                             </p>
                                                          </div>
                                                       </div>

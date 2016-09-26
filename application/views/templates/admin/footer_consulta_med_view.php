@@ -1,13 +1,8 @@
-<!-- Mainly scripts -->
-<!-- Custom and plugin javascript -->
-<?php 	
-    
-?>
 </body>
 <script>
-    $('#archivos').fileinput({
-        uploadUrl: "<?php echo base_url(); ?>consulta_medica/upload_files/<?php echo $token; ?>",
-        deleteUrl: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token; ?>",
+    $('#archivos_rs').fileinput({
+        uploadUrl: "<?php echo base_url(); ?>consulta_medica/upload_files/<?php echo $token_rs; ?>",
+        deleteUrl: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token_rs; ?>",
         maxFilePreviewSize: 10240,
         uploadAsync: true,
         minFileCount: 1,
@@ -17,7 +12,7 @@
         language: 'es',
         allowedFileExtensions : ['jpg', 'png','gif','pdf','csv','doc','docx','xls','xlsx','ppt','pptx','avi','mpg','mkv','mov','3gp','webm','wmv','flv','mp3','mp4','wav'],
 		initialPreview: [
-			<?php foreach($archivos as $archivo){
+			<?php foreach($archivos_rs as $archivo){
 
 				$arch 	= explode(".",$archivo);
 				$ext 	= $arch[1];
@@ -100,13 +95,13 @@
 			?>
 		],
 	    initialPreviewConfig: [
-	    <?php foreach($archivos as $archivo){ $infoArchivos=explode("/",$archivo);?>
-		{caption: "<?php echo $infoArchivos[1];?>",  height: "100px", url: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token; ?>", key:"<?php echo $infoArchivos[1];?>"},
+	    <?php foreach($archivos_rs as $archivo){ $infoArchivos=explode("/",$archivo);?>
+		{caption: "<?php echo $infoArchivos[1];?>",  height: "100px", url: "<?php echo base_url(); ?>consulta_medica/delete_files/<?php echo $token_rs; ?>", key:"<?php echo $infoArchivos[1];?>"},
 		<?php } ?>
 		]
     }).on("filebatchselected", function(event, files) {
 	
-	$("#archivos").fileinput("upload");
+	$("#archivos_rs").fileinput("upload");
 		
 	});
 </script>

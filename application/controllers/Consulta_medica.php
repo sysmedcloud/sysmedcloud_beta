@@ -93,9 +93,10 @@ class Consulta_medica extends CI_Controller {
         $data["nacionalidad"]   = $paciente["nacionalidad"];  
         $data["estado_civil"]   = $paciente["estado_civil"];  
         
-        $data["token"] = $this->token();//Creamos token
+        //Creamos token para archivos rev. sistema
+        $data["token_rs"] = $this->token();
         
-        $data["archivos"] = $this->consulta_model->archivos_rs($data["token"]);//Buscamos archivos segun token
+        $data["archivos_rs"] = $this->consulta_model->archivos_rs($data["token_rs"]);//Buscamos archivos segun token
         
         //echo "<pre>";print_r($data["archivos"]);exit();
         /*$directory = "archivos_/";      
@@ -150,6 +151,9 @@ class Consulta_medica extends CI_Controller {
             $id_paciente    = $this->input->post('id_paciente'); 
             $id_cita_med    = $this->input->post("id_cita_med");
             
+            //Obetenmos los token para realacionar los archivos con la consulta
+            $token_rs       = $this->input->post("token_rs");
+                    
             //INGRESAMOS INFORMACION CONSULTA MEDICA
             $data_consulta                  = $this->data_consulta();
             $data_consulta['ingresado_por'] = $session['id_usuario'];
@@ -196,6 +200,8 @@ class Consulta_medica extends CI_Controller {
                 $rv_sistema[6]['id_paciente']   = $id_paciente;
                 $rv_sistema[6]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_rev_sint_endo($rv_sistema[6]);
+                //GUARDAR ARCHIVOS REVISION POR SISTEMA
+                $this->consulta_model->add_rev_sint_files($id_consulta_med,$token_rs);
                 
                 //DATOS REFERENTES AL EXAMEN FISICO
                 $examen_fisico = $this->examen_fisico(); 

@@ -78,6 +78,13 @@ class Consulta_model extends CI_Model
         return $this->db->insert_id();
     }
     
+    public function add_rev_sint_files($id_consulta_med,$token_rs){
+        
+        //Relacionamos los archivos con la consulta medica
+        $this->db->where('token', $token_rs);
+        $this->db->update('tbl_rs_archivos',array("id_consulta"=>$id_consulta_med)); 
+    }
+    
     public function add_ex_decubito($data){
         
         $this->db->insert('tbl_efg_decubito',$data);

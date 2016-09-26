@@ -67,7 +67,7 @@
                                           <label class="col-sm-3"  for="title">Busqueda por RUT del paciente: </label>
                                           &nbsp;
                                           <div class="col-sm-5">
-                                             <input type='text'     name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
+                                              <input type='text'  required="true"    name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
                                              <input type="hidden"   name="id_paciente" value="<?php echo $id_paciente; ?>" id="id_paciente">
                                              <input type="hidden"   id="id_cita_med"   name="id_cita_med"   value="<?=$id_cita_medica;?>">
                                           </div>
@@ -618,8 +618,6 @@
                                                                <label></label>
                                                                <input type="hidden" name="token_rs" id="token_rs" value="<?php  echo $token_rs; ?>">
                                                                 <input id="archivos_rs" name="imagenes[]" type="file" multiple="true" class="file-loading">
-                                                                <hr>
-                                                                <br>
                                                             </p>
                                                          </div>
                                                       </div>
@@ -1232,12 +1230,15 @@
                                                                Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
                                                                Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
                                                             </p>
+                                                            <label></label>
+                                                            <input type="hidden" name="token_ef" id="token_ef" value="<?php  echo $token_ef; ?>">
+                                                            <input id="archivos_ef" name="imagenes_ef[]" type="file" multiple="true" class="file-loading">
                                                          </div>
                                                       </div>
                                                    </div>
                                                 </div>
                                              </div>
-                                             <div class="panel panel-default">
+                                             <!--<div class="panel panel-default">
                                                 <div class="panel-heading" role="tab" id="headingThree">
                                                    <h4 class="panel-title">
                                                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -1250,7 +1251,7 @@
                                                       Contenido...
                                                    </div>
                                                 </div>
-                                             </div>
+                                             </div>-->
                                           </div>
                                        </div>
                                     </div>

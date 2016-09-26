@@ -96,8 +96,12 @@ class Consulta_medica extends CI_Controller {
         //Creamos token para archivos rev. sistema
         $data["token_rs"] = $this->token();
         
+        $data["token_ef"] = $this->token();
+        
         $data["archivos_rs"] = $this->consulta_model->archivos_rs($data["token_rs"]);//Buscamos archivos segun token
         
+        $data["archivos_ef"] = $this->consulta_model->archivos_ef($data["token_ef"]);//Buscamos archivos segun token
+        //
         //echo "<pre>";print_r($data["archivos"]);exit();
         /*$directory = "archivos_/";      
         $data["archivos"] = glob($directory . "*.*");*/
@@ -153,7 +157,8 @@ class Consulta_medica extends CI_Controller {
             
             //Obetenmos los token para realacionar los archivos con la consulta
             $token_rs       = $this->input->post("token_rs");
-                    
+            $token_ef       = $this->input->post("token_ef");
+            
             //INGRESAMOS INFORMACION CONSULTA MEDICA
             $data_consulta                  = $this->data_consulta();
             $data_consulta['ingresado_por'] = $session['id_usuario'];
@@ -240,6 +245,8 @@ class Consulta_medica extends CI_Controller {
                 $examen_fisico[6]['id_paciente']   = $id_paciente;
                 $examen_fisico[6]['ingresado_por'] = $session['id_usuario'];       
                 $this->consulta_model->add_ex_signos_vitales($examen_fisico[6]);
+                //GUARDAR ARCHIVOS EXAMEN FISICO
+                $this->consulta_model->add_ex_f_files($id_consulta_med,$token_ef);
                 
                 if($id_consulta_med > 0){
                     
@@ -700,6 +707,143 @@ class Consulta_medica extends CI_Controller {
             $data['archivo']        = (string)$key;
             $data['token']          = (string)$token;
             $this->consulta_model->eliminar_archivo($data);
+
+            echo 0;
+        }
+    }
+    
+    //Subir archivos examen fisico
+    public function upload_files_ef($token_ef){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $session    =   $this->general_sessions->datosDeSession();
+        
+        $carpetaAdjunta="./archivos_/";
+        // Contar envían por el plugin
+        $Imagenes =count(isset($_FILES['imagenes_ef']['name'])?$_FILES['imagenes_ef']['name']:0);
+        $infoImagenesSubidas = array();
+        for($i = 0; $i < $Imagenes; $i++) {
+                    
+            // El nombre y nombre temporal del archivo que vamos para adjuntar
+            $nombreArchivo  = isset($_FILES['imagenes_ef']['name'][$i])?$_FILES['imagenes_ef']['name'][$i]:null;
+            $nombreTemporal = isset($_FILES['imagenes_ef']['tmp_name'][$i])?$_FILES['imagenes_ef']['tmp_name'][$i]:null;
+
+            $rutaArchivo    = $carpetaAdjunta.$nombreArchivo;
+            $ruta_src       = base_url()."archivos_/".$nombreArchivo;
+            
+            move_uploaded_file($nombreTemporal,$rutaArchivo);
+            
+            //Ingresar Archivo
+            $data['titulo']         = (string)"titulo archivo: ".$nombreArchivo;
+            $data['descripcion']    = (string)"descripcion archivo: ".$nombreArchivo;
+            $data['archivo']        = (string)$nombreArchivo;
+            $data['ingresado_por']  = (int)$session['id_usuario'];
+            $data['token']          = (string)$token_ef;
+            $this->consulta_model->ingresar_archivo_ef($data);
+            
+            $infoImagenesSubidas[$i]=array("caption"=>"$nombreArchivo","height"=>"120px","url"=>"".base_url()."consulta_medica/delete_files_ef/".$token_ef."","key"=>$nombreArchivo);
+            
+            $arch 	= explode(".",$nombreArchivo);
+            $ext 	= $arch[1];
+
+            switch ($ext) {
+
+                    case 'mp4':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'avi':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'mpg':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'mkv':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'mov':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case '3gp':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'webm':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'wmv':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+                    case 'flv':
+                    $ImagenesSubidas[$i]='<video src="'.$ruta_src.'" class="kv-preview-data file-preview-image" controls style="width:auto;height:160px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                    break;
+
+                    case 'mp3':
+                    $ImagenesSubidas[$i]='<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'.$ruta_src.'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                    break;
+                    case 'wav':
+                    $ImagenesSubidas[$i]='<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'.$ruta_src.'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                    break;
+
+                    case 'jpg':
+                    $ImagenesSubidas[$i]='<img src="'.$ruta_src.'" class="kv-preview-data file-preview-image" style="width:auto;height:160px;">';
+                    break;
+                    case 'png':
+                    $ImagenesSubidas[$i]='<img src="'.$ruta_src.'" class="kv-preview-data file-preview-image" style="width:auto;height:160px;">';
+                    break;
+                    case 'gif':
+                    $ImagenesSubidas[$i]='<img src="'.$ruta_src.'" class="kv-preview-data file-preview-image" style="width:auto;height:160px;">';
+                    break;
+
+                    case 'pdf':
+                    $ImagenesSubidas[$i]='<embed class="kv-preview-data" height="160px" width="160px" type="application/pdf" src="'.$ruta_src.'">';
+                    break;
+
+                    case 'xls':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+                    case 'xlsx':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+                    case 'ppt':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+                    case 'pptx':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+                    case 'doc':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+                    case 'docx':
+                    $ImagenesSubidas[$i]='<object height="160px" width="160px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'.$ruta_src.'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'.$ruta_src.'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                    break;
+
+                    default:
+                    $ImagenesSubidas[$i]='<img src="'.$ruta_src.'" class="kv-preview-data file-preview-image" style="width:auto;height:160px;">';
+                    break;
+            }
+        }
+
+        $arr = array("file_id"=>0,"overwriteInitial"=>true,"initialPreviewConfig"=>$infoImagenesSubidas,
+                                 "initialPreview"=>$ImagenesSubidas);
+        echo json_encode($arr);
+    }
+    
+    //Eliminar archivo examen fisico
+    public function delete_files_ef($token_ef){
+        
+        $carpetaAdjunta="./archivos_/";
+        
+        if($_SERVER['REQUEST_METHOD']=="POST"){
+
+            parse_str(file_get_contents("php://input"),$datosDELETE);
+
+            $key= $datosDELETE['key'];
+
+            unlink($carpetaAdjunta.$key);
+            
+            //Eliminar Archivo
+            $data['archivo']        = (string)$key;
+            $data['token']          = (string)$token_ef;
+            $this->consulta_model->eliminar_archivo_ef($data);
 
             echo 0;
         }

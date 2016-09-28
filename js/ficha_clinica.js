@@ -4,6 +4,9 @@ $(document).ready(function() {
     //CARGA TABLA DE PACIENTES
     listado_consultas_medicas();
     
+    var baseURL         = $('body').data('baseurl');//url base
+    var id_paciente     = $("#id_paciente").val();
+    
     $('#guardar_cambios').click(function(event) {
 
         event.preventDefault();
@@ -72,6 +75,71 @@ $(document).ready(function() {
                 }
             }
         });
+    });
+    
+    $('#personas_contacto').dataTable({
+        "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
+        "ajax": {
+            "url": baseURL+"ficha_medica/personas_contacto/"+id_paciente,
+            "dataSrc": ""
+        },
+        "columns": [ //columnas de nuestra tabla
+            { "data": "id_persona_contacto"},
+            { "data": "nombres"},
+            { "data": "apellidos" },
+            { "data": "parentesco" },
+            { "data": "telefono" },
+            { "data": "correo" }
+        ],
+        /*columnDefs: [
+            { type: 'date-eu', //ordena fecha
+              targets: 0
+            }
+        ],*/
+        order: [[ 0, "desc" ]],//orden by por fecha de creacion
+        "language": {
+        "sProcessing":    "Procesando...",
+        "sLengthMenu":    "Mostrar _MENU_ registros",
+        "sZeroRecords":   "No se encontraron resultados",
+        "sEmptyTable":    "Ningún dato disponible en esta tabla",
+        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Buscar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":    "Último",
+            "sNext":    "Siguiente",
+            "sPrevious": "Anterior"
+            }
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        },
+        responsive: false,//tabla responsive, agrega un boton
+        //"dom": 'T<"clear">lfrtip',
+        /*"tableTools": {
+            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
+            "aButtons": [ //botones que sirven para exportar informacion de la tabla
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "CSV"
+                },
+                {
+                    "sExtends": "xls",
+                    "sButtonText": "Excel"
+                },
+                {
+                    "sExtends": "pdf",
+                    "sButtonText": "PDF"
+                }                
+            ]
+        }*/
     });
     
 });

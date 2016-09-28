@@ -236,46 +236,23 @@
                                           </div>
                                        </div>
                                        <div id="tab-4" class="tab-pane">
-                                          <div class="row">
-                                             <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                   <table class="table table-striped">
-                                                      <thead>
-                                                         <tr>
+                                           <div class="re" >
+                                               
+                                           </div>
+                                            <div class="col-md-12">
+                                                <table id="personas_contacto" class="table table-striped ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
                                                             <th>Nombres</th>
                                                             <th>Apellidos</th>
                                                             <th>Parentesco</th>
                                                             <th>Telefono</th>
                                                             <th>Correo</th>
-                                                         </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                         <tr>
-                                                            <td>Cristian Alejandro</td>
-                                                            <td>Vidal Muñoz</td>
-                                                            <td>padre</td>
-                                                            <td>56954323456</td>
-                                                            <td>john@example.com</td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td>Mary</td>
-                                                            <td>Moe</td>
-                                                            <td>padre</td>
-                                                            <td>56954323456</td>
-                                                            <td>mary@example.com</td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td>July</td>
-                                                            <td>Dooley</td>
-                                                            <td>padre</td>
-                                                            <td>56954323456</td>
-                                                            <td>july@example.com</td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </div>
-                                             </div>
-                                          </div>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
                                        </div>
                                     </div>
                                  </div>

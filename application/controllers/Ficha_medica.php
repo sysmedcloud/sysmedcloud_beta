@@ -52,7 +52,7 @@ class Ficha_medica extends CI_Controller {
         $data["id_historia_med"] = $id_historia_med;
         
         //Cargamos datos del paciente seleccionado
-        $data["paciente"]   = $this->paciente_model->info_paciente($id_paciente);    
+        $data["paciente"]       = $this->paciente_model->info_paciente($id_paciente);    
         
         //Cargamos todos nuestros dropdown utilizados en la vista
         $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
@@ -74,6 +74,16 @@ class Ficha_medica extends CI_Controller {
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("historia_medica_view",$data);
         
+    }
+    
+    public function personas_contacto($id_paciente){
+        
+        $this->load->model('paciente_model');//cargar modelo
+        
+        //Cargamos personas de contacto del paciente
+        $personas_contacto  = $this->paciente_model->personas_contacto($id_paciente);
+        
+        echo $personas_contacto;
     }
     
     /******************************************************************/

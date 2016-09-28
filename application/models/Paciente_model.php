@@ -645,4 +645,46 @@ class Paciente_model extends CI_Model
             echo json_encode($arr_paciente);
         }
     }
+    
+    public function personas_contacto($id_paciente){
+        
+        $this->db->select('
+            pc.id_persona_contacto,
+            pc.id_paciente,
+            pc.nombres,
+            pc.apellidos,
+            pc.id_parentesco,
+            p.parentesco,
+            p.grado,
+            pc.telefono,
+            pc.correo'
+        );
+        $this->db->from('tbl_personas_contacto pc');
+        $this->db->join('tbl_parentescos p','pc.id_parentesco = p.id_parentesco','left');
+        $this->db->where('pc.id_paciente',$id_paciente);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0){
+            
+            $res = $datos->result_array();
+            
+            foreach ($res as $persona_c){
+                
+                $p_contacto[] = array(
+                    "id_persona_contacto" => $persona_c["id_persona_contacto"],
+                    "nombres" => $persona_c["nombres"],
+                    "apellidos" => $persona_c["apellidos"],
+                    "parentesco" => $persona_c["parentesco"],
+                    "telefono" => $persona_c["telefono"],
+                    "correo" => $persona_c["correo"]
+                );
+            }
+            
+            echo json_encode($p_contacto); 
+            
+        }else{
+            
+            return array();
+        }
+    }
 }	

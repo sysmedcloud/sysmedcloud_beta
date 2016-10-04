@@ -89,12 +89,20 @@ class Fileclass {
         //Archivos js template login
         $this->files['script'] = array(
             
-            '0' => base_url().'js/jquery-2.1.1.js',
-            '1' => base_url().'js/bootstrap.min.js',
-            '2' => base_url().'js/jquery.metisMenu.js',
-            '3' => base_url().'js/jquery.slimscroll.min.js',
-            '4' => base_url().'js/inspinia.js',
-            '5' => base_url().'js/pace.min.js'
+            '0'     => base_url().'js/jquery-2.1.1.js',
+            '1'     => base_url().'js/bootstrap.min.js',
+            '2'     => base_url().'js/jquery.metisMenu.js',
+            '3'     => base_url().'js/jquery.slimscroll.min.js',
+            '4'     => base_url().'js/inspinia.js',
+            '5'     => base_url().'js/pace.min.js',
+            '6'     => base_url().'js/plugins/flot/jquery.flot.js',
+            '7'     => base_url().'js/plugins/flot/jquery.flot.tooltip.min.js',
+            '8'     => base_url().'js/plugins/flot/jquery.flot.resize.js',
+            '9'     => base_url().'js/plugins/flot/jquery.flot.pie.js',
+            '10'    => base_url().'js/plugins/flot/jquery.flot.time.js',
+            '11'    => base_url().'js/flot-demo.js',
+            //'12'    => base_url().'js/plugins/chartJs/Chart.min.js',
+            //'13'    => base_url().'js/chartjs-demo.js'
         );
 
         return $this->files;

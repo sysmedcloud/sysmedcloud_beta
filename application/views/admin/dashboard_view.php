@@ -4,52 +4,52 @@
       <div class="col-lg-3">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <span class="label label-success pull-right">Monthly</span>
-               <h5>Income</h5>
+               <span class="label label-success pull-right"></span>
+               <h5>Pacientes</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">40 886,200</h1>
-               <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-               <small>Total income</small>
+               <h1 class="no-margins">50</h1>
+               <div class="stat-percent font-bold text-success"><i class="fa fa-users"></i></div>
+               <small>pacientes acitvos</small>
             </div>
          </div>
       </div>
       <div class="col-lg-3">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <span class="label label-info pull-right">Annual</span>
-               <h5>Orders</h5>
+               <span class="label label-info pull-right"></span>
+               <h5>Consultas Médicas</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">275,800</h1>
-               <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-               <small>New orders</small>
+               <h1 class="no-margins">275</h1>
+               <div class="stat-percent font-bold text-info"><i class="fa fa-stethoscope"></i></div>
+               <small>consultas médicas registradas</small>
             </div>
          </div>
       </div>
       <div class="col-lg-3">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <span class="label label-primary pull-right">Today</span>
-               <h5>visits</h5>
+               <span class="label label-primary pull-right"></span>
+               <h5>Citas</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">106,120</h1>
-               <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-               <small>New visits</small>
+               <h1 class="no-margins">130</h1>
+               <div class="stat-percent font-bold text-navy"><i class="fa fa-calendar"></i></div>
+               <small>citas registradas</small>
             </div>
          </div>
       </div>
       <div class="col-lg-3">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <span class="label label-danger pull-right">Low value</span>
-               <h5>User activity</h5>
+               <span class="label label-danger pull-right"></span>
+               <h5>Usuarios</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">80,600</h1>
-               <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-               <small>In first month</small>
+               <h1 class="no-margins">20</h1>
+               <div class="stat-percent font-bold text-navy"><i class="fa fa-user"></i></div>
+               <small>usuarios activos</small>
             </div>
          </div>
       </div>
@@ -232,7 +232,7 @@
          <div class="ibox float-e-margins">
             <div class="ibox-title">
                <span class="label label-warning pull-right">Data has changed</span>
-               <h5>User activity</h5>
+               <h5>Actidad Reciente</h5>
             </div>
             <div class="ibox-content">
                <div class="row">
@@ -289,7 +289,7 @@
       <div class="col-lg-12">
          <div class="ibox float-e-margins">
             <div class="ibox-title">
-               <h5>Custom responsive table </h5>
+               <h5>Historias Clinicas Recientes </h5>
                <div class="ibox-tools">
                   <a class="collapse-link">
                   <i class="fa fa-chevron-up"></i>

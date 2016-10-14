@@ -684,7 +684,7 @@ class Paciente_model extends CI_Model
             
         }else{
             
-            return array();
+            return json_encode(array());
         }
     }
 }	

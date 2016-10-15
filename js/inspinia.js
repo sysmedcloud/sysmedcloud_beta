@@ -5,7 +5,7 @@
  *
  */
 
-$(document).ready(function () {
+$(document).ready(function () {    
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {
@@ -268,5 +268,10 @@ function WinMove() {
         })
         .disableSelection();
 }
+
+$("#frm_top_search").submit(function(e){
+    e.preventDefault();
+    alert('Buscando fichas clinicas')
+  });
 
 

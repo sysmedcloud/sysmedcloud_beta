@@ -15,7 +15,7 @@ $('#bto_foto').click(function(){
 	datos.append('foto_perfil', file);
 
 	$.ajax({
-		url:'http://' + window.location.host + '/sysmedcloud/perfil_admin/ajax/',
+		url:'http://' + window.location.host + 'perfil_admin/ajax/',
 		type:'POST',
 		contentType:false,
 		data: datos,
@@ -23,7 +23,7 @@ $('#bto_foto').click(function(){
 		processData:false,
 		cache:false,
         success: function(result){        	
-        	var src = 'http://' + window.location.host + '/sysmedcloud/img/foto_perfil/';            	    	
+        	var src = 'http://' + window.location.host + 'img/foto_perfil/';            	    	
             if(result.estado == 'true'){
             	$("#img_perfil").attr( "src", src + result.imagen);
         		$("#bar_foto_perfil").attr( "src", src + result.imagen);

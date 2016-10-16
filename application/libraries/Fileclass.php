@@ -122,7 +122,7 @@ class Fileclass {
     }
     
     //FUNCION QUE PERMITE RETORNAR LOS ARCHIVOS CSS Y JS UTILIZADOS EN LA PAGINA MI PERFIL
-    function files_miperfil(){
+       function files_miperfil(){
         
         $this->files['style'] = array(
             
@@ -130,7 +130,9 @@ class Fileclass {
             '1' => base_url().'font-awesome/css/font-awesome.css',
             '2' => base_url().'css/plugins/iCheck/custom.css',
             '3' => base_url().'css/animate.css',
-            '4' => base_url().'css/style.css'
+            '4' => base_url().'css/style.css',
+            '5' => base_url().'css/upload.css',
+            '6' => base_url().'css/sweetalert.css'
         );
         
         //Archivos js template login
@@ -146,6 +148,8 @@ class Fileclass {
             '7' => base_url().'js/mi_perfil.js',
             '8' => base_url().'js/jasny-bootstrap.min.js',
             '9' => base_url().'js/mi_perfil_selects.js',
+            '10' => base_url().'js/jquery.ajaxfileupload.js',
+            '11' => base_url().'js/sweetalert.min.js'
         );
         
         return $this->files;

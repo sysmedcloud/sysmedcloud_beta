@@ -1,4 +1,7 @@
 $('#bto_repo').click(function(){
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
     var opt = $('#sel_reportes').val();    
     var url  = '';
     switch(parseInt(opt)){
@@ -6,22 +9,22 @@ $('#bto_repo').click(function(){
     		sweetAlert("Error", "Asegúrese de seleccionar un tipo de reporte", "error");
     	break;
     	case 1:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
+    		url = baseURL + 'reportes/reporte_general/'+opt;    		
     	break;
     	case 2:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
+    		url = baseURL + 'reportes/reporte_general/'+opt;    		
     	break;
     	case 3:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;
+    		url = baseURL + 'reportes/reporte_general/'+opt;
        	break;
     	case 4:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
+    		url = baseURL + 'reportes/reporte_general/'+opt;    		
     	break;
     	case 5:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
+    		url = baseURL + 'reportes/reporte_general/'+opt;    		
     	break;
     	case 6:
-    		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
+    		url = baseURL + 'reportes/reporte_general/'+opt;    		
     	break;
     }
 

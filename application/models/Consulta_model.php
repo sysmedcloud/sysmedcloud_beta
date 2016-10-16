@@ -137,6 +137,31 @@ class Consulta_model extends CI_Model
     /***************************************************************************
     /** @Funtion que permite retornar consultas medicas realizadas por un usuario
     /**************************************************************************/
+    public function listado_consultas(){
+        //Query para obtener listado de pacientes
+        $this->db->select("cm.id_consulta,
+                            u.rut,
+                            u.primer_nombre,
+                            u.segundo_nombre,
+                            u.apellido_paterno,
+                            u.apellido_materno,
+                            cm.motivo_consulta,
+                            cm.anamnesis_proxima,
+                            cm.hipotesis_diagnostica,
+                            cm.tratamiento,
+                            cm.observaciones,
+                            cm.fecha_consulta");
+        $this->db->from('tbl_consulta_medica cm');
+        $this->db->join('tbl_usuarios u','u.id_usuario = cm.ingresado_por');
+        //$this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);        
+        $this->db->where('cm.eliminado',0);        
+        $this->db->order_by("cm.id_consulta","asc");
+        $datos = $this->db->get();
+        return $datos->result_array(); 
+    }
+
     public function listado_consultas_medicas($id_usuario){
         
         //Query para obtener listado de pacientes

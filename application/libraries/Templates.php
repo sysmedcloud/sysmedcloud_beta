@@ -432,5 +432,74 @@ class Templates {
         return $html;
     }
 
+    function tmp_reporte_pacientes($param){    
+
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Rut</th>';
+        $html.= '    <th>Nombres</th>';
+        $html.= '    <th>Apellidos</th>';
+        $html.= '    <th>Teléfono</th>';
+        $html.= '    <th>Celular</th>';
+        $html.= '    <th>Email</th>';
+        $html.= '    <th>Fecha Nacimiento</th>';
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_pac) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_pac['rut'].'</td>';
+            $html.= '  <td>'.ucfirst($val_pac['primer_nombre']).' '.ucfirst($val_pac['segundo_nombre']).'</td>';
+            $html.= '  <td>'.ucfirst($val_pac['apellido_paterno']).' '.ucfirst($val_pac['apellido_materno']).'</td>';
+            $html.= '  <td>'.$val_pac['telefono'].'</td>';
+            $html.= '  <td>'.$val_pac['celular'].'</td>';
+            $html.= '  <td>'.$val_pac['email'].'</td>';
+            $html.= '  <td>'.$val_pac['fecha_nac'].'</td>';
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
+    function tmp_reporte_consultas($param){    
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Rut</th>';
+        $html.= '    <th>Nombres</th>';
+        $html.= '    <th>Apellidos</th>';
+        $html.= '    <th>Motivo Consulta</th>';
+        $html.= '    <th>Anamnésis</th>';
+        $html.= '    <th>Diagnóstico</th>';
+        $html.= '    <th>Tratamiento</th>';
+        $html.= '    <th>Observaciones</th>';
+        $html.= '    <th>Fecha Consulta</th>';
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_cons) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_cons['rut'].'</td>';
+            $html.= '  <td>'.ucfirst($val_cons['primer_nombre']).' '.ucfirst($val_cons['segundo_nombre']).'</td>';
+            $html.= '  <td>'.ucfirst($val_cons['apellido_paterno']).' '.ucfirst($val_cons['apellido_materno']).'</td>';
+            $html.= '  <td>'.$val_cons['motivo_consulta'].'</td>';
+            $html.= '  <td>'.$val_cons['anamnesis_proxima'].'</td>';
+            $html.= '  <td>'.$val_cons['hipotesis_diagnostica'].'</td>';
+            $html.= '  <td>'.$val_cons['tratamiento'].'</td>';
+            $html.= '  <td>'.$val_cons['observaciones'].'</td>';
+            $html.= '  <td>'.$val_cons['fecha_consulta'].'</td>';
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
         
 }

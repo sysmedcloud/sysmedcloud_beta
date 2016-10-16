@@ -8,6 +8,8 @@ class Reportes extends CI_Controller {
         parent::__construct();
         
         $this->load->model('gestion_model', 'gestion');
+        $this->load->model('paciente_model', 'paciente');
+        $this->load->model('consulta_model', 'consulta');
         //Cargamos todas las librerias que utilizaremos
          $this->load->library(array(
             'form_validation',  //funciones para los formularios
@@ -74,8 +76,19 @@ class Reportes extends CI_Controller {
                         $titulo     = 'Diagnóasticos';
                         $data_meds  = $this->gestion->get_diagnosticos();
                         $tmp_meds   = $this->templates->tmp_reporte_diagnosticos($data_meds);
-                        break;                                        
+                        break;
+                    case '5':
+                        $titulo     = 'Pacientes';                        
+                        $data_meds  = $this->paciente->listado_pacientes();                                                                     
+                        $tmp_meds   = $this->templates->tmp_reporte_pacientes($data_meds);
+                        break; 
+                    case '6':
+                        $titulo     = 'Consultas Médicas';                        
+                        $data_meds  = $this->consulta->listado_consultas();                                                                                        
+                        $tmp_meds   = $this->templates->tmp_reporte_consultas($data_meds);
+                        break;                                       
                 }  
+
 
         // Generacion de PDF
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);

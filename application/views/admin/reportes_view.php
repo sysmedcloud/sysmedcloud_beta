@@ -32,6 +32,8 @@
                     <option value="2">Reporte de Patologías</option>
                     <option value="3">Reporte de Medicamentos</option>
                     <option value="4">Reporte de Diagnóasticos</option>
+                    <option value="5">Reporte de Pacientes en Sistema</option>
+                    <option value="6">Reporte de Consultas Médicas</option>
                 </select>                  
             </div>
             <button id="bto_repo" class="btn btn-primary">Obtener Reporte</button>

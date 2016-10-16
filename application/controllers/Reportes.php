@@ -49,20 +49,42 @@ class Reportes extends CI_Controller {
     /** @Functions que permiten generar PDF's con reportes
     /**************************************************************************/
 
-    public function reporte_medicamentos(){
+    public function reporte_general(){
 
         // Carga de datos
-        $data_meds = $this->gestion->get_medicamentos();
-        $tmp_meds = $this->templates->tmp_reporte_medicamentos($data_meds);
+        $titulo = '';
+        $tipo_reporte = $this->uri->segment(3);
+        switch ($tipo_reporte) {
+                    case '1':
+                        $titulo     = 'Alergias';
+                        $data_meds  = $this->gestion->get_alergias();
+                        $tmp_meds   = $this->templates->tmp_reporte_alergias($data_meds);
+                        break;
+                    case '2':
+                        $titulo     = 'Patologías';
+                        $data_meds  = $this->gestion->get_patologias();
+                        $tmp_meds   = $this->templates->tmp_reporte_patologias($data_meds);
+                        break;
+                    case '3':
+                        $titulo     = 'Medicamentos';
+                        $data_meds  = $this->gestion->get_medicamentos();
+                        $tmp_meds   = $this->templates->tmp_reporte_medicamentos($data_meds);
+                        break;
+                    case '4':
+                        $titulo     = 'Diagnóasticos';
+                        $data_meds  = $this->gestion->get_diagnosticos();
+                        $tmp_meds   = $this->templates->tmp_reporte_diagnosticos($data_meds);
+                        break;                                        
+                }  
 
         // Generacion de PDF
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Sysmedcloud');
-        $pdf->SetTitle('Reporte de Medicamentos');
+        $pdf->SetTitle('Reporte de ' . $titulo);
         $pdf->SetSubject('');
         $pdf->SetKeywords('');
-        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, 'Reporte', 'Medicamentos', array(0, 64, 255), array(0, 64, 128));
+        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, 'Reporte', $titulo, array(0, 64, 255), array(0, 64, 128));
         $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -76,7 +98,8 @@ class Reportes extends CI_Controller {
         $pdf->SetFont('Helvetica', '', 8, '', true);
         $pdf->AddPage();
         $pdf->writeHTML($tmp_meds, true, 0, true, 0); 
-        $nombre_archivo = utf8_decode("reporte-medicamentos-".date("d")."_".date("m")."_".date("Y").".pdf");
-        $pdf->Output($nombre_archivo, 'I');   
+        $nombre_archivo = utf8_decode("reporte-".strtolower($titulo)."-".date("d")."_".date("m")."_".date("Y").".pdf");
+        $pdf->Output($nombre_archivo, 'D');   
     }
+
 }

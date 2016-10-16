@@ -356,5 +356,81 @@ class Templates {
         return $html;
     }
 
+    function tmp_reporte_alergias($param){        
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Nombre</th>';
+        $html.= '    <th>Alérgeno Detectado</th>';
+        $html.= '    <th>Zona Afectada</th>';        
+        $html.= '    <th>Sintomatología</th>';        
+        $html.= '    <th>Indicaciones</th>';           
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_aler) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_aler['nombre_alergia'].'</td>';
+            $html.= '  <td>'.$val_aler['alergeno_detectado'].'</td>';
+            $html.= '  <td>'.$val_aler['zona_afectada'].'</td>';
+            $html.= '  <td>'.$val_aler['sintomatologia'].'</td>';
+            $html.= '  <td>'.$val_aler['indicaciones'].'</td>';                       
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
+    function tmp_reporte_diagnosticos($param){
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Sistema afectado</th>';
+        $html.= '    <th>Descripción</th>';
+        $html.= '    <th>Reposo Indicado</th>';               
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_diag) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_diag['sistema_afectado'].'</td>';
+            $html.= '  <td>'.$val_diag['desc_diagnostico'].'</td>';
+            $html.= '  <td>'.$val_diag['reposo_indicado'].'</td>';             
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
+    function tmp_reporte_patologias($param){        
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';                                                    
+        $html.= '    <th>Descripción</th>';
+        $html.= '    <th>Sintomatología</th>';
+        $html.= '    <th>Indicaciones Preliminares</th>';
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        foreach ($param as $key_meds => $val_pat) {
+            $html.= '<tr>'; 
+            $html.= '  <td>'.$val_pat['descripcion'].'</td>';
+            $html.= '  <td>'.$val_pat['sintomatologia'].'</td>';
+            $html.= '  <td>'.$val_pat['indicaciones_preliminares'].'</td>';
+            $html.= '</tr>'; 
+        }                            
+        $html.= '</tbody>';
+        $html.= '</table>';  
+        return $html;
+    }
+
         
 }

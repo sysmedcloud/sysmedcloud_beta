@@ -392,6 +392,33 @@ class Paciente_model extends CI_Model
     /***************************************************************************
     /** @Funtion que permite retornar un json con info de los pacientes
     /**************************************************************************/
+
+    public function listado_pacientes(){
+        $this->db->select("du.id_usuario,
+        du.rut,
+        du.primer_nombre,
+        du.segundo_nombre,
+        du.apellido_paterno,
+        du.apellido_materno,
+        du.telefono,
+        du.celular,
+        du.email,
+        du.fecha_creacion,
+        du.fecha_nac,
+        hd.id_historia_medica,
+        hd.fecha_creacion
+        ");
+        $this->db->from('tbl_usuarios du');
+        $this->db->join('tbl_historias_medicas hd','hd.id_paciente = du.id_usuario');
+        $this->db->where('du.id_perfil',4);
+        $this->db->where('du.estado',0);
+        $this->db->where('du.eliminado',0);        
+        $this->db->order_by("du.id_usuario", "asc");
+        $datos = $this->db->get();
+
+        return $datos->result_array();
+    }
+
     public function listadoPacientes_json($id_empresa){
         
         //Query para obtener listado de pacientes

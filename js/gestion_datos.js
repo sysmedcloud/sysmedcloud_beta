@@ -154,6 +154,9 @@ function mostrar_opciones() {
 /**************************************************************************/
 
 function crud_datos(dato, opcion) {
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
     $('#middle').hide('fast');
     $('#crud_datos').modal('hide');
     var tipo = parseInt(dato);
@@ -164,7 +167,7 @@ function crud_datos(dato, opcion) {
     };
     $.ajax({
         type: "POST",
-        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        url: baseURL + 'gestion/ajax/',
         data: datos,
         dataType: 'JSON',
         success: function(result) {
@@ -209,6 +212,9 @@ function crud_datos(dato, opcion) {
 /** @Function que permite visualizar la informacion asociada a un dato
 /**************************************************************************/
 function ver_dato(tipo, id, opt) {
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
 	if(opt == 1){
 		$('#mod_title').text('Ver información');
 		$('#bto_actualizar_datos').hide();	
@@ -227,7 +233,7 @@ function ver_dato(tipo, id, opt) {
     };
     $.ajax({
         type: "POST",
-        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        url: baseURL + 'gestion/ajax/',
         data: datos,
         dataType: 'JSON',
         success: function(result) {
@@ -242,10 +248,13 @@ function ver_dato(tipo, id, opt) {
 /**************************************************************************/
 
 function actualizar_datos(){
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
 	var tipo = $('#inp_tipo').val();
 	$.ajax({
         type: "POST",
-        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        url: baseURL + 'gestion/ajax/',
         data: $('#mod_ver_datos_body').serialize() + "&case=7&tipo="+tipo,
         dataType: 'JSON',
         success: function( result ) {        	
@@ -277,6 +286,9 @@ function actualizar_datos(){
 /** @Function que permite eliminar la informacion asociada a un dato
 /**************************************************************************/
 function eliminar_dato(dato, id) {	
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
 	var tipo = dato;
 	var idtipo = id;
     swal({
@@ -292,7 +304,7 @@ function eliminar_dato(dato, id) {
     	var datos = {dato : tipo, id : idtipo, case: 4};    	
     	$.ajax({
         type: "POST",
-        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        url: baseURL + 'gestion/ajax/',
         data: datos,
         dataType: 'JSON',
         success: function( result ) {
@@ -309,10 +321,12 @@ function eliminar_dato(dato, id) {
 /**************************************************************************/
 
 function ingresar_datos(tipo){	
-
+    
+    var baseURL         = $('body').data('baseurl');//url base
+    
 	$.ajax({
         type: "POST",
-        url: 'http://' + window.location.host + '/sysmedcloud/gestion/ajax/',
+        url: baseURL + 'gestion/ajax/',
         data: $('#frm_'+tipo).serialize() + "&case=5&tipo="+tipo,
         dataType: 'JSON',
         success: function( result ) {        	

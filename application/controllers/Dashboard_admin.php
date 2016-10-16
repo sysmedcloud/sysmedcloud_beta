@@ -35,15 +35,29 @@ class Dashboard_admin extends CI_Controller {
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        //echo "<pre>";print_r($data["session"]);exit();
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_dashboard();
+        $data['files']      = $this->fileclass->files_dashboard();
         
-        $data["menu"]   = "Dashboard";
+        $data["menu"]       = "Dashboard";
         
         $data["active"]     = activeMenu("inicio");//(HELPERS)marca menu (active)
                 
+        //Obtenemos cantidad de pacientes activos registrados en el sistema
+        $data["cant_p"]     = $this->dashboard_model->cantidad_paciente($data["session"]["id_empresa"]);
+        
+        //Obtenemos cantidad de consultas medicas registradas en el sistema
+        $data["cant_cm"]    = $this->dashboard_model->cantidad_cons_medicas($data["session"]["id_empresa"]);
+        
+        //Obtenemos cantidad de citas registradas en el sistema
+        $data["cant_c"]     = $this->dashboard_model->cantidad_citas($data["session"]["id_empresa"]);
+        
+        //Obtenemos cantidad de usuarios de la cuenta registrados en el sistema
+        $data["cant_u"]     = $this->dashboard_model->cantidad_users($data["session"]["id_empresa"]);
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("dashboard_view",$data);
     }
+    
 }

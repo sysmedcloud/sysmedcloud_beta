@@ -8,7 +8,7 @@
                <h5>Pacientes</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">50</h1>
+               <h1 class="no-margins"><?=$cant_p;?></h1>
                <div class="stat-percent font-bold text-success"><i class="fa fa-users"></i></div>
                <small>pacientes acitvos</small>
             </div>
@@ -21,7 +21,7 @@
                <h5>Consultas Médicas</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">275</h1>
+               <h1 class="no-margins"><?=$cant_cm;?></h1>
                <div class="stat-percent font-bold text-info"><i class="fa fa-stethoscope"></i></div>
                <small>consultas médicas registradas</small>
             </div>
@@ -34,7 +34,7 @@
                <h5>Citas</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">130</h1>
+               <h1 class="no-margins"><?=$cant_c;?></h1>
                <div class="stat-percent font-bold text-navy"><i class="fa fa-calendar"></i></div>
                <small>citas registradas</small>
             </div>
@@ -47,7 +47,7 @@
                <h5>Usuarios</h5>
             </div>
             <div class="ibox-content">
-               <h1 class="no-margins">20</h1>
+               <h1 class="no-margins"><?=$cant_u;?></h1>
                <div class="stat-percent font-bold text-navy"><i class="fa fa-user"></i></div>
                <small>usuarios activos</small>
             </div>

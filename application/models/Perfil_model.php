@@ -90,4 +90,20 @@ class Perfil_model extends CI_Model
         
     }
 
+    function update_img( $param ){
+        $data = array('imagen' => $param["foto"]);   
+        
+        $this->db->where('id_usuario',$param["id_usuario"]);
+        $this->db->update('tbl_usuarios',$data);
+        if($this->db->affected_rows() >= 0){ 
+            $this->db->select('imagen');
+            $this->db->from('tbl_usuarios');
+            $this->db->where('id_usuario', $param['id_usuario']);
+            $q = $this->db->get()->result_array();
+            return $q;
+        }else{
+            return false;
+        } 
+    }
+
 }	

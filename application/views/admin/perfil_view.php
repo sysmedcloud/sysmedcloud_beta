@@ -28,7 +28,7 @@
                   <div class="form-group">
                      <div class="col-sm-3">
                         <a href="#" class="thumbnail">
-                             <img src="<?=base_url();?>img/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario">
+                             <img src="<?=base_url();?>img/foto_perfil/<?=$session["imagen"];?>" class="img-thumbnail" alt="imagen usuario" id="img_perfil" name="img_perfil">
                         </a>
                         <hr>
                      </div>
@@ -137,13 +137,9 @@
                                                 <?=form_dropdown('pais_res',$paises,$info->nacionalidad,'class="form-control m-b"');?>
                                                 <?php echo form_error('pais_res','<div class="text-danger">','</div>');?>
                                              </div>
-                                          </div>
-                                          <!--<div class="hr-line-dashed"></div>-->
+                                          </div>                                         
                                        </div>
-                                       <div id="tab-2" class="tab-pane">
-                                          <!--<strong>Donec quam felis</strong>
-                                             <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath </p>
-                                             <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.</p>-->
+                                       <div id="tab-2" class="tab-pane">                                         
                                           <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>Región</strong>
@@ -189,19 +185,14 @@
                                              <div class="col-md-4">&nbsp;</div>
                                           </div>
                                        </div>
-                                       <div id="tab-4" class="tab-pane">
-                                          <h1>EN CONSTRUCCION...</h1>
+                                       <div id="tab-4" class="tab-pane">                                          
                                           <div class="row">
-                                             <div class="col-md-4">
-                                             </div>
-                                             <div class="col-md-4">
-                                             </div>
-                                             <div class="col-md-4">&nbsp;</div>
+                                             <input multiple="" accept="image/*" type="file" id="upload_foto" name="upload_foto">
+                                             <input type="button" class="btn btn-primary" id="bto_foto" name="bto_foto" value="Cambiar Imagen">
                                           </div>
                                        </div>
                                     </div>
                                  </div>
-
                                 <div class="col-md-12">
                                    <?php 
                                       if(!empty(validation_errors())){

@@ -34,15 +34,25 @@ class Dashboard_admin extends CI_Controller {
     public function dashboard(){
         
         //Cargamos las variables de session (LIBRERIA)
-        $data["session"]    =   $this->general_sessions->datosDeSession(); 
-        
+        $data["session"]    =   $this->general_sessions->datosDeSession();         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_dashboard();
-        
-        $data["menu"]   = "Dashboard";
-        
-        $data["active"]     = activeMenu("inicio");//(HELPERS)marca menu (active)
-                
+        $data['files']      = $this->fileclass->files_dashboard();        
+        $data["menu"]       = "Dashboard";        
+        $data["active"]     = activeMenu("inicio");//(HELPERS)marca menu (active)        
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("dashboard_view",$data);
     }

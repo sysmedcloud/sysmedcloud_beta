@@ -1,21 +1,13 @@
-function desplegar_opciones( opcion ){
-	switch(parseInt(opcion)){
-		case 1:
-			$('#tipo_repo').hide();
-			$('#general_repos').show(200);
-		break;
-		case 2:
-			$('#tipo_repo').hide();
-			$('#client_repos').show(200);
-		break;
-	}
+function loader(){
+	swal({  title: 'Generando Reporte',
+				  type: 'info',
+				  imageUrl: "http://"+ window.location.host +"/sysmedcloud/img/3d-loader.gif",				    
+				  showCloseButton: false,
+				  showCancelButton: false,
+				  imageSize: "300x250",
+				  confirmButtonText:'cerrar',
+		});
 }
-
-$('.bto_ret').click(function(){
-	$('#general_repos').hide();
-	$('#client_repos').hide();
-	$('#tipo_repo').show(200);
-});
 
 $('#bto_repo').click(function(){	
     var opt = $('#sel_reportes').val();        
@@ -23,32 +15,32 @@ $('#bto_repo').click(function(){
     switch(parseInt(opt)){
     	case 1:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt; 
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();    		
     		setTimeout(function(){ window.location = url; }, 1000);   		
     	break;
     	case 2:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;  
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();
     		setTimeout(function(){ window.location = url; }, 1000);  		
     	break;
     	case 3:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();
     		setTimeout(function(){ window.location = url; }, 1000);
        	break;
     	case 4:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();
     		setTimeout(function(){ window.location = url; }, 1000);
     	break;
     	case 5:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();
     		setTimeout(function(){ window.location = url; }, 1000);
     	break;
     	case 6:
     		url = 'http://' + window.location.host + '/sysmedcloud/reportes/reporte_general/'+opt;    		
-    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
+    		loader();
     		setTimeout(function(){ window.location = url; }, 1000);
     	break;
     	default:

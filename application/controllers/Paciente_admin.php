@@ -39,6 +39,20 @@ class Paciente_admin extends CI_Controller {
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    = $this->general_sessions->datosDeSession(); 
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_crearpacientes();
@@ -79,6 +93,20 @@ class Paciente_admin extends CI_Controller {
         $data["menu"]   = "Listado de Pacientes";
         
         $data["active"]     = activeMenu("pacientes");//(HELPERS)marca menu (active)
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("pacientes_view",$data);

@@ -53,6 +53,20 @@ class Agenda extends CI_Controller {
         
         //Quitar clase gray-bg crea error con visualizacion de la agenda 
         $data["gray_bg"]  = "agenda";
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->viewsAgenda("agenda_view",$data);

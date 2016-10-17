@@ -36,6 +36,20 @@ class Perfil_admin extends CI_Controller {
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =  $this->general_sessions->validarSessionAdmin();
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_miperfil();        
@@ -58,6 +72,20 @@ class Perfil_admin extends CI_Controller {
         
         //Cargamos todas las comunas
         $data["comunas"]    = $this->dropdown_model->cargarComunas();
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("perfil_view",$data);
@@ -71,6 +99,20 @@ class Perfil_admin extends CI_Controller {
        
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->validarSessionAdmin();
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         $this->form_validation->set_rules('rut','R.U.T.','required|trim');
         $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
@@ -188,6 +230,20 @@ class Perfil_admin extends CI_Controller {
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =  $this->general_sessions->validarSessionAdmin();
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files']      = $this->fileclass->files_dashboard();

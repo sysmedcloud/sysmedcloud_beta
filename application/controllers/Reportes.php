@@ -42,6 +42,20 @@ class Reportes extends CI_Controller {
         $data['files'] = $this->fileclass->files_reportes();
         $data["menu"]   = "Reportes";
         $data["active"]     = activeMenu("reportes");//(HELPERS)marca menu (active)
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
                 
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("reportes_view",$data);

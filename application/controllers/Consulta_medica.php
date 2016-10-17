@@ -46,6 +46,20 @@ class Consulta_medica extends CI_Controller {
         $data["menu"]   = "Consultas Médicas";
         
         $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
                 
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("listado_consultas_medicas_view",$data);
@@ -74,6 +88,20 @@ class Consulta_medica extends CI_Controller {
         
         //Cargamos las variables de session (LIBRERIA)
         $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
         $data['files'] = $this->fileclass->nueva_consulta();

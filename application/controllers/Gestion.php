@@ -44,6 +44,20 @@ class Gestion extends CI_Controller {
         $data["menu"]   = "Gestión de Datos";
         
         $data["active"] = activeMenu("gestion");//(HELPERS)marca menu (active)
+        switch ($data["session"]["id_perfil"]) {
+             case '1':
+                 $data["skin"] = 'pace-done skin-1';
+                 break;
+             case '2':
+                 $data["skin"] = 'pace-done skin-3';
+                 break;
+             case '3':
+                 $data["skin"] = 'pace-done';
+                 break;             
+             default:
+                 # code...
+                 break;
+         } 
                 
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("gestion_view",$data);

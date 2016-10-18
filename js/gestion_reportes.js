@@ -1,7 +1,10 @@
 function loader(){
-	swal({  title: 'Generando Reporte',
+    
+    var baseURL         = $('body').data('baseurl');//url base
+	
+    swal({  title: 'Generando Reporte',
 				  type: 'info',
-				  imageUrl: "http://"+ window.location.host +"/sysmedcloud/img/3d-loader.gif",				    
+				  imageUrl: baseURL + "img/3d-loader.gif",				    
 				  showCloseButton: false,
 				  showCancelButton: false,
 				  imageSize: "300x250",

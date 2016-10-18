@@ -31,5 +31,22 @@
     <script src="<?php echo base_url(); ?>js/sweetalert.min.js" type="text/javascript"></script>
     
 </head>
+<?php 
+switch ($session["id_perfil"]) {
+             
+        case '1':
+             $skin = 'pace-done skin-1';
+             break;
+        case '2':
+             $skin = 'pace-done skin-3';
+             break;
+        case '3':
+             $skin = 'pace-done';
+             break;             
+        default:
+             # code...
+        break;
+    } 
 
-<body data-baseurl="<?=base_url()?>">
+?>
+<body data-baseurl="<?=base_url()?>" class="<?=$skin;?>">

@@ -87,6 +87,12 @@ class Reportes extends CI_Controller {
                         $data_meds  = $this->consulta->listado_consultas();                                                                                        
                         $tmp_meds   = $this->templates->tmp_reporte_consultas($data_meds);
                         break;                                       
+                    case '7':
+                        $titulo     = 'Ficha Clínica Paciente';
+                    break;
+                    case '8':
+                        $titulo     = 'Consulta Médica Paciente';
+                    break; 
                 }  
 
 

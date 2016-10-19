@@ -138,5 +138,20 @@ class Ficha_medica extends CI_Controller {
         }
         
     }
+    
+    /**************************************************************************/
+    /** @Function que permite obtener las ultimas historias clinicas ingresadas
+    /**************************************************************************/
+    public function historias_clinicas_recientes(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_empresa         = $this->session->userdata('id_empresa');
+        
+        //Cargamos ultimas historias clinicas
+        $hc_recientes  = $this->ficha_medica_model->hc_recientes($id_empresa);
+        
+        echo $hc_recientes;
+    }
 }
 

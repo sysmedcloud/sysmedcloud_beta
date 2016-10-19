@@ -116,4 +116,80 @@ class Ficha_medica_model extends CI_Model
         $this->db->where('id_historia_medica',$id_hc);
         return $this->db->update('tbl_historias_medicas',$data);
     }
+    
+    /***************************************************************************
+    /** @Funtion que permite retornar las ultimas historias clinicas activas
+    /**************************************************************************/
+    public function hc_recientes($id_empresa){
+        
+        //Query para obtener listado de pacientes
+        $this->db->select("h.id_historia_medica,h.id_paciente,h.fecha_creacion,u.id_usuario,u.rut,u.primer_nombre,u.segundo_nombre,u.apellido_paterno,u.apellido_materno");
+        $this->db->from('tbl_historias_medicas h');
+        $this->db->join('tbl_usuarios u','u.id_usuario = h.id_paciente');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("h.id_historia_medica", "desc");
+        $this->db->limit(50);
+        $datos = $this->db->get();
+        
+        $arr_data   = array();//CREAR ARREGLO QUE TENDRA LA INFORMACION
+        $response   = array();//CREAR ARREGLO DEL JSON
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result() as $row){
+                
+                //Buscamos ultimo control
+                $this->db->select("c.fecha_consulta as ultimo_control");
+                $this->db->from('tbl_consulta_medica c');
+                $this->db->join('tbl_usuarios u','u.id_usuario = c.id_paciente');
+                $this->db->where('u.id_perfil',4);
+                $this->db->where('u.estado',0);
+                $this->db->where('u.eliminado',0);
+                $this->db->where('u.id_empresa',$id_empresa);
+                $this->db->order_by("c.fecha_consulta", "desc");
+                $this->db->limit(1);
+                $ultimo_control = $this->db->get()->row()->ultimo_control;
+                
+                $fecha_uc    = explode(" ",$ultimo_control);
+                $fecha_uc    = strtotime($fecha_uc[0]);
+                $fecha_uc    = date('d/m/Y',$fecha_uc);
+                
+                //Creamos nuestras variables
+                $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);
+                $apellidos  = ucfirst($row->apellido_paterno)." ".ucfirst($row->apellido_materno);
+                
+                $fecha      = explode(" ",$row->fecha_creacion);
+                $fecha_c    = strtotime($fecha[0]);
+                $fecha_c    = date('d/m/Y',$fecha_c);
+                
+                $ver_detalle  = '<a href="'.base_url().'ficha_medica/ver_detalle/'.$row->id_paciente.'/'.$row->id_historia_medica.'" title="Ver Historia Clínica">Ver detalle</a>';                
+                
+                //Crear arreglo con los datos del paciente
+                $arr_hc_recientes[] = array(
+                    "fecha_creacion"        => $fecha_c,
+                    "id_historia_medica"    => $row->id_historia_medica,
+                    "rut"                   => $row->rut,
+                    "nombres"               => $nombres,
+                    "apellidos"             => $apellidos,
+                    "ultimo_control"        => $fecha_uc,
+                    "ver_detalle"           => $ver_detalle
+                );
+            }
+            
+            //RETORNAR JSON CON LA INFORMACION DEL PACIENTE
+            //$response['data'] = $arr_paciente;
+            $arr_data = $arr_hc_recientes;
+            echo json_encode($arr_data); 
+            
+        }else{
+            
+            //RETORNAR JSON VACIO
+            //$response['data'] = $arr_data;
+            echo json_encode($arr_data);
+        }
+    }
 }	

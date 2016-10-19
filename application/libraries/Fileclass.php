@@ -82,8 +82,11 @@ class Fileclass {
             
             '0' => base_url().'css/bootstrap.min.css',
             '1' => base_url().'font-awesome/css/font-awesome.css',
-            '2' => base_url().'css/animate.css',
-            '3' => base_url().'css/style.css'
+            '2' => base_url().'css/plugins/dataTables/dataTables.bootstrap.css',
+            '3' => base_url().'css/plugins/dataTables/dataTables.responsive.css',
+            '4' => base_url().'css/plugins/dataTables/dataTables.tableTools.min.css',
+            '5' => base_url().'css/animate.css',
+            '6'=> base_url().'css/style.css'
         );
         
         //Archivos js template login
@@ -95,12 +98,16 @@ class Fileclass {
             '3'     => base_url().'js/jquery.slimscroll.min.js',
             '4'     => base_url().'js/inspinia.js',
             '5'     => base_url().'js/pace.min.js',
-            '6'     => base_url().'js/plugins/flot/jquery.flot.js',
-            '7'     => base_url().'js/plugins/flot/jquery.flot.tooltip.min.js',
-            '8'     => base_url().'js/plugins/flot/jquery.flot.resize.js',
-            '9'     => base_url().'js/plugins/flot/jquery.flot.pie.js',
-            '10'    => base_url().'js/plugins/flot/jquery.flot.time.js',
-            '11'    => base_url().'js/flot-demo.js',
+            '6'     => base_url().'js/jquery.dataTables.js',
+            '7'     => base_url().'js/dataTables.bootstrap.js',
+            '8'     => base_url().'js/dataTables.responsive.js',
+            //'6'     => base_url().'js/plugins/flot/jquery.flot.js',
+            //'7'     => base_url().'js/plugins/flot/jquery.flot.tooltip.min.js',
+            //'8'     => base_url().'js/plugins/flot/jquery.flot.resize.js',
+            //'9'     => base_url().'js/plugins/flot/jquery.flot.pie.js',
+            //'10'    => base_url().'js/plugins/flot/jquery.flot.time.js',
+            //'6'    => base_url().'js/flot-demo.js',
+            '9'    => base_url().'js/dashboard.js'
             //'12'    => base_url().'js/plugins/chartJs/Chart.min.js',
             //'13'    => base_url().'js/chartjs-demo.js'
         );

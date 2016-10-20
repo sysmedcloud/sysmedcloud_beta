@@ -46,4 +46,4 @@ switch ($session["id_perfil"]) {
     } 
 
 ?>
-<body data-baseurl="<?=base_url()?>" class="<?=$skin;?>">
+<body data-baseurl="<?=base_url()?>" >

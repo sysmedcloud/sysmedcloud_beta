@@ -149,14 +149,28 @@ class Ficha_medica_model extends CI_Model
                 $this->db->where('u.id_perfil',4);
                 $this->db->where('u.estado',0);
                 $this->db->where('u.eliminado',0);
+                $this->db->where('c.id_paciente',$row->id_paciente);
                 $this->db->where('u.id_empresa',$id_empresa);
                 $this->db->order_by("c.fecha_consulta", "desc");
                 $this->db->limit(1);
-                $ultimo_control = $this->db->get()->row()->ultimo_control;
+                $query_2 = $this->db->get();
                 
-                $fecha_uc    = explode(" ",$ultimo_control);
-                $fecha_uc    = strtotime($fecha_uc[0]);
-                $fecha_uc    = date('d/m/Y',$fecha_uc);
+                if($query_2->num_rows() > 0 ){
+                    
+                    $u_control = $query_2->row()->ultimo_control;
+                    
+                    if($u_control != "" && $u_control != '0000-00-00 00:00:00'){
+                        $ultimo_control = $u_control;
+                        $fecha_uc    = explode(" ",$ultimo_control);
+                        $fecha_uc    = strtotime($fecha_uc[0]);
+                        $fecha_uc    = date('d/m/Y',$fecha_uc);
+                    }else{
+                        $fecha_uc  = '-';
+                    }
+                    
+                }else{
+                    $fecha_uc  = "-";
+                }
                 
                 //Creamos nuestras variables
                 $nombres    = ucfirst($row->primer_nombre)." ".ucfirst($row->segundo_nombre);

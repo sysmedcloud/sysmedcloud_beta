@@ -367,7 +367,9 @@ class Fileclass {
             '6' => base_url().'js/pace.min.js',            
             '7' => base_url().'js/jquery.steps.min.js',
             '8' => base_url().'js/plugins/validate/jquery.validate.min.js',
-            '9' => base_url().'js/gestion_reportes.js'
+            '9' => base_url().'js/gestion_reportes.js',
+            '10' => base_url().'js/jquery.Rut.min.js'
+            
 
         );
 

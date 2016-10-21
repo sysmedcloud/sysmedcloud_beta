@@ -1,6 +1,6 @@
 function loader(){
     
-    var baseURL         = $('body').data('baseurl');//url base
+    var baseURL = $('body').data('baseurl');//url base
 	
     swal({  title: 'Generando Reporte',
 				  type: 'info',
@@ -14,7 +14,7 @@ function loader(){
 
 $('#bto_repo').click(function(){
     
-    var baseURL         = $('body').data('baseurl');//url base
+    var baseURL = $('body').data('baseurl');//url base
     
     var opt = $('#sel_reportes').val();    
     var url  = '';
@@ -58,22 +58,21 @@ $('#bto_repo').click(function(){
 
 $('#bto_repo_cli').click(function(){	
 
-    var baseURL         = $('body').data('baseurl');//url base
-    var rut = $('#rut_paciente').val();
-    var opt = $('#sel_reportes_cli').val(); 
-    alert(opt);
+    var baseURL = $('body').data('baseurl');//url base
+    var rut = ($('#rut_paciente').val().split('.').join('')).split('-').join('');       
+    var opt = $('#sel_reportes_cli').val();     
     var url  = '';
     if( rut.length == 0){
     	sweetAlert("Error", "Debe ingresar el rut del paciente", "error");
     }else{
     	switch(parseInt(opt)){
-	    	case 1:
-	    		url = baseURL + 'reportes/reporte_general/'+opt;    
+	    	case 7:
+	    		url = baseURL + 'reportes/reporte_general/'+opt+'/'+rut;   
 	    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
-                        setTimeout(function(){ window.location = url; }, 1000);		
+                        setTimeout(function(){ window.location = url; }, 1000);
 	    	break;
-	    	case 2:
-	    		url = baseURL + 'reportes/reporte_general/'+opt;  
+	    	case 8:
+	    		url = baseURL + 'reportes/reporte_general/'+opt+'/'+rut;;  
 	    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
                         setTimeout(function(){ window.location = url; }, 1000);  		
 	    	break;

@@ -56,6 +56,7 @@ class Reportes extends CI_Controller {
         // Carga de datos
         $titulo = '';
         $tipo_reporte = $this->uri->segment(3);
+        $rut_paciente = $this->uri->segment(4);
         switch ($tipo_reporte) {
                     case '1':
                         $titulo     = 'Alergias';
@@ -89,6 +90,9 @@ class Reportes extends CI_Controller {
                         break;                                       
                     case '7':
                         $titulo     = 'Ficha Clínica Paciente';
+                        $data['paciente_ficha'] = $this->paciente->consolidado_datos_paciente($rut_paciente);
+
+                        print_r($data);exit();
                     break;
                     case '8':
                         $titulo     = 'Consulta Médica Paciente';

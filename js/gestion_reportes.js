@@ -68,13 +68,13 @@ $('#bto_repo_cli').click(function(){
     	switch(parseInt(opt)){
 	    	case 7:
 	    		url = baseURL + 'reportes/reporte_general/'+opt+'/'+rut;   
-	    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
-                        setTimeout(function(){ window.location = url; }, 1000);
+    	    	loader();            
+                setTimeout(function(){ window.location = url; }, 1000);
 	    	break;
 	    	case 8:
 	    		url = baseURL + 'reportes/reporte_general/'+opt+'/'+rut;;  
-	    		sweetAlert("Correcto", "Estamos generando su reporte", "success");
-                        setTimeout(function(){ window.location = url; }, 1000);  		
+	    		loader();            
+                setTimeout(function(){ window.location = url; }, 1000);  		
 	    	break;
 	    	default:
 	    		sweetAlert("Error", "Asegúrese de seleccionar un tipo de reporte", "error");

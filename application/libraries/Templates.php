@@ -304,16 +304,20 @@ class Templates {
                         font-family: arial, sans-serif;
                         border-collapse: collapse;
                         width: 100%;
+                        padding:6px 4px 10px 4px;
                     }
 
                     .tbl_repo td, .tbl_repo th {
                         border: 1px solid #dddddd;
-                        text-align: left;
-                        padding: 8px;
+                        text-align: left;                        
                     }
 
                     .tbl_repo tr:nth-child(even) {
                         background-color: #dddddd;
+                    }
+
+                    .title-repo{
+                        background-color: silver;
                     }
                 </style>';
         $html.= '</head></html>';
@@ -498,6 +502,47 @@ class Templates {
         }                            
         $html.= '</tbody>';
         $html.= '</table>';  
+        return $html;
+    }
+
+    /// Reportes por Paciente ///
+
+    function tmp_reporte_ficha_clinica($param){
+        print_r($param);
+        $html = '';
+        $html.= $this->header_repo();
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';
+        $html.= '    <th colspan="3" class="title-repo"><h3> HISTORIA CLINICA NRO '.$param['ficha_medica']['id_historia_medica'].'</h3></th>';
+        $html.= '</tr>';
+        $html.= '<tr>';
+        $html.= '    <th><b>Rut</b></th>';
+        $html.= '    <th><b>Nombres</b></th>';
+        $html.= '    <th><b>Apellidos</b></th>';
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        $html.= '<tr>'; 
+        $html.= '  <td>'.$param['ficha_medica']['rut'].'</td>';
+        $html.= '  <td>'.ucfirst($param['ficha_medica']['primer_nombre']).' '.ucfirst($param['ficha_medica']['segundo_nombre']).'</td>';
+        $html.= '  <td>'.ucfirst($param['ficha_medica']['apellido_paterno']).' '.ucfirst($param['ficha_medica']['apellido_materno']).'</td>';            
+        $html.= '</tr>';                
+        $html.= '</tbody>';
+        $html.= '</table>';
+        $html.= '<table class="tbl_repo" text-align="left">';
+        $html.= '<thead>';
+        $html.= '<tr>';
+        $html.= '    <th><b>Sexo</b></th>';
+        $html.= '    <th><b>Edad</b></th>';
+        $html.= '    <th><b>Estado Civil</b></th>';
+        $html.= '    <th><b>Ocupacion</b></th>';
+        $html.= '</tr>';
+        $html.= '</thead>';
+        $html.= '<tbody>';
+        $html.= '</tbody>';
+        $html.= '</table>'; 
+        $html.= '<p><hr></p>';                
         return $html;
     }
 

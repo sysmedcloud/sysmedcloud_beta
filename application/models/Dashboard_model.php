@@ -106,4 +106,154 @@ class Dashboard_model extends CI_Model
             return 0;
         }
     }
+    
+    /**************************************************************************/
+    /** Funcion que permite retornar cantidad de pacientes hombres
+    /**************************************************************************/
+    public function cantidad_pacientes_hombre($id_empresa){
+        
+        //Cantidad de consultas medicas realizadas por paciente hombres
+        $this->db->select("COUNT(*) as cantidad_pacientes_m");
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_historias_medicas h','h.id_paciente = u.id_usuario');
+        $this->db->where('u.id_perfil',4);//tipo paciente
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.genero','M');
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
+        $query_cant_paciente_m = $this->db->get();
+        
+        if($query_cant_paciente_m->num_rows() > 0 ){    
+            $cant_paciente_m = $query_cant_paciente_m->row()->cantidad_pacientes_m;
+        }else{
+            $cant_paciente_m = 0;
+        }
+        
+        return $cant_paciente_m;
+    }
+    
+    /**************************************************************************/
+    /** Funcion que permite retornar cantidad de pacientes mujeres
+    /**************************************************************************/
+    public function cantidad_pacientes_mujer($id_empresa){
+        
+        //Cantidad de consultas medicas realizadas por pacientes mujeres
+        $this->db->select("COUNT(*) as cantidad_pacientes_f");
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_historias_medicas h','h.id_paciente = u.id_usuario');
+        $this->db->where('u.id_perfil',4);//tipo paciente
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.genero','F');
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
+        $query_cant_paciente_f = $this->db->get();
+        
+        if($query_cant_paciente_f->num_rows() > 0 ){
+            $cant_paciente_f = $query_cant_paciente_f->row()->cantidad_pacientes_f;
+        }else{
+            $cant_paciente_f = 0;
+        }
+        
+        return $cant_paciente_f;
+    }
+    
+    /**************************************************************************/
+    /** Info grafico distribucion de consultas medicas por pacientes y genero
+    /**************************************************************************/
+    public function dist_cm_hm($id_empresa){
+        
+        //Cantidad de consultas medicas realizadas por paciente hombres
+        $cant_paciente_m = $this->cantidad_consultas_med_m($id_empresa);
+        
+        //Cantidad de consultas medicas realizadas por pacientes mujeres
+        $cant_paciente_f = $this->cantidad_consultas_med_f($id_empresa);
+        
+        return array("M"=>$cant_paciente_m,"F"=>$cant_paciente_f);
+    }
+    
+    /**************************************************************************/
+    /** Cantidad de consultas medicas realizadas a pacientes hombres
+    /**************************************************************************/
+    public function cantidad_consultas_med_m($id_empresa){
+        
+        //Cantidad de consultas medicas realizadas por paciente hombres
+        $this->db->select("COUNT(*) as cantidad");
+        $this->db->from('tbl_consulta_medica c');
+        $this->db->join('tbl_usuarios u','u.id_usuario = c.id_paciente');
+        $this->db->join('tbl_historias_medicas h','h.id_paciente = u.id_usuario');
+        $this->db->where('u.id_perfil',4);//tipo paciente
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.genero','M');
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
+        $query_cant = $this->db->get();
+        
+        if($query_cant->num_rows() > 0 ){    
+            $cantidad = $query_cant->row()->cantidad;
+        }else{
+            $cantidad = 0;
+        }
+        
+        return $cantidad;
+    }
+    
+    /**************************************************************************/
+    /** Cantidad de consultas medicas realizadas a pacientes mujeres
+    /**************************************************************************/
+    public function cantidad_consultas_med_f($id_empresa){
+        
+        //Cantidad de consultas medicas realizadas por paciente mujeres
+        $this->db->select("COUNT(*) as cantidad");
+        $this->db->from('tbl_consulta_medica c');
+        $this->db->join('tbl_usuarios u','u.id_usuario = c.id_paciente');
+        $this->db->join('tbl_historias_medicas h','h.id_paciente = u.id_usuario');
+        $this->db->where('u.id_perfil',4);//tipo paciente
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.genero','F');
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("u.id_usuario", "asc");
+        $query_cant = $this->db->get();
+        
+        if($query_cant->num_rows() > 0 ){    
+            $cantidad = $query_cant->row()->cantidad;
+        }else{
+            $cantidad = 0;
+        }
+        
+        return $cantidad;
+    }
+    
+    /**************************************************************************/
+    /** Info Grafico paciente genero
+    /**************************************************************************/
+    public function paciente_genero($id_empresa){
+        
+        //Obtener total de pacientes registrados
+        $total_pacientes = $this->cantidad_paciente($id_empresa);
+        
+        //Obtener cantidad total de pacientes hombres
+        $cant_hombres = $this->cantidad_pacientes_hombre($id_empresa);
+        
+        //Obtener cantidad total de pacientes mujeres
+        $cant_mujeres = $this->cantidad_pacientes_mujer($id_empresa);
+        
+        //Obtener porcentajes
+        $ph = ($cant_hombres *  100) / $total_pacientes;//% de hombres
+        $pm = ($cant_mujeres * 100) / $total_pacientes;//% de mujeres
+        
+        $pacientes  = array();
+        $hombres[0] = "Hombres";
+        $hombres[1] = round($ph);
+        $mujeres[0] = "Mujeres";
+        $mujeres[1] = round($pm);
+        
+        array_push($pacientes,$hombres);
+        array_push($pacientes,$mujeres);
+        
+        echo json_encode($pacientes);
+    }
 }	

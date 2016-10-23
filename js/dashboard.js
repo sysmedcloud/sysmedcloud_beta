@@ -49,10 +49,95 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 
 $(document).ready(function() {
     
+    //Cargamos listado de historias clinicas recientes
     listado_hc_recientes();
     
+    //Cargamos grafico de distribución de consultas med. por pacientes y genero
+    consultas_med_pacientes_genero();
+    
+    //Cargamos grafico de pacientes por genero
+    genero_paciente();
 });
 
+//Grafico pacientes por genero
+function genero_paciente(){
+    
+    var options = {
+        
+        chart: {
+            renderTo: 'pacientes_por_genero',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Pacientes por género'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    formatter: function() {
+                        return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                    }
+                },
+                showInLegend: false
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+             data: []
+        }]
+    };
+    
+    var baseURL = $('body').data('baseurl');//url base
+    var url     = baseURL + 'dashboard_admin/paciente_genero_ajax';
+    
+    $.getJSON(url, function(json) {
+        console.log(json);
+        options.series[0].data = json;
+        chart = new Highcharts.Chart(options);
+    });
+}
+
+//Grafico que permite visualizar la distribución de consultas med. y genero
+function consultas_med_pacientes_genero(){
+    
+    $('#cm_pacientes_genero').highcharts({
+        data: {
+            table: 'cm_pacientes_genero_datatable'
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Distribución de consultas médicas por género'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'N° de consultas médicas'
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.point.y + ' ' + this.point.name.toLowerCase();
+            }
+        }
+    });
+}
+
+//Funcion que permite visualizar historias clíncas recientemente registradas
 function listado_hc_recientes(){
     
     var baseURL = $('body').data('baseurl');//url base

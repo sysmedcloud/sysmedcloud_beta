@@ -107,7 +107,10 @@ class Fileclass {
             //'9'     => base_url().'js/plugins/flot/jquery.flot.pie.js',
             //'10'    => base_url().'js/plugins/flot/jquery.flot.time.js',
             //'6'    => base_url().'js/flot-demo.js',
-            '9'    => base_url().'js/dashboard.js'
+            '9'     => base_url().'js/dashboard.js',
+            '10'    => base_url().'js/highcharts_dashboard.js',
+            '11'    => base_url().'js/data.js',
+            '12'    => base_url().'js/exporting.js',
             //'12'    => base_url().'js/plugins/chartJs/Chart.min.js',
             //'13'    => base_url().'js/chartjs-demo.js'
         );

@@ -56,8 +56,18 @@ class Dashboard_admin extends CI_Controller {
         //Obtenemos cantidad de usuarios de la cuenta registrados en el sistema
         $data["cant_u"]     = $this->dashboard_model->cantidad_users($data["session"]["id_empresa"]);
         
+        //Cantidad de consultas medicas realizadas por pacientes hombres y mujeres
+        $data['dist_hm']    = $this->dashboard_model->dist_cm_hm($data["session"]["id_empresa"]);
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("dashboard_view",$data);
     }
     
+    
+    public function paciente_genero_ajax(){
+        
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        
+        $this->dashboard_model->paciente_genero($data["session"]["id_empresa"]);
+    }
 }

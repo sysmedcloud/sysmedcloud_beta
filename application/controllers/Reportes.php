@@ -91,8 +91,8 @@ class Reportes extends CI_Controller {
                         $tmp_meds   = $this->templates->tmp_reporte_consultas($data_meds);
                         break;                                       
                     case '7':
-                        $titulo     = 'Historia Clínica Paciente';
-                        $data_med   = $this->reportes->consolidado_datos_paciente($rut_paciente);                                                
+                        $titulo     = 'Historia Clinica Electónica';
+                        $data_med   = $this->reportes->consolidado_datos_paciente($rut_paciente);                         
                         $tmp_meds   = $this->templates->tmp_reporte_ficha_clinica($data_med[0]);                        
                     break;
                     case '8':
@@ -108,7 +108,7 @@ class Reportes extends CI_Controller {
         $pdf->SetTitle('Reporte de ' . $titulo);
         $pdf->SetSubject('');
         $pdf->SetKeywords('');
-        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, 'Reporte', $titulo, array(0, 64, 255), array(0, 64, 128));
+        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, '', $titulo, array(0, 64, 255), array(0, 64, 128));
         $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -122,7 +122,7 @@ class Reportes extends CI_Controller {
         $pdf->SetFont('times', '', 8, '', true);
         $pdf->AddPage();
         $pdf->writeHTML($tmp_meds, true, 0, true, 0); 
-        $nombre_archivo = utf8_decode("reporte-".strtolower($titulo)."-".date("d")."_".date("m")."_".date("Y").".pdf");
+        $nombre_archivo = utf8_decode("reporte-".strtolower($titulo)."-".date("d")."_".date("m")."_".date("Y").".pdf");        
         $pdf->Output($nombre_archivo, 'I');   
     }
 

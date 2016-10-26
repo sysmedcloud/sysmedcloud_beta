@@ -11,7 +11,7 @@
         <div class="row">
           <label class="col-sm-4 control-label">Introduzca el rut del paciente</label>
           <div class="col-sm-8">
-            <input type="text" name="rut" id="rut_paciente" class="form-control" placeholder="Esto funciona papá">                      
+            <input type="text" name="rut" id="rut_paciente" class="form-control" placeholder="17.270.747-5">                      
           </div>
         </div>
         <br>

@@ -169,7 +169,7 @@ function ver_datos_paciente(id_paciente){
             var modal = '<div class="row">'+
                 '<div class="col-xs-12 col-md-3">'+
                   '<a href="#" class="thumbnail">'+
-                    '<img src="'+baseURL+'img/sin-foto.png" alt="...">'+
+                    '<img src="'+baseURL+'img/pacientes/'+data.imagen+'" alt="...">'+
                   '</a>'+
                 '</div>'+
                 '<div class="col-xs-12 col-md-9">'+

@@ -144,7 +144,7 @@ class Agenda_model extends CI_Model
         //Query para validar existencia del usuario perfil paciente
         $this->db->select("h.id_historia_medica, cm.id, cm.id_empresa, cm.id_profesional, cm.id_paciente, cm.rut_paciente, cm.id_estado_cita_medica,
                            cm.nom_paciente, cm.correo, cm.celular, cm.tel_fijo, cm.body, 
-                           cm.url, cm.class, cm.start, cm.end, cm.inicio_normal, cm.final_normal, cm.fecha_mod");
+                           cm.url, cm.class, cm.start, cm.end, cm.inicio_normal, cm.final_normal, cm.fecha_mod,u.imagen,u.rut,u.email,u.celular,u.telefono");
         $this->db->from('tbl_citas_medicas cm');
         $this->db->join('tbl_usuarios u',' u.id_usuario = cm.id_paciente');
         $this->db->join('tbl_historias_medicas h',' h.id_paciente = u.id_usuario');

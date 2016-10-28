@@ -106,7 +106,7 @@ class Paciente_admin extends CI_Controller {
         $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //Datos POST formulario
-        $this->form_validation->set_rules('rut','R.U.T.','required|trim');
+        /*$this->form_validation->set_rules('rut','R.U.T.','required|trim');
         $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
         $this->form_validation->set_rules('s_nombre','segundo nombre','required|trim');
         $this->form_validation->set_rules('a_paterno','apellido paterno','required|trim');
@@ -119,8 +119,8 @@ class Paciente_admin extends CI_Controller {
         $this->form_validation->set_rules('region','region', 'required|trim');
         $this->form_validation->set_rules('provincia','provincia','required|trim');
         $this->form_validation->set_rules('comuna','comuna','required|trim');
-        $this->form_validation->set_rules('calle','calle','required|trim');
-        
+        $this->form_validation->set_rules('calle','calle','required|trim');*/
+        $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
         //Validar datos del formulario
         if($this->form_validation->run() == FALSE) {
                 
@@ -128,7 +128,7 @@ class Paciente_admin extends CI_Controller {
             $this->RegistrarPaciente();
                 
          } else {
-            
+             
             //CREAMOS NUESTRO NUEVO USUARIO
             $p_nombre       = strtolower($this->input->post('p_nombre'));
             $a_paterno      = strtolower($this->input->post('a_paterno'));
@@ -161,6 +161,36 @@ class Paciente_admin extends CI_Controller {
                         "correo"           => $pc_correo[$x],
                     );
                 }
+                
+                if(!empty($_FILES['img_paciente']['name'])) {//Subio una imagen
+                
+                    //Subir nuevo logo
+                   $config['upload_path'] = './img/pacientes/';
+                   $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                   $config['max_size'] = '2000';
+                   $config['max_width'] = '2024';
+                   $config['max_height'] = '2008';
+                   $this->load->library('upload', $config);
+
+                   //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA UPLOAD_VIEW
+                   if (!$this->upload->do_upload('img_paciente')){                    
+                       $error      = array('error' => $this->upload->display_errors());
+                       //$this->resultado($data_res);
+                       //echo "error";
+                       $imagen = '';
+
+                   } else {
+
+                       //Subimos la imagen del paciente
+                       $file_info = $this->upload->data();
+                       $data2 = array('upload_data' => $this->upload->data());
+                       $imagen = $file_info['file_name'];
+                   }
+
+               }else{//no subio una imagen
+
+                   $imagen = '';
+               }
                 
                 //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
                 $dataForm = array(//Nuestro arreglo con los datos del paciente
@@ -196,7 +226,8 @@ class Paciente_admin extends CI_Controller {
                     "grupo_sang"    => $this->input->post('grupo_sang'),
                     "factorn_rh"    => $this->input->post('factorn_rh'),
                     //informacion de las personas de contacto
-                    "p_contactos"   => $arr_contacto
+                    "p_contactos"   => $arr_contacto,
+                    "imagen"        => $imagen
                     
                 );
                 
@@ -266,6 +297,46 @@ class Paciente_admin extends CI_Controller {
                 );
             }
             
+            //Script para la edicion de imagen de un paciente
+            $imagen_paciente =  $this->input->post('imagen_paciente');
+            if(!empty($_FILES['new_img_paciente']['name'])) {//Subio una imagen
+                
+                $path = './img/pacientes/'.$imagen_paciente;
+                
+                //Eliminar imagen paciente
+                if(is_file($path)){
+                    //Eliminamos la imagen
+                    unlink($path);
+                }
+                
+                 //Subir nuevo logo
+                $config['upload_path'] = './img/pacientes/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size'] = '2000';
+                $config['max_width'] = '2024';
+                $config['max_height'] = '2008';
+                $this->load->library('upload', $config);
+                
+                //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA UPLOAD_VIEW
+                if (!$this->upload->do_upload('new_img_paciente')){                    
+                    
+                    $error      = array('error' => $this->upload->display_errors());
+                    //$this->resultado($data_res);
+                    //echo "error";
+                    $imagen = $imagen_paciente;
+                } else {
+                        
+                    //Subimos la imagen del paciente
+                    $file_info = $this->upload->data();
+                    $data2 = array('upload_data' => $this->upload->data());
+                    $imagen = $file_info['file_name'];
+                }
+                
+            }else{//no subio una imagen
+                
+                $imagen = $imagen_paciente;
+            }
+            
             //Crear arreglo con los datos del nuestro nuevo usuario tipo paciente
             $dataForm = array(//Nuestro arreglo con los datos del paciente
                 "id_usuario"    => $this->input->post('id_usuario'),
@@ -293,10 +364,10 @@ class Paciente_admin extends CI_Controller {
                 "grupo_sang"    => $this->input->post('grupo_sang'),
                 "factorn_rh"    => $this->input->post('factorn_rh'),
                 //informacion de las personas de contacto
-                "p_contactos"   => $arr_contacto
-
+                "p_contactos"   => $arr_contacto,
+                "imagen"        => $imagen
             );
-            
+            //echo "<pre>";print_r($dataForm);exit();
             //Registrar los datos del nuevo paciente
             //Ademas se creara una nueva historia medica para el paciente
             $this->paciente_model->editarPaciente($dataForm);

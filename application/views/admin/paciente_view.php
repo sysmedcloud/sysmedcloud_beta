@@ -24,7 +24,7 @@
                </div>
             </div>
             <div class="ibox-content">
-               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatos" class="form-horizontal">
+               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatos" class="form-horizontal" enctype="multipart/form-data">
                   <div class="form-group">
                      <div class="col-sm-3">
                         <a href="#" class="thumbnail">
@@ -167,6 +167,12 @@
                                                 <strong>Niv. Estudios</strong>
                                                 <?=form_dropdown('niv_estudios',$niv_estudios,set_value('niv_estudios'),'class="form-control m-b "');?>
                                                 <?=form_error('n_estudio','<div class="text-danger">','</div>');?>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                 <h4>Seleccione una imagen para el paciente:</h4>
+                                                 <input type="file" name="img_paciente" id="img_paciente">
                                              </div>
                                           </div>
                                           <!--<div class="hr-line-dashed"></div>-->

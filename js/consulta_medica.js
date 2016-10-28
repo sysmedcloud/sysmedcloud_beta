@@ -217,6 +217,7 @@ function buscar_paciente(){
                 $("#fecha_nac_paciente").html(data.fecha_nac);
                 $("#nacionalidad_paciente").html(data.nacionalidad);
                 $("#est_civil_paciente").html(data.estado_civil);
+                $("#imagen_paciente").attr("src",baseURL+"img/pacientes/"+data.imagen);
 
             }else{
 

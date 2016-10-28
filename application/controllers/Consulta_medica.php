@@ -92,6 +92,8 @@ class Consulta_medica extends CI_Controller {
         $data["fecha_nac"]      = $paciente["fecha_nac"];  
         $data["nacionalidad"]   = $paciente["nacionalidad"];  
         $data["estado_civil"]   = $paciente["estado_civil"];  
+        $data["imagen"]         = $paciente["imagen"] != "" ? $paciente["imagen"] : "sin-foto.png";
+        
         
         //Creamos token para archivos rev. sistema
         $data["token_rs"] = $this->token();

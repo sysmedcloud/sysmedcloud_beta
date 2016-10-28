@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-xs-3 col-md-3">
             <a href="#" class="thumbnail">
-                <img src="<?php echo base_url(); ?>img/sin-foto.png" alt="...">
+                <img src="<?php echo base_url(); ?>img/pacientes/<?php echo $imagen; ?>" alt="...">
             </a>
         </div>
         <div class="col-xs-9 col-md-9">

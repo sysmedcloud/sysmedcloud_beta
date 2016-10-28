@@ -24,7 +24,7 @@ class Paciente_model extends CI_Model
     
     public function info_basica($id_paciente){
     
-        $this->db->select("u.rut, u.primer_nombre, u.segundo_nombre, u.apellido_paterno, u.apellido_materno, u.fecha_nac, e.estado_civil, p.nombre as pais");
+        $this->db->select("u.rut, u.imagen, u.primer_nombre, u.segundo_nombre, u.apellido_paterno, u.apellido_materno, u.fecha_nac, e.estado_civil, p.nombre as pais");
         $this->db->from('tbl_usuarios u');
         $this->db->join('tbl_estado_civil e','u.id_estado_civil = e.id_estado_civil');
         $this->db->join('tbl_paises p','u.nacionalidad = p.cod_pais');
@@ -47,6 +47,7 @@ class Paciente_model extends CI_Model
             $pais           = $datos->row()->pais               == "" ? "no informado" : $datos->row()->pais;
             
             return array(
+                "imagen"        => $datos->row()->imagen,
                 "rut"           => $rut,
                 "nombre"        => $p_nombre." ".$s_nombre." ".$a_peterno." ".$a_materno,
                 "fecha_nac"     => $fecha_nac,
@@ -56,6 +57,7 @@ class Paciente_model extends CI_Model
         }else{
             
             array(
+                "imagen"        => "sin-foto.png",
                 "rut"           => "",
                 "nombre"        => "",
                 "fecha_nac"     => "",
@@ -211,6 +213,7 @@ class Paciente_model extends CI_Model
         $data['id_nivel_estudio']    = $dataForm["niv_estudios"];
         $data['id_grupo_sang']       = $dataForm["grupo_sang"];
         $data['id_factorn_rh']       = $dataForm["factorn_rh"];
+        $data['imagen']              = $dataForm["imagen"];
         
         //Editar datos del paciente
         $this->db->where('id_usuario',$dataForm["id_usuario"]);
@@ -344,6 +347,7 @@ class Paciente_model extends CI_Model
             $calle          = $datos->row()->calle  == "" ? "no informado" : $datos->row()->calle;
             $gr_sang        = $datos->row()->grupo_sanguineo == "" ? "no informado" : $datos->row()->grupo_sanguineo;
             $factor_rh      = $datos->row()->factor_rh == "" ? "no informado" : $datos->row()->factor_rh;
+            $imagen         = $datos->row()->imagen == "" ? "sin-foto.png" : $datos->row()->imagen;
             
             //Buscar personas de contacto
             $this->db->select('pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.telefono,pc.correo');
@@ -377,7 +381,8 @@ class Paciente_model extends CI_Model
                 "calle"             => ucfirst($calle),
                 "grupo_sang"        => ucfirst($gr_sang),
                 "factor_rh"         => ucfirst($factor_rh),
-                "personas_contacto" => $personas_contacto
+                "personas_contacto" => $personas_contacto,
+                "imagen"            => $imagen,
             );
             
             echo json_encode($arr_paciente); 
@@ -618,6 +623,7 @@ class Paciente_model extends CI_Model
             u.apellido_materno,
             u.celular,
             u.telefono,
+            u.imagen,
             u.email,u.fecha_nac,
             p.nombre as pais,
             e.estado_civil'
@@ -648,10 +654,12 @@ class Paciente_model extends CI_Model
             $fecha_nac      = $datos->row()->fecha_nac;
             $nacionalidad   = $datos->row()->pais == "" ? "no informado" : $datos->row()->pais;
             $estado_civil   = $datos->row()->estado_civil == "" ? "no informado" : $datos->row()->estado_civil;
+            $imagen         = $datos->row()->imagen == "" ? "sin-foto.png" : $datos->row()->imagen;
             
             $arr_paciente = array(
                 "id_paciente"       => $id_paciente,
                 "rut"               => $rut,
+                "imagen"            => $imagen,
                 "primer_nombre"     => ucfirst($p_nombre),
                 "segundo_nombre"    => ucfirst($s_nombre),
                 "apellido_paterno"  => ucfirst($a_peterno),

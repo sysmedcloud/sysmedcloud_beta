@@ -147,21 +147,19 @@ class Agenda extends CI_Controller {
         
         $data["estadosCitas"]  = $this->dropdown_model->cargarEstadosCitasMed($row["id_estado_cita_medica"]);
         
-        //Obtener datos de contacto del usuario
-        $row_c = $this->agenda_model->datos_contacto($row['id_paciente']);
-        
         //Creamos variables para nuestra vista
         $data["id_cita_medica"]     = $id_cita_medica;
         $data["id_historia_med"]    = $row['id_historia_medica'];
         $data["id_paciente"]        = $row['id_paciente'];
         $data["paciente"]           = $row['nom_paciente'];
-        $data["rut"]                = $row_c['rut'];
-        $data["correo"]             = $row_c['email']       != "" ? $row_c['email']  : "no informado";
-        $data["celular"]            = $row_c['celular']     != "" ? $row_c['celular'] : "no informado";
-        $data["tel_fijo"]           = $row_c['telefono']    != "" ? $row_c['telefono']: "no informado";
+        $data["rut"]                = $row['rut'];
+        $data["correo"]             = $row['email']       != "" ? $row['email']  : "no informado";
+        $data["celular"]            = $row['celular']     != "" ? $row['celular'] : "no informado";
+        $data["tel_fijo"]           = $row['telefono']    != "" ? $row['telefono']: "no informado";
         $data["nota"]               = $row['body']          != "" ? $row['body']    : "Sin comentarios";
         $data["inicio"]             = $row['inicio_normal'];
         $data["final"]              = $row['final_normal'];
+        $data["imagen"]             = $row['imagen']  != "" ? $row['imagen']: "sin-foto.png";
         
         $this->load->view('admin/descripcion_cita_view',$data);
     }

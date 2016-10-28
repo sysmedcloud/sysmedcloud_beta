@@ -24,13 +24,13 @@
                </div>
             </div>
             <div class="ibox-content">
-               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal">
+               <form method="POST" action="<?=base_url();?>paciente_admin/recibirDatosEdit" class="form-horizontal" enctype="multipart/form-data">
                    <input type="hidden" id="id_data_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <input type="hidden" id="id_usuario" name="id_usuario" value="<?=$paciente["id_usuario"];?>">
                    <div class="form-group">
                      <div class="col-sm-3">
                          <a href="#" class="thumbnail">
-                             <img src="<?=base_url();?>img/sin-foto.png" class="img-thumbnail" alt="imagen usuario">
+                             <img src="<?=base_url();?>img/pacientes/<?php echo $paciente["imagen"]; ?>" class="img-thumbnail" alt="imagen usuario">
                          </a>                       
                         <hr>
                      </div>
@@ -173,6 +173,13 @@
                                                 <strong>Niv. Estudios</strong>
                                                 <?=form_dropdown('niv_estudios',$niv_estudios,$paciente["id_nivel_estudio"],'class="form-control m-b "');?>
                                                 <?=form_error('n_estudio','<div class="text-danger">','</div>');?>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-12">
+                                                 <h4>Editar imagen del paciente:</h4>
+                                                 <input type="hidden" name="imagen_paciente" id="imagen_paciente" value="<?php echo $paciente["imagen"]; ?>">
+                                                 <input type="file" name="new_img_paciente" id="new_img_paciente">
                                              </div>
                                           </div>
                                           <!--<div class="hr-line-dashed"></div>-->

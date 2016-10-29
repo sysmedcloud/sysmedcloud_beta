@@ -106,7 +106,7 @@ class Paciente_admin extends CI_Controller {
         $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //Datos POST formulario
-        /*$this->form_validation->set_rules('rut','R.U.T.','required|trim');
+        $this->form_validation->set_rules('rut','R.U.T.','required|trim');
         $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
         $this->form_validation->set_rules('s_nombre','segundo nombre','required|trim');
         $this->form_validation->set_rules('a_paterno','apellido paterno','required|trim');
@@ -119,8 +119,8 @@ class Paciente_admin extends CI_Controller {
         $this->form_validation->set_rules('region','region', 'required|trim');
         $this->form_validation->set_rules('provincia','provincia','required|trim');
         $this->form_validation->set_rules('comuna','comuna','required|trim');
-        $this->form_validation->set_rules('calle','calle','required|trim');*/
-        $this->form_validation->set_rules('p_nombre','primer nombre','required|trim');
+        $this->form_validation->set_rules('calle','calle','required|trim');
+        
         //Validar datos del formulario
         if($this->form_validation->run() == FALSE) {
                 

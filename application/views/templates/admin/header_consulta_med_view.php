@@ -29,6 +29,7 @@
     <!--<script src="<?php echo base_url(); ?>js/jasny-bootstrap.min.js" type="text/javascript"></script>-->
     <script src="<?php echo base_url(); ?>js/consulta_medica.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>js/validador_rut.js" type="text/javascript"></script>
     
 </head>
 <?php 

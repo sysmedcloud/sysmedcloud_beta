@@ -154,7 +154,7 @@
                   <div class="form-group">
                       <label class="control-label col-sm-3"  for="title">Rut Paciente</label>
                       <div class="col-sm-9">
-                          <input type="text" onblur="buscar_paciente(this.value);" required autocomplete="off" name="rut_paciente" class="form-control" id="rut_paciente" placeholder="Introduce rut del paciente ejm: 11.111.111-1">
+                          <input type="text" onblur="buscar_paciente(this.value);" required autocomplete="off" name="rut_paciente" class="form-control" id="rut_paciente" onchange="Rut('rut_paciente');" placeholder="Introduce rut del paciente ejm: 11.111.111-1">
                       </div>
                   </div>
                 </div>

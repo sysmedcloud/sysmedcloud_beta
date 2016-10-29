@@ -55,7 +55,7 @@
                                             <div class="row">
                                              <div class="col-md-4">
                                                 *&nbsp;<strong>R.U.T</strong>
-                                                <input type="text" name="rut" placeholder="Ingrese su rut" class="form-control" value="<?=$paciente["rut"];?>">
+                                                <input type="text" name="rut" id="rut" onchange="Rut('rut');" placeholder="Ingrese su rut" class="form-control" value="<?=$paciente["rut"];?>">
                                                 <?=form_error('rut','<div class="text-danger">','</div>');?>
                                              </div>
                                              <div class="col-md-4">

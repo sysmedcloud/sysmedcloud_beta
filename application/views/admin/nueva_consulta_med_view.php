@@ -67,7 +67,7 @@
                                           <label class="col-sm-3"  for="title">Busqueda por RUT del paciente: </label>
                                           &nbsp;
                                           <div class="col-sm-5">
-                                              <input type='text'  required="true"    name="rut" id="rut" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
+                                              <input type='text'  required="true"    name="rut" id="rut" onchange="Rut('rut');" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
                                              <input type="hidden"   name="id_paciente" value="<?php echo $id_paciente; ?>" id="id_paciente">
                                              <input type="hidden"   id="id_cita_med"   name="id_cita_med"   value="<?=$id_cita_medica;?>">
                                           </div>

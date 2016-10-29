@@ -24,8 +24,8 @@
     <script src="<?php echo base_url();?>js/jquery.metisMenu.js"></script>
     <script src="<?php echo base_url();?>js/jquery.slimscroll.min.js"></script>
     <script src="<?php echo base_url();?>js/inspinia.js"></script>
-    
     <script src="<?php echo base_url();?>js/sweetalert.min.js"></script>
+    <script src="<?php echo base_url();?>js/validador_rut.js"></script>
     
 </head>
 <?php 

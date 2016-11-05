@@ -16,10 +16,7 @@
                   <i class="fa fa-wrench"></i>
                   </a>
                   <ul class="dropdown-menu dropdown-user">
-                     <li><a href="#">Config option 1</a>
-                     </li>
-                     <li><a href="#">Config option 2</a>
-                     </li>
+                    
                   </ul>
                   <a class="close-link">
                   <i class="fa fa-times"></i>
@@ -40,176 +37,55 @@
                         </span>
                         </div>-->
                      <div class="col-sm-12">
+                         <div class="row">
+                             
+                             <div class="col-sm-3">
+                                <a href="#" class="thumbnail">
+                                    <img src="<?=  base_url();?>img/pacientes/<?=$paciente["imagen"];?>" class="img-thumbnail" alt="imagen usuario">
+                                </a>
+                             </div>
+                             <div class="col-sm-9">
+                                 <div class="col-sm-4">
+                                    <?php $genero = $paciente["genero"] == "M" ?  'Masculino' : 'Femenino';?>
+                                    <p><strong>R.U.T:</strong> <?=$paciente["rut"];?></p>
+                                    <p><strong>Nombre:</strong> <?=ucfirst($paciente["primer_nombre"]);?> <?=ucfirst($paciente["segundo_nombre"]);?> <?=ucfirst($paciente["apellido_paterno"]);?> <?=ucfirst($paciente["apellido_materno"]);?></p>
+                                    <p><strong>Genero:</strong> <?=$genero?></p>
+                                    <p><strong>Telefono (fijo):</strong> <?=$paciente["telefono"];?></p>
+                                    <p><strong>Telefono celular:</strong> <?=$paciente["celular"];?></p>
+                                    <p><strong>Correo:</strong> <?=$paciente["email"];?></p>
+                                    <p><strong>Estado Civil:</strong> <?=ucfirst($paciente["estado_civil"]);?></p>
+                                 </div>
+                                 <div class="col-sm-4">
+                                     <p><strong>Fecha Nac.:</strong> <?=$paciente["fecha_nac"];?></p>
+                                     <p><strong>Lugar de Nac.:</strong> <?=ucfirst($paciente["lugar_nac"]);?></p>
+                                     <p><strong>Religión:</strong> <?=ucfirst($paciente["religion"]);?></p>
+                                     <p><strong>País de residencia:</strong> <?=ucfirst(strtolower($paciente["pais"]));?></p>
+                                     <p><strong>Prev. Médica::</strong> <?=ucfirst($paciente["prevision"]);?></p>
+                                     <p><strong>Ocupación:</strong> <?=ucfirst(strtolower($paciente["ocupacion"]));?></p>
+                                 </div>
+                                 <div class="col-sm-4">
+                                     <p><strong>Niv. Estudios:</strong> <?=ucfirst($paciente["nivel_estudio"]);?></p>
+                                     <p><strong>Grupo Sanguíneo:</strong> <?=$paciente["grupo_sanguineo"];?></p>
+                                     <p><strong>Factor RH:</strong> <?=ucfirst($paciente["factor_rh"]);?></p>
+                                     <p><strong>Residencia Actual:</strong> <?=ucfirst($paciente["calle"]);?>, <?=ucfirst($paciente["comuna"]);?>, <?=ucfirst($paciente["provincia"]);?>, <?=ucfirst($paciente["region"]);?> </p>
+                                 </div>
+                             </div>
+                         </div>
                         <div class="row">
                            <div class="col-lg-12">
                               <div class="panel blank-panel">
                                  <div class="panel-heading">
                                     <div class="panel-options">
                                        <ul class="nav nav-tabs">
-                                          <li class="active"><a data-toggle="tab" href="#tab-1">Datos Filiatorios</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-2">Ant. Familiares</a></li>
-                                          <li class=""><a data-toggle="tab" href="#tab-3">Ant. Sociales y Personales</a></li>
+                                          <li class="active"><a data-toggle="tab" href="#tab-2">Antecedentes Familiares</a></li>
+                                          <li class=""><a data-toggle="tab" href="#tab-3">Antecedentes Sociales y Personales</a></li>
                                           <li class=""><a data-toggle="tab" href="#tab-4">Personas de Contacto</a></li>
                                        </ul>
                                     </div>
                                  </div>
                                  <div class="panel-body">
                                     <div class="tab-content">
-                                       <div id="tab-1" class="tab-pane active">
-                                          <a class="btn btn-default" role="button" data-toggle="collapse" href="#datosPersonales" aria-expanded="false" aria-controls="collapseExample">
-                                          Ver Datos Personales
-                                          </a>
-                                          <div class="collapse" id="datosPersonales">
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>R.U.T</strong>
-                                                   <input type="text" disabled="true" name="rut" placeholder="no informado" class="form-control" value="<?=$paciente["rut"];?>">
-                                                   <?=form_error('rut','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Primer nombre</strong>
-                                                   <input type="text" disabled="true" name="p_nombre" placeholder="no informado" class="form-control " value="<?=$paciente["primer_nombre"];?>">
-                                                   <?=form_error('p_nombre','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Segundo nombre</strong>
-                                                   <input type="text" disabled="true" name="s_nombre" placeholder="no informado" class="form-control" value="<?=$paciente["segundo_nombre"];?>">
-                                                   <?=form_error('s_nombre','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             &nbsp;
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Apellido paterno</strong>
-                                                   <input type="text" disabled="true" name="a_paterno" placeholder="no informado" class="form-control " value="<?=$paciente["apellido_paterno"];?>">
-                                                   <?=form_error('a_paterno','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Apellido materno</strong>
-                                                   <input type="text" disabled="true" name="a_materno" placeholder="no informado" class="form-control " value="<?=$paciente["apellido_materno"];?>">
-                                                   <?=form_error('a_materno','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <?php
-                                                      //Validar genero
-                                                      $v_masculino = $paciente["genero"] == "M" ?  true : false;
-                                                      $v_femenino  = $paciente["genero"] == "F" ? true : false;
-                                                      
-                                                      $js     = 'id="genero" disabled="true"';
-                                                      $rd_mas =  form_radio('genero', 'M',$v_masculino,$js);
-                                                      
-                                                      $js2    = 'id="genero" disabled="true"';
-                                                      $rd_fem =  form_radio('genero', 'F',$v_femenino,$js);
-                                                      
-                                                      ?>
-                                                   <strong>Genero</strong><br>
-                                                   <label class="radio-inline i-checks"> 
-                                                   <?=$rd_mas;?> Masculino
-                                                   </label> 
-                                                   <label class="radio-inline i-checks">
-                                                   <?=$rd_fem;?> Femenino
-                                                   </label>
-                                                   <?=form_error('genero','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             &nbsp;
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Telefono (fijo)</strong>
-                                                   <input type="text" disabled="true" name="telefono_f" placeholder="no informado" class="form-control " value="<?=$paciente["telefono"];?>">
-                                                   <?=form_error('telefono_f','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Telefono celular</strong>
-                                                   <input type="text" disabled="true" name="celular" placeholder="no informado" class="form-control " value="<?=$paciente["celular"];?>">
-                                                   <?=form_error('celular','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Correo</strong>
-                                                   <input type="text" disabled="true" name="correo" placeholder="no informado" class="form-control " value="<?=$paciente["email"];?>">
-                                                   <?=form_error('correo','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             &nbsp;
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Estado Civil</strong>
-                                                   <?=form_dropdown('estado_civil',$est_civil,$paciente["id_estado_civil"],'class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('estado_civil','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Fecha Nac. ( día / mes /año )</strong>
-                                                   <input type="text" disabled="true" name="fecha_nac" class="form-control " data-mask="99/99/9999" placeholder="no informado" value="<?=$paciente["fecha_nac"];?>">
-                                                   <!-- <span class="help-block">( día / mes /año )</span> -->
-                                                   <?=form_error('fecha_nac','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Lugar de Nacimiento</strong>
-                                                   <input type="text" disabled="true" name="lugar_nac" class="form-control " placeholder="no informado" value="<?=$paciente["lugar_nac"];?>">
-                                                   <?=form_error('lugar_nac','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Religión</strong>
-                                                   <?=form_dropdown('religion',$religiones,$paciente["id_religion"],'class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('religion','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>País de residencia</strong>
-                                                   <?=form_dropdown('pais_res',$paises,$paciente["nacionalidad"],'class="form-control m-b " disabled="true"');?>
-                                                   <?=form_error('pais_res','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Fecha / hora Creación</strong>
-                                                   <input type="text" disabled="true" name="fecha_creacion" id="fecha_creacion" class="form-control " data-mask="99/99/9999" placeholder="no informado" value="<?=$paciente["fecha_creacion"];?>">
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Prev. Médica:</strong>
-                                                   <?=form_dropdown('prevision',$prev_med,$paciente["id_prevision"],'class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('prevision','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Ocupación:</strong>
-                                                   <?=form_dropdown('ocupacion',$ocupaciones,$paciente["id_ocupacion"],'class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('ocupacion','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Niv. Estudios</strong>
-                                                   <?=form_dropdown('niv_estudios',$niv_estudios,$paciente["id_nivel_estudio"],'class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('n_estudio','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <strong>Región</strong>
-                                                   <?=form_dropdown('region',$regiones,$paciente["id_region"],'id="region" class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('region','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Provincia</strong>
-                                                   <?=form_dropdown('provincia',$provincias,$paciente["id_provincia"],'id="provincia" class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('provincia','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <strong>Comuna</strong>
-                                                   <?=form_dropdown('comuna',$comunas,$paciente["id_comuna"],'id="comuna" class="form-control m-b" disabled="true"');?>
-                                                   <?=form_error('comuna','<div class="text-danger">','</div>');?>
-                                                </div>
-                                             </div>
-                                             <div class="row">
-                                                <div class="col-md-8">
-                                                   <strong>Calle / Pasaje / Villa</strong>
-                                                   <input type="text" disabled="true" name="calle" placeholder="no informado" class="form-control " value="<?=$paciente["calle"];?>">
-                                                   <?=form_error('calle','<div class="text-danger">','</div>');?>
-                                                </div>
-                                                <div class="col-md-4">&nbsp;</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div id="tab-2" class="tab-pane">
+                                       <div id="tab-2" class="tab-pane active">
                                           <div class="row">
                                              <div class="col-md-12">
                                                 <textarea 
@@ -240,7 +116,7 @@
                                                
                                            </div>
                                             <div class="col-md-12">
-                                                <table id="personas_contacto" class="table table-striped ">
+                                                <table class="table table-striped ">
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
@@ -251,7 +127,40 @@
                                                             <th>Correo</th>
                                                         </tr>
                                                     </thead>
+                                                    <tbody>
+                                                        <?php 
+                                                        
+                                                        if(count($paciente["personas_contacto"]) > 0){
+                                                        
+                                                        foreach($paciente["personas_contacto"] as $contacto){ ?>
+                                                            
+                                                        <td><?=$contacto["id_persona_contacto"];?></td>
+                                                        <td><?=$contacto["nombres"];?></td>
+                                                        <td><?=$contacto["apellidos"];?></td>
+                                                        <td><?=$contacto["id_parentesco"];?></td>
+                                                        <td><?=$contacto["telefono"];?></td>
+                                                        <td><?=$contacto["correo"];?></td>
+                                                            
+                                                        <?php } }else{ ?>
+                                                         
+                                                        <td colspan="6">No se encontraron resultados.</td>
+                                                            
+                                                       <?php  } ?>
+
+                                                    </tbody>
                                                 </table>
+                                                <!--<table id="personas_contacto" class="table table-striped ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Nombres</th>
+                                                            <th>Apellidos</th>
+                                                            <th>Parentesco</th>
+                                                            <th>Telefono</th>
+                                                            <th>Correo</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>-->
                                             </div>
                                        </div>
                                     </div>

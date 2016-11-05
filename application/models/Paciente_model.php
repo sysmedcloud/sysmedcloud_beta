@@ -516,38 +516,60 @@ class Paciente_model extends CI_Model
         
         //Query para obtener listado de pacientes
         $this->db->select("
-        du.id_usuario,
-        du.rut,
-        du.primer_nombre,
-        du.segundo_nombre,
-        du.apellido_paterno,
-        du.apellido_materno,
-        du.telefono,
-        du.genero,
-        du.celular,
-        du.email,
-        du.nacionalidad,
-        du.id_region,
-        du.id_provincia,
-        du.id_comuna,
-        du.calle,
-        du.imagen,
-        du.fecha_nac,
-        du.id_estado_civil,
-        du.lugar_nac,
-        du.id_religion,
-        du.id_prevision,
-        du.id_ocupacion,
-        du.id_nivel_estudio,
-        du.id_grupo_sang,
-        du.id_factorn_rh,
-        du.fecha_modificacion,
-        du.fecha_creacion
+        u.id_usuario,
+        u.rut,
+        u.primer_nombre,
+        u.segundo_nombre,
+        u.apellido_paterno,
+        u.apellido_materno,
+        u.telefono,
+        u.genero,
+        u.celular,
+        u.email,
+        u.nacionalidad,
+        p.nombre as pais,
+        u.id_region,
+        rg.REGION_NOMBRE,
+        u.id_provincia,
+        pv.PROVINCIA_NOMBRE,
+        u.id_comuna,
+        cm.COMUNA_NOMBRE,
+        u.calle,
+        u.imagen,
+        u.fecha_nac,
+        u.id_estado_civil,
+        e.estado_civil,
+        u.lugar_nac,
+        u.id_religion,
+        r.religion,
+        u.id_prevision,
+        pm.prevision_medica,
+        u.id_ocupacion,
+        o.descripcion as ocupacion,
+        u.id_nivel_estudio,
+        ne.nivel_estudio,
+        u.id_grupo_sang,
+        gs.grupo_sanguineo,
+        u.id_factorn_rh,
+        rh.factor_rh,
+        u.fecha_modificacion,
+        u.fecha_creacion
         ");
-        $this->db->from('tbl_usuarios du');
-        $this->db->where('du.id_perfil',4);
-        $this->db->where('du.estado',0);
-        $this->db->where('du.id_usuario',$id_paciente);
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_region rg','rg.REGION_ID = u.id_region','lefts');
+        $this->db->join('tbl_provincia pv','pv.PROVINCIA_ID = u.id_provincia','left');
+        $this->db->join('tbl_comuna cm','cm.COMUNA_ID = u.id_comuna','left');
+        $this->db->join('tbl_estado_civil e','e.id_estado_civil = u.id_estado_civil','left');
+        $this->db->join('tbl_religiones r','r.id_religion = u.id_religion','left');
+        $this->db->join('tbl_paises p','p.cod_pais = u.nacionalidad','left');
+        $this->db->join('tbl_previsiones_medicas pm','pm.id_prevision_medica = u.id_prevision','left');
+        $this->db->join('tbl_ocupaciones o','o.cod_ocupacion = u.id_ocupacion','left');
+        $this->db->join('tbl_niveles_estudios ne','ne.id_nivel_estudio = u.id_nivel_estudio','left');
+        $this->db->join('tbl_grupos_sanguineos gs','gs.id_grupo_sanguineo = u.id_grupo_sang','left');
+        $this->db->join('tbl_factores_rh rh','rh.id_factor_rh = u.id_factorn_rh','left');
+        $this->db->where('u.id_perfil',4);
+        $this->db->where('u.estado',0);
+        $this->db->where('u.id_usuario',$id_paciente);
         $datos = $this->db->get();
         
         if($datos->num_rows() > 0 ){
@@ -572,20 +594,31 @@ class Paciente_model extends CI_Model
                 "celular"           => $row["celular"],
                 "email"             => $row["email"],
                 "nacionalidad"      => $row["nacionalidad"],
+                "pais"              => $row["pais"],
                 "id_region"         => $row["id_region"],
+                "region"            => $row["REGION_NOMBRE"],
                 "id_provincia"      => $row["id_provincia"],
+                "provincia"         => $row["PROVINCIA_NOMBRE"],
                 "id_comuna"         => $row["id_comuna"],
+                "comuna"            => $row["COMUNA_NOMBRE"],
                 "calle"             => $row["calle"],
                 "imagen"            => $row["imagen"],
                 "fecha_nac"         => cambiaf_a_normal($row["fecha_nac"]),
                 "id_estado_civil"   => $row["id_estado_civil"],
+                "estado_civil"      => $row["estado_civil"],
                 "lugar_nac"         => $row["lugar_nac"],
                 "id_religion"       => $row["id_religion"],
+                "religion"          => $row["religion"],
                 "id_prevision"      => $row["id_prevision"],
+                "prevision"         => $row["prevision_medica"],
                 "id_ocupacion"      => $row["id_ocupacion"],
+                "ocupacion"         => $row["ocupacion"],
                 "id_nivel_estudio"  => $row["id_nivel_estudio"],
+                "nivel_estudio"     => $row["nivel_estudio"],
                 "id_grupo_sang"     => $row["id_grupo_sang"],
-                "id_factor_rh"     => $row["id_factorn_rh"],
+                "grupo_sanguineo"   => $row["grupo_sanguineo"],
+                "id_factor_rh"      => $row["id_factorn_rh"],
+                "factor_rh"         => $row["factor_rh"],
                 "fecha_mod"         => $row["fecha_modificacion"],
                 "fecha_creacion"    => $row["fecha_creacion"],
                 "personas_contacto" => $contactos,

@@ -77,7 +77,7 @@ $(document).ready(function() {
         });
     });
     
-    $('#personas_contacto').dataTable({
+    /*$('#personas_contacto').dataTable({
         "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
         "ajax": {
             "url": baseURL+"ficha_medica/personas_contacto/"+id_paciente,
@@ -91,11 +91,6 @@ $(document).ready(function() {
             { "data": "telefono" },
             { "data": "correo" }
         ],
-        /*columnDefs: [
-            { type: 'date-eu', //ordena fecha
-              targets: 0
-            }
-        ],*/
         order: [[ 0, "desc" ]],//orden by por fecha de creacion
         "language": {
         "sProcessing":    "Procesando...",
@@ -123,24 +118,7 @@ $(document).ready(function() {
         },
         responsive: false,//tabla responsive, agrega un boton
         //"dom": 'T<"clear">lfrtip',
-        /*"tableTools": {
-            "sSwfPath": baseURL+"swf/copy_csv_xls_pdf.swf",//archivos necesario para que funcione
-            "aButtons": [ //botones que sirven para exportar informacion de la tabla
-                {
-                    "sExtends": "csv",
-                    "sButtonText": "CSV"
-                },
-                {
-                    "sExtends": "xls",
-                    "sButtonText": "Excel"
-                },
-                {
-                    "sExtends": "pdf",
-                    "sButtonText": "PDF"
-                }                
-            ]
-        }*/
-    });
+    });*/
     
 });
 

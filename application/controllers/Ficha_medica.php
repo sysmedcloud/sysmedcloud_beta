@@ -53,20 +53,7 @@ class Ficha_medica extends CI_Controller {
         
         //Cargamos datos del paciente seleccionado
         $data["paciente"]       = $this->paciente_model->info_paciente($id_paciente);    
-        
-        //Cargamos todos nuestros dropdown utilizados en la vista
-        $data["prev_med"]       = $this->dropdown_model->cargarPrevisiones();
-        $data["parentescos"]    = $this->dropdown_model->cargarParentescos();
-        $data["est_civil"]      = $this->dropdown_model->cargarEstCivil();
-        $data["ocupaciones"]    = $this->dropdown_model->cargarOcupaciones();
-        $data["religiones"]     = $this->dropdown_model->cargarReligiones();
-        $data["niv_estudios"]   = $this->dropdown_model->cargarNivelesEst();
-        $data["paises"]         = $this->dropdown_model->cargarPaises();
-        $data["regiones"]       = $this->dropdown_model->cargarRegiones();
-        $data["provincias"]     = $this->dropdown_model->cargarProvincias();
-        $data["comunas"]        = $this->dropdown_model->cargarComunas();
-        $data["gr_sang"]        = $this->dropdown_model->cargarGrSanguineos();
-        $data["factoresRH"]     = $this->dropdown_model->cargarFactoresRH();
+        //echo "<pre>";print_r($data["paciente"]);exit();
         
         //Cargamos informacion historia clinica
         $data["info_hc"]        = $this->ficha_medica_model->info_ficha_med($id_paciente,$id_historia_med);

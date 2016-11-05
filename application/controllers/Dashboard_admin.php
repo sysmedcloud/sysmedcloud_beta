@@ -59,6 +59,9 @@ class Dashboard_admin extends CI_Controller {
         //Cantidad de consultas medicas realizadas por pacientes hombres y mujeres
         $data['dist_hm']    = $this->dashboard_model->dist_cm_hm($data["session"]["id_empresa"]);
         
+        //Actividades recientes agenda medicas
+        $data['act_agenda'] = $this->dashboard_model->act_recientes_agenda($data["session"]["id_empresa"]);
+        
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
         $this->gestion_view->defaultAdminView("dashboard_view",$data);
     }

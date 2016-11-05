@@ -14,6 +14,7 @@ class Agenda_model extends CI_Model
         
         // Definimos nuestra zona horaria
         date_default_timezone_set("Chile/Continental");
+        $fecha = @date("Y-m-d G:i:s");
         
         $data["id_empresa"]             = $dataCita["id_empresa"];
         $data["id_profesional"]         = $dataCita["id_profesional"];
@@ -36,6 +37,7 @@ class Agenda_model extends CI_Model
         $data["end"]                    = $dataCita["final"];
         $data["inicio_normal"]          = $dataCita["inicio_normal"];
         $data["final_normal"]           = $dataCita["final_normal"];
+        $data["fecha_creacion"]         = $fecha;
         
         //registrar nueva cita medica
         $this->db->insert('tbl_citas_medicas',$data);

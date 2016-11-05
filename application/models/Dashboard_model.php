@@ -256,4 +256,48 @@ class Dashboard_model extends CI_Model
         
         echo json_encode($pacientes);
     }
+    
+    /**************************************************************************/
+    /** Actividades recientes de la agenda médica
+    /**************************************************************************/
+    public function act_recientes_agenda($id_empresa){
+        
+        //Buscar ultimas citas registradas
+        $this->db->select("c.id,c.id_empresa,c.id_profesional,c.id_paciente,
+                           c.rut_paciente,c.nom_paciente,e.estado,u.imagen,c.class,
+                           c.inicio_normal,c.final_normal,c.fecha_creacion");
+        $this->db->from('tbl_citas_medicas c');
+        $this->db->join('tbl_estados_citas_medicas e','e.id_estado_cita_medica = c.id_estado_cita_medica');
+        $this->db->join('tbl_usuarios u','u.id_usuario = c.id_paciente');
+        $this->db->join('tbl_historias_medicas h','h.id_paciente = u.id_usuario');
+        $this->db->where('u.id_perfil',4);//tipo paciente
+        $this->db->where('u.estado',0);
+        $this->db->where('u.eliminado',0);
+        $this->db->where('u.id_empresa',$id_empresa);
+        $this->db->order_by("c.id", "desc");
+        $this->db->limit(3);
+        $query = $this->db->get();
+        
+        $html = '';
+        if($query->num_rows() > 0 ){    
+            
+            foreach ($query->result() as $row) {
+                
+                $html .= '<div class="feed-element">
+                            <a href="profile.html" class="pull-left">
+                                <img alt="image" class="img-circle" src="'.base_url().'img/pacientes/'.$row->imagen.'">
+                            </a>
+                            <div class="media-body ">
+                                <small class="pull-right">'.date('d/m/Y',strtotime(explode(" ",$row->fecha_creacion)[0])).'.</small>
+                                <strong>'.$row->nom_paciente.'</strong> Estado cita: <strong style="color:'.$row->class.'">'.$row->estado.'</strong>. <br>
+                                <small class="text-muted">Fecha cita: '.$row->inicio_normal.' - '.$row->final_normal.'</small>
+
+                            </div>
+                        </div>';
+            }
+            
+        }
+        
+        return $html;
+    }
 }	

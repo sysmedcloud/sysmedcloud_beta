@@ -1,4 +1,3 @@
-
 <!--  inicio contenedor -->
 <div class="wrapper wrapper-content">
    <div class="row">
@@ -67,7 +66,7 @@
                                           <label class="col-sm-3"  for="title">Busqueda por RUT del paciente: </label>
                                           &nbsp;
                                           <div class="col-sm-5">
-                                              <input type='text'  required="true"    name="rut" id="rut" onchange="Rut('rut');" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
+                                             <input type='text'  required="true"    name="rut" id="rut" onchange="Rut('rut');" placeholder="Ingrese RUT o DNI de un paciente" value="<?php echo $rut; ?>" class="form-control" />
                                              <input type="hidden"   name="id_paciente" value="<?php echo $id_paciente; ?>" id="id_paciente">
                                              <input type="hidden"   id="id_cita_med"   name="id_cita_med"   value="<?=$id_cita_medica;?>">
                                           </div>
@@ -81,7 +80,7 @@
                                     <div class="row">
                                        <div class="col-lg-3">
                                           <a href="#" class="thumbnail">
-                                              <img src="<?=base_url();?>img/pacientes/<?php echo $imagen; ?>" id="imagen_paciente" class="img-thumbnail" alt="imagen usuario">
+                                          <img src="<?=base_url();?>img/pacientes/<?php echo $imagen; ?>" id="imagen_paciente" class="img-thumbnail" alt="imagen usuario">
                                           </a>
                                        </div>
                                        &nbsp;
@@ -128,7 +127,7 @@
                                           </ul>
                                           <div class="tab-content">
                                              <div id="motivo_consulta" class="tab-pane fade in active">
-                                                 <textarea required="true" class="form-control" id="motivo" name="motivo" cols="90" rows="6"><?php echo set_value('motivo'); ?></textarea>
+                                                <textarea required="true" class="form-control" id="motivo" name="motivo" cols="90" rows="6"><?php echo set_value('motivo'); ?></textarea>
                                              </div>
                                              <div id="anamnesis_proxima" class="tab-pane fade">
                                                 <textarea required="true" class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"><?php echo set_value('anamnesis'); ?></textarea>
@@ -617,7 +616,7 @@
                                                                <br> 
                                                                <label></label>
                                                                <input type="hidden" name="token_rs" id="token_rs" value="<?php  echo $token_rs; ?>">
-                                                                <input id="archivos_rs" name="imagenes[]" type="file" multiple="true" class="file-loading">
+                                                               <input id="archivos_rs" name="imagenes[]" type="file" multiple="true" class="file-loading">
                                                             </p>
                                                          </div>
                                                       </div>
@@ -1251,7 +1250,7 @@
                                                       Contenido...
                                                    </div>
                                                 </div>
-                                             </div>-->
+                                                </div>-->
                                           </div>
                                        </div>
                                     </div>

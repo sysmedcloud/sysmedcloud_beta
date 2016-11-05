@@ -67,7 +67,6 @@
             <p><strong><i class="fa fa-at" aria-hidden="true"></i>&nbsp;Correo:</strong> <?php echo $correo; ?></p>
             <p><strong><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;Celular:</strong> <?php echo $celular; ?> / <strong>T. fijo:</strong> <?php echo $tel_fijo; ?></p>
             <p>
-            <a href="#">Ver Datos Paciente</a> / 
             <a target="_parent" href="<?php echo base_url(); ?>ficha_medica/ver_detalle/<?php echo $id_paciente; ?>/<?php echo $id_historia_med; ?>">Ver Ficha Medica</a> / 
             <a href="#" title="Puedes enviar un email para que el paciente confirme asistencia">Notificar vía e-mail</a>
             </p>

@@ -21,9 +21,9 @@
             
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Bienvenido a SysMedCloud Chile.</span>
+                    <strong class="m-r-sm text-muted welcome-message">Bienvenido a SysMedCloud Chile.</strong>
                 </li>
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
                     </a>
@@ -117,7 +117,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li>-->
 
 
                 <li>

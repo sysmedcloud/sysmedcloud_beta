@@ -611,7 +611,7 @@
                                                          <div id="rs_8" class="tab-pane fade">
                                                             <br>
                                                             <p>Si lo deseas puedes adjuntar documentos, vídeos, imágenes, audio, o cualquier 
-                                                               tipo de archivo digital. Recuerda escribir un titulo y una descripción a los archivos que adjuntes. 
+                                                               tipo de archivo digital. 
                                                                Tienes la posibilidad de adjuntar todos los archivos que sean necesarios. 
                                                                <br> 
                                                                <label></label>

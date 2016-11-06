@@ -39,7 +39,7 @@ class Ficha_medica_model extends CI_Model
                 $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
                 
                 $fa_editar  = '<a href="#" data-toggle="modal" data-target=".editar_consulta_medica" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" data-toggle="modal" data-target=".informacion_consulta_medica" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');"><i class="fa fa-eye"></i></a>';
+                $fa_view    = '<a href="#" data-toggle="modal" data-target=".informacion_consulta_medica" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');">Ver detalle</a>';
                 $fa_delete  = '<a href="#" title="Eliminar Consulta Medica" onclick="eliminar_consulta_med(\''.$row->id_consulta.'\');"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente
@@ -48,7 +48,7 @@ class Ficha_medica_model extends CI_Model
                     "fecha"             => $fecha_c,
                     "motivo_consulta"   => $row->motivo_consulta,
                     "anamnesis_proxima" => $row->anamnesis_proxima,
-                    "acciones"          => "<div style='width:100%; text-align:center; letter-spacing: 8px;'>".$fa_view." ".$fa_editar." ".$fa_delete."</div>",
+                    "acciones"          => $fa_view,
                 );
             }
             
@@ -204,6 +204,51 @@ class Ficha_medica_model extends CI_Model
             //RETORNAR JSON VACIO
             //$response['data'] = $arr_data;
             echo json_encode($arr_data);
+        }
+    }
+    
+    //Funcion que permite buscar archivos multimedias para rev. por sistema
+    public function archivos_rs($id_consulta_med){
+        
+        $this->db->select("a.id_rs_archivo,a.id_consulta,a.titulo,
+                           a.descripcion,a.archivo,a.fecha_ing,a.ingresado_por,
+                           a.fecha_mod,a.modificado_por,a.token");
+        $this->db->from('tbl_rs_archivos a');
+        $this->db->where('a.id_consulta',$id_consulta_med);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result_array() as $row){
+                
+                //Crear arreglo con los archivos
+                $archivos_rs[] = base_url()."archivos_/".$row["archivo"];
+            }
+            
+        }else{
+             
+            $archivos_rs = array();
+        }
+         
+         return $archivos_rs;
+    }
+    
+    public function info_consulta_med($id_consulta_medica){
+        
+        //Buscamos ultimo control
+        $this->db->select("*");
+        $this->db->from('tbl_consulta_medica c');
+        $this->db->where("c.id_consulta",$id_consulta_medica);
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0 ){
+            
+           return $query->row();
+            
+        }else{
+            
+            return false;
         }
     }
 }	

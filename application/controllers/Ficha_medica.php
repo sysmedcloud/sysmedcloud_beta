@@ -38,7 +38,7 @@ class Ficha_medica extends CI_Controller {
         $data["session"]    =   $this->general_sessions->datosDeSession(); 
         
         //CARGAR ARCHIVOS CSS Y JS (LIBRERIA)
-        $data['files'] = $this->fileclass->files_ficha_clinica();
+        //$data['files'] = $this->fileclass->files_ficha_clinica();
         
         $data["menu"]       = "Historia Clíente";//muestra opcion seleccionada top
         
@@ -48,7 +48,6 @@ class Ficha_medica extends CI_Controller {
         $data["id_paciente"]=$id_paciente;
         
         //Id historia medica
-        
         $data["id_historia_med"] = $id_historia_med;
         
         //Cargamos datos del paciente seleccionado
@@ -59,8 +58,13 @@ class Ficha_medica extends CI_Controller {
         $data["info_hc"]        = $this->ficha_medica_model->info_ficha_med($id_paciente,$id_historia_med);
         
         //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
-        $this->gestion_view->defaultAdminView("historia_medica_view",$data);
-        
+        $this->load->view('templates/admin/header_ficha_clinica_view',$data);
+        $this->load->view('templates/admin/navigation_view',$data);
+        $this->load->view('templates/admin/navbar_header_view',$data);
+        $this->load->view('templates/admin/heading_view',$data);
+        $this->load->view('admin/historia_medica_view',$data);
+        $this->load->view('templates/admin/footer_content_view');
+        $this->load->view('templates/admin/footer_ficha_clinica_view',$data);
     }
     
     public function personas_contacto($id_paciente){
@@ -139,6 +143,67 @@ class Ficha_medica extends CI_Controller {
         $hc_recientes  = $this->ficha_medica_model->hc_recientes($id_empresa);
         
         echo $hc_recientes;
+    }
+    
+    //Funcion que permite retornar detalla de una consulta medica
+    public function detalle_consulta_medica(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_consulta_medica = $this->input->post("id_consulta_med");
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        
+        $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
+        
+        $data["consulta_med"] = $this->ficha_medica_model->info_consulta_med($id_consulta_medica);
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->load->view('admin/detalle_consulta_medica_view',$data);
+    }
+    
+    //Buscar arvhivos multimedias para revision por sistema
+    public function archivos_rev_sis(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_consulta_medica = $this->input->post("id_consulta_med");
+        
+        $archivos_rs  = $this->ficha_medica_model->archivos_rs($id_consulta_medica);
+        
+        echo json_encode($archivos_rs);
+    }
+    
+    //FUNCION QUE PERMITE AGREGAR ARCHIVOS Y DOCUMENTOS A UNA CONSULTA MED.  
+    public function upload_files(){
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $session    =   $this->general_sessions->datosDeSession();
+        
+        $carpetaAdjunta="./archivos_/";
+        // Contar envían por el plugin
+        $Imagenes =count(isset($_FILES['imagenes']['name'])?$_FILES['imagenes']['name']:0);
+        $infoImagenesSubidas = array();
+        for($i = 0; $i < $Imagenes; $i++) {
+                    
+            // El nombre y nombre temporal del archivo que vamos para adjuntar
+            $nombreArchivo  = isset($_FILES['imagenes']['name'][$i])?$_FILES['imagenes']['name'][$i]:null;
+            $nombreTemporal = isset($_FILES['imagenes']['tmp_name'][$i])?$_FILES['imagenes']['tmp_name'][$i]:null;
+
+            $rutaArchivo    = $carpetaAdjunta.$nombreArchivo;
+            $ruta_src       = base_url()."archivos_/".$nombreArchivo;
+            
+            move_uploaded_file($nombreTemporal,$rutaArchivo);
+            
+            $infoImagenesSubidas[$i]=array("caption"=>"$nombreArchivo","height"=>"120px","url"=>"".base_url()."consulta_medica/delete_files","key"=>$nombreArchivo);
+            
+            $ImagenesSubidas[$i]='';
+        }
+
+        $arr = array("file_id"=>0,"overwriteInitial"=>true,"initialPreviewConfig"=>$infoImagenesSubidas,
+                                 "initialPreview"=>$ImagenesSubidas);
+        echo json_encode($arr);
     }
 }
 

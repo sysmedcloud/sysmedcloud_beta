@@ -77,49 +77,6 @@ $(document).ready(function() {
         });
     });
     
-    /*$('#personas_contacto').dataTable({
-        "destroy": true,//Variable que permite volver a cargar el ajax (tabla)
-        "ajax": {
-            "url": baseURL+"ficha_medica/personas_contacto/"+id_paciente,
-            "dataSrc": ""
-        },
-        "columns": [ //columnas de nuestra tabla
-            { "data": "id_persona_contacto"},
-            { "data": "nombres"},
-            { "data": "apellidos" },
-            { "data": "parentesco" },
-            { "data": "telefono" },
-            { "data": "correo" }
-        ],
-        order: [[ 0, "desc" ]],//orden by por fecha de creacion
-        "language": {
-        "sProcessing":    "Procesando...",
-        "sLengthMenu":    "Mostrar _MENU_ registros",
-        "sZeroRecords":   "No se encontraron resultados",
-        "sEmptyTable":    "Ningún dato disponible en esta tabla",
-        "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":   "",
-        "sSearch":        "Buscar:",
-        "sUrl":           "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Cargando...",
-        "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":    "Último",
-            "sNext":    "Siguiente",
-            "sPrevious": "Anterior"
-            }
-        },
-        "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        },
-        responsive: false,//tabla responsive, agrega un boton
-        //"dom": 'T<"clear">lfrtip',
-    });*/
-    
 });
 
 //FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)
@@ -129,9 +86,83 @@ function editar_consulta_med(){
 }
 
 //FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA (Sin Realizar)
-function ver_info_consulta_med(){
+function ver_info_consulta_med(id_consulta_medica){
     
-    return true;
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#detalle_consulta_med').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando Información...');
+    
+    $.ajax({
+        data: {"id_consulta_med" : id_consulta_medica},
+        type: "POST",
+        dataType: "html",
+        url: baseURL+"ficha_medica/detalle_consulta_medica",
+        success: function(resp){
+            //Cargamos datos de la consulta medica
+            $('#detalle_consulta_med').html(resp);
+            
+            revision_sistemas(id_consulta_medica);
+            
+            //buscar archivos multimedia examen fisico
+            
+        }
+    });
+    
+}
+
+function revision_sistemas(id_consulta_medica){
+    
+    alert("cargar archivos multimedia para revision por sistemas");
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $.ajax({
+        data: {"id_consulta_med" : id_consulta_medica},
+        type: "POST",
+        dataType: "json",
+        url: baseURL+"ficha_medica/archivos_rev_sis",
+        success: function(archivos){
+            
+            console.log(archivos);
+            
+            //buscar archivos multimedia examen fisico
+            var baseURL = $('body').data('baseurl');//url base
+            
+            alert(baseURL + "ficha_medica/upload_files");
+
+            //Archivos examen rev. por sistema
+            $('#archivos_rs').fileinput({
+                uploadUrl: baseURL + "ficha_medica/upload_files",
+                //deleteUrl: "",
+                maxFilePreviewSize: 10240,
+                uploadAsync: false,
+                //minFileCount: 1,
+                maxFileCount: 20,
+                overwriteInitial: false,
+                //showUpload: false, 
+                //showRemove: false,
+                language: 'es',
+                initialPreviewAsData: true, 
+                initialPreviewFileType: 'image', // image is the default and can be overridden in config below
+                allowedFileExtensions : ['jpg', 'png','gif','pdf','csv','doc','docx','xls','xlsx','ppt','pptx','avi','mpg','mkv','mov','3gp','webm','wmv','flv','mp3','mp4','wav'],
+                initialPreview: ['<img src="http://localhost/sysmedcloud/archivos_/4.jpg" class="kv-preview-data file-preview-image" style="height:160px">'],
+                initialPreviewConfig: [{previewAsData: false, size: 823782, caption: "Business-2.jpg", url: "/site/file-delete", key: 1}],
+                //purifyHtml: true // this by default purifies HTML data for preview
+            }).on("filebatchselected", function(event, files) {
+
+                $("#archivos_rs").fileinput("upload");
+
+            });
+            
+            
+            
+        }
+    });
+}
+
+function examen_fisico(){
+    
+    
 }
 
 //FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA

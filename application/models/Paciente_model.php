@@ -577,8 +577,9 @@ class Paciente_model extends CI_Model
             $row = $datos->row_array();
             
             //Buscar personas de contacto
-            $this->db->select("pc.id_persona_contacto,pc.nombres,pc.apellidos,id_parentesco,pc.telefono,pc.correo");
+            $this->db->select("pc.id_persona_contacto,pc.nombres,pc.apellidos,p.parentesco,pc.id_parentesco,pc.telefono,pc.correo");
             $this->db->from('tbl_personas_contacto pc');
+            $this->db->join('tbl_parentescos p','p.id_parentesco = pc.id_parentesco','left');
             $this->db->where('pc.id_paciente',$row["id_usuario"]);
             $contactos = $this->db->get()->result_array();
             

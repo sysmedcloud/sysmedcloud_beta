@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-sm-12">
-    <h4>Detalle Consulta Médica</h4>
+    <h4>Detalle Consulta Médica N° <?=$consulta_med->id_consulta;?></h4>
     <div class="row">
       <div class="col-lg-12">
          <ul class="nav nav-tabs">

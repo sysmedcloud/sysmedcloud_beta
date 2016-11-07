@@ -163,7 +163,42 @@ class Ficha_medica extends CI_Controller {
         $this->load->view('admin/detalle_consulta_medica_view',$data);
     }
     
-    //Buscar arvhivos multimedias para revision por sistema
+    //Funcion que permite retornar informacion referente a la revision por sistemas
+    public function detalle_rev_sistema(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_consulta_medica = $this->input->post("id_consulta_med");
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        
+        $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
+        
+        $data["rev_sist"] = $this->ficha_medica_model->revision_sistemas($id_consulta_medica);
+        
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->load->view('admin/detalle_revision_sistema_view',$data);
+    }
+    
+    public function detalle_examen_fisico(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_consulta_medica = $this->input->post("id_consulta_med");
+        
+        //Cargamos las variables de session (LIBRERIA)
+        $data["session"]    =   $this->general_sessions->datosDeSession(); 
+        
+        $data["active"]     = activeMenu("consulta");//(HELPERS)marca menu (active)
+        
+        $data["examen_fisico"] = $this->ficha_medica_model->examen_fisico($id_consulta_medica);
+        //echo "<pre>";print_r($data["examen_fisico"]);exit();
+        //CARGAMOS LAS VISTAS NECESARIAS (VIEW - LIBRERIA)
+        $this->load->view('admin/detalle_examen_fisico_view',$data);
+    }
+    
+    //Buscar arvhivos multimedias para revisión por sistema
     public function archivos_rev_sis(){
         
         $this->load->model('ficha_medica_model');//cargar modelo
@@ -175,7 +210,19 @@ class Ficha_medica extends CI_Controller {
         echo json_encode($archivos_rs);
     }
     
-    //FUNCION QUE PERMITE AGREGAR ARCHIVOS Y DOCUMENTOS A UNA CONSULTA MED.  
+    //Buscar arvhivos multimedias para examen físico
+    public function archivos_ex_fisico(){
+        
+        $this->load->model('ficha_medica_model');//cargar modelo
+        
+        $id_consulta_medica = $this->input->post("id_consulta_med");
+        
+        $archivos_rs  = $this->ficha_medica_model->archivos_ef($id_consulta_medica);
+        
+        echo json_encode($archivos_rs);
+    }
+    
+    //FUNCION QUE PERMITE SOLAMENTE EL BUEN FUNCIONAMIENTO DE LA VISUALIZACION DE LAS IMAGENES
     public function upload_files(){
         
         //Cargamos las variables de session (LIBRERIA)
@@ -194,13 +241,11 @@ class Ficha_medica extends CI_Controller {
             $rutaArchivo    = $carpetaAdjunta.$nombreArchivo;
             $ruta_src       = base_url()."archivos_/".$nombreArchivo;
             
-            move_uploaded_file($nombreTemporal,$rutaArchivo);
-            
             $infoImagenesSubidas[$i]=array("caption"=>"$nombreArchivo","height"=>"120px","url"=>"".base_url()."consulta_medica/delete_files","key"=>$nombreArchivo);
             
             $ImagenesSubidas[$i]='';
         }
-
+        
         $arr = array("file_id"=>0,"overwriteInitial"=>true,"initialPreviewConfig"=>$infoImagenesSubidas,
                                  "initialPreview"=>$ImagenesSubidas);
         echo json_encode($arr);

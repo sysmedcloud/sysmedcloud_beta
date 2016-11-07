@@ -38,17 +38,20 @@ class Ficha_medica_model extends CI_Model
                 $fecha_c    = strtotime($fecha[0]);
                 $fecha_c    = date('d/m/Y',$fecha_c);//cambiar formato de la fecha
                 
-                $fa_editar  = '<a href="#" data-toggle="modal" data-target=".editar_consulta_medica" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
-                $fa_view    = '<a href="#" data-toggle="modal" data-target=".informacion_consulta_medica" title="Ver Información" onclick="ver_info_consulta_med('.$row->id_consulta.');">Ver detalle</a>';
-                $fa_delete  = '<a href="#" title="Eliminar Consulta Medica" onclick="eliminar_consulta_med(\''.$row->id_consulta.'\');"><i class="fa fa-times"></i></a>';
+                $link_rv = '<a href="#Ancla" onclick="ver_revision_sistema('.$row->id_consulta.');" title="Ver Información Revisión por sistema">Ver Revisión por Sistema</a>';
+                $link_ef = '<a href="#Ancla" onclick="ver_examen_fisico('.$row->id_consulta.');" title="Ver Información Examen Físico">Ver Examen Físico</a>';
+                
+                //$fa_editar  = '<a href="#" data-toggle="modal" data-target=".editar_consulta_medica" title="Editar Información" onclick="editar_consulta_med('.$row->id_consulta.');"><i class="fa fa-pencil-square-o"></i></a>';
+                $fa_view    = '<a href="#Ancla" title="Ver Información Consulta Médica" onclick="ver_info_consulta_med('.$row->id_consulta.');">Ver detalle</a>';
+                //$fa_delete  = '<a href="#" title="Eliminar Consulta Medica" onclick="eliminar_consulta_med(\''.$row->id_consulta.'\');"><i class="fa fa-times"></i></a>';
                 
                 //Crear arreglo con los datos del paciente
                 $arr_consultas_medicas[] = array(
                     "id_consulta"       => $row->id_consulta,
                     "fecha"             => $fecha_c,
                     "motivo_consulta"   => $row->motivo_consulta,
-                    "anamnesis_proxima" => $row->anamnesis_proxima,
-                    "acciones"          => $fa_view,
+                    //"anamnesis_proxima" => $row->anamnesis_proxima,
+                    "acciones"          => $fa_view."&nbsp&nbsp&nbsp&nbsp".$link_rv."&nbsp&nbsp&nbsp&nbsp".$link_ef,
                 );
             }
             
@@ -223,7 +226,34 @@ class Ficha_medica_model extends CI_Model
             foreach ($datos->result_array() as $row){
                 
                 //Crear arreglo con los archivos
-                $archivos_rs[] = base_url()."archivos_/".$row["archivo"];
+                $archivos_rs[] = "archivos_/".$row["archivo"];
+            }
+            
+        }else{
+             
+            $archivos_rs = array();
+        }
+         
+         return $archivos_rs;
+    }
+    
+    //Funcion que permite buscar archivos multimedias para examen físico
+    public function archivos_ef($id_consulta_med){
+        
+        $this->db->select("e.id_efg_archivo,e.id_consulta,e.titulo,
+                           e.descripcion,e.archivo,e.fecha_ing,e.ingresado_por,
+                           e.fecha_mod,e.modificado_por,e.token");
+        $this->db->from('tbl_efg_archivos e');
+        $this->db->where('e.id_consulta',$id_consulta_med);
+        $datos = $this->db->get();
+        
+        if($datos->num_rows() > 0 ){
+            
+            //Recorrer resultado query
+            foreach ($datos->result_array() as $row){
+                
+                //Crear arreglo con los archivos
+                $archivos_rs[] = "archivos_/".$row["archivo"];
             }
             
         }else{
@@ -250,5 +280,119 @@ class Ficha_medica_model extends CI_Model
             
             return false;
         }
+    }
+    
+    //Funcion que permite retoranr informacion completa de un examen fisico
+    public function examen_fisico($id_consulta_medica){
+        
+        $examen_fisico["id_consulta"] = $id_consulta_medica;
+        
+        //Buscar informacion examen decúbito
+        $this->db->select("*");
+        $this->db->from('tbl_efg_decubito');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query = $this->db->get();
+        $examen_fisico["decubito"] = $query->num_rows() > 0 ? $query->row_array() : array();
+        
+        //Buscar información examen deambulación
+        $this->db->select("*");
+        $this->db->from('tbl_efg_deambulacion');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query2 = $this->db->get();
+        $examen_fisico["deambulacion"] = $query2->num_rows() > 0 ? $query2->row_array() : array();
+        
+        //Buscar información examen facie
+        $this->db->select("*");
+        $this->db->from('tbl_efg_facie');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query3 = $this->db->get();
+        $examen_fisico["facie"] = $query3->num_rows() > 0 ? $query3->row_array() : array();
+        
+        //Buscar información examen conciencia
+        $this->db->select("*");
+        $this->db->from('tbl_efg_conciencia');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query4 = $this->db->get();
+        $examen_fisico["conciencia"] = $query4->num_rows() > 0 ? $query4->row_array() : array();
+        
+        //Buscar información examen piel
+        $this->db->select("*");
+        $this->db->from('tbl_efg_piel');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query5 = $this->db->get();
+        $examen_fisico["piel"] = $query5->num_rows() > 0 ? $query5->row_array() : array();
+        
+        //Buscar información examen s linfatico
+        $this->db->select("*");
+        $this->db->from('tbl_efg_linfatico');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query6 = $this->db->get();
+        $examen_fisico["linfatico"] = $query6->num_rows() > 0 ? $query6->row_array() : array();
+        
+        //Buscar información signos vitales
+        $this->db->select("*");
+        $this->db->from('tbl_efg_signos_vitales');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query7 = $this->db->get();
+        $examen_fisico["signos_vitales"] = $query7->num_rows() > 0 ? $query7->row_array() : array();
+        
+        return $examen_fisico;
+    }
+    
+    //Funcion que permite retoranr informacion completa de una rev. por sistemas
+    public function revision_sistemas($id_consulta_medica){
+        
+        $rev_sistemas["id_consulta"] = $id_consulta_medica;
+        
+        //Buscar informacion sintomas generales
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_generales');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query = $this->db->get();
+        $rev_sistemas["generales"] = $query->num_rows() > 0 ? $query->row_array() : array();
+        
+        //Buscar informacion sintomas respiratorios
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_respiratorios');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query2 = $this->db->get();
+        $rev_sistemas["respiratorios"] = $query2->num_rows() > 0 ? $query2->row_array() : array();
+        
+        //Buscar informacion sintomas cardiovasculares
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_cardiovasculares');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query3 = $this->db->get();
+        $rev_sistemas["cardiovasculares"] = $query3->num_rows() > 0 ? $query3->row_array() : array();
+        
+        //Buscar informacion sintomas gastroinstestinales 
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_gastroinstestinales');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query4 = $this->db->get();
+        $rev_sistemas["gastroinstestinales"] = $query4->num_rows() > 0 ? $query4->row_array() : array();
+        
+        //Buscar informacion sintomas genitourinarios 
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_genitourinarios');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query5 = $this->db->get();
+        $rev_sistemas["genitourinarios"] = $query5->num_rows() > 0 ? $query5->row_array() : array();
+        
+        //Buscar informacion sintomas neurologicos 
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_neurologicos');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query6 = $this->db->get();
+        $rev_sistemas["neurologicos"] = $query6->num_rows() > 0 ? $query6->row_array() : array();
+        
+        //Buscar informacion sintomas neurologicos 
+        $this->db->select("*");
+        $this->db->from('tbl_rs_sintomas_endocrinos');
+        $this->db->where("id_consulta",$id_consulta_medica);
+        $query7 = $this->db->get();
+        $rev_sistemas["endocrinos"] = $query7->num_rows() > 0 ? $query7->row_array() : array();
+        
+        return $rev_sistemas;
     }
 }	

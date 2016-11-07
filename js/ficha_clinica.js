@@ -79,18 +79,12 @@ $(document).ready(function() {
     
 });
 
-//FUNCION QUE PERMITE EDITAR UNA CONSULTA MEDICA (Sin Realizar)
-function editar_consulta_med(){
-    
-    return true;
-}
-
 //FUNCION QUE PERMITE VER INFORMACION DE UNA CONSULTA MEDICA (Sin Realizar)
 function ver_info_consulta_med(id_consulta_medica){
     
     var baseURL = $('body').data('baseurl');//url base
     
-    $('#detalle_consulta_med').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando Información...');
+    $('#info_detalle').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando Información Consulta Médica...');
     
     $.ajax({
         data: {"id_consulta_med" : id_consulta_medica},
@@ -98,21 +92,38 @@ function ver_info_consulta_med(id_consulta_medica){
         dataType: "html",
         url: baseURL+"ficha_medica/detalle_consulta_medica",
         success: function(resp){
-            //Cargamos datos de la consulta medica
-            $('#detalle_consulta_med').html(resp);
             
-            revision_sistemas(id_consulta_medica);
-            
-            //buscar archivos multimedia examen fisico
-            
+            //Cargamos datos revision por sistema
+            $('#info_detalle').html(resp);
         }
     });
-    
 }
 
-function revision_sistemas(id_consulta_medica){
+//Muestra informacion revision por sistemas
+function ver_revision_sistema(id_consulta_medica){
     
-    alert("cargar archivos multimedia para revision por sistemas");
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $('#info_detalle').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando Información Revisión Por Sistemas...');
+    
+    $.ajax({
+        data: {"id_consulta_med" : id_consulta_medica},
+        type: "POST",
+        dataType: "html",
+        url: baseURL+"ficha_medica/detalle_rev_sistema",
+        success: function(resp){
+            
+            //Cargamos datos revision por sistema
+            $('#info_detalle').html(resp);
+            
+            //Cargamos arvhicos multimedias
+            cargar_archivos_rs(id_consulta_medica);
+        }
+    });
+}
+
+//Archivos multimedia revision por sistemas
+function cargar_archivos_rs(id_consulta_medica){
     
     var baseURL = $('body').data('baseurl');//url base
     
@@ -121,48 +132,355 @@ function revision_sistemas(id_consulta_medica){
         type: "POST",
         dataType: "json",
         url: baseURL+"ficha_medica/archivos_rev_sis",
-        success: function(archivos){
+        success: function(archivos_rs){
             
-            console.log(archivos);
+            var archivos = [];
+            var PreviewConfig = [];
             
-            //buscar archivos multimedia examen fisico
-            var baseURL = $('body').data('baseurl');//url base
+            for (i = 0; i < archivos_rs.length; i++) { 
+                
+                var ext = archivos_rs[i].split(".");
+                
+                //Verificar formato de los archivos (21 formatos distintos)
+                switch (ext[1]) {
+                    
+                    //ARCHIVOS CON FORMATO DE VIDEO
+                    case 'mp4':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'avi':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mpg':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mkv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mov':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case '3gp':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'webm':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'wmv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'flv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVOS CON FORMATO DE AUDIO    
+                    case 'mp3':
+                        archivos[i]         = '<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'+baseURL+archivos_rs[i]+'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'wav':
+                        archivos[i]         = '<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'+baseURL+archivos_rs[i]+'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO DE IMAGEN
+                    case 'jpg':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'png':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'gif':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO PDF    
+                    case 'pdf':
+                        archivos[i]         = '<embed class="kv-preview-data" height="100px" width="100px" type="application/pdf" src="'+baseURL+archivos_rs[i]+'">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, type: "pdf",size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO EXCEL    
+                    case 'xls':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;    
+                    case 'xlsx':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';   
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVOS CON FORMATO POWER POINT
+                    case 'ppt':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';    
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'pptx':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO DOCUMENTO
+                    case 'doc':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'docx':
+                        archivos[i]         = "formato docx ";
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                        
+                    default: 
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                }
+            }
             
-            alert(baseURL + "ficha_medica/upload_files");
-
-            //Archivos examen rev. por sistema
+            //Archivos multimedias revision por sistema
             $('#archivos_rs').fileinput({
                 uploadUrl: baseURL + "ficha_medica/upload_files",
                 //deleteUrl: "",
                 maxFilePreviewSize: 10240,
                 uploadAsync: false,
+                showUploadedThumbs: false,
+                layoutTemplates: {actionDelete: ''}, // disable thumbnail deletion
                 //minFileCount: 1,
                 maxFileCount: 20,
                 overwriteInitial: false,
-                //showUpload: false, 
-                //showRemove: false,
+                showUpload: false, 
+                showRemove: false,
                 language: 'es',
                 initialPreviewAsData: true, 
                 initialPreviewFileType: 'image', // image is the default and can be overridden in config below
                 allowedFileExtensions : ['jpg', 'png','gif','pdf','csv','doc','docx','xls','xlsx','ppt','pptx','avi','mpg','mkv','mov','3gp','webm','wmv','flv','mp3','mp4','wav'],
-                initialPreview: ['<img src="http://localhost/sysmedcloud/archivos_/4.jpg" class="kv-preview-data file-preview-image" style="height:160px">'],
-                initialPreviewConfig: [{previewAsData: false, size: 823782, caption: "Business-2.jpg", url: "/site/file-delete", key: 1}],
-                //purifyHtml: true // this by default purifies HTML data for preview
+                initialPreview: archivos,
+                initialPreviewConfig: PreviewConfig
             }).on("filebatchselected", function(event, files) {
 
                 $("#archivos_rs").fileinput("upload");
 
             });
-            
-            
-            
         }
     });
 }
 
-function examen_fisico(){
+function ver_examen_fisico(id_consulta_medica){
     
+    var baseURL = $('body').data('baseurl');//url base
     
+    $('#info_detalle').html('<i class="fa fa-spinner fa-spin fa-5x"></i> Cargando Información Examen Físico...');
+    
+    $.ajax({
+        data: {"id_consulta_med" : id_consulta_medica},
+        type: "POST",
+        dataType: "html",
+        url: baseURL+"ficha_medica/detalle_examen_fisico",
+        success: function(resp){
+            
+            //Cargamos datos revision por sistema
+            $('#info_detalle').html(resp);
+            
+            //Cargamos arvhicos multimedias
+            cargar_archivos_ef(id_consulta_medica);
+        }
+    });
+}
+
+function cargar_archivos_ef(id_consulta_medica){
+    
+    var baseURL = $('body').data('baseurl');//url base
+    
+    $.ajax({
+        data: {"id_consulta_med" : id_consulta_medica},
+        type: "POST",
+        dataType: "json",
+        url: baseURL+"ficha_medica/archivos_ex_fisico",
+        success: function(archivos_rs){
+            
+            var archivos = [];
+            var PreviewConfig = [];
+            
+            for (i = 0; i < archivos_rs.length; i++) { 
+                
+                var ext = archivos_rs[i].split(".");
+                
+                //Verificar formato de los archivos (21 formatos distintos)
+                switch (ext[1]) {
+                    
+                    //ARCHIVOS CON FORMATO DE VIDEO
+                    case 'mp4':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'avi':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mpg':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mkv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'mov':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case '3gp':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'webm':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'wmv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'flv':
+                        archivos[i]         = '<video src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" controls style="width:auto;height:100px;"><source src="foo.ogg" type="video/ogg"><source src="foo.mp4" type="video/mp4">Tu navegador no implementa el elemento <code>video</code>.<div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></video>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVOS CON FORMATO DE AUDIO    
+                    case 'mp3':
+                        archivos[i]         = '<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'+baseURL+archivos_rs[i]+'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'wav':
+                        archivos[i]         = '<audio controls="" class="kv-preview-data"><source type="audio/mpeg" src="'+baseURL+archivos_rs[i]+'"></source><div class="file-preview-other"><span class="file-other-icon"><i class="glyphicon glyphicon-file"></i></span></div></audio>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO DE IMAGEN
+                    case 'jpg':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'png':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'gif':
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO PDF    
+                    case 'pdf':
+                        archivos[i]         = '<embed class="kv-preview-data" height="100px" width="100px" type="application/pdf" src="'+baseURL+archivos_rs[i]+'">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, type: "pdf",size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO EXCEL    
+                    case 'xls':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;    
+                    case 'xlsx':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';   
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVOS CON FORMATO POWER POINT
+                    case 'ppt':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';    
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'pptx':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    //ARCHIVO CON FORMATO DOCUMENTO
+                    case 'doc':
+                        archivos[i]         = '<object height="100px" width="100px" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data="blob:http://localhost/616e086f-57f4-4e96-a161-cfac858de8e8" class="kv-preview-data file-object"><param value="'+baseURL+archivos_rs[i]+'" name="movie"><param value="true" name="controller"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="false" name="autoPlay"><param value="false" name="autoStart"><param value="high" name="quality"><div class="file-preview-other"><span class="file-other-icon"><a href="'+baseURL+archivos_rs[i]+'"  target="_blanck"><i class="glyphicon glyphicon-file"></i></a></span></div></object>';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                    case 'docx':
+                        archivos[i]         = "formato docx ";
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                        break;
+                        
+                    default: 
+                        archivos[i]         = '<img src="'+baseURL+archivos_rs[i]+'" class="kv-preview-data file-preview-image" style="width:auto;height:100px;">';
+                        var nom_archivo     = archivos_rs[i].split("/");//Nombre del archivo
+                        PreviewConfig[i]    = {previewAsData: false, size: 0, caption: nom_archivo[1], url: "", key: i};
+                }
+            }
+            
+            //Archivos multimedias revision por sistema
+            $('#archivos_ef').fileinput({
+                uploadUrl: baseURL + "ficha_medica/upload_files",
+                //deleteUrl: "",
+                maxFilePreviewSize: 10240,
+                uploadAsync: false,
+                showUploadedThumbs: false,
+                layoutTemplates: {actionDelete: ''}, // disable thumbnail deletion
+                //minFileCount: 1,
+                maxFileCount: 20,
+                overwriteInitial: false,
+                showUpload: false, 
+                showRemove: false,
+                language: 'es',
+                initialPreviewAsData: true, 
+                initialPreviewFileType: 'image', // image is the default and can be overridden in config below
+                allowedFileExtensions : ['jpg', 'png','gif','pdf','csv','doc','docx','xls','xlsx','ppt','pptx','avi','mpg','mkv','mov','3gp','webm','wmv','flv','mp3','mp4','wav'],
+                initialPreview: archivos,
+                initialPreviewConfig: PreviewConfig
+            }).on("filebatchselected", function(event, files) {
+
+                $("#archivos_ef").fileinput("upload");
+
+            });
+        }
+    });
 }
 
 //FUNCION QUE PERMITE ELIMINAR UNA CONSULTA MEDICA
@@ -251,7 +569,7 @@ function listado_consultas_medicas(){
             { "data": "id_consulta"},
             { "data": "fecha" },
             { "data": "motivo_consulta" },
-            { "data": "anamnesis_proxima" },
+            //{ "data": "anamnesis_proxima" },
             { "data": "acciones"}
         ],
         columnDefs: [
@@ -305,11 +623,6 @@ function listado_consultas_medicas(){
         }
     });
 }
-
-
-
-
-//Funciones de referencias (ojo)
 
 //FUNCION QUE PERMITE MOSTRAR UN MODAL CON LA INFORMACION DE UN PACIENTE
 function ver_datos_paciente(id_paciente){
@@ -522,66 +835,4 @@ function ver_datos_paciente(id_paciente){
     });
 }
 
-//FUNCION QUE PERMITE ELIMINAR UN PACIENTE
-function eliminar_paciente(id_paciente,nombre,rut){
-    
-    var baseURL = $('body').data('baseurl');//url base
-    
-    swal({   
-        title: "¿Estas seguro de eliminar al paciente "+nombre+" R.U.T. "+rut+"?",   
-        text: "Recuerda que todo su historial médico sera eliminado!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Si, eliminalo!",
-        cancelButtonText: "Cancelar",
-        closeOnConfirm: false 
-    }, 
-    function(){
-        
-        //Iniciar peticion con ajax
-        $.ajax({
-            data: {"id_paciente" : id_paciente},
-            type: "POST",
-            dataType: "json",
-            url: baseURL+"paciente_admin/eliminarPaciente"
-        })
-       .done(function(data,textStatus,jqXHR ) {         
-
-            if(textStatus === "success"){//La solicitud se realizo correctamente
-                
-               //Paciente eliminado correctamente 
-               swal({ 
-                    title: "Paciente eliminado!",
-                    text:  "Historia medica del paciente fue eliminada correctamente.",
-                    type:  "success" 
-                },
-                function(){
-                    //recargar tabla de pacientes
-                    listado_pacientes();
-                });
-            }
-        })
-        .fail(function( jqXHR, textStatus, errorThrown ) {
-
-            if(textStatus === "error") {//La solicitud a fallado
-                alert("Error: "+textStatus+" "+jqXHR);
-                console.log("La solicitud a fallado: " +  textStatus);
-                console.log(textStatus+" "+jqXHR);
-            }
-        });
-    });
-    
-    return false;
-    
-}
-
-//FUNCION QUE PERMITE VISUALIZAR DETALLE DE LA HISTORIA MEDICA DE UN PACIENTE
-function ver_HC(id_paciente){
-    
-    var baseURL = $('body').data('baseurl');//url base
-    var url = baseURL+"ficha_medica/ver_detalle/"+id_paciente;    
-    $(location).attr('href',url);
-
-}
 

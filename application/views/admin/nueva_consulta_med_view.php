@@ -6,21 +6,6 @@
             <div class="ibox-title">
                <h5>Crear Nueva Consulta Médica <small>todos los campos obligatorios tienen la etiqueta (*).</small></h5>
                <div class="ibox-tools">
-                  <a class="collapse-link">
-                  <i class="fa fa-chevron-up"></i>
-                  </a>
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  <i class="fa fa-wrench"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user">
-                     <li><a href="#">Config option 1</a>
-                     </li>
-                     <li><a href="#">Config option 2</a>
-                     </li>
-                  </ul>
-                  <a class="close-link">
-                  <i class="fa fa-times"></i>
-                  </a>
                </div>
             </div>
             <div class="ibox-content">
@@ -132,18 +117,6 @@
                                              <div id="anamnesis_proxima" class="tab-pane fade">
                                                 <textarea required="true" class="form-control" id="anamnesis" name="anamnesis" cols="90" rows="6"><?php echo set_value('anamnesis'); ?></textarea>
                                              </div>
-                                             <!--<div id="anamnesis_remota" class="tab-pane fade">
-                                                &nbsp;
-                                                <h4 style="color:#21B9BB;">
-                                                    <i class="fa fa-leaf" aria-hidden="true"></i>
-                                                    Anamnesis Remota
-                                                </h4>
-                                                <p>
-                                                    La Anamnesis Remota se enfoca en constatar los antecedentes del paciente.  
-                                                    En esta, se deben consignar en orden cronológico todas las enfermedades, hospitalizaciones, cirugías, etc., 
-                                                    que el paciente haya padecido, y que sean relevantes en cuanto al diagnóstico.
-                                                </p>                                                    
-                                                </div>-->
                                              <div id="diagnostico" class="tab-pane fade">
                                                 <textarea required="true" class="form-control" id="diagnostico" name="diagnostico" cols="90" rows="6"><?php echo set_value('diagnostico'); ?></textarea>
                                              </div>
@@ -1237,20 +1210,6 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                             <!--<div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="headingThree">
-                                                   <h4 class="panel-title">
-                                                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                      <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;Examen Físico Segmentado
-                                                      </a>
-                                                   </h4>
-                                                </div>
-                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                   <div class="panel-body">
-                                                      Contenido...
-                                                   </div>
-                                                </div>
-                                                </div>-->
                                           </div>
                                        </div>
                                     </div>

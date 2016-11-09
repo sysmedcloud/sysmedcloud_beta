@@ -77,8 +77,7 @@ class Templates {
         $html.= '            </div> ';
         $html.= '        </div> ';
         $html.= '    </form> ';
-        $html.= '</div> ';
-                   
+        $html.= '</div> ';                   
         return $html;
     }
 
@@ -304,16 +303,20 @@ class Templates {
                         font-family: arial, sans-serif;
                         border-collapse: collapse;
                         width: 100%;
+                        //padding:6px 4px 6px 4px;
                     }
 
                     .tbl_repo td, .tbl_repo th {
                         border: 1px solid #dddddd;
-                        text-align: left;
-                        padding: 8px;
+                        text-align: left;                        
                     }
 
                     .tbl_repo tr:nth-child(even) {
                         background-color: #dddddd;
+                    }
+
+                    .title-repo{
+                        background-color: silver;
                     }
                 </style>';
         $html.= '</head></html>';
@@ -498,6 +501,150 @@ class Templates {
         }                            
         $html.= '</tbody>';
         $html.= '</table>';  
+        return $html;
+    }
+
+    /// Reportes por Paciente ///
+
+    function tmp_reporte_ficha_clinica($param){        
+        $html = '';
+        $html.= $this->header_repo();
+        if($param != 'e'){
+            $nc  =  strtoupper($param['ficha_medica']['primer_nombre']).' '.
+                    strtoupper($param['ficha_medica']['segundo_nombre']).' '.
+                    strtoupper($param['ficha_medica']['apellido_paterno']).' '.
+                    strtoupper($param['ficha_medica']['apellido_materno']);
+            $img = base_url().'/img/foto_perfil/'.$param['ficha_medica']['imagen']; 
+            // Antecedentes Generales
+            $html.= '<table class="tbl_repo" text-align="left">';
+            $html.= '<thead>';
+            $html.= '<tr>';
+            $html.= '    <th colspan="3" class="title-repo"><h3> HISTORIA CLINICA PACIENTE : '.$nc.'</h3></th>';
+            $html.= '</tr>';
+            $html.= '<tr>';
+            $html.= '    <th><b>Rut</b></th>';
+            $html.= '    <th><b>Nombres</b></th>';
+            $html.= '    <th><b>Apellidos</b></th>';
+            $html.= '</tr>';
+            $html.= '</thead>';
+            $html.= '<tbody>';
+            $html.= '<tr>';             
+            $html.= '  <td>'.$param['ficha_medica']['rut'].'</td>';
+            $html.= '  <td>'.ucfirst($param['ficha_medica']['primer_nombre']).' '.ucfirst($param['ficha_medica']['segundo_nombre']).'</td>';
+            $html.= '  <td>'.ucfirst($param['ficha_medica']['apellido_paterno']).' '.ucfirst($param['ficha_medica']['apellido_materno']).'</td>';            
+            $html.= '</tr>';                            
+            $html.= '<tr>';
+            $html.= '    <th><b>Género</b></th>';
+            $html.= '    <th><b>Fecha de Nacimiento</b></th>';
+            $html.= '    <th><b>Estado Civil</b></th>';
+            $html.= '    <th><b>Ocupacion</b></th>';
+            $html.= '</tr>';
+            $html.= '<tr>';
+            if($param['ficha_medica']['genero'] == 'M'){
+                $html.= '  <td>MASCULINO</td>';
+            }else if($param['ficha_medica']['genero'] == 'F'){
+                $html.= '  <td>FEMENINO</td>';
+            }else{
+                $html.= '  <td>SIN DEFINIR</td>';
+            }             
+            $html.= '  <td>'.$param['ficha_medica']['fecha_nac'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['estado_civil'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['descripcion'].'</td>';            
+            $html.= '</tr>';            
+            $html.= '<tr>';
+            $html.= '    <th><b>Teléfono</b></th>';
+            $html.= '    <th><b>Celular</b></th>';
+            $html.= '    <th><b>Email</b></th>';
+            $html.= '    <th><b>Lugar de Nacimiento</b></th>';
+            $html.= '</tr>';            
+            $html.= '<tr>';                   
+            $html.= '  <td>'.$param['ficha_medica']['telefono'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['celular'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['email'].'</td>';            
+            $html.= '  <td>'.$param['ficha_medica']['lugar_nac'].'</td>';            
+            $html.= '</tr>';          
+            $html.= '<tr>';
+            $html.= '    <th><b>Nacionalidad</b></th>';
+            $html.= '    <th><b>Region</b></th>';
+            $html.= '    <th><b>Provincia</b></th>';
+            $html.= '    <th><b>Comuna</b></th>';
+            $html.= '    <th><b>Calle</b></th>';
+            $html.= '</tr>';           
+            $html.= '<tr>';                   
+            $html.= '  <td>'.$param['ficha_medica']['nombre'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['REGION_NOMBRE'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['PROVINCIA_NOMBRE'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['COMUNA_NOMBRE'].'</td>';            
+            $html.= '  <td>'.$param['ficha_medica']['calle'].'</td>';            
+            $html.= '</tr>';
+            $html.= '</tbody>';
+            $html.= '</table>'; 
+            $html.= '<p><hr></p>';
+            // Antecedentes Específicos
+            $html.= '<table class="tbl_repo" text-align="left">';
+            $html.= '<thead>';
+            $html.= '<tr>';
+            $html.= '    <th colspan="3" class="title-repo"><h3> ANTECEDENTES GENERALES</h3></th>';
+            $html.= '</tr>';
+            $html.= '<tr>';
+            $html.= '    <th><b>Religión</b></th>';
+            $html.= '    <th><b>Previsión</b></th>';            
+            $html.= '</tr>';
+            $html.= '</thead>';
+            $html.= '<tbody>';
+            $html.= '<tr>';             
+            $html.= '  <td>'.$param['ficha_medica']['religion'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['prevision_medica'].'</td>';                                    
+            $html.= '</tr>';                            
+            $html.= '<tr>';
+            $html.= '    <th><b>Nivel de Estudios</b></th>';
+            $html.= '    <th><b>Grupo Sanguíneo</b></th>';
+            $html.= '    <th><b>Factor RH</b></th>';            
+            $html.= '</tr>';
+            $html.= '</thead>';
+            $html.= '<tbody>';
+            $html.= '<tr>';
+            $html.= '  <td>'.$param['ficha_medica']['nivel_estudio'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['grupo_sanguineo'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['factor_rh'].'</td>';
+            $html.= '</tr>';
+            $html.= '</tbody>';
+            $html.= '</table>'; 
+            $html.= '<p><hr></p>';     
+            // Antecedentes Medicos
+            $html.= '<table class="tbl_repo" text-align="left">';
+            $html.= '<thead>';
+            $html.= '<tr>';
+            $html.= '    <th colspan="3" class="title-repo"><h3> ANTECEDENTES MEDICOS</h3></th>';
+            $html.= '</tr>';
+            $html.= '<tr>';
+            $html.= '    <th><b>ID Paciente</b></th>';
+            $html.= '    <th><b>ID Historia Médica</b></th>';
+            $html.= '    <th><b>ID Médico Tratane</b></th>';            
+            $html.= '</tr>';
+            $html.= '</thead>';
+            $html.= '<tbody>'; 
+            $html.= '<tbody>';
+            $html.= '<tr>';
+            $html.= '  <td>'.$param['ficha_medica']['id_paciente'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['id_historia_medica'].'</td>'; 
+            $html.= '  <td>'.$param['ficha_medica']['modificado_por'].'</td>';        
+            $html.= '</tr>';
+            $html.= '<tr>';
+            $html.= '    <th colspan="3"><b>Antecedentes Clínicos</b></th>';
+            $html.= '</tr>';
+            $html.= '<tr>';
+            $html.= '  <td>'.$param['ficha_medica']['id_paciente'].'</td>';
+            $html.= '  <td>'.$param['ficha_medica']['id_historia_medica'].'</td>'; 
+            $html.= '  <td>'.$param['ficha_medica']['modificado_por'].'</td>';        
+            $html.= '</tr>';            
+            $html.= '</tbody>';
+            $html.= '</table>'; 
+            $html.= '<p><hr></p>';
+
+        }else{
+            $html.= 'No hay datos para mostrar';
+        }
         return $html;
     }
 

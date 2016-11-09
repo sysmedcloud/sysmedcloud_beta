@@ -10,6 +10,8 @@ class Reportes extends CI_Controller {
         $this->load->model('gestion_model', 'gestion');
         $this->load->model('paciente_model', 'paciente');
         $this->load->model('consulta_model', 'consulta');
+        $this->load->model('reportes_model', 'reportes');
+
         //Cargamos todas las librerias que utilizaremos
          $this->load->library(array(
             'form_validation',  //funciones para los formularios
@@ -56,6 +58,7 @@ class Reportes extends CI_Controller {
         // Carga de datos
         $titulo = '';
         $tipo_reporte = $this->uri->segment(3);
+        $rut_paciente = $this->uri->segment(4);
         switch ($tipo_reporte) {
                     case '1':
                         $titulo     = 'Alergias';
@@ -88,7 +91,9 @@ class Reportes extends CI_Controller {
                         $tmp_meds   = $this->templates->tmp_reporte_consultas($data_meds);
                         break;                                       
                     case '7':
-                        $titulo     = 'Ficha Clínica Paciente';
+                        $titulo     = 'Historia Clinica Electónica';
+                        $data_med   = $this->reportes->consolidado_datos_paciente($rut_paciente);                         
+                        $tmp_meds   = $this->templates->tmp_reporte_ficha_clinica($data_med[0]);                        
                     break;
                     case '8':
                         $titulo     = 'Consulta Médica Paciente';
@@ -97,13 +102,13 @@ class Reportes extends CI_Controller {
 
 
         // Generacion de PDF
-        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'cm', 'A4', true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Sysmedcloud');
         $pdf->SetTitle('Reporte de ' . $titulo);
         $pdf->SetSubject('');
         $pdf->SetKeywords('');
-        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, 'Reporte', $titulo, array(0, 64, 255), array(0, 64, 128));
+        $pdf->SetHeaderData('logo.png', PDF_HEADER_LOGO_WIDTH+20, '', $titulo, array(0, 64, 255), array(0, 64, 128));
         $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -114,11 +119,11 @@ class Reportes extends CI_Controller {
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM); 
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
         $pdf->setFontSubsetting(true); 
-        $pdf->SetFont('Helvetica', '', 8, '', true);
+        $pdf->SetFont('times', '', 8, '', true);
         $pdf->AddPage();
         $pdf->writeHTML($tmp_meds, true, 0, true, 0); 
-        $nombre_archivo = utf8_decode("reporte-".strtolower($titulo)."-".date("d")."_".date("m")."_".date("Y").".pdf");
-        $pdf->Output($nombre_archivo, 'D');   
+        $nombre_archivo = utf8_decode("reporte-".strtolower($titulo)."-".date("d")."_".date("m")."_".date("Y").".pdf");        
+        $pdf->Output($nombre_archivo, 'I');   
     }
 
 }
